@@ -17,9 +17,9 @@ public class UpdatePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String old_password = request.getParameter("old_password");
 		String new_password = request.getParameter("new_password");
 		String confim_password = request.getParameter("confim_password");

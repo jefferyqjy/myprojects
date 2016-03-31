@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
-<%request.setCharacterEncoding("GBK");%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -103,7 +103,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">²é¿´Ñ§¼®</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">æŸ¥çœ‹å­¦ç±</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -117,26 +117,26 @@ function  clickto(){
      <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
       <tr>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí·ÝÖ¤</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«ä»½è¯</span></div></td>
         <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="bodycard" value="${HEALTHINFO.bodycard}" readonly/></span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">¼ì²éÈÕÆÚ</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">æ£€æŸ¥æ—¥æœŸ</span></div></td>
         <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="check_date"  value="${HEALTHINFO.check_date}" readonly /></span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí¸ß</span></div></td>
-        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="height" size="10"  value="${HEALTHINFO.height}" readonly/>ÀåÃ×</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«é«˜</span></div></td>
+        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="height" size="10"  value="${HEALTHINFO.height}" readonly/>åŽ˜ç±³</span></div></td>
       </tr>
 
 	<tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ÌåÖØ</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="weight" size="10"   value="${HEALTHINFO.weight}" readonly/>¹«½ï</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ÄêÁä</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="age" size="10"  maxlength="2"  value="${HEALTHINFO.age}" readonly/> Ëê</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ÊÓÁ¦</div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">×ó£º<input type="text" name="left_sight" size="10"   value="${HEALTHINFO.left_sight}" readonly/> ÓÒ£º<input type="text" name="right_sight" size="10" value="${HEALTHINFO.right_sight}" readonly/></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ä½“é‡</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="weight" size="10"   value="${HEALTHINFO.weight}" readonly/>å…¬æ–¤</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">å¹´é¾„</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="age" size="10"  maxlength="2"  value="${HEALTHINFO.age}" readonly/> å²</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">è§†åŠ›</div></td>
+        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21">å·¦ï¼š<input type="text" name="left_sight" size="10"   value="${HEALTHINFO.left_sight}" readonly/> å³ï¼š<input type="text" name="right_sight" size="10" value="${HEALTHINFO.right_sight}" readonly/></div></td>
       </tr>
 	<tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ÐÕÃû</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">å§“å</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="weight" size="17"  value="${HEALTHINFO.name}" readonly/></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ÐÔ±ð</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">æ€§åˆ«</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="age" size="10" maxlength="2"  value="${HEALTHINFO.sex}" readonly/> </div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"></div></td>
         <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"></div></td>

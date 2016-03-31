@@ -24,9 +24,9 @@ public class InqTeacherServlet extends HttpServlet {
 	public static final String [] subjects = {"", "语文", "数学", "英语", "美术", "音乐", "体育", "电脑",};
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String teacherUserName = request.getParameter("teacher_user_name");
 		String teacherName = request.getParameter("teacher_name");
 		String subject = request.getParameter("teacher_subject");

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.pro.conn.DaoManagerHandler;
 
-public class DeleteTeacherServlet extends HttpServlet {
+public class DeleteTeacherCommentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	public void service(HttpServletRequest request, HttpServletResponse response)
@@ -20,18 +20,16 @@ public class DeleteTeacherServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		String teacherUserName = request.getParameter("TUN");
+		String id = request.getParameter("TUN");
 		try {
 			List<String> list = new ArrayList<String>();
-			list.add("delete from pro_teacher where user_name ='" + teacherUserName.trim() +"'");
-			list.add("delete from pro_user where user_name ='" + teacherUserName.trim() +"'");
-			list.add("delete from pro_user_role where user_name ='" + teacherUserName.trim() +"'");
+			list.add("delete from pro_teacher_comment where id = " + id.trim());
 			DaoManagerHandler.executeUpdate(list);
-			request.setAttribute("Succ", "删除教师【" + teacherUserName +"】成功");
+			request.setAttribute("Succ", "删除教师评价成功！");
 		} catch (Exception e) {
-			request.setAttribute("Error", "删除教师【" + teacherUserName +"】失败");
+			request.setAttribute("Error", "删除教师评价失败！");
 		}
-		RequestDispatcher rd = request.getRequestDispatcher("/console/inqteacher.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/console/inqteachercomment.jsp");
 		rd.forward(request, response);
 	}
 

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
-<%request.setCharacterEncoding("GBK");%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>�����׶�԰����ϵͳ</title>
+<title>启蒙幼儿园管理系统</title>
 <style type="text/css">
 <!--
 body {
@@ -106,7 +106,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">�޸�ѧ��</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">修改学籍</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -120,40 +120,40 @@ function  clickto(){
    <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
       <tr>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">����</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">姓名</span></div></td>
         <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_name" value="${STUDENTINFO.name}" /></span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">�Ա�</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">性别</span></div></td>
         <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">${STUDENTINFO.sex}</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">��������</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">出生日期</span></div></td>
         <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_birthday" value="${STUDENTINFO.birthday}" /></span></div></td>
       </tr>
 
 	<tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">����֤</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">身份证</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_bodycard" value="${STUDENTINFO.bodycard}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">名族</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_nationality" value="${STUDENTINFO.nationality}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">籍贯</div></td>
         <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text" name="student_nativeplace" value="${STUDENTINFO.nativeplace}" /></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">��԰ʱ��</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">入园时间</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_indate" value="${STUDENTINFO.in_date}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">��ҵʱ��</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">毕业时间</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_outdate" value="${STUDENTINFO.out_date}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ѧУ��</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">学校名</div></td>
         <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text"  name="student_school" size="20" value="${STUDENTINFO.school}" /></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">����</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">父亲</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_father"  value="${STUDENTINFO.father_name}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">������ַ</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">工作地址</div></td>
         <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;" type="text" name="father_address" size="40" value="${STUDENTINFO.father_work_address}" /></div></td>
       </tr>
        <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ĸ��</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">母亲</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_mother" value="${STUDENTINFO.mother_name}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">������ַ</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">工作地址</div></td>
         <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;"  type="text" name="mother_address" size="40" value="${STUDENTINFO.mother_work_address}" /></div></td>
       </tr>
 
@@ -161,10 +161,10 @@ function  clickto(){
         <td colspan="6" height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><textarea name = "student_description" cols="100" rows="10">${STUDENTINFO.description}</textarea></span></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">��ϵ�绰</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">联系电话</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="telephone" value="${STUDENTINFO.telephone}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">����</div></td>
-        <td colspan="3"  height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="submit" value="�޸�" /><div align="center"></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">操作</div></td>
+        <td colspan="3"  height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="submit" value="修改" /><div align="center"></div></td>
         </tr>
     </table></td>
   </tr>

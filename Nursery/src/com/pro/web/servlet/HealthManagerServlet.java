@@ -22,9 +22,9 @@ public class HealthManagerServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("type");
 		String id = request.getParameter("id");
 		String target = "";

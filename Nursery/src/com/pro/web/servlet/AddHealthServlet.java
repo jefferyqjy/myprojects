@@ -18,9 +18,9 @@ public class AddHealthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 
 		String bodycard = request.getParameter("bodycard");
 		String check_date = request.getParameter("check_date");

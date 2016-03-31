@@ -173,7 +173,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
 	if ("admin".equals(userRole)) {
 	%>
 		<a href="/Nursery/deleteteacher?TUN=<%=map.get("user_name") %>">删除</a> | 
-		<a href="/Nursery/console/updateteacher.jsp?TUN=<%=map.get("user_name") %>&TN=<%=map.get("name") %>&TA=<%=map.get("age") %>&TS=<%=map.get("sex") %>&TSB=<%=map.get("subjectv") %>">修改</a>
+		<a href="/Nursery/console/updateteacher.jsp?TUN=<%=map.get("user_name") %>&TN=<%=map.get("name").toString() %>&TA=<%=map.get("age") %>&TS=<%=map.get("sex") %>&TSB=<%=map.get("subjectv") %>">修改</a>
 	<%
 	}
 	%>

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <%@ page import="java.util.List,java.util.Map" %>
-    <%request.setCharacterEncoding("GBK");%>
+    <%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -110,7 +110,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">Ñ§Éú½¡¿µ×´¿ö²éÑ¯</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">å­¦ç”Ÿå¥åº·çŠ¶å†µæŸ¥è¯¢</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -124,7 +124,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
       <tr>
         <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center"><form action="/Nursery/inqhealth" method="post">
-          ĞÕÃû£º<input type="text" name="student_name" size = "15" value="${ON_SELECT_STUDENT_NAME }"/> | Éí·İÖ¤£º <input type="text" name="bodycard" value="${ON_SELECT_BODYCARD }" maxlength="18"/> <input type="submit" value="²éÑ¯" /> <font color="red">${Error}</font><font color="green">${Succ}</font></form>
+          å§“åï¼š<input type="text" name="student_name" size = "15" value="${ON_SELECT_STUDENT_NAME }"/> | èº«ä»½è¯ï¼š <input type="text" name="bodycard" value="${ON_SELECT_BODYCARD }" maxlength="18"/> <input type="submit" value="æŸ¥è¯¢" /> <font color="red">${Error}</font><font color="green">${Succ}</font></form>
         </div></td>
       </tr>
     </table></td>
@@ -139,14 +139,14 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
         <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center">
           <input type="checkbox" name="checkbox" id="checkbox" />
         </div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ĞÕÃû</span></div></td>
-        <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí·İÖ¤</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ĞÔ±ğ</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÄêÁä</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí¸ß</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÌåÖØ</span></div></td>
-        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÈëÔ°ÈÕÆÚ</span></div></td>
-        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">»ù±¾²Ù×÷</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å§“å</span></div></td>
+        <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«ä»½è¯</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">æ€§åˆ«</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å¹´é¾„</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«é«˜</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ä½“é‡</span></div></td>
+        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å…¥å›­æ—¥æœŸ</span></div></td>
+        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">åŸºæœ¬æ“ä½œ</span></div></td>
       </tr>
 	<%
 		for(int i = 0; i < list.size(); i++) {
@@ -163,9 +163,9 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
             <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("height") %></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("weight") %></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("in_date") %></div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"> <a href="/Nursery/healthmanager?type=view&id=<%=map.get("id") %>">²é¿´</a> <%
+        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"> <a href="/Nursery/healthmanager?type=view&id=<%=map.get("id") %>">æŸ¥çœ‹</a> <%
 	if ("admin".equals(userRole)) {
-		%> | <a href="/Nursery/healthmanager?type=delete&id=<%=map.get("id") %>">É¾³ı</a> | <a href="/Nursery/healthmanager?type=viewupdate&id=<%=map.get("id") %>">ĞŞ¸Ä</a><%
+		%> | <a href="/Nursery/healthmanager?type=delete&id=<%=map.get("id") %>">åˆ é™¤</a> | <a href="/Nursery/healthmanager?type=viewupdate&id=<%=map.get("id") %>">ä¿®æ”¹</a><%
 		}
 	%>
 		</div></td>
@@ -185,18 +185,18 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="33%"><div align="left"><span class="STYLE22">&nbsp;&nbsp;&nbsp;&nbsp;¹²ÓĞ<strong> ${control.totalnum}</strong> Ìõ¼ÇÂ¼£¬µ±Ç°µÚ<strong> ${control.curpage}</strong> Ò³£¬¹² <strong>${control.totalpage}</strong> Ò³</span></div></td>
+        <td width="33%"><div align="left"><span class="STYLE22">&nbsp;&nbsp;&nbsp;&nbsp;å…±æœ‰<strong> ${control.totalnum}</strong> æ¡è®°å½•ï¼Œå½“å‰ç¬¬<strong> ${control.curpage}</strong> é¡µï¼Œå…± <strong>${control.totalpage}</strong> é¡µ</span></div></td>
         <td width="67%"><table width="312" border="0" align="right" cellpadding="0" cellspacing="0">
           <tr>
             <td width="49"><div align="center"><a href="${URL_PARA}&curpage=1"><img src="/Nursery/console/images/main_54.gif" width="40" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="${URL_PARA}&curpage=${control.prepage}"><img src="/Nursery/console/images/main_56.gif" width="45" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="${URL_PARA}&curpage=${control.nextpage}"><img src="/Nursery/console/images/main_58.gif" width="45" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="${URL_PARA}&curpage=${control.totalpage}"><img src="/Nursery/console/images/main_60.gif" width="40" height="15" /></a></div></td>
-            <td width="37" class="STYLE22"><div align="center">×ªµ½</div></td>
+            <td width="37" class="STYLE22"><div align="center">è½¬åˆ°</div></td>
             <td width="22"><div align="center">
               <input type="text" name="textfield" id="textfield"  style="width:20px; height:12px; font-size:12px; border:solid 1px #7aaebd;"/>
             </div></td>
-            <td width="22" class="STYLE22"><div align="center">Ò³</div></td>
+            <td width="22" class="STYLE22"><div align="center">é¡µ</div></td>
             <td width="35"><img src="/Nursery/console/images/main_62.gif" width="26" height="15" /></td>
           </tr>
         </table></td>

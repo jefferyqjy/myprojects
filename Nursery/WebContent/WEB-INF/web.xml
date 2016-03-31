@@ -30,7 +30,7 @@
      	<servlet-name>LogoutServlet</servlet-name>
      	<url-pattern>/logout</url-pattern>
      </servlet-mapping>
-	<servlet>
+	 <servlet>
      	<servlet-name>InqTeacherServlet</servlet-name>
      	<servlet-class>
      	com.pro.web.servlet.InqTeacherServlet</servlet-class>
@@ -40,6 +40,31 @@
      	<servlet-name>InqTeacherServlet</servlet-name>
      	<url-pattern>/inqteacher</url-pattern>
      </servlet-mapping>
+     
+     <!-- query teacher comment servlet begin -->
+     <servlet>
+     	<servlet-name>InqTeacherCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqTeacherCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqTeacherCommentServlet</servlet-name>
+     	<url-pattern>/inqteachercomment</url-pattern>
+     </servlet-mapping>
+     <!-- query teacher comment servlet end -->
+     <!-- delete teacher comment servlet begin -->
+     <servlet>
+     	<servlet-name>DeleteTeacherCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.DeleteTeacherCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>DeleteTeacherCommentServlet</servlet-name>
+     	<url-pattern>/deleteteachercomment</url-pattern>
+     </servlet-mapping>
+     <!-- delete teacher comment servlet end -->
 
      <servlet>
      	<servlet-name>InqStudentServlet</servlet-name>
@@ -130,7 +155,7 @@
      	<url-pattern>/inqhealth</url-pattern>
      </servlet-mapping>
 
-      <servlet>
+     <servlet>
      	<servlet-name>DeleteTeacherServlet</servlet-name>
      	<servlet-class>
      	com.pro.web.servlet.DeleteTeacherServlet</servlet-class>

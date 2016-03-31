@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -39,7 +39,7 @@ function time()
   var h=add_zero(dt.getHours());
   var m=add_zero(dt.getMinutes());
   var s=add_zero(dt.getSeconds());
-  document.getElementById("timeShow").innerHTML =  "<span class='STYLE7'>·şÎñÆ÷Ê±¼ä£º" + y + "-" + mo + "-" + d +" " + h + ":" +m + ":" + s +"</span>";
+  document.getElementById("timeShow").innerHTML =  "<span class='STYLE7'>æœåŠ¡å™¨æ—¶é—´ï¼š" + y + "-" + mo + "-" + d +" " + h + ":" +m + ":" + s +"</span>";
   t = setTimeout(time,1000);
 }
 function add_zero(temp)
@@ -61,7 +61,7 @@ function add_zero(temp)
 	      <tr>
 	        <td width="378" height="57" background="images/main_03.gif">
 	        &nbsp;
-	        	<a class="title">ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</a>
+	        	<a class="title">å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</a>
 	        </td>
 	        <td>&nbsp;</td>
 	        <td width="281" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -87,15 +87,15 @@ function add_zero(temp)
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="21"><img src="images/main_13.gif" width="19" height="14" /></td>
-            <td width="35" class="STYLE7"><div align="center">Ê×Ò³</div></td>
+            <td width="35" class="STYLE7"><div align="center">é¦–é¡µ</div></td>
             <td width="21" class="STYLE7"><img src="images/main_15.gif" width="19" height="14" /></td>
-            <td width="35" class="STYLE7"><div align="center">ºóÍË</div></td>
+            <td width="35" class="STYLE7"><div align="center">åé€€</div></td>
             <td width="21" class="STYLE7"><img src="images/main_17.gif" width="19" height="14" /></td>
-            <td width="35" class="STYLE7"><div align="center">Ç°½ø</div></td>
+            <td width="35" class="STYLE7"><div align="center">å‰è¿›</div></td>
             <td width="21" class="STYLE7"><img src="images/main_19.gif" width="19" height="14" /></td>
-            <td width="35" class="STYLE7"><div align="center">Ë¢ĞÂ</div></td>
+            <td width="35" class="STYLE7"><div align="center">åˆ·æ–°</div></td>
             <td width="21" class="STYLE7"><img src="images/main_21.gif" width="19" height="14" /></td>
-            <td width="35" class="STYLE7"><div align="center">°ïÖú</div></td>
+            <td width="35" class="STYLE7"><div align="center">å¸®åŠ©</div></td>
             <td>&nbsp;</td>
           </tr>
         </table></td>
@@ -117,14 +117,14 @@ function add_zero(temp)
         <td width="147" background="images/main_29.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
             <td width="24%">&nbsp;</td>
-            <td width="43%" height="20" valign="bottom" class="STYLE1">¹ÜÀí²Ëµ¥</td>
+            <td width="43%" height="20" valign="bottom" class="STYLE1">ç®¡ç†èœå•</td>
             <td width="33%">&nbsp;</td>
           </tr>
         </table></td>
         <td width="39"><img src="images/main_30.gif" width="39" height="30" /></td>
         <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td height="20" valign="bottom"><span class="STYLE1">µ±Ç°µÇÂ¼ÓÃ»§£º${PRO_USER_NAME } &nbsp;ÓÃ»§½ÇÉ«£º${PRO_USER_ROLE }</span></td>
+            <td height="20" valign="bottom"><span class="STYLE1">å½“å‰ç™»å½•ç”¨æˆ·ï¼š${PRO_USER_NAME } &nbsp;ç”¨æˆ·è§’è‰²ï¼š${PRO_USER_ROLE }</span></td>
             <td valign="bottom" class="STYLE1"><div align="right"><img src="images/sj.gif" width="6" height="7" />       &nbsp; &nbsp;&nbsp;<img src="images/sj.gif" width="6" height="7" /> &nbsp; &nbsp; &nbsp; <img src="images/sj.gif" width="6" height="7" /> &nbsp;</div></td>
           </tr>
         </table></td>

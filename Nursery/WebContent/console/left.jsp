@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -30,7 +30,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
     <td height="23" background="images/main_34.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9%">&nbsp;</td>
-        <td width="83%" onClick="document.getElementById('umTr').style.display = document.getElementById('umTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE5"><a style="cursor:pointer">ÓÃ»§¹ÜÀí</a></div></td>
+        <td width="83%" onClick="document.getElementById('umTr').style.display = document.getElementById('umTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE5"><a style="cursor:pointer">ç”¨æˆ·ç®¡ç†</a></div></td>
         <td width="8%">&nbsp;</td>
       </tr>
     </table></td>
@@ -44,7 +44,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
               <td width="33" height="28"><img src="images/main_40.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/updatepassword.jsp" target="rightFrame">ĞŞ¸ÄÃÜÂë</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/updatepassword.jsp" target="rightFrame">ä¿®æ”¹å¯†ç </a></td>
                   </tr>
               </table></td>
             </tr>
@@ -62,7 +62,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
     <td height="23" background="images/main_34_1.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9%">&nbsp;</td>
-        <td width="83%" onClick="document.getElementById('xjTr').style.display = document.getElementById('xjTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE4"><a style="cursor:pointer">Ñ§ÉúĞÅÏ¢</a></div></td>
+        <td width="83%" onClick="document.getElementById('xjTr').style.display = document.getElementById('xjTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE4"><a style="cursor:pointer">å­¦ç”Ÿä¿¡æ¯</a></div></td>
         <td width="8%">&nbsp;</td>
       </tr>
     </table></td>
@@ -76,7 +76,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
               <td width="33" height="28"><img src="images/main_40.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/inqstudent.jsp" target="rightFrame">²éÑ¯Ñ§Éú</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/inqstudent.jsp" target="rightFrame">æŸ¥è¯¢å­¦ç”Ÿ</a></td>
                   </tr>
               </table></td>
             </tr>
@@ -92,7 +92,7 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
               <td width="33" height="28"><img src="images/main_46.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/addstudent.jsp" target="rightFrame">Ìí¼ÓÑ§Éú</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/addstudent.jsp" target="rightFrame">æ·»åŠ å­¦ç”Ÿ</a></td>
                   </tr>
               </table></td>
             </tr>
@@ -115,7 +115,7 @@ if ("admin".equals(userRole) || "teacher".equals(userRole)){
     <td height="23" background="images/main_34_1.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="9%">&nbsp;</td>
-        <td width="83%" onClick="document.getElementById('tcTr').style.display = document.getElementById('tcTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE4"><a style="cursor:pointer">½ÌÊ¦¹ÜÀí</a></div></td>
+        <td width="83%" onClick="document.getElementById('tcTr').style.display = document.getElementById('tcTr').style.display == 'none'? '' : 'none'"><div align="center" class="STYLE4"><a style="cursor:pointer">æ•™å¸ˆç®¡ç†</a></div></td>
         <td width="8%">&nbsp;</td>
       </tr>
     </table></td>
@@ -129,7 +129,7 @@ if ("admin".equals(userRole) || "teacher".equals(userRole)){
               <td width="33" height="28"><img src="images/main_40.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/inqteacher.jsp" target="rightFrame">½ÌÊ¦²éÑ¯</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/inqteacher.jsp" target="rightFrame">æ•™å¸ˆæŸ¥è¯¢</a></td>
                   </tr>
               </table></td>
             </tr>
@@ -144,7 +144,7 @@ if ("admin".equals(userRole) || "teacher".equals(userRole)){
               <td width="33" height="28"><img src="images/main_46.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/addteacher.jsp" target="rightFrame">Ìí¼Ó½ÌÊ¦</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/addteacher.jsp" target="rightFrame">æ·»åŠ æ•™å¸ˆ</a></td>
                   </tr>
               </table></td>
             </tr>
@@ -156,7 +156,7 @@ if ("admin".equals(userRole) || "teacher".equals(userRole)){
               <td width="33" height="28"><img src="images/main_46.gif" width="28" height="28"></td>
               <td width="99"><table width="100%" border="0" cellspacing="0" cellpadding="0">
                   <tr>
-                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/viewEvaluate.jsp" target="rightFrame">½ÌÊ¦ÆÀ¼Û</a></td>
+                    <td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'"><a href="/Nursery/console/inqteachercomment.jsp" target="rightFrame">æ•™å¸ˆè¯„ä»·</a></td>
                   </tr>
               </table></td>
             </tr>
@@ -179,7 +179,7 @@ if ("admin".equals(userRole) || "teacher".equals(userRole)){
     <td height="19" background="images/main_69.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="24%">&nbsp;</td>
-        <td width="76%" valign="bottom"><span class="STYLE3">°æ±¾£º2011 v1.0</span></td>
+        <td width="76%" valign="bottom"><span class="STYLE3">ç‰ˆæœ¬ï¼š2011 v1.0</span></td>
       </tr>
     </table></td>
   </tr>

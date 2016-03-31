@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.pro.conn.DaoManagerHandler;
 import com.pro.db.DaoHelperOutput;
 import com.util.CommonUtil;
-import com.util.IdcardUtil;
 
 public class StudentManagerServlet extends HttpServlet {
 
@@ -19,9 +18,9 @@ public class StudentManagerServlet extends HttpServlet {
 
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String type = request.getParameter("type");
 		String bodycard = request.getParameter("bodycard");
 		String target = "";
@@ -86,9 +85,13 @@ public class StudentManagerServlet extends HttpServlet {
 			String description = request.getParameter("student_description");
 			String telephone = request.getParameter("telephone");
 			String error = "";
-			if (!IdcardUtil.isIdcard(newBodycard)) {
+			/*if (!IdcardUtil.isIdcard(newBodycard)) {
 				error += "身份证输入有误！<br>";
+			}*/
+			if (CommonUtil.checkEmpty(bodycard)) {
+				error += "身份证不能为空！<br>";
 			}
+			
 			if (CommonUtil.checkEmpty(birth)) {
 				error += "出生日期不能为空！<br>";
 			} else {

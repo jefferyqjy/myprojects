@@ -19,9 +19,9 @@ public class AddStudentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("gbk");
-		response.setCharacterEncoding("gbk");
-		response.setContentType("text/html;charset=gbk");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		String name = request.getParameter("student_name");
 		String sex = request.getParameter("student_sex");
 		String birth = request.getParameter("student_birthday");
@@ -96,7 +96,7 @@ public class AddStudentServlet extends HttpServlet {
 		}
 		if (error.equals("")) {
 			try {
-				int totals = DaoManager.executeTotalsQuery("pro_student where bodycared = '" + bodycard.trim()+"'");
+				int totals = DaoManager.executeTotalsQuery("pro_student where bodycard = '" + bodycard.trim()+"'");
 				if (totals == 0) {
 					StringBuffer sql = new StringBuffer();
 					sql.append("insert into pro_student values('").append(bodycard).append("',");

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
     <%@ page import="java.util.List,java.util.Map" %>
-    <%request.setCharacterEncoding("GBK");%>
+    <%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -52,14 +52,14 @@ List list = (List)request.getAttribute("HEALTHLIST");
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" >
       <tr>
 
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ĞÕÃû</span></div></td>
-        <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí·İÖ¤</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ĞÔ±ğ</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÄêÁä</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Éí¸ß</span></div></td>
-        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÌåÖØ</span></div></td>
-        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">×óÑÛÊÓÁ¦</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÓÒÑÛÊÓÁ¦</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å§“å</span></div></td>
+        <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«ä»½è¯</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">æ€§åˆ«</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å¹´é¾„</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">èº«é«˜</span></div></td>
+        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ä½“é‡</span></div></td>
+        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å·¦çœ¼è§†åŠ›</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å³çœ¼è§†åŠ›</span></div></td>
       </tr>
 	<%
 		for(int i = 0; i < list.size(); i++) {
@@ -90,18 +90,18 @@ List list = (List)request.getAttribute("HEALTHLIST");
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="33%"><div align="left"><span class="STYLE22">&nbsp;&nbsp;&nbsp;&nbsp;¹²ÓĞ<strong> ${control.totalnum}</strong> Ìõ¼ÇÂ¼£¬µ±Ç°µÚ<strong> ${control.curpage}</strong> Ò³£¬¹² <strong>${control.totalpage}</strong> Ò³</span></div></td>
+        <td width="33%"><div align="left"><span class="STYLE22">&nbsp;&nbsp;&nbsp;&nbsp;å…±æœ‰<strong> ${control.totalnum}</strong> æ¡è®°å½•ï¼Œå½“å‰ç¬¬<strong> ${control.curpage}</strong> é¡µï¼Œå…± <strong>${control.totalpage}</strong> é¡µ</span></div></td>
         <td width="67%"><table width="312" border="0" align="right" cellpadding="0" cellspacing="0">
           <tr>
             <td width="49"><div align="center"><a href="/Nursery/printhealth?curpage=1"><img src="/Nursery/console/images/main_54.gif" width="40" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="/Nursery/printhealth?curpage=${control.prepage}"><img src="/Nursery/console/images/main_56.gif" width="45" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="/Nursery/printhealth?curpage=${control.nextpage}"><img src="/Nursery/console/images/main_58.gif" width="45" height="15" /></a></div></td>
             <td width="49"><div align="center"><a href="/Nursery/printhealth?curpage=${control.totalpage}"><img src="/Nursery/console/images/main_60.gif" width="40" height="15" /></a></div></td>
-            <td width="37" class="STYLE22"><div align="center">×ªµ½</div></td>
+            <td width="37" class="STYLE22"><div align="center">è½¬åˆ°</div></td>
             <td width="22"><div align="center">
               <input type="text" name="textfield" id="textfield"  style="width:20px; height:12px; font-size:12px; border:solid 1px #7aaebd;"/>
             </div></td>
-            <td width="22" class="STYLE22"><div align="center">Ò³</div></td>
+            <td width="22" class="STYLE22"><div align="center">é¡µ</div></td>
             <td width="35"><img src="/Nursery/console/images/main_62.gif" width="26" height="15" /></td>
           </tr>
         </table></td>

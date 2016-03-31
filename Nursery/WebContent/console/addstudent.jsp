@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ page import="java.util.List,java.util.Map" %>
-<%request.setCharacterEncoding("GBK");%>
+<%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -105,7 +105,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">Ìí¼ÓÑ§Éú</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">æ·»åŠ å­¦ç”Ÿ</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -119,51 +119,51 @@ function  clickto(){
    <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
       <tr>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÐÕÃû</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å§“å</span></div></td>
         <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_name" /></span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÐÔ±ð</span></div></td>
-        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="radio" name="student_sex" checked value="ÄÐ"/> ÄÐ <input type="radio" name="student_sex" value="Å®" /> Å®</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">³öÉúÈÕÆÚ</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">æ€§åˆ«</span></div></td>
+        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="radio" name="student_sex" checked value="ç”·"/> ç”· <input type="radio" name="student_sex" value="å¥³" /> å¥³</span></div></td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">å‡ºç”Ÿæ—¥æœŸ</span></div></td>
         <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_birthday" /></span></div></td>
       </tr>
 
 	<tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">Éí·ÝÖ¤</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">èº«ä»½è¯</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_bodycard" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">Ãû×å</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">åæ—</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_nationality" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">¼®¹á</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">ç±è´¯</div></td>
         <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text" name="student_nativeplace" /></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ÈëÔ°Ê±¼ä</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">å…¥å›­æ—¶é—´</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" maxlength="8" name="student_indate" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">±ÏÒµÊ±¼ä</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">æ¯•ä¸šæ—¶é—´</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" maxlength="8" name="student_outdate" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">Ñ§Ð£Ãû</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">å­¦æ ¡å</div></td>
         <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text"  name="student_school" size="20"/></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">¸¸Ç×</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">çˆ¶äº²</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_father" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">¹¤×÷µØÖ·</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">å·¥ä½œåœ°å€</div></td>
         <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;" type="text" name="father_address" size="40" /></div></td>
       </tr>
        <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">Ä¸Ç×</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">æ¯äº²</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_mother" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">¹¤×÷µØÖ·</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">å·¥ä½œåœ°å€</div></td>
         <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;"  type="text" name="mother_address" size="40"/></div></td>
       </tr>
 
       <tr>
-        <td colspan="6" height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><textarea name = "student_description" cols="100" rows="10">ÈÕ³£±íÏÖ</textarea></span></div></td>
+        <td colspan="6" height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><textarea name = "student_description" cols="100" rows="10">æ—¥å¸¸è¡¨çŽ°</textarea></span></div></td>
       </tr>
       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">ÁªÏµµç»°</span></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">è”ç³»ç”µè¯</span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="telephone" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">²Ù×÷</div></td>
-        <td colspan="3"  height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="submit" value="Ìí¼Ó" /></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">æ“ä½œ</div></td>
+        <td colspan="3"  height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="submit" value="æ·»åŠ " /></div></td>
         </tr>
     </table></td>
   </tr>

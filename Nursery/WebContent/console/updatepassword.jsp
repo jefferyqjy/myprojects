@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-    pageEncoding="GB18030"%>
-<%request.setCharacterEncoding("GBK");%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>ÆôÃÉÓ×¶ùÔ°¹ÜÀíÏµÍ³</title>
+<title>å¯è’™å¹¼å„¿å›­ç®¡ç†ç³»ç»Ÿ</title>
 <style type="text/css">
 <!--
 body {
@@ -104,7 +104,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">ÐÞ¸ÄµÇÂ¼ÃÜÂë</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">ä¿®æ”¹ç™»å½•å¯†ç </span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -121,10 +121,10 @@ function  clickto(){
         <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center">
           <input type="checkbox" name="checkbox" id="checkbox" />
         </div></td>
-        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">Ô­Ê¼ÃÜÂë</span></div></td>
-        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ÐÂÃÜÂë</span></div></td>
-        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">È·ÈÏÐÂÃÜÂë</span></div></td>
-        <td width="9%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">»ù±¾²Ù×÷</span></div></td>
+        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">åŽŸå§‹å¯†ç </span></div></td>
+        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">æ–°å¯†ç </span></div></td>
+        <td width="29%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">ç¡®è®¤æ–°å¯†ç </span></div></td>
+        <td width="9%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">åŸºæœ¬æ“ä½œ</span></div></td>
       </tr>
 
 			<tr>
@@ -134,7 +134,7 @@ function  clickto(){
         <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><input type="password" name="old_password"/></span></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="password" name="new_password"/></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="password" name="confim_password"  /></div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="submit" value="ÐÞ¸Ä" /></div></td>
+        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="submit" value="ä¿®æ”¹" /></div></td>
       </tr>
     </table></td>
   </tr>
