@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>Nursery</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+     	<servlet-name>LoginServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.LoginServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>LoginServlet</servlet-name>
+     	<url-pattern>/login</url-pattern>
+     </servlet-mapping>
+	<servlet>
+     	<servlet-name>LogoutServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.LogoutServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>LogoutServlet</servlet-name>
+     	<url-pattern>/logout</url-pattern>
+     </servlet-mapping>
+	<servlet>
+     	<servlet-name>InqTeacherServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqTeacherServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqTeacherServlet</servlet-name>
+     	<url-pattern>/inqteacher</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>InqStudentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqStudentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqStudentServlet</servlet-name>
+     	<url-pattern>/inqstudent</url-pattern>
+     </servlet-mapping>
+
+      <servlet>
+     	<servlet-name>StudentManagerServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.StudentManagerServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>StudentManagerServlet</servlet-name>
+     	<url-pattern>/studentmanager</url-pattern>
+     </servlet-mapping>
+
+ 	 <servlet>
+     	<servlet-name>HealthManagerServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.HealthManagerServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>HealthManagerServlet</servlet-name>
+     	<url-pattern>/healthmanager</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>PrintHealthServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.PrintHealthServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>PrintHealthServlet</servlet-name>
+     	<url-pattern>/printhealth</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>AddTeacherServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddTeacherServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddTeacherServlet</servlet-name>
+     	<url-pattern>/addteacher</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>AddStudentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddStudentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddStudentServlet</servlet-name>
+     	<url-pattern>/addstudent</url-pattern>
+     </servlet-mapping>
+
+    <servlet>
+     	<servlet-name>AddHealthServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddHealthServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddHealthServlet</servlet-name>
+     	<url-pattern>/addhealth</url-pattern>
+     </servlet-mapping>
+
+
+    <servlet>
+     	<servlet-name>InqHealthServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqHealthServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqHealthServlet</servlet-name>
+     	<url-pattern>/inqhealth</url-pattern>
+     </servlet-mapping>
+
+      <servlet>
+     	<servlet-name>DeleteTeacherServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.DeleteTeacherServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>DeleteTeacherServlet</servlet-name>
+     	<url-pattern>/deleteteacher</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>UpdateTeacherServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.UpdateTeacherServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>UpdateTeacherServlet</servlet-name>
+     	<url-pattern>/updateteacher</url-pattern>
+     </servlet-mapping>
+
+       <servlet>
+     	<servlet-name>UpdatePasswordServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.UpdatePasswordServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>UpdatePasswordServlet</servlet-name>
+     	<url-pattern>/updatepassword</url-pattern>
+     </servlet-mapping>
+
+     <resource-ref>
+		<description></description>
+		<res-ref-name>DS_TRX</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>
