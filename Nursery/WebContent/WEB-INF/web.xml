@@ -122,6 +122,30 @@
      	<url-pattern>/addstudentgrade</url-pattern>
      </servlet-mapping>
 	 <!-- student grade servlet end -->
+	 
+	 <!-- student comment servlet begin -->
+     <servlet>
+     	<servlet-name>InqStudentCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqStudentCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqStudentCommentServlet</servlet-name>
+     	<url-pattern>/inqstudentcomment</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+     	<servlet-name>AddStudentCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddStudentCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddStudentCommentServlet</servlet-name>
+     	<url-pattern>/addstudentcomment</url-pattern>
+     </servlet-mapping>
+     <!-- student comment servlet end -->
 
  	 <servlet>
      	<servlet-name>HealthManagerServlet</servlet-name>
@@ -222,6 +246,41 @@
      	<servlet-name>UpdatePasswordServlet</servlet-name>
      	<url-pattern>/updatepassword</url-pattern>
      </servlet-mapping>
+     
+     <!-- announce manager begin -->
+     <servlet>
+     	<servlet-name>AnnounceManagerServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AnnounceManagerServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AnnounceManagerServlet</servlet-name>
+     	<url-pattern>/announcemanager</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+     	<servlet-name>InqAnnounceServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqAnnounceServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqAnnounceServlet</servlet-name>
+     	<url-pattern>/inqannounce</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+     	<servlet-name>AddAnnounceServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddAnnounceServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddAnnounceServlet</servlet-name>
+     	<url-pattern>/addannounce</url-pattern>
+     </servlet-mapping>
+     <!-- announce manager end -->
 
      <resource-ref>
 		<description></description>

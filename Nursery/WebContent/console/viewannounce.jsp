@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@ page import="java.util.List,java.util.Map" %>
 <%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -95,7 +94,7 @@ function  clickto(){
 </head>
 
 <body>
-<form action="/Nursery/addteacher" method="post">
+<form action="/Nursery/addannounce" method="post">
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -105,7 +104,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">添加教师评价信息</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">查看公告</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -116,41 +115,47 @@ function  clickto(){
     </table></td>
   </tr>
 
-   <tr>
-    <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
-      <tr>
-        <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center">
-          <input type="checkbox" name="checkbox" id="checkbox" />
-        </div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">教师用户名</span></div></td>
-        <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">姓名</span></div></td>
-        <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">年龄</span></div></td>
-        <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">性别</span></div></td>
-        <td width="27%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">学科</span></div></td>
-        <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">基本操作</span></div></td>
-      </tr>
-
-			<tr>
-        <td height="20" bgcolor="#FFFFFF"><div align="center">
-          <input type="checkbox" name="checkbox2" id="checkbox2" />
-        </div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><input type="text" name="teacher_user_name" /></span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_name" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_age" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="radio" name="teacher_sex" value="男"/> 男 <input type="radio" name="teacher_sex" value="女" /> 女</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"> <select name="teacher_subject">
-          <option value="1">语文</option>
-          <option value="2">数学</option>
-          <option value="3">英语</option>
-          <option value="4">美术</option>
-          <option value="5">音乐</option>
-          <option value="6">体育</option>
-          <option value="7">电脑</option></select></div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="submit" value="添加" /></div></td>
-      </tr>
-    </table></td>
-  </tr>
-  <tr><td><font color="green">${Succ}</font><font color="red">${Error}</font></td></tr>
+	<tr>
+    	<td>
+    		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
+    			<tr>
+        			<td width="45%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">教师用户名</span></div>
+        			</td>
+        			<td width="55%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">${ANNOUNCEINFO.teacher_user_name }</span></div>
+        			</td>
+      			</tr>
+      			<tr>
+        			<td width="45%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">科目</span></div>
+        			</td>
+        			<td width="55%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">${ANNOUNCEINFO.subjectInfo }</span></div>
+        			</td>
+      			</tr>
+      			<tr>
+        			<td width="45%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">标题</span></div>
+        			</td>
+        			<td width="55%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">${ANNOUNCEINFO.title }</span></div>
+        			</td>
+      			</tr>
+      			<tr>
+        			<td width="45%" height="80" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">内容</span></div>
+        			</td>
+        			<td width="55%" height="80" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">${ANNOUNCEINFO.content }</span></div>
+        			</td>
+      			</tr>
+    		</table>
+    	</td>
+  	</tr>
+  	<tr>
+  		<td><font color="green">${Succ}</font><font color="red">${Error}</font></td>
+  	</tr>
 </table>
 </form>
 </body>
