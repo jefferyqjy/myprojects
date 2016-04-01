@@ -45,7 +45,7 @@ public class StudentGradeManagerServlet extends HttpServlet {
 		try {
 			String sql = "select * from pro_student_grade where id = " + id;
 			DaoHelperOutput output = (DaoHelperOutput) DaoManagerHandler.executeQuery(sql,
-					new InqStudentServlet() .new StudentConvert());
+					new InqStudentGradeServlet() .new StudentGradeConvert());
 			request.setAttribute("STUDENTGRADEINFO", output.getResults().get(0));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,47 +70,18 @@ public class StudentGradeManagerServlet extends HttpServlet {
 
 	private void update(HttpServletRequest request, String id) {
 		try {
-			String student_name = request.getParameter("student_name");
-			String student_bodycard = request.getParameter("student_bodycard");
-			String subject = request.getParameter("subject");
 			String grade = request.getParameter("grade");
-			String year = request.getParameter("year");
-			String term = request.getParameter("term");
 			String error = "";
-			if (CommonUtil.checkEmpty(student_bodycard)) {
-				error += "身份证不能为空！<br>";
-			}
 			
-			if (CommonUtil.checkEmpty(student_name)) {
-				error += "姓名不能为空！<br>";
-			}
-			
-			if (CommonUtil.checkEmpty(subject)) {
-				error += "科目不能为空！<br>";
-			}
-			
-			if (CommonUtil.checkEmpty(subject)) {
+			if (CommonUtil.checkEmpty(grade)) {
 				error += "等地不能为空！<br>";
-			}
-			
-			if (CommonUtil.checkEmpty(subject)) {
-				error += "年份不能为空！<br>";
-			}
-			
-			if (CommonUtil.checkEmpty(subject)) {
-				error += "学期不能为空！<br>";
 			}
 			
 			if (error.equals("")) {
 				try {
 					StringBuffer sql = new StringBuffer();
 					sql.append("update pro_student_grade set ")
-						.append("student_bodycard = '").append(student_bodycard).append("',")
-						.append("student_name = '").append(student_name).append("',")
-						.append("subject = '").append(subject).append("',")
 						.append("grade = '").append(grade).append("' ")
-						.append("year = '").append(year).append("' ")
-						.append("term = '").append(term).append("' ")
 						.append("where id = ").append(id);
 					DaoHelperOutput output = (DaoHelperOutput) DaoManagerHandler.executeUpdate(sql.toString());
 					if (!output.isbSuccess()) {
@@ -119,7 +90,7 @@ public class StudentGradeManagerServlet extends HttpServlet {
 						request.setAttribute("Succ", "修改学生成绩成功！");
 					}
 				}catch (Exception e) {
-					error += "修改祥和盛成绩失败，未知异常！<br>";
+					error += "修改学生成绩失败，未知异常！<br>";
 				}
 
 			}

@@ -77,7 +77,7 @@
      	<url-pattern>/inqstudent</url-pattern>
      </servlet-mapping>
 
-      <servlet>
+     <servlet>
      	<servlet-name>StudentManagerServlet</servlet-name>
      	<servlet-class>
      	com.pro.web.servlet.StudentManagerServlet</servlet-class>
@@ -87,6 +87,41 @@
      	<servlet-name>StudentManagerServlet</servlet-name>
      	<url-pattern>/studentmanager</url-pattern>
      </servlet-mapping>
+     
+     <!-- student grade servlet begin -->
+     <servlet>
+     	<servlet-name>InqStudentGradeServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.InqStudentGradeServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>InqStudentGradeServlet</servlet-name>
+     	<url-pattern>/inqstudentgrade</url-pattern>
+     </servlet-mapping>
+
+     <servlet>
+     	<servlet-name>StudentGradeManagerServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.StudentGradeManagerServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>StudentGradeManagerServlet</servlet-name>
+     	<url-pattern>/studentgrademanager</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+     	<servlet-name>AddStudentGradeServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddStudentGradeServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddStudentGradeServlet</servlet-name>
+     	<url-pattern>/addstudentgrade</url-pattern>
+     </servlet-mapping>
+	 <!-- student grade servlet end -->
 
  	 <servlet>
      	<servlet-name>HealthManagerServlet</servlet-name>

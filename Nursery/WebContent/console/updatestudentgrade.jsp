@@ -34,6 +34,7 @@ body {
 -->
 </style>
 <script>
+
 var  highlightcolor='#d5f4fe';
 var  clickcolor='#51b2f6';
 function  changeto(){
@@ -96,7 +97,11 @@ function  clickto(){
 <body>
 <form action="/Nursery/studentmanager" method="post">
 <input type="hidden" name="type" value="update"/>
-<input type="hidden" name="bodycard" value="${STUDENTINFO.bodycard}"/>
+<input type="hidden" name="id" value="id"/>
+<input type="hidden" name="student_bodycard" value="student_bodycard"/>
+<input type="hidden" name="subject" value="subject"/>
+<input type="hidden" name="term" value="term"/>
+<input type="hidden" name="year" value="year"/>
 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td height="30"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -106,7 +111,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">修改学籍</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">修改学生成绩</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -120,52 +125,59 @@ function  clickto(){
    <tr>
     <td><table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
       <tr>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">姓名</span></div></td>
-        <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_name" value="${STUDENTINFO.name}" /></span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">性别</span></div></td>
-        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">${STUDENTINFO.sex}</span></div></td>
-        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">出生日期</span></div></td>
-        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10"><input type="text" name="student_birthday" value="${STUDENTINFO.birthday}" /></span></div></td>
+        <td width="20%" height="20" bgcolor="d3eaef" class="STYLE6">	
+        	<div align="center"><span class="STYLE10">身份证</span></div>
+        </td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6">
+        	<div align="center"><span class="STYLE10">科目</span></div>
+        </td>
+        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
+       		<div align="center"><span class="STYLE10">学年</span></div>
+       	</td>
+        <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6">
+        	<div align="center"><span class="STYLE10">学期</span></div>
+        </td>
+        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
+        	<div align="center"><span class="STYLE10">等地</span></div>
+        </td>
+        <td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
+        	<div align="center"><span class="STYLE10">操作</span></div>
+        </td>
       </tr>
 
 	<tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">身份证</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_bodycard" value="${STUDENTINFO.bodycard}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">名族</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_nationality" value="${STUDENTINFO.nationality}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">籍贯</div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text" name="student_nativeplace" value="${STUDENTINFO.nativeplace}" /></div></td>
-      </tr>
-      <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">入园时间</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_indate" value="${STUDENTINFO.in_date}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">毕业时间</div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_outdate" value="${STUDENTINFO.out_date}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">学校名</div></td>
-        <td height="20" bgcolor="#FFFFFF"><div align="center" class="STYLE21"><input type="text"  name="student_school" size="20" value="${STUDENTINFO.school}" /></div></td>
-      </tr>
-      <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">父亲</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_father"  value="${STUDENTINFO.father_name}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">工作地址</div></td>
-        <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;" type="text" name="father_address" size="40" value="${STUDENTINFO.father_work_address}" /></div></td>
-      </tr>
-       <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">母亲</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="student_mother" value="${STUDENTINFO.mother_name}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">工作地址</div></td>
-        <td  colspan="3" height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="left"><input style="margin-left:36px;"  type="text" name="mother_address" size="40" value="${STUDENTINFO.mother_work_address}" /></div></td>
-      </tr>
-
-      <tr>
-        <td colspan="6" height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><textarea name = "student_description" cols="100" rows="10">${STUDENTINFO.description}</textarea></span></div></td>
-      </tr>
-      <tr>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19">联系电话</span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="telephone" value="${STUDENTINFO.telephone}" /></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center">操作</div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        	<div align="center">
+        		${STUDENTGRADEINFO.student_bodycard}
+        	</div>
+        </td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        	<div align="center">
+        		${STUDENTGRADEINFO.subjectInfo}
+        	</div>
+        </td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        	<div align="center">
+        		${STUDENTGRADEINFO.year }
+        	</div>
+        </td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        	<div align="center">
+        		${STUDENTGRADEINFO.termInfo }
+			</div>
+        </td>
+        <td height="20" bgcolor="#FFFFFF">
+        	<div align="center" class="STYLE21">	
+        		<select name="grade" id="grade">
+        			<option value="">-请选择-</option>
+					<option value="0">优</option>
+					<option value="1">良</option>
+					<option value="2">差</option>
+        		</select>
+        	</div>
+        </td>
         <td colspan="3"  height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="submit" value="修改" /><div align="center"></div></td>
-        </tr>
+      </tr>
     </table></td>
   </tr>
   <tr><td><font color="green">${Succ}</font><font color="red">${Error}</font></td></tr>

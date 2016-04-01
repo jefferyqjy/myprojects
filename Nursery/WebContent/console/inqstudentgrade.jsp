@@ -132,7 +132,18 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
         			<td width="4%" height="20" bgcolor="d3eaef" class="STYLE10">
         				<div align="center">
         					<form action="/Nursery/inqstudentgrade" method="post">
-          						姓名：<input type="text" name="student_name" size = "15" value="${ON_SELECT_STUDENT_NAME }"/> | 身份证： <input type="text" name="bodycard" value="${ON_SELECT_BODYCARD }" maxlength="18"/> 
+          						身份证： <input type="text" name="student_bodycard" value="${ON_SELECT_STUDENT_BODYCARD }" maxlength="18"/> |
+          						科目：
+          						<select name="subject">
+          							<option value="">-请选择-</option>
+      								<option value="1">语文</option>
+				          			<option value="2">数学</option>
+			          				<option value="3">英语</option>
+				          			<option value="4">美术</option>
+				          			<option value="5">音乐</option>
+				          			<option value="6">体育</option>
+				          			<option value="7">电脑</option>
+          						</select>
           						<input type="submit" value="查询" /><font color="red">${Error}</font><font color="green">${Succ}</font>
           					</form>
         				</div>
@@ -153,7 +164,6 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
 	          				<input type="checkbox" name="checkbox" id="checkbox" />
 	        			</div>
 	        		</td>
-	       			<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">姓名</span></div></td>
 	        		<td width="20%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">身份证</span></div></td>
 	        		<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">科目</span></div></td>
 	        		<td width="5%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">等地</span></div></td>
@@ -171,12 +181,11 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
 	          					<input type="checkbox" name="checkbox2" id="checkbox2" />
 	        				</div>
 	        			</td>
-			        	<td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><%=map.get("student_name") %></span></div></td>
 			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("student_bodycard") %></div></td>
-			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("subject") %></div></td>
-			          	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("grade") %></div></td>
+			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("subjectInfo") %></div></td>
+			          	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("gradeInfo") %></div></td>
 			            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("year") %></div></td>
-			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("term") %></div></td>
+			        	<td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><%=map.get("termInfo") %></div></td>
 			        	<td height="20" bgcolor="#FFFFFF">
 	        				<div align="center" class="STYLE21"> 
 	        					<a href="/Nursery/studentgrademanager?type=view&id=<%=map.get("id") %>">查看</a> 

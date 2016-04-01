@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ page import="java.util.List,java.util.Map" %>
 <%request.setCharacterEncoding("utf-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -104,7 +105,7 @@ function  clickto(){
             <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
                 <td width="6%" height="19" valign="bottom"><div align="center"><img src="images/tb.gif" width="14" height="14" /></div></td>
-                <td width="94%" valign="bottom"><span class="STYLE1">查看学生成绩</span></td>
+                <td width="94%" valign="bottom"><span class="STYLE1">添加学生成绩信息</span></td>
               </tr>
             </table></td>
             <td><div align="right"><span class="STYLE1">
@@ -118,48 +119,77 @@ function  clickto(){
 	<tr>
     	<td>
     		<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" onmouseover="changeto()"  onmouseout="changeback()">
-    			<tr>
-        			<td width="20%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">身份证</span></div>
+      			<tr>
+        			<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">学生身份证号</span></div>
         			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
+        			<td width="14%" height="20" bgcolor="d3eaef" class="STYLE6">
         				<div align="center"><span class="STYLE10">科目</span></div>
         			</td>
-        			<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6">
+        			<td width="16%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">等地</span></div>
+       				</td>
+        			<td width="27%" height="20" bgcolor="d3eaef" class="STYLE6">
         				<div align="center"><span class="STYLE10">学年</span></div>
         			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
+        			<td width="27%" height="20" bgcolor="d3eaef" class="STYLE6">
         				<div align="center"><span class="STYLE10">学期</span></div>
         			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">等地</span></div>
+        			<td width="14%" height="20" bgcolor="d3eaef" class="STYLE6">
+        				<div align="center"><span class="STYLE10">基本操作</span></div>
         			</td>
       			</tr>
-      			<tr>
-        			<td width="20%" height="20" bgcolor="d3eaef" class="STYLE6">
+
+				<tr>
+        			<td height="20" bgcolor="#FFFFFF" class="STYLE6">
+        				<div align="center"><span class="STYLE19"><input type="text" name="student_bodycard" /></span></div>
+        			</td>
+        			<td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        				<div align="center"> 
+        					<select name="subject">
+        						<option value="">-请选择-</option>
+          						<option value="1">语文</option>
+          						<option value="2">数学</option>
+          						<option value="3">英语</option>
+          						<option value="4">美术</option>
+          						<option value="5">音乐</option>
+          						<option value="6">体育</option>
+          						<option value="7">电脑</option>
+          					</select>
+          				</div>
+          			</td>
+        			<td height="20" bgcolor="#FFFFFF" class="STYLE19">
         				<div align="center">
-        					<span class="STYLE10">${STUDENTGRADEINFO.student_bodycard}</span>
-        				</div>
+        					<select name="grade">
+        						<option value="">-请选择-</option>
+        						<option value="0">优</option>
+          						<option value="1">良</option>
+          						<option value="2">差</option>
+        					</select>
+						</div>
         			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">${STUDENTGRADEINFO.subject}</span></div>
+        			<td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        				<div align="center"><span class="STYLE19"><input type="text" name="year" placeholder="例如：2016" /></span></div>
         			</td>
-        			<td width="10%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">${STUDENTGRADEINFO.year}</span></div>
+        			<td height="20" bgcolor="#FFFFFF" class="STYLE19">
+        				<div align="center">
+        					<select name="term">
+        						<option value="">-请选择-</option>
+        						<option value="0">第一学期</option>
+          						<option value="1">第二学期</option>
+        					</select>
+						</div>
         			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">${STUDENTGRADEINFO.termInfo}</span></div>
-        			</td>
-        			<td width="25%" height="20" bgcolor="d3eaef" class="STYLE6">
-        				<div align="center"><span class="STYLE10">${STUDENTGRADEINFO.gradeInfo}</span></div>
+        			<td height="20" bgcolor="#FFFFFF">
+        				<div align="center" class="STYLE21"><input type="submit" value="添加" /></div>
         			</td>
       			</tr>
     		</table>
-    	</td>
+   		</td>
   	</tr>
   	<tr>
   		<td><font color="green">${Succ}</font><font color="red">${Error}</font></td>
-  	</tr>
+	</tr>
 </table>
 </form>
 </body>
