@@ -95,7 +95,7 @@ function  clickto(){
 </head>
 
 <body>
-<form action="/Nursery/studentmanager" method="post">
+<form action="/Nursery/studentgrademanager" method="post">
 <input type="hidden" name="type" value="update"/>
 <input type="hidden" name="id" value="id"/>
 <input type="hidden" name="student_bodycard" value="student_bodycard"/>

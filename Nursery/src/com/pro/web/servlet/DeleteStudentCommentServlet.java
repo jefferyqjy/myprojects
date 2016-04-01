@@ -23,7 +23,7 @@ public class DeleteStudentCommentServlet extends HttpServlet {
 		String id = request.getParameter("TUN");
 		try {
 			List<String> list = new ArrayList<String>();
-			list.add("delete from pro_teacher_comment where id = " + id.trim());
+			list.add("delete from pro_student_comment where id = " + id.trim());
 			DaoManagerHandler.executeUpdate(list);
 			request.setAttribute("Succ", "删除学生评价成功！");
 		} catch (Exception e) {

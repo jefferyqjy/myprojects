@@ -65,6 +65,16 @@
      	<url-pattern>/deleteteachercomment</url-pattern>
      </servlet-mapping>
      <!-- delete teacher comment servlet end -->
+	<servlet>
+     	<servlet-name>AddTeacherCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.AddTeacherCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>AddTeacherCommentServlet</servlet-name>
+     	<url-pattern>/addteachercomment</url-pattern>
+     </servlet-mapping>
 
      <servlet>
      	<servlet-name>InqStudentServlet</servlet-name>
@@ -86,6 +96,17 @@
      <servlet-mapping>
      	<servlet-name>StudentManagerServlet</servlet-name>
      	<url-pattern>/studentmanager</url-pattern>
+     </servlet-mapping>
+     
+     <servlet>
+     	<servlet-name>DeleteStudentCommentServlet</servlet-name>
+     	<servlet-class>
+     	com.pro.web.servlet.DeleteStudentCommentServlet</servlet-class>
+     	<load-on-startup>0</load-on-startup>
+     </servlet>
+     <servlet-mapping>
+     	<servlet-name>DeleteStudentCommentServlet</servlet-name>
+     	<url-pattern>/deletestudentcomment</url-pattern>
      </servlet-mapping>
      
      <!-- student grade servlet begin -->
