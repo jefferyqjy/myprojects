@@ -352,7 +352,7 @@ A:unknown LINK {
 										<td align="left">房源信息：${requestScope.che.beizhu }</td>
 									</tr>
 									<tr>
-										<td align="left"><font color="red">温馨提示:您看到的房源，请告诉朋友是在高校周边房屋出租系统中看到的...</font>
+										<td align="left"><font color="red">温馨提示:您看到的房源，请告诉朋友是在房屋租赁管理系统中看到的...</font>
 										</td>
 									</tr>
 									<tr>
