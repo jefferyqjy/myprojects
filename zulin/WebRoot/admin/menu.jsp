@@ -226,7 +226,7 @@ A.active {PADDING-LEFT: 4px; COLOR: #ff0000; TEXT-DECORATION: none;font-family: 
         <TR>
           <TD>
             <TABLE cellSpacing=0 cellPadding=2 width=155 align=center border=0>
-              <TR><TD class=menuSmall><A class=style2 onclick="logout()" target=dmMain style="font-family: 楷体;font-size: 14px;">－ 安全退出系统</A></TD></TR>
+              <TR><TD class=menuSmall><A class=style2 onclick="logout()" target=dmMain style="font-family: 楷体;font-size: 14px; cursor:pointer">－ 安全退出系统</A></TD></TR>
 			</TABLE>
 		  </TD>
 		</TR>
