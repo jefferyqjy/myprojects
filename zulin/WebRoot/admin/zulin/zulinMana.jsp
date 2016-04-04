@@ -35,7 +35,7 @@ String path = request.getContextPath();
            
            function huanche(id)
            {
-               if(confirm('您确定还车吗？'))
+               if(confirm('您确定终止租赁吗？'))
                {
 					var strUrl = "<%=path %>/admin/zulin/huanche.jsp?id="+id;
 					var ret = window.showModalDialog(strUrl,"","dialogWidth:600px; dialogHeight:400px; dialogLeft: status:no; directories:yes;scrollbars:yes;Resizable=no;");

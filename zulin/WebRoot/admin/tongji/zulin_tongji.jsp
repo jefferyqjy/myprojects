@@ -48,7 +48,7 @@
 					<td width="10%">起租时间</td>
 					<td width="10%">押金信息</td>
 					<td width="10%">备注信息</td>
-					<td width="10%">还车时间</td>
+					<td width="10%">退房时间</td>
 					
 					<td width="10%">租车费用</td>
 		        </tr>	
