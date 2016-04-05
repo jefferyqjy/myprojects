@@ -192,4 +192,26 @@
     <servlet-name>CustomerAdd</servlet-name>
     <url-pattern>/CustomerAdd</url-pattern>
   </servlet-mapping>
+  
+  <!-- message servlets begin -->
+  <servlet>
+    <display-name>MessageQuery</display-name>
+    <servlet-name>MessageQuery</servlet-name>
+    <servlet-class>servlets.messageservlets.MessageQueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageQuery</servlet-name>
+    <url-pattern>/MessageQuery</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>MessageAdd</display-name>
+    <servlet-name>MessageAdd</servlet-name>
+    <servlet-class>servlets.messageservlets.MessageAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MessageAdd</servlet-name>
+    <url-pattern>/MessageAdd</url-pattern>
+  </servlet-mapping>
+  <!-- message servlets end -->
 </web-app>

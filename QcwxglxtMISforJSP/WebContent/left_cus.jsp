@@ -67,7 +67,7 @@ a{text-decoration:none;}
 					<a href="checkouts_cus.jsp">结账管理</a>
 				</dd>
 			</dl>
-
+			
 			<dl class="syetem_management">
 				<dt onClick="changeImage()">
 					系统管理<img src="img/left/select_xl01.png">
@@ -77,6 +77,9 @@ a{text-decoration:none;}
 				</dd>
 				<dd>
 					<a href="login_cus.jsp" onclick="return confirm('确定要退出系统吗？')">注销登录</a>
+				</dd>
+				<dd class="first_dd">
+					<a href="message_cus.jsp">留言</a>
 				</dd>
 			</dl>
 		</div>
