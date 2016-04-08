@@ -217,7 +217,7 @@ a {
 					<a href="message.jsp">留言列表</a>
 				</dd>
 				<dd>
-					<a href="returnvisit.jsp">回访记录列表</a>
+					<a href="ReturnVisit?operator=1&&currentPage=0&&pagerMethod=1">回访记录列表</a>
 				</dd>
 			</dl>
 			<dl class="syetem_management">

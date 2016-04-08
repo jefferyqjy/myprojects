@@ -224,4 +224,36 @@
     <url-pattern>/MessageAdd</url-pattern>
   </servlet-mapping>
   <!-- message servlets end -->
+  
+  <!-- returnvisit servlets begin -->
+  <!-- <servlet>
+    <display-name>ReturnVisitQuery</display-name>
+    <servlet-name>ReturnVisitQuery</servlet-name>
+    <servlet-class>servlets.returnvisitservlets.ReturnVisitQueryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReturnVisitQuery</servlet-name>
+    <url-pattern>/ReturnVisitQuery</url-pattern>
+  </servlet-mapping> -->
+  
+  <servlet>
+    <display-name>ReturnVisit</display-name>
+    <servlet-name>ReturnVisit</servlet-name>
+    <servlet-class>servlets.returnvisitservlets.ReturnVisitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReturnVisit</servlet-name>
+    <url-pattern>/ReturnVisit</url-pattern>
+  </servlet-mapping>
+  
+  <!-- <servlet>
+    <display-name>ReturnVisitAdd</display-name>
+    <servlet-name>ReturnVisitAdd</servlet-name>
+    <servlet-class>servlets.returnvisitservlets.ReturnVisitAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReturnVisitAdd</servlet-name>
+    <url-pattern>/ReturnVisitAdd</url-pattern>
+  </servlet-mapping> -->
+  <!-- returnvisit servlets end -->
 </web-app>

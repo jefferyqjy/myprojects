@@ -88,7 +88,7 @@ public class EmployeeDAO {
 		Employee employee=new Employee();
 		try
 		{
-			queryStr="select * from employee where empID='"+userID;
+			queryStr="select * from employee where empID="+userID;
 			rs=stmt.executeQuery(queryStr);
 
 	        if (rs.next())

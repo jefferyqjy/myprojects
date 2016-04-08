@@ -6,6 +6,8 @@ public class ReturnVisit {
 	
 	private Integer empId;
 	
+	private String empName;
+	
 	private Integer cId;
 	
 	private String createTime;
@@ -50,5 +52,13 @@ public class ReturnVisit {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+	
+	public String getEmpName() {
+		return empName;
+	}
+
+	public void setEmpName(String empName) {
+		this.empName = empName;
 	}
 }

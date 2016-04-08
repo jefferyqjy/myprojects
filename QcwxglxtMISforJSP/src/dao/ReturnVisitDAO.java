@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 
+import bean.ReturnVisit;
 import util.ConnOfDatabase;
-import bean.*;
 
 public class ReturnVisitDAO {
 	private Connection conn;	
@@ -148,7 +148,6 @@ public class ReturnVisitDAO {
 	
 	public List<ReturnVisit> findByPage(String queryStr, Integer currentPage, Integer pageCount) throws Exception
 	{
-		List<ReturnVisit> returnvisist = new ArrayList<ReturnVisit>();
 		Statement stmt;
 		ResultSet rs;
 		stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -204,7 +203,7 @@ public class ReturnVisitDAO {
 	{
 		PreparedStatement stmt;
 		boolean insFlag = false;
-		String insertStr = "insert into returnvisit (empId, cId, createTiem, content) values(?,?,?)";
+		String insertStr = "insert into returnvisit (empId, cId, createTime, content) values(?, ?, ?, ?)";
 		stmt = conn.prepareStatement(insertStr);
 		try
 		{
@@ -235,13 +234,12 @@ public class ReturnVisitDAO {
 	{
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update returnvisit set content = ?, createTime = ? where mId = ?";
+		String updateStr = "update returnvisit set content = ? where rId = ?";
 		stmt = conn.prepareStatement(updateStr);	
 		try
 		{
 			stmt.setString(1, returnvisit.getContent());
-			stmt.setString(1, returnvisit.getCreateTime());
-			stmt.setInt(3, returnvisit.getrId());
+			stmt.setInt(2, returnvisit.getrId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		}catch (SQLException e)
