@@ -12,6 +12,11 @@
 <link href="Style/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+function doDel() {
+	window.location.href = "MessageQuery?operatorStr=${operatorStr}&mId=${msg.mId}";
+}
+</script>
 </head>
 
 <body>
@@ -66,21 +71,21 @@
 																				<tr height="30">
 																					<td align="right">留言编号：</td>
 																					<td align="left">
-																						<input type="text" readonly style="background: #CCFFFF" name="wID" value="${msg.mId}">
+																						<input type="text" readonly style="background: #CCFFFF" name="mId" value="${msg.mId}">
 																					</td>
 																				</tr>
 																			</c:if>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">客户编号：</font></td>
 																				<td align="left">
-																					<input type="text" readonly style="background: #CCFFFF" name="cusID" value="${msg.cusId}" id="cusID">
+																					<input type="text" readonly style="background: #CCFFFF" name="cusId" value="${msg.cusId}" id="cusID">
 																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">留言内容：</font></td>
 																				<c:if test="${operatorStr=='modify'}">
 																					<td align="left">
-																						<textarea rows="4" cols="8" name="content">${msg.content }</textarea>
+																						<textarea rows="10" cols="30" name="content">${msg.content }</textarea>
 																					</td>
 																				</c:if>
 																				<c:if test="${operatorStr=='add'}">
@@ -92,7 +97,12 @@
 																			<tr height="30">
 																				<td align="right"><font face="隶书">留言时间：</font></td>
 																				<td align="left">
-																					<input type="text" name="createTime" readonly value="${msg.createTime}" onFocus="WdatePicker({minDate:'%y-%M-{%d} %H:%m:%s'})">
+																					<c:if test="${operaotrStr == 'modify' }">
+																						<input type="text" name="createTime" readonly value="${msg.createTime}" >
+																					</c:if>
+																					<c:if test="${operatorStr == 'add' }">
+																						<input type="text" name="createTime" readonly onFocus="WdatePicker({minDate:'%y-%M-{%d} %H:%m:%s'})">
+																					</c:if>
 																				</td>
 																			<tr>
 																			<tr height="30">
@@ -124,7 +134,7 @@
 																	</table>
 																	<p align="center">
 																		<input type=button name="delbut" value="请确认删除预约单"
-																			onclick="window.location.href('MessageQuery?operatorStr=${operatorStr}&&mId=${msg.mId}')"
+																			onclick="doDel()"
 																			style="height: 30px; width: 150px;">
 																	</p>
 																</c:if>

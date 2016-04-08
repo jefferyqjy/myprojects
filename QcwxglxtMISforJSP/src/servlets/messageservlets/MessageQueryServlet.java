@@ -71,8 +71,8 @@ public class MessageQueryServlet extends HttpServlet {
 			if (StringUtils.equals(operator, "0")) {
 				String queryStr = "";
 				String countStr = "";
-				//String queryName = "";
-				//String queryValue = "";
+				String queryName = "";
+				String queryValue = "";
 				int totalRows = 0;
 				int totalPage = 0;
 				int currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -80,6 +80,8 @@ public class MessageQueryServlet extends HttpServlet {
 				try {
 					// 查询部分
 					if (operator.equals("0")) {
+						queryName = request.getParameter("queryName");
+						queryValue = request.getParameter("queryValue");
 						String userId = request.getParameter("cusId");
 						queryStr="select m.mId, m.cusId, m.createTime, m.content from message m where m.cusId = " + userId;
 						countStr = "select count(*) from message m where m.cusId = " + userId;
@@ -115,6 +117,10 @@ public class MessageQueryServlet extends HttpServlet {
 					request.setAttribute("totalPage", totalPage);
 					request.setAttribute("currentPage", currentPage);
 					request.setAttribute("operator", operator);
+					if (operator.equals("0")) {
+						request.setAttribute("queryName", queryName);
+						request.setAttribute("queryValue", queryValue);
+					}
 
 				} catch (Exception e2) {
 					out.print("<script language='javascript'>alert('查找留言信息失败！');window.location='message_cus.jsp';</script>");
@@ -164,9 +170,11 @@ public class MessageQueryServlet extends HttpServlet {
 		if(operatorStr != null) {	
 			if(operatorStr.equals("add") ||operatorStr.equals("modify")) {
 				Message message1 = new Message();
-				if (operatorStr.equals("modify")) 
+				if (operatorStr.equals("modify")) {
 					message1.setmId((Integer) request.getSession().getAttribute("mId"));
+				}
 				message1.setContent(request.getParameter("content"));
+				message1.setCreateTime(request.getParameter("createTime"));
 				if(cus != null) {
 					message1.setCusId(cus.getCusID());
 				}
@@ -174,10 +182,10 @@ public class MessageQueryServlet extends HttpServlet {
 				MessageDAO mdao = new MessageDAO();
 				try {
 					if (operatorStr.equals("add")) {	
-						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 						message1.setCreateTime(df.format(new Date()));
 						mdao.insert(message1);
-						out.print("<script language='javascript'>alert('成功添加留言信息！');window.location='messageEdit_cus.jsp';</script>");
+						out.print("<script language='javascript'>alert('成功添加留言信息！');window.location='message_cus.jsp';</script>");
 					}
 					else {
 						mdao.update(message1);
@@ -185,18 +193,18 @@ public class MessageQueryServlet extends HttpServlet {
 					}
 				}catch(Exception e)	{
 					if (operatorStr.equals("add"))
-						out.print("<script language='javascript'>alert('添加留言信息！');window.location='messageEdit_cus.jsp';</script>");
+						out.print("<script language='javascript'>alert('添加留言信息失败！');window.location='messageEdit_cus.jsp';</script>");
 					else
-						out.print("<script language='javascript'>alert('修改留言信息！');window.location='messageEdit_cus.jsp';</script>");
+						out.print("<script language='javascript'>alert('修改留言信息失败！');window.location='messageEdit_cus.jsp';</script>");
 				}
 			} else if (operatorStr.equals("delete")) {
 				MessageDAO mdao = new MessageDAO();
 				String mId = request.getParameter("mId");
 		    	try {
 		    		mdao.deleteById(Integer.valueOf(mId.trim()));
-		    		out.print("<script language='javascript'>alert('成功删除留言！');window.location='messageEdit_cus.jsp';</script>");
+		    		out.print("<script language='javascript'>alert('成功删除留言！');window.location='message_cus.jsp';</script>");
 		    	}catch(Exception e)	{
-		    		out.print("<script language='javascript'>alert('删除留言失败！');window.location='messageEdit_cus.jsp';</script>");
+		    		out.print("<script language='javascript'>alert('删除留言失败！');window.location='message_cus.jsp';</script>");
 		    	}
 			}
 		}

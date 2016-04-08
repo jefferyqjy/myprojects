@@ -18,10 +18,12 @@
 	 * operator = 4 delete
 	 */
 	function doSearch() {
-		window.location.href = "MessageQuery?currentPage=1&&pagerMethod=1&&operator=0&&cusId=${customer.cusID}";
-	}
-	function doAdd() {
-		window.location.href = "MessageQuery?operator=2";
+		var cusId = $("input[name='cusId']").val();
+		var operator = "1";
+		if(cusId != null && cusId != "") {
+			operator = "0";
+		}
+		window.location.href = "Message?currentPage=1&&pagerMethod=1&&operator=" + operator + "&&cusId=" + cusId;
 	}
 </script>
 
@@ -34,7 +36,7 @@
 		</tr>
 		<tr>
 			<td width="150" valign="top"><jsp:include flush="true"
-					page="/left_cus.jsp" /></td>
+					page="/left.jsp" /></td>
 			<td width="1050" align="center" valign="top">
 				<table width="1050" cellspacing="0" cellpadding="0">
 					<tr>
@@ -65,8 +67,8 @@
 													<table>
 														<tr align="center" height="50">
 															<td valign="top" class="mt10">
+																客户编号：<input type="text" name="cusId" />
 																<input type="button" name="button" class="btn btn82 btn_search" value="查询" style='font-size: 11px' onClick="doSearch();">
-																<input type="button" name="button" class="btn btn82 btn_add" value="增加" style='font-size: 11px' onclick="doAdd();">
 															</td>
 														</tr>
 													</table>
@@ -82,38 +84,24 @@
 														<tr>
 															<td width="13%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">留言编号</td>
-															<!-- <td width="13%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">客户编号</td> -->
+															<td width="13%" height="30" background="img/tab_14.gif"
+																bgcolor="#FFFFFF" align="center">客户编号</td>
 															<td width="10%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">客户姓名</td>
 															<td width="20%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">留言时间</td>
-															<td width="33%" height="30" background="img/tab_14.gif"
+															<td width="44%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">留言内容</td>
-															<td width="5%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">修改</td>
-															<td width="5%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">删除</td>
 														</tr>
 														<tbody align="center" onmouseover="changeto()"
 															onmouseout="changeback()">
 															<c:forEach var="message" items="${messages}" varStatus="item">
 																<tr align="center" bgcolor="#FFFFFF" height="25">
 																	<td>${item.index+1}</td>
-																	<%-- <td>${message.cusId}</td> --%>
-																	<td>${customer.cusName}</td>
+																	<td>${message.cusId}</td>
+																	<td>${message.cusName}</td>
 																	<td>${message.createTime}</td>
 																	<td>${message.content}</td>
-																	<td>
-																		<a href="MessageQuery?operator=3&&mId=${message.mId}">
-																			<input type="button" name="button" class="btn btn82 btn_save2" value="修改"> 
-																		</a>
-																	</td>
-																	<td>
-																		<a href="MessageQuery?operator=4&&mId=${message.mId}">
-																			<input type="button" name="button" class="btn btn82 btn_del" value="删除"> 
-																		</a>
-																	</td>
 																</tr>
 															</c:forEach>
 														</tbody>

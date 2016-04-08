@@ -103,6 +103,10 @@ a {
 	background-image: url(img/left/statistics.png)
 }
 
+.comments dt {
+	background-image: url(img/left/custom.png)
+}
+
 .leftsidebar_box dl dd:last-child {
 	padding-bottom: 10px;
 }
@@ -205,6 +209,17 @@ a {
 					<a href="partkcbills.jsp">库存统计</a>
 				</dd>
 			</dl>
+			<dl class="comments">
+				<dt onClick="changeImage()">
+					言论管理<img src="img/left/select_xl01.png">
+				</dt>
+				<dd class="first_dd">
+					<a href="message.jsp">留言列表</a>
+				</dd>
+				<dd>
+					<a href="returnvisit.jsp">回访记录列表</a>
+				</dd>
+			</dl>
 			<dl class="syetem_management">
 				<dt onClick="changeImage()">
 					系统管理<img src="img/left/select_xl01.png">
@@ -216,7 +231,6 @@ a {
 					<a href="login.jsp" onclick="return confirm('确定要退出系统吗？')">注销登录</a>
 				</dd>
 			</dl>
-
 		</div>
 
 	</div>

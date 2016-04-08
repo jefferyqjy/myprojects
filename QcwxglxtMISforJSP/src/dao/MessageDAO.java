@@ -228,7 +228,7 @@ public class MessageDAO {
 		try
 		{
 			stmt.setString(1, message.getContent());
-			stmt.setInt(1, message.getmId());
+			stmt.setInt(2, message.getmId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		}catch (SQLException e)

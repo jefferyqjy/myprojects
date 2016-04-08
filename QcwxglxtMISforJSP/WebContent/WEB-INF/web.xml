@@ -205,6 +205,16 @@
   </servlet-mapping>
   
   <servlet>
+    <display-name>Message</display-name>
+    <servlet-name>Message</servlet-name>
+    <servlet-class>servlets.messageservlets.MessageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Message</servlet-name>
+    <url-pattern>/Message</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <display-name>MessageAdd</display-name>
     <servlet-name>MessageAdd</servlet-name>
     <servlet-class>servlets.messageservlets.MessageAddServlet</servlet-class>
