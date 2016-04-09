@@ -104,6 +104,7 @@
 		var disc = Number($("#disc").text());
 		document.all.c.value = c * disc;
 	}
+	
 </script>
 </head>
 
@@ -212,6 +213,12 @@
 																					name="repaircost" value="${checkouts.repaircost}"
 																					id="repaircost"></td>
 																			</tr>
+																			<tr height="30">
+																				<td align="right"><font face="隶书">零件采购费：</font></td>
+																				<td align="left"><input type="text" style="background: #CCFFFF"
+																					name="partcost" value="${checkouts.partcost}"
+																					id="partcost"></td>
+																			</tr>
 																			</c:if>
 																			<c:if test="${operatorStr=='modify'}">
 																			<tr height="30">
@@ -227,6 +234,12 @@
 																					readOnly="readonly" style="background: #CCFFFF"
 																					name="repaircost" value="${checkouts.repaircost}"
 																					id="repaircost"></td>
+																			</tr>
+																			<tr height="30">
+																				<td align="right"><font face="隶书">零件采购费：</font></td>
+																				<td align="left"><input type="text" style="background: #CCFFFF"
+																					readOnly="readonly"  name="partcost" value="${checkouts.partcost}"
+																					id="partcost"></td>
 																			</tr>
 																			</c:if>
 																			<tr height="30">
@@ -282,8 +295,12 @@
 																			<td align="left">${checkouts.checknum}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">零件价格：</td>
+																			<td align="right">零件费用：</td>
 																			<td align="left">${checkouts.partprice}</td>
+																		</tr>
+																		<tr height="30">
+																			<td align="right">零件成本：</td>
+																			<td align="left">${checkouts.partcost}</td>
 																		</tr>
 																		<tr height="30">
 																			<td align="right">修理费：</td>

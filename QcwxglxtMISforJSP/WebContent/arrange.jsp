@@ -28,6 +28,10 @@
 	function doAdd() {
 		window.location.href = "Arrange?operator=2";
 	}
+	
+	function doAddReturnvisit(cId) {
+		window.location.href = "ReturnVisit?operator=2&&cId=" + cId;
+	}
 </script>
 
 </head>
@@ -118,11 +122,11 @@
 																bgcolor="#FFFFFF" align="center">客户姓名</td>
 															<td width="10%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">客户电话</td>
-															<td width="12%" height="30" background="img/tab_14.gif"
+															<td width="10%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">查看详细信息</td>
-															<td width="5%" height="30" background="img/tab_14.gif"
+															<td width="8%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">修改</td>
-															<td width="5%" height="30" background="img/tab_14.gif"
+															<td width="8%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">删除</td>
 														</tr>
 														<tbody align="center" onmouseover="changeto()"
@@ -150,7 +154,7 @@
 																	</a></td>
 																	</c:if>
 																	<c:if test="${item.modifyflag==1}">
-																		<td><font color="red">已结账</font></td>
+																		<td><font color="red">已结账<a title="点击此处添加回访单" style="cursor:pointer;font-weight:bold;" onclick="doAddReturnvisit('${item.aID}')" >+</a></font></td>
 																		<td></td>
 																	</c:if>
 																	

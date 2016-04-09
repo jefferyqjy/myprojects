@@ -85,7 +85,7 @@ function doDel(rId) {
 																						value="${returnvisit.empName}"></td>
 																				</tr>
 																				<tr height="30">
-																					<td align="right"><font face="隶书">结账单编号：</font></td>
+																					<td align="right"><font face="隶书">维修单编号：</font></td>
 																					<td align="left"><input type="text" readonly
 																						style="background: #CCFFFF" name="cId"
 																						value="${returnvisit.cId}"></td>
@@ -105,7 +105,7 @@ function doDel(rId) {
 																					</td>
 																				</tr>
 																				<tr height="30">
-																					<td align="right"><font face="隶书">结账单编号：</font></td>
+																					<td align="right"><font face="隶书">维修单编号：</font></td>
 																					<td align="left">
 																						<input type="text" name="cId" value="${cId }" readonly>
 																					</td>
@@ -147,7 +147,7 @@ function doDel(rId) {
 																			<td align="left">${returnvisit.empName}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">结账单编号：</td>
+																			<td align="right">维修单编号：</td>
 																			<td align="left">${returnvisit.cId}</td>
 																		</tr>
 																		<tr height="30">

@@ -12,6 +12,15 @@ public class Checkouts {
 	private double xiaofei;
 	private String checkoutsdate;
 	private String beizhu;
+	
+	private double partcost;
+	
+	public double getPartcost() {
+		return partcost;
+	}
+	public void setPartcost(double partcost) {
+		this.partcost = partcost;
+	}
 	public int getcID() {
 		return cID;
 	}

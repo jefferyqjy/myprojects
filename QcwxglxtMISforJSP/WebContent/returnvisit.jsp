@@ -71,7 +71,7 @@
 													<table>
 														<tr align="center" height="50">
 															<td valign="top" class="mt10">
-																结账单编号：<input type="text" name="cId" />
+																维修单编号：<input type="text" name="cId" />
 																回访员工编号：<input type="text" name="empId" />
 																<input type="button" name="button" class="btn btn82 btn_search" value="查询" style='font-size: 11px' onClick="doSearch();">
 															</td>
@@ -90,7 +90,7 @@
 															<td width="13%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">回访记录编号</td>
 															<td width="13%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">结账单编号</td>
+																bgcolor="#FFFFFF" align="center">维修单编号</td>
 															<td width="10%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">员工编号</td>
 															<td width="10%" height="30" background="img/tab_14.gif"

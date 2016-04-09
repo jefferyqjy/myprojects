@@ -86,7 +86,7 @@ public class CheckoutsServlet extends HttpServlet {
 				try {
 					if (operator.equals("1")) // 查询全部
 					{
-						queryStr = "select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID";
+						queryStr = "select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,partcost,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID";
 						countStr = "select count(cID) from  checkouts where checkouts.cID";
 					} else // 查询部分
 					{
@@ -98,7 +98,7 @@ public class CheckoutsServlet extends HttpServlet {
 							queryValue = chGBK.change("queryValue", request);
 						}
 
-						queryStr = "select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID and "
+						queryStr = "select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,partcost,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID and "
 								+ queryName + "='" + queryValue + "'";
 						countStr = "select count(cID) from  checkouts where checkouts.cID and "
 								+ queryName + "='" + queryValue + "'";
@@ -199,6 +199,7 @@ public class CheckoutsServlet extends HttpServlet {
 					checkouts1.setPartname(request.getParameter("partname"));
 					checkouts1.setChecknum(Double.parseDouble(request.getParameter("checknum")));
 					checkouts1.setPartprice(Double.parseDouble(request.getParameter("partprice")));
+					checkouts1.setPartprice(Double.parseDouble(request.getParameter("partcost")));
 					checkouts1.setRepaircost(Double.parseDouble(request.getParameter("repaircost")));
 					checkouts1.setXiaofei(Double.parseDouble(request.getParameter("xiaofei")));
 					checkouts1.setCheckoutsdate(request.getParameter("checkoutsdate"));

@@ -181,7 +181,16 @@ a {
 				<dd class="first_dd">
 					<a href="checkouts.jsp">结账管理</a>
 				</dd>
+				<dd>
+					<a href="profit.jsp">利润管理</a>
+				</dd>
 				<c:if test="${sessionScope.type =='admin'}">
+					<dd>
+						<a href="profit.jsp">利润管理</a>
+					</dd>
+					<dd>
+						<a href="Profitmonthly?currentPage=1&&pagerMethod=1">本月利润</a>
+					</dd>
 					<dd>
 						<a href="wage.jsp">工资管理</a>
 					</dd>

@@ -29,9 +29,6 @@
 		window.location.href = "Checkouts?operator=2";
 	}
 	
-	function doAddReturnvisit(cId) {
-		window.location.href = "ReturnVisit?operator=2&&cId=" + cId;
-	}
 </script>
 
 </head>
@@ -121,6 +118,8 @@
 															<td width="auto" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">修改</td>
 															<td width="auto" height="30" background="img/tab_14.gif"
+																bgcolor="#FFFFFF" align="center">计算利润</td>
+															<td width="auto" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">删除</td>
 														</tr>
 														<tbody align="center" onmouseover="changeto()"
@@ -139,7 +138,11 @@
 																	<td>${item.checkoutsdate}</td>
 																	<c:if test="${item.beizhu==1}">
 																		<td>已缴费</td>
-																		<td><font color="red">已受理 <a title="点击此处添加回访单" style="cursor:pointer;font-weight:bold;" onclick="doAddReturnvisit('${item.cID}')" >+</a></font></td>
+																		<td><font color="red">已受理 </font></td>
+																		<td><a
+																			href="Profit?operator=2&&cId=${item.cID}"><input
+																				type="button" name="button"
+																				class="btn btn82 btn_save2" value="计算"> </a></td>
 																		<td></td>
 																	</c:if>
 																	<c:if test="${item.beizhu==0}">
@@ -148,6 +151,7 @@
 																			href="Checkouts?operator=3&&cID=${item.cID}"><input
 																				type="button" name="button"
 																				class="btn btn82 btn_save2" value="修改"> </a></td>
+																		<td></td>		
 																		<td><a
 																			href="Checkouts?operator=4&&cID=${item.cID}"><input
 																				type="button" name="button"

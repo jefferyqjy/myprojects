@@ -257,15 +257,27 @@
     <servlet-name>Membercard</servlet-name>
     <url-pattern>/Membercard</url-pattern>
   </servlet-mapping>
+  <!-- membercard servlets end -->
   
-  <!-- <servlet>
-    <display-name>MembercardAdd</display-name>
-    <servlet-name>MembercardAdd</servlet-name>
-    <servlet-class>servlets.membercardservlets.MembercardAddServlet</servlet-class>
+  <!-- profit servlets begin -->
+  <servlet>
+    <display-name>Profit</display-name>
+    <servlet-name>Profit</servlet-name>
+    <servlet-class>servlets.profitservlets.ProfitServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MembercardAdd</servlet-name>
-    <url-pattern>/MembercardAdd</url-pattern>
-  </servlet-mapping> -->
-  <!-- membercard servlets end -->
+    <servlet-name>Profit</servlet-name>
+    <url-pattern>/Profit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Profitmonthly</display-name>
+    <servlet-name>Profitmonthly</servlet-name>
+    <servlet-class>servlets.profitservlets.ProfitmonthlyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Profitmonthly</servlet-name>
+    <url-pattern>/Profitmonthly</url-pattern>
+  </servlet-mapping>
+  <!-- profit servlets end -->
 </web-app>

@@ -23,7 +23,7 @@ public class CheckoutsDAO {
 		public List<Checkouts> findAll() throws Exception
 		{
 			Statement stmt;
-			String queryStr="select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID";
+			String queryStr="select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,partcost,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID";
 			ResultSet rs;
 			List<Checkouts> checkoutss=new ArrayList<Checkouts>();
 			Checkouts checkouts;
@@ -41,6 +41,7 @@ public class CheckoutsDAO {
 					checkouts.setPartname(rs.getString("partname"));
 					checkouts.setChecknum(rs.getDouble("checknum"));
 					checkouts.setPartprice(rs.getDouble("partprice"));
+					checkouts.setPartcost(rs.getDouble("partcost"));
 					checkouts.setXiaofei(rs.getDouble("xiaofei"));
 					checkouts.setCheckoutsdate(rs.getString("checkoutsdate"));
 					checkouts.setBeizhu(rs.getString("beizhu"));
@@ -71,7 +72,7 @@ public class CheckoutsDAO {
 			Checkouts checkouts=null;
 			try
 			{
-				queryStr="select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID and  cID=?";
+				queryStr="select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,partcost,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID and  cID=?";
 				stmt = conn.prepareStatement(queryStr);
 				stmt.setInt(1, id);
 				rs = stmt.executeQuery();
@@ -86,6 +87,7 @@ public class CheckoutsDAO {
 					checkouts.setPartname(rs.getString("partname"));
 					checkouts.setChecknum(rs.getDouble("checknum"));
 					checkouts.setPartprice(rs.getDouble("partprice"));
+					checkouts.setPartcost(rs.getDouble("partcost"));
 					checkouts.setXiaofei(rs.getDouble("xiaofei"));
 					checkouts.setCheckoutsdate(rs.getString("checkoutsdate"));
 					checkouts.setBeizhu(rs.getString("beizhu"));
@@ -123,6 +125,7 @@ public class CheckoutsDAO {
 				checkouts.setPartname(rs.getString("partname"));
 				checkouts.setChecknum(rs.getDouble("checknum"));
 				checkouts.setPartprice(rs.getDouble("partprice"));
+				checkouts.setPartcost(rs.getDouble("partcost"));
 				checkouts.setXiaofei(rs.getDouble("xiaofei"));
 				checkouts.setCheckoutsdate(rs.getString("checkoutsdate"));
 				checkouts.setBeizhu(rs.getString("beizhu"));
@@ -178,6 +181,7 @@ public class CheckoutsDAO {
 					checkouts.setPartname(rs.getString("partname"));
 					checkouts.setChecknum(rs.getDouble("checknum"));
 					checkouts.setPartprice(rs.getDouble("partprice"));
+					checkouts.setPartcost(rs.getDouble("partcost"));
 					checkouts.setXiaofei(rs.getDouble("xiaofei"));
 					checkouts.setCheckoutsdate(rs.getString("checkoutsdate"));
 					checkouts.setBeizhu(rs.getString("beizhu"));
@@ -236,6 +240,7 @@ public class CheckoutsDAO {
 					checkouts.setPartname(rs.getString("partname"));
 					checkouts.setChecknum(rs.getDouble("checknum"));
 					checkouts.setPartprice(rs.getDouble("partprice"));
+					checkouts.setPartcost(rs.getDouble("partcost"));
 					checkouts.setXiaofei(rs.getDouble("xiaofei"));
 					checkouts.setCheckoutsdate(rs.getString("checkoutsdate"));
 					checkouts.setBeizhu(rs.getString("beizhu"));
@@ -266,7 +271,7 @@ public class CheckoutsDAO {
 			PreparedStatement stmt;
 			int cID=0;
 			boolean insFlag=false;
-			String insertStr="insert into checkouts values(?,?,?,?,?,?,?)";
+			String insertStr="insert into checkouts values(?,?,?,?,?,?,?,?)";
 			stmt =conn.prepareStatement(insertStr);
 			try
 			{
@@ -281,10 +286,11 @@ public class CheckoutsDAO {
 				stmt.setInt(1,checkouts.getcID());
 				stmt.setInt(2,checkouts.getaID());
 				stmt.setDouble(3,checkouts.getPartprice());
-				stmt.setDouble(4,checkouts.getRepaircost());
-				stmt.setDouble(5,checkouts.getXiaofei());
-				stmt.setString(6,checkouts.getCheckoutsdate());
-				stmt.setString(7,checkouts.getBeizhu());
+				stmt.setDouble(4,checkouts.getPartcost());
+				stmt.setDouble(5,checkouts.getRepaircost());
+				stmt.setDouble(6,checkouts.getXiaofei());
+				stmt.setString(7,checkouts.getCheckoutsdate());
+				stmt.setString(8,checkouts.getBeizhu());
 				stmt.executeUpdate();
 				insFlag=true;
 			
@@ -309,17 +315,18 @@ public class CheckoutsDAO {
 		{
 			PreparedStatement stmt;
 			boolean updateFlag=false;
-			String updateStr="update checkouts set aID=?,partprice=?,repaircost=?,xiaofei=?,checkoutsdate=?,beizhu=? where cID=?";
+			String updateStr="update checkouts set aID=?,partprice=?,partcost=?,repaircost=?,xiaofei=?,checkoutsdate=?,beizhu=? where cID=?";
 			stmt =conn.prepareStatement(updateStr);	
 			try
 			{
 				stmt.setInt(1,checkouts.getaID());
 				stmt.setDouble(2,checkouts.getPartprice());
-				stmt.setDouble(3,checkouts.getRepaircost());
-				stmt.setDouble(4,checkouts.getXiaofei());
-				stmt.setString(5,checkouts.getCheckoutsdate());
-				stmt.setString(6,checkouts.getBeizhu());
-				stmt.setInt(7,checkouts.getcID());
+				stmt.setDouble(3,checkouts.getPartcost());
+				stmt.setDouble(4,checkouts.getRepaircost());
+				stmt.setDouble(5,checkouts.getXiaofei());
+				stmt.setString(6,checkouts.getCheckoutsdate());
+				stmt.setString(7,checkouts.getBeizhu());
+				stmt.setInt(8,checkouts.getcID());
 				stmt.executeUpdate();
 				updateFlag=true;
 			}catch (SQLException e)
