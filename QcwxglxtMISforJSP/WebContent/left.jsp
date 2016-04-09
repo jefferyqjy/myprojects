@@ -134,6 +134,9 @@ a {
 					<a href="customer.jsp">客户管理</a>
 				</dd>
 				<dd>
+					<a href="membercard.jsp">会员卡管理</a>
+				</dd>
+				<dd>
 					<a href="supplier.jsp">供应商管理</a>
 				</dd>
 			</dl>

@@ -28,6 +28,10 @@
 	function doAdd() {
 		window.location.href = "Customer?operator=2";
 	}
+	
+	function doManage(cusID) {
+		window.location.href = "Membercard?operator=0&&currentPage=1&&pagerMethod=1&&cusId=" + cusID;
+	}
 </script>
 
 </head>
@@ -123,7 +127,11 @@
 																	<td>${item.cusphone}</td>
 																	<td>${item.cusadd}</td>
 																	<c:if test="${item.vip==1}">
-																		<td><font color="red">是</font></td>
+																		<td>
+																			<font color="red">
+																				<a title="查看会员卡" style="cursor:pointer" onclick="doManage('${item.cusID}')" >是</a>
+																			</font>
+																		</td>
 																	</c:if>
 																	<c:if test="${item.vip==0}">
 																		<td>否</td>

@@ -226,16 +226,6 @@
   <!-- message servlets end -->
   
   <!-- returnvisit servlets begin -->
-  <!-- <servlet>
-    <display-name>ReturnVisitQuery</display-name>
-    <servlet-name>ReturnVisitQuery</servlet-name>
-    <servlet-class>servlets.returnvisitservlets.ReturnVisitQueryServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ReturnVisitQuery</servlet-name>
-    <url-pattern>/ReturnVisitQuery</url-pattern>
-  </servlet-mapping> -->
-  
   <servlet>
     <display-name>ReturnVisit</display-name>
     <servlet-name>ReturnVisit</servlet-name>
@@ -245,15 +235,37 @@
     <servlet-name>ReturnVisit</servlet-name>
     <url-pattern>/ReturnVisit</url-pattern>
   </servlet-mapping>
+  <!-- returnvisit servlets end -->
   
-  <!-- <servlet>
-    <display-name>ReturnVisitAdd</display-name>
-    <servlet-name>ReturnVisitAdd</servlet-name>
-    <servlet-class>servlets.returnvisitservlets.ReturnVisitAddServlet</servlet-class>
+  <!-- membercard servlets begin -->
+  <servlet>
+    <display-name>MembercardQuery</display-name>
+    <servlet-name>MembercardQuery</servlet-name>
+    <servlet-class>servlets.membercardservlets.MembercardQueryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ReturnVisitAdd</servlet-name>
-    <url-pattern>/ReturnVisitAdd</url-pattern>
+    <servlet-name>MembercardQuery</servlet-name>
+    <url-pattern>/MembercardQuery</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <display-name>Membercard</display-name>
+    <servlet-name>Membercard</servlet-name>
+    <servlet-class>servlets.membercardservlets.MembercardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Membercard</servlet-name>
+    <url-pattern>/Membercard</url-pattern>
+  </servlet-mapping>
+  
+  <!-- <servlet>
+    <display-name>MembercardAdd</display-name>
+    <servlet-name>MembercardAdd</servlet-name>
+    <servlet-class>servlets.membercardservlets.MembercardAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MembercardAdd</servlet-name>
+    <url-pattern>/MembercardAdd</url-pattern>
   </servlet-mapping> -->
-  <!-- returnvisit servlets end -->
+  <!-- membercard servlets end -->
 </web-app>

@@ -49,6 +49,9 @@ a{text-decoration:none;}
 				<dd>
 					<a href="CustomerQuery?currentPage=1&&pagerMethod=1&&operator=0">客户管理</a>
 				</dd>
+				<dd>
+					<a href="MembercardQuery?currentPage=1&&pagerMethod=1&&operator=0">我的会员卡</a>
+				</dd>
 				</c:if>
 			</dl>
 			<dl class="arrange">
