@@ -184,9 +184,6 @@ a {
 				<dd class="first_dd">
 					<a href="checkouts.jsp">结账管理</a>
 				</dd>
-				<dd>
-					<a href="profit.jsp">利润管理</a>
-				</dd>
 				<c:if test="${sessionScope.type =='admin'}">
 					<dd>
 						<a href="profit.jsp">利润管理</a>

@@ -88,7 +88,7 @@ public class PartinnerServlet extends HttpServlet {
 					if (operator.equals("0")) {
 						queryName = request.getParameter("queryName");
 						queryValue = request.getParameter("queryValue");
-						queryStr="select p.iId, p.empId, p.company, p.pCost, p.pPrice, p.pNum, p.pId, p.date from partinner p ";
+						queryStr="select p.iId, p.empId, p.company, p.pCost, p.pPrice, p.pNum, p.pId, p.date from partinner p where 1=1 ";
 						countStr = "select count(*) from partinner p where 1=1";
 						if(StringUtils.isNotEmpty(queryValue)) {
 							queryStr += (" and " + queryName + " = '" + queryValue + "'");

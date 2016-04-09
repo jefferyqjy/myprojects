@@ -74,19 +74,19 @@ public class ProfitmonthlyServlet extends HttpServlet {
 			
 			/* 计算结账单利润 */
 			ProfitDAO pdao = new ProfitDAO();
-			queryStr = "select p.pId, p.cId, p.profit, p.cost, p.createTime from profit p where p.createTime <= " + createTimeLte + " and p.createTime >= " + createTimeGte;
+			queryStr = "select p.pId, p.cId, p.profit, p.cost, p.createTime from profit p where p.createTime <= '" + createTimeLte + "' and p.createTime >= '" + createTimeGte + "'";
 			List<Profit> plist = pdao.findByPage(queryStr, 0, 1000);
 			BigDecimal checkoutProfit = BigDecimal.ZERO;
 			if(plist != null && plist.size() > 0) {
 				for(Profit m : plist) {
 					BigDecimal p = m.getProfit();
-					checkoutProfit.add(p);
+					checkoutProfit = checkoutProfit.add(p);
 				}
 			}
 			
 			/* 计算内配利润 */
 			PartinnerDAO pdao2 = new PartinnerDAO();
-			queryStr = "select p.iId, p.empId, p.company, p.pCost, p.pPrice, p.pId, p.pNum, p.date from partinner where p.date <= " + createTimeLte + " and p.date >= " + createTimeGte;
+			queryStr = "select p.iId, p.empId, p.company, p.pCost, p.pPrice, p.pId, p.pNum, p.date from partinner p where p.date <= '" + createTimeLte + "' and p.date >= '" + createTimeGte + "'";
 			List<Partinner> pis =  pdao2.findByPage(queryStr, 0, 1000);
 			BigDecimal innerProfit = BigDecimal.ZERO;
 			if(pis != null && pis.size() > 0) {
@@ -96,7 +96,7 @@ public class ProfitmonthlyServlet extends HttpServlet {
 					Integer num = m.getpNum();
 					BigDecimal profit = price.subtract(cost);
 					BigDecimal totalProfit = profit.multiply(new BigDecimal(num));
-					innerProfit.add(totalProfit);
+					innerProfit = innerProfit.add(totalProfit);
 				}
 			}
 			
@@ -111,9 +111,9 @@ public class ProfitmonthlyServlet extends HttpServlet {
 			request.setAttribute("currentPage", 0);
 			request.setAttribute("operator", "1");
 		} catch (Exception e2) {
-			out.print("<script language='javascript'>alert('查找结账利润信息失败！');window.location='profit.jsp';</script>");
+			out.print("<script language='javascript'>alert('统计本月利润失败！');window.location='profitmonthly.jsp';</script>");
 		}
-		getServletConfig().getServletContext().getRequestDispatcher("/profit.jsp").forward(request, response);
+		getServletConfig().getServletContext().getRequestDispatcher("/profitmonthly.jsp").forward(request, response);
 		return;
 	}
 	
@@ -125,5 +125,9 @@ public class ProfitmonthlyServlet extends HttpServlet {
 		
 		calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DATE));
 		System.out.println(format.format(calendar.getTime()));
+		
+		BigDecimal a = new BigDecimal(1);
+		BigDecimal b = new BigDecimal(2);
+		System.out.println(a.add(b));
 	}
 }
