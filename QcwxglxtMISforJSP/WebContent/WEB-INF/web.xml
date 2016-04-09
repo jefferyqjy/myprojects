@@ -280,4 +280,16 @@
     <url-pattern>/Profitmonthly</url-pattern>
   </servlet-mapping>
   <!-- profit servlets end -->
+  
+  <!-- partinner servlets begin -->
+  <servlet>
+    <display-name>Partinner</display-name>
+    <servlet-name>Partinner</servlet-name>
+    <servlet-class>servlets.partinnerservlets.PartinnerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Partinner</servlet-name>
+    <url-pattern>/Partinner</url-pattern>
+  </servlet-mapping>
+  <!-- partinner servlets end -->
 </web-app>

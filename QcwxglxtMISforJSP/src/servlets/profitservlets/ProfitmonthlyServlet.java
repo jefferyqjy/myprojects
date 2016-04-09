@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,14 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.StringUtils;
-
-import bean.Checkouts;
+import bean.Partinner;
 import bean.Profit;
 import bean.ProfitMonthly;
-import dao.CheckoutsDAO;
+import dao.PartinnerDAO;
 import dao.ProfitDAO;
-import util.RowCount;
 
 /**
  * Servlet implementation class YuyueQueryServlet
@@ -77,9 +72,10 @@ public class ProfitmonthlyServlet extends HttpServlet {
 			calendar.set(Calendar.DATE, calendar.getActualMinimum(Calendar.DATE));
 			String createTimeGte = format.format(calendar.getTime());
 			
+			/* 计算结账单利润 */
 			ProfitDAO pdao = new ProfitDAO();
-			queryStr = "select sum(profit) from profit p where p.createTime <= " + createTimeLte + " and p.createTime >= " + createTimeGte;
-			List<Profit> plist = pdao.findByPage(queryStr, 0, 100);
+			queryStr = "select p.pId, p.cId, p.profit, p.cost, p.createTime from profit p where p.createTime <= " + createTimeLte + " and p.createTime >= " + createTimeGte;
+			List<Profit> plist = pdao.findByPage(queryStr, 0, 1000);
 			BigDecimal checkoutProfit = BigDecimal.ZERO;
 			if(plist != null && plist.size() > 0) {
 				for(Profit m : plist) {
@@ -88,8 +84,26 @@ public class ProfitmonthlyServlet extends HttpServlet {
 				}
 			}
 			
+			/* 计算内配利润 */
+			PartinnerDAO pdao2 = new PartinnerDAO();
+			queryStr = "select p.iId, p.empId, p.company, p.pCost, p.pPrice, p.pId, p.pNum, p.date from partinner where p.date <= " + createTimeLte + " and p.date >= " + createTimeGte;
+			List<Partinner> pis =  pdao2.findByPage(queryStr, 0, 1000);
+			BigDecimal innerProfit = BigDecimal.ZERO;
+			if(pis != null && pis.size() > 0) {
+				for(Partinner m : pis) {
+					BigDecimal cost = m.getpCost();
+					BigDecimal price = m.getpPrice();
+					Integer num = m.getpNum();
+					BigDecimal profit = price.subtract(cost);
+					BigDecimal totalProfit = profit.multiply(new BigDecimal(num));
+					innerProfit.add(totalProfit);
+				}
+			}
+			
+			
 			ProfitMonthly pm = new ProfitMonthly();
 			pm.setCheckoutProfit(checkoutProfit);
+			pm.setInnerProfit(innerProfit);
 			
 			request.setAttribute("profitmonthly", pm);
 			request.setAttribute("totalRows", 1);

@@ -160,6 +160,9 @@ a {
 				<dd>
 					<a href="partss.jsp">零件销售管理</a>
 				</dd>
+				<dd>
+					<a href="partinner.jsp">零件内配管理</a>
+				</dd>
 			</dl>
 
 			<dl class="arrange">
