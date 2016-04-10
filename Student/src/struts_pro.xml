@@ -67,7 +67,7 @@
         <action class="courseStudentAction" method="{1}" name="courseStudent_*">
             <result name="success">/sys_jsp/success.jsp</result>
             <result name="error">/sys_jsp/error.jsp</result>
-            <result name="query">/pro_jsp/course/course_{1}.jsp</result>
+            <result name="query">/pro_jsp/courseStudent/courseStudent_{1}.jsp</result>
             <result name="close">/sys_jsp/selfClose.jsp</result>
             <result name="successClose">/sys_jsp/success4Close.jsp</result>
         </action>

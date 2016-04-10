@@ -4,9 +4,11 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.pro.entity.CourseStudent;
 import com.pro.manager.CourseStudentManager;
@@ -22,7 +24,7 @@ public class CourseStudentAction {
 	private Integer year; // 学年
 	private String stuno; // 学生学号
 	private String type; // 学期
-	private String[] names; // 课程列表
+	private String names; // 课程列表
 	
 	public int getId() {
 		return id;
@@ -49,28 +51,19 @@ public class CourseStudentAction {
 		this.stuno = stuno;
 	}
 
+	public String getNames() {
+		return names;
+	}
+	public void setNames(String names) {
+		this.names = names;
+	}
+
 	private DefaultQueryCondition condition;
 	private Page page;
-	/*public String add() {
-		if(this.courseManager.isExist("name", this.name)) {
-			return CommonUtil.genActionError("该课程已经存在，不能重复添加");
-		}
-		Course obj = new Course();
-		obj.setContent(this.content);
-		obj.setName(this.name);
-		obj.setNumber(this.number);
-		obj.setMandatory(this.mandatory);
-		obj.setPass(this.pass);
-		try {
-			this.courseManager.insert(obj);
-		} catch(Exception e) {
-			ActionContext.getContext().put(Const.ACTION_PUT_ERROR_MSG, e.getMessage());
-			return ActionSupport.ERROR;
-		}
-		return ActionSupport.SUCCESS;
-	}*/
 
 	public String del() {
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String id = request.getParameter("id");
 		this.courseStudentManager.deleteViaId(this.id);
 		return  Const.ACTION_RETURN_SUCC_CLOSE;
 	}
@@ -86,21 +79,10 @@ public class CourseStudentAction {
 		return  Const.ACTION_RETURN_SUCC_CLOSE;
 	}
 
-	/*public String update() {
-		HttpServletRequest request = ServletActionContext.getRequest();
-		String ids = request.getParameter("ids");
-		
-		Course pro = this.courseManager.queryById(this.id);
-		pro.setContent(this.content);
-		pro.setNumber(this.number);
-		pro.setPass(this.pass);
-		this.courseManager.update(pro);
-		return Const.ACTION_RETURN_SUCC_CLOSE;
-	}*/
-
-	/*public String query() {
-		Course pro = new Course();
-		pro.setName(this.name);
+	public String query() {
+		CourseStudent pro = new CourseStudent();
+		pro.setYear(this.year);
+		pro.setType(this.type);
 		condition = new DefaultQueryCondition(pro);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String curPage = request.getParameter("curPage");
@@ -111,38 +93,42 @@ public class CourseStudentAction {
 		if (CommonUtil.isNotEmpty(pageSize)) {
 			condition.setPageSize(Integer.parseInt(pageSize));
 		}
-		Page<Course> page = this.courseManager.getRecords(condition);
-		List<Course> resultList = page.getList();
+		Page<CourseStudent> page = this.courseStudentManager.getRecords(condition);
+		List<CourseStudent> resultList = page.getList();
 		ActionContext.getContext().put(Const.ACTION_PUT_RESULT, resultList);
 		ActionContext.getContext().put(Const.ACTION_PUT_PAGE_INFO,page.getNavigation());
 		ActionContext.getContext().put("curPage", page.getCurrentPage());
 		return Const.ACTION_RETURN_QUERY;
-	}*/
+	}
 	
-	/*public String query2() {
-		return this.query();
-	}*/
-	
+	@SuppressWarnings("unchecked")
 	public String select() {
-		HttpServletRequest request = ServletActionContext.getRequest();
-		String ids = request.getParameter("names");
-		//String hql = "from CourseStudent where year = " + this.year + " and type = '" + this.type + "' and stuno='" + this.stuno + "' and name = '" + this.name + "'";
-		/*List<CourseStudent> ls = this.courseStudentManager.queryByHql(hql);
-		if(!CommonUtil.isListEmpty(ls)) {
-			return CommonUtil.genActionError("课程已选择！请重新选择！");
-		}*/
-		/*CourseStudent obj = new CourseStudent();
-		obj.setId(id);
-		obj.setName(this.name);
-		obj.setStuno(this.stuno);
-		obj.setType(this.type);
-		obj.setYear(this.year);*/
-		/*try {
-			this.courseStudentManager.insert(obj);
-		} catch(Exception e) {
-			ActionContext.getContext().put(Const.ACTION_PUT_ERROR_MSG, e.getMessage());
-			return ActionSupport.ERROR;
-		}*/
+		if(StringUtils.isNotEmpty(names)) {
+			String[] names = this.names.split(",");
+			try{
+				
+				for(int i = 0; i< names.length; i++) {
+					String name = names[i];
+					String hql = "from CourseStudent where year = " + this.year + " and type = '" + this.type + "' and stuno='" + this.stuno + "' and name = '" + name + "'";
+					List<CourseStudent> ls = this.courseStudentManager.queryByHql(hql);
+					if(!CommonUtil.isListEmpty(ls)) {
+						return CommonUtil.genActionError("课程【" + name + "】已选择！请重新选择！");
+					}
+					
+					CourseStudent obj = new CourseStudent();
+					obj.setName(name.trim());
+					obj.setStuno(stuno);
+					obj.setType(type);
+					obj.setYear(year);
+					this.courseStudentManager.insert(obj);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				ActionContext.getContext().put(Const.ACTION_PUT_ERROR_MSG, e.getMessage());
+				return ActionSupport.ERROR;
+			}
+			
+		}
 		return ActionSupport.SUCCESS;
 	}
 

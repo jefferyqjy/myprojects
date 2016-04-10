@@ -147,4 +147,8 @@ public class CourseAction {
 		return this.query();
 	}
 	
+	public String query3() {
+		return this.query();
+	}
+	
 }

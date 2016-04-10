@@ -58,6 +58,7 @@
     </manager>
     <manager name="课程管理" type="4">
         <link href="./pro_jsp/courseStudent/courseStudent_select.jsp" name="选择课程" type="0" />
+        <link href="./pro_jsp/courseStudent/courseStudent_query.jsp" name="我的选课" type="0" />
     </manager>
     
 </root>

@@ -16,7 +16,7 @@
 			<div id="widget table-widget">
 			<div class="pageTitle">当前位置：选择课程</div>
 			<div class="pageInput">
-			<form action="score/score_add.do" method="post">
+			<form action="courseStudent/courseStudent_select.do" method="post">
 				<table>
 					<tr>
 						<td>学号</td>
@@ -28,8 +28,8 @@
 					<tr>
 						<td>课程名称</td>
 						<td>
-						    <input type="text" required name="name" id="name" readonly="readonly" style="background-color: #EAEAEA" size="20" maxlength="20"/>
-						    <input type="button" class="bt" value="选择..." onclick="openWin('<%=basePath%>/course/course_query2.do','',500,500,1)">
+						    <input type="text" required name="names" id="names" readonly="readonly" style="background-color: #EAEAEA" size="40"/>
+						    <input type="button" class="bt" value="选择..." onclick="openWin('<%=basePath%>/course/course_query3.do','',500,500,1)">
 						</td>
 					</tr>
 					<tr>

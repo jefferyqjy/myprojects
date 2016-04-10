@@ -49,7 +49,7 @@ import com.pro.entity.CourseStudent;
 			this.courseStudentDAOImpl.update(pro);
 		}
 
-		public Page<Course> getRecords(DefaultQueryCondition condition) {
+		public Page<CourseStudent> getRecords(DefaultQueryCondition condition) {
 			return this.courseStudentDAOImpl.getRecord(condition);
 		}
 

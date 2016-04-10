@@ -39,11 +39,17 @@ public class CourseStudentDAOImpl extends BaseDAO<CourseStudent, Integer> {
 		where.append("1=1 ");
 		boolean temp = false;
 		CourseStudent pro = (CourseStudent)condition.getCondition();
-		String name = pro.getName();
-		if(CommonUtil.isNotEmpty(name)) {
-			sb.append(" and pro.name like :name ");
-			qcSQL.setLikeParameter("name", name);
-			where.append(" and name like '%").append(name).append("%'");
+		Integer year = pro.getYear();
+		String type = pro.getType();
+		if(year != null) {
+			sb.append(" and pro.year = :year");
+			qcSQL.setParameter("year", year);
+			where.append(" and year = '").append(year).append("'");
+		}
+		if(CommonUtil.isNotEmpty(type)) {
+			sb.append(" and pro.type = :type ");
+			qcSQL.setParameter("type", type);
+			where.append(" and type = '").append(type).append("'");
 			temp = true;
 		}
 	

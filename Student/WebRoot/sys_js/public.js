@@ -16,7 +16,7 @@ $(function(){
 		})
 
 function actionDel(url) {
-	if(confirm("Are you sure to delete?")) {
+	if(confirm("确定删除吗?")) {
 		self.location.href = encodeURI(url);
 	}
 }
@@ -55,7 +55,7 @@ function actionDo(url) {
  function openDeleteDialog(url,confirmString){
 	 var c = confirmString;
 	 if(c == null || c == '') {
-		 c = "Are you sure to delete?";
+		 c = "确定删除吗?";
 	 }
 	 if(confirm(c)){
 		 window.showModalDialog(url,"dialogHeight:24px;dialogWidth:21px;resizable:no;help:yes;status:no");

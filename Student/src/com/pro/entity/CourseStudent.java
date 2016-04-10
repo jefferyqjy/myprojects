@@ -4,10 +4,6 @@ import com.sys.common.BaseEntity;
 
 public class CourseStudent extends BaseEntity<CourseStudent> {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8987388220858527721L;
 	private int id;
 	private String name;
 	private String stuno;

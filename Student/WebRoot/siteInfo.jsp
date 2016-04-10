@@ -12,13 +12,6 @@
     <th><p>欢迎使用本系统</p>
     </th>
   </tr>
-  <!-- 最新公告
-   <tr>
-    <td>
-    	<jsp:include page="plugin_jsp/announce/announce_show.jsp"></jsp:include>
-    </td>
-  </tr>
-   -->
 </table>
 
 

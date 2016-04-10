@@ -125,7 +125,7 @@ String nowTime = DateUtil.convDate2String(date,DateUtil.DEFAULT_DATE_TIME_PATTER
 					<h2>公告</h2>
 					<ul>
 						<li>
-							>>>>>>>>>>>>>>>>>>>>>>>>>>><a target="mainFrame" href="<%=basePath %>/announce/announce_query.do">更多...</a>
+							<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>><a target="mainFrame" href="<%=basePath %>/announce/announce_query.do">更多...</a>  -->
 						</li>
 						<public:showNote></public:showNote>
 					</ul>

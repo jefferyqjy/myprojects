@@ -38,6 +38,7 @@
                 <value>/com/pro/entity/Score.hbm.xml</value>
                 <value>/com/pro/entity/Student.hbm.xml</value>
                 <value>/com/pro/entity/Course.hbm.xml</value>
+                <value>/com/pro/entity/CourseStudent.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
