@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+	<!--这个配置项会扫描这个包下的类 它子包下面的类也会被扫描到 需要在类前面加上注解@Service 就会交给Spring容器来处理了-->
+	<context:component-scan base-package="com"/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://localhost:3306/base"/>
+			<property name="username" value="root"/>
+			<property name="password" value="root"/>
+			<property name="initialSize" value="1"/>
+			<property name="maxActive" value="500"/>
+			<property name="maxIdle" value="2"/>
+			<property name="minIdle" value="1"/>
+		</bean>
+		
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"/>
+			<property name="mappingResources">
+				<list>
+					<!-- 系统配置 -->
+					<value>com/sys/admin/entity/SysAdmin.hbm.xml</value>
+				</list>
+			</property>
+			<property name="hibernateProperties">
+				<value>
+					hibernate.dialect=org.hibernate.dialect.MySQLDialect
+					hibernate.show_sql=true
+					hibernate.hbm2ddl.auto=update
+					hibernate.format_sql=false
+					<!--  openSessionInView 需要加的属性
+					hibernate.current_session_context_class=thread
+					-->
+				</value>
+			</property>
+		</bean>
+		
+		<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+	
+	<!--使用基于注解方式配置事务 不需要事物的可以配置事物的传播特性 @Transactional（propagation=Propagation.NOT_SUPPORTED） -->
+	<tx:annotation-driven transaction-manager="txManager"/>
+	<!--
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+	-->
+</beans>

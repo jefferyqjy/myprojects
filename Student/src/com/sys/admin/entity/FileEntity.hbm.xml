@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_file" name="com.sys.admin.entity.FileEntity">
+    <id access="field" name="id">
+      <generator class="assigned"/>
+    </id>
+    <property name="name" access="field" not-null="true"/>
+    <property name="type" access="field"/>
+    <property name="size" access="field"/>
+    <property name="area" access="field"/>
+    <property name="path" access="field"/>
+    <property name="title" access="field"/>
+    <property name="content" access="field" length="3000"/>
+    <property name="md5" access="field"/>
+    <property name="date" access="field" type="java.sql.Date"/>
+  </class>
+</hibernate-mapping>

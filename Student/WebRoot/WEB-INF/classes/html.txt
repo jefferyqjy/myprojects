@@ -1,0 +1,45 @@
+onkeyup="this.value=this.value.replace(/[^\d]/g,'')"
+
+####################################################################
+父页面：
+<td>
+    <input type="text" name="logType" id="logType" readonly="readonly" style="background-color: #EAEAEA" size="100" maxlength="100"/>
+    <input type="button" class="bt" value="选择..." onclick="openWin('<%=basePath%>/logtype/logtype_query.do','',500,500,1)">
+</td>
+子页面：
+<td>
+	<a style="cursor: pointer;" onclick="setParent('${user.title}')" />选择</a>
+</td>
+				
+function setParent(id) {
+		opener.document.getElementById("logType").value = id;
+		window.opener = null;
+		window.close();
+}
+####################################################################
+
+
+if(/[^\x00-\xff]/g.test(username)){
+	alert("用户名不能包含中文");
+	return;
+}
+
+<img title="修改" src="<%=basePath%>/sys_css/icon/edit2.png" width="16" height="16" onclick="toModify('<%=basePath%>/families/families_modify.do?id=${user.id}')"/>
+<img title="删除" src="<%=basePath%>/sys_css/icon/del.png" width="16" height="16" onclick="actionDel('<%=basePath%>/families/families_del.do?id=${user.id}')"/>
+
+qq在线交流：
+<img alt="" src="<%=basePath%>/sys_images/qq.gif">
+<a style="color:#FF2200;" target=blank href="http://wpa.qq.com/msgrd?v=3&uin=${user.qq }&site=qq&menu=yes" title="在线交流">
+${user.qq }
+</a>
+
+
+ajax:
+			HttpServletResponse response = ServletActionContext.getResponse();
+			response.setCharacterEncoding("UTF-8");
+			response.setHeader("charset","UTF-8");
+			response.setContentType("text/xml;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+
+使用ckeditor（CKEDITOR.replace('content');）注意事项：
+form 必须多一个 novlidate 属性

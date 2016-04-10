@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="管理系统">
+    <manager name="系统管理" type="0">
+        <link href="./sys_jsp/admin/admin_add.jsp" name="添加教学管理员" type="0"/>
+        <link href="./sys_jsp/admin/admin_add2.jsp" name="添加教师" type="0"/>
+        <link href="./sys_jsp/admin/admin_query.jsp" name="管理用户" type="0"/>
+    </manager>
+    <manager name="个人信息管理" type="1">
+        <link href="admin/admin_changePwd.do" name="修改密码" type="0"/>
+    </manager>
+     <manager name="成绩修改审核" type="0">
+        <link href="./pro_jsp/score/score_query6.jsp" name="审核成绩修改" type="0"/>
+    </manager>
+    
+    <manager name="个人信息管理" type="2">
+        <link href="admin/admin_changePwd.do" name="修改密码" type="0"/>
+    </manager>
+    <manager name="个人信息管理" type="4">
+        <link href="admin/admin_changePwd.do" name="修改密码" type="0"/>
+    </manager>
+    <manager name="成绩查询" type="4">
+        <link href="./pro_jsp/score/score_query3.jsp" name="查询成绩" type="0"/>
+    </manager>
+      
+    <manager name="班级管理" type="0">
+        <link href="./pro_jsp/clazz/clazz_add.jsp" name="添加班级" type="0"/>
+        <link href="./pro_jsp/clazz/clazz_query.jsp" name="管理班级" type="0"/>
+    </manager>
+    <manager name="院系管理" type="0">
+        <link href="./pro_jsp/school/school_add.jsp" name="添加院系" type="0"/>
+        <link href="./pro_jsp/school/school_query.jsp" name="管理院系" type="0"/>
+    </manager>
+    <manager name="成绩录入管理" type="1">
+        <link href="./pro_jsp/score/score_add.jsp" name="录入成绩" type="0"/>
+        <link href="./pro_jsp/score/score_query.jsp" name="查询成绩" type="0"/>
+    </manager>
+    <manager name="成绩统计" type="1">
+        <link href="./pro_jsp/score/score_query2.jsp" name="统计成绩" type="0"/>
+        <link href="./pro_jsp/score/score_query4.jsp" name="成绩排序" type="0"/>
+    </manager>
+    <manager name="成绩统计" type="2">
+        <link href="./pro_jsp/score/score_query2.jsp" name="统计成绩" type="0"/>
+        <link href="./pro_jsp/score/score_query4.jsp" name="成绩排序" type="0"/>
+    </manager>
+    <manager name="学生管理" type="2">
+        <link href="./pro_jsp/student/student_add.jsp" name="录入学生" type="0"/>
+        <link href="./pro_jsp/student/student_query.jsp" name="管理学生" type="0"/>
+    </manager>
+     <manager name="课程管理" type="0">
+        <link href="./pro_jsp/course/course_add.jsp" name="添加课程" type="0"/>
+        <link href="./pro_jsp/course/course_query.jsp" name="管理课程" type="0"/>
+    </manager>
+    <manager name="成绩统计" type="0">
+        <link href="./pro_jsp/score/score_query2.jsp" name="统计成绩" type="0"/>
+    </manager>
+    <manager name="课程管理" type="1">
+        <link href="./pro_jsp/course/course_add.jsp" name="添加课程" type="0"/>
+    </manager>
+    <manager name="课程管理" type="4">
+        <link href="./pro_jsp/courseStudent/courseStudent_select.jsp" name="选择课程" type="0" />
+    </manager>
+    
+</root>

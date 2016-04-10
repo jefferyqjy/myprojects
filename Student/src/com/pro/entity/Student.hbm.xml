@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.pro.entity.Student" table="t_student">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="native"/>
+        </id>
+        <property access="field" column="t_idno" length="200" name="idno"/>
+        <property access="field" column="t_stuid" length="200" name="stuid"/>
+        <property access="field" column="t_pwd" length="200" name="pwd"/>
+        <property access="field" column="t_name" length="200" name="name"/>
+        <property access="field" column="t_gender" length="200" name="gender"/>
+        <property access="field" column="t_age" length="200" name="age"/>
+        <property access="field" column="t_address" length="200" name="address"/>
+        <property access="field" column="t_party" length="200" name="party"/>
+        <property access="field" column="t_phone" length="200" name="phone"/>
+        <property access="field" column="t_hasbonous" length="200" name="hasbonous"/>
+        <property access="field" column="t_hasdebit" length="200" name="hasdebit"/>
+        <property access="field" column="t_job" length="200" name="job"/>
+        <property access="field" column="t_indate" length="200" name="indate"/>
+        <property access="field" column="t_enddate" length="200" name="enddate"/>
+        <property access="field" column="t_faname1" length="200" name="faname1"/>
+        <property access="field" column="t_faname2" length="200" name="faname2"/>
+        <property access="field" column="t_faname3" length="200" name="faname3"/>
+        <property access="field" column="t_farelation1" length="200" name="farelation1"/>
+        <property access="field" column="t_farelation2" length="200" name="farelation2"/>
+        <property access="field" column="t_farelation3" length="200" name="farelation3"/>
+        <property access="field" column="t_fajob1" length="200" name="fajob1"/>
+        <property access="field" column="t_fajob2" length="200" name="fajob2"/>
+        <property access="field" column="t_fajob3" length="200" name="fajob3"/>
+        <property access="field" column="t_clazzname" length="200" name="clazzname"/>
+        <property access="field" column="t_ispayment" length="200" name="ispayment"/>
+        <property access="field" column="t_isapplymdy" length="200" name="isapplymdy"/>
+    </class>
+</hibernate-mapping>

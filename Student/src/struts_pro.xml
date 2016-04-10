@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+                        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <package extends="struts-default" name="award" namespace="/award">
+        <action class="awardAction" method="{1}" name="award_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/award/award_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="clazz" namespace="/clazz">
+        <action class="clazzAction" method="{1}" name="clazz_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/clazz/clazz_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="school" namespace="/school">
+        <action class="schoolAction" method="{1}" name="school_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/school/school_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="score" namespace="/score">
+        <action class="scoreAction" method="{1}" name="score_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/score/score_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="student" namespace="/student">
+        <action class="studentAction" method="{1}" name="student_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/student/student_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="course" namespace="/course">
+        <action class="courseAction" method="{1}" name="course_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/course/course_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="courseStudent" namespace="/courseStudent">
+        <action class="courseStudentAction" method="{1}" name="courseStudent_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/course/course_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="register" namespace="/register">
+        <action class="registerAction" method="{1}" name="register_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/register/register_{1}.jsp</result>
+            <result name="close">/sys_jsp/selfClose.jsp</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+</struts>
