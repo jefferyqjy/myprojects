@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.1.xsd
+		http://www.springframework.org/schema/cache 
+		http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+	<aop:config proxy-target-class="true">
+	</aop:config>
+
+	<!-- Cache -->
+	<cache:annotation-driven />
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+		p:cache-manager-ref="ehcache" />
+	<bean id="ehcache"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:config-location="classpath:ehcache.xml" />
+	<aop:aspectj-autoproxy />
+
+	 <bean id="errCodeConfig" class="com.pro.cfg.ErrHandlerConfig">
+        <property name="locations">
+            <list>
+                <value>/WEB-INF/resources/errcode.properties</value>                 
+            </list>
+        </property>        
+        
+        <property name="fileEncoding" value="utf-8"/>
+    </bean>
+    
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+						<value>text/plain;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<context:component-scan base-package="com.pro"></context:component-scan>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl"
+			value="jdbc:mysql://localhost:3306/friend?characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+		<property name="user" value="root" />
+		<property name="password" value="root" />
+		<property name="maxPoolSize" value="100" />
+		<property name="minPoolSize" value="20" />
+		<property name="initialPoolSize" value="10" />
+		<property name="maxIdleTime" value="1800" />
+		<property name="acquireIncrement" value="10" />
+		<property name="idleConnectionTestPeriod" value="600" />
+		<property name="acquireRetryAttempts" value="30" />
+		<property name="breakAfterAcquireFailure" value="false" />
+		<property name="preferredTestQuery" value="SELECT NOW()" />
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+
+	<bean id="namedParameterJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg ref="dataSource"></constructor-arg>
+	</bean>
+	
+	<bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+	<sec:http pattern="/admin/css/**" security="none"/>
+	<sec:http pattern="/admin/img/**" security="none"/>
+	<sec:http pattern="/admin/js/**" security="none"/>
+	<sec:http pattern="/login.jsp**" security="none"/>
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:form-login login-page="/login.jsp"
+			default-target-url="/admin/home.spring" login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/login.jsp?e=1" always-use-default-target="true" />
+		<sec:logout logout-success-url="/login.jsp" />
+		<sec:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+	</sec:http>
+
+    <sec:authentication-manager>  
+        <sec:authentication-provider ref="MyAuthenticationProvider" />  
+    </sec:authentication-manager>  
+    
+   <bean id="MyAuthenticationProvider" class="com.pro.security.MyAuthenticationProvider">
+   		<property name="jdbcTemplate" ref="jdbcTemplate" />
+   </bean>
+   
+      <bean id="multipartResolver"  
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+    <property name="maxUploadSize">  
+        <value>104857600</value>  
+    </property>  
+    <property name="maxInMemorySize">  
+        <value>4096</value>  
+    </property>  
+	</bean>  
+   
+</beans>
+
