@@ -134,7 +134,7 @@ function  clickto(){
           <input type="checkbox" name="checkbox2" id="checkbox2" />
         </div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><input type="text" name="teacher_user_name" value="<%=request.getParameter("TUN") %>" readonly/></span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_name" value="<%=request.getParameter("TN") %>"/></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_name" value="<%=URLEncoder.encode(request.getParameter("TN"), "utf-8") %>"/></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_age"  value="<%=request.getParameter("TA") %>"/></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="radio" name="teacher_sex" value="男"/> 男 <input type="radio" name="teacher_sex" value="女" /> 女</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"> <select name="teacher_subject">

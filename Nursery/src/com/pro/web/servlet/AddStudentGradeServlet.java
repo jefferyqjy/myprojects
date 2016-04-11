@@ -12,15 +12,14 @@ import com.pro.conn.DaoManager;
 import com.pro.conn.DaoManagerHandler;
 import com.pro.db.DaoHelperOutput;
 import com.util.CommonUtil;
-import com.util.IdcardUtil;
 
 public class AddStudentGradeServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static final String [] subjects = {"", "ÓïÎÄ", "ÊýÑ§", "Ó¢Óï", "ÃÀÊõ", "ÒôÀÖ", "ÌåÓý", "µçÄÔ",};
+	public static final String [] subjects = {"", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½Ñ§", "Ó¢ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½",};
 	
-	public static final String [] terms = {"µÚÒ»Ñ§ÆÚ", "µÚ¶þÑ§ÆÚ"};
+	public static final String [] terms = {"ï¿½ï¿½Ò»Ñ§ï¿½ï¿½", "ï¿½Ú¶ï¿½Ñ§ï¿½ï¿½"};
 	
 	public void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,23 +33,23 @@ public class AddStudentGradeServlet extends HttpServlet {
 		String term = request.getParameter("term");
 		String error = "";
 		if (CommonUtil.checkEmpty(bodycard)) {
-			error += "Éí·ÝÖ¤²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(grade)) {
-			error += "µÈµØ²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ÈµØ²ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(subject)) {
-			error += "¿ÆÄ¿²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(year)) {
-			error += "Ñ§Äê²»ÄÜÎª¿Õ£¡<br>";
+			error += "Ñ§ï¿½ê²»ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(term)) {
-			error += "Ñ§ÆÚ²»ÄÜÎª¿Õ£¡<br>";
+			error += "Ñ§ï¿½Ú²ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (error.equals("")) {
@@ -72,17 +71,17 @@ public class AddStudentGradeServlet extends HttpServlet {
 					
 					DaoHelperOutput output = (DaoHelperOutput) DaoManagerHandler.executeUpdate(sql.toString());
 					if (!output.isbSuccess()) {
-						error += "Ìí¼ÓÑ§Éú¡¾" + bodycard + "¡¿³É¼¨ÐÅÏ¢Ê§°Ü£¬Èë¿âÒì³££¡<br>";
+						error += "ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½" + bodycard + "ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½Ï¢Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½<br>";
 					} else {
-						request.setAttribute("Succ", "Ìí¼ÓÑ§Éú¡¾" + bodycard+"¡¿³É¼¨³É¹¦");
+						request.setAttribute("Succ", "ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½" + bodycard+"ï¿½ï¿½ï¿½É¼ï¿½ï¿½É¹ï¿½");
 					}
 				} else {
 					int termInt = Integer.valueOf(term);
 					int subjectInt = Integer.valueOf(subject);
-					error += "Ñ§Éú¡¾" + bodycard+ "¡¿" + year+ terms[termInt]+ subjects[subjectInt]+ "³É¼¨ÒÑÂ¼Èë£¡£¡<br>";
+					error += "Ñ§ï¿½ï¿½" + bodycard+ "ï¿½ï¿½" + year+ terms[termInt]+ subjects[subjectInt]+ "ï¿½É¼ï¿½ï¿½ï¿½Â¼ï¿½ë£¡ï¿½ï¿½<br>";
 				}
 			}catch (Exception e) {
-				error += "Ìí¼ÓÑ§ÉúÐÅÏ¢Ê§°Ü£¬Î´ÖªÒì³££¡<br>";
+				error += "ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Ï¢Ê§ï¿½Ü£ï¿½Î´Öªï¿½ì³£ï¿½ï¿½<br>";
 			}
 		
 		} 
