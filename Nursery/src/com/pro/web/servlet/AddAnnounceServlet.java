@@ -1,8 +1,6 @@
 package com.pro.web.servlet;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,19 +32,19 @@ public class AddAnnounceServlet extends HttpServlet {
 
 		String error = "";
 		if (CommonUtil.checkEmpty(teacher_user_name)) {
-			error += "ÆÀ¼ÛÀÏÊ¦²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(title)) {
-			error += "±êÌâ²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½ï¿½â²»ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(content)) {
-			error += "ÄÚÈÝ²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 		
 		if (CommonUtil.checkEmpty(subject)) {
-			error += "¿ÆÄ¿²»ÄÜÎª¿Õ£¡<br>";
+			error += "ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½<br>";
 		}
 
 		if (error.equals("")) {
@@ -60,13 +58,13 @@ public class AddAnnounceServlet extends HttpServlet {
 
 				DaoHelperOutput output = (DaoHelperOutput) DaoManagerHandler.executeUpdate(sql.toString());
 				if (!output.isbSuccess()) {
-					error += "Ìí¼Ó¹«¸æÊ§°Ü£¬Èë¿âÒì³££¡<br>";
+					error += "ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½<br>";
 				} else {
-					request.setAttribute("Succ", "Ìí¼Ó¹«¸æ³É¹¦£¡");
+					request.setAttribute("Succ", "ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 				}
 
 			}catch (Exception e) {
-				error += "Ìí¼Ó¹«¸æÊ§°Ü£¬Î´ÖªÒì³££¡<br>";
+				error += "ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½Î´Öªï¿½ì³£ï¿½ï¿½<br>";
 			}
 
 		}
