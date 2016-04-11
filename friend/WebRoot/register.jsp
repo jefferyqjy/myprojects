@@ -13,6 +13,19 @@
 <title>基于Java web的大学生同城交友平台</title>
 <link rel="stylesheet" href="/friend/css/zerogrid.css">
 <link rel="stylesheet" href="/friend/css/style.css">
+<script type="text/javascript">
+$(function() {
+	$("input[name='province']").on("change", function() {
+	})
+	
+	function submitForm() {
+		var province = $("input[name='province']").val();
+		var city = $("input[name='city']").val();
+		var university
+	}
+})
+	
+</script>
 </head>
 <body>
    <!--------------Header--------------->
@@ -35,46 +48,57 @@
 					</div>
 					<div class="content" style="margin-top:15px; height:450px">
 						<div style="margin-left:200px">
-						<form:form method="Post" action="/friend/member/add.spring" commandName="memberBean" id="memberBean_form" class="form-horizontal">
+						<form:form method="Post" action="/friend/member/add.spring" commandName="memberBean" id="memberBean_form" cssClass="form-horizontal">
 							<div style="width:500px; height:25px"> 
 								<div style="width:100px;float:left; text-align:right">用户名： </div>
-								<div style="width:400px;float:left"> <form:input class="input-xlarge focused" id="userName" path="userName" type="text" /></div>
+								<div style="width:400px;float:left"> <form:input cssClass="input-xlarge focused" id="userName" path="userName" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">密码： </div>
-								<div style="width:400px;float:left"> <form:input class="input-xlarge focused" id="userPassword" path="userPassword" type="password" /></div>
-							</div>
-				
-							<div style="width:500px; height:25px; margin-top:15px"> 
-								<div style="width:100px;float:left; text-align:right">性别： </div>
-								<div style="width:400px;float:left"><form:input class="input-xlarge focused" id="gender" path="gender" type="text" /></div>
+								<div style="width:400px;float:left"><form:password cssClass="input-xlarge focused" id="userPassword" path="userPassword"/></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
-								<div style="width:100px;float:left; text-align:right">年龄： </div>
-								<div style="width:400px;float:left"><form:input class="input-xlarge focused" id="age" path="age" type="text" /></div>
+								<div style="width:100px;float:left; text-align:right">省份： </div>
+								<div style="width:400px;float:left">
+									<form:select path="province" cssClass="input-medium focused">
+										<option value="">-请选择-</option>
+										<option value="江苏省">江苏省</option>
+										<option value="山东省">山东省</option>
+										<option value="浙江省">浙江省</option>
+									</form:select>
+								</div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
-								<div style="width:100px;float:left; text-align:right">出生地： </div>
-								<div style="width:400px;float:left"><form:input class="input-xlarge focused" id="address" path="address" type="text" /></div>
+								<div style="width:100px;float:left; text-align:right">市： </div>
+								<div style="width:400px;float:left">
+									<form:select path="city" cssClass="input-medium focused">
+										<option value="">-请选择-</option>
+									</form:select>
+								</div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">大学： </div>
-								<div style="width:400px;float:left"><form:select path="university.id" data-rel="chosen">
-									<c:forEach var="myItem"  items="${UniversityBeanList}">
-									<option value="${myItem.id}">${myItem.name}</option>
-									</c:forEach>
-								  </form:select></div>
+								<div style="width:400px;float:left">
+									<form:select path="university" cssClass="input-medium focused">
+										<option value="">-请选择-</option>
+									</form:select>
+					  			</div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
-								<div style="width:100px;float:left; text-align:right">兴趣： </div>
-								<div style="width:400px;float:left"><c:forEach var="myItem"  items="${InterestBeanList}" varStatus="status">
-							  		<input type="checkbox" name="interestCheckBox" value="${myItem.id}" ${myItem.checked}/> ${myItem.name}
-							  	</label>
-							  	</c:forEach></div>
+								<div style="width:100px;float:left; text-align:right">专业： </div>
+								<div style="width:400px;float:left">
+									<form:select path="subject" cssClass="input-medium focused">
+										<option value="">-请选择-</option>
+									</form:select>
+								</div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">入学年份： </div>
+								<div style="width:400px;float:left"><form:input path="year" cssClass="input-medium" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">&nbsp;</div>
-								<div style="width:400px;float:left"><input type="submit" value="注册" /></div>
+								<div style="width:400px;float:left"><input type="button" onclick="submitForm()" value="注册" /></div>
 							</div>
 							<B>${MESSAGE}</B>
 							</form:form>

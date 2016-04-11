@@ -12,7 +12,15 @@ public class MemberBean {
 	private java.util.List<com.pro.pojo.InterestBean> interest = new java.util.ArrayList<com.pro.pojo.InterestBean>();
 	private String checked;
 	private int status;
-
+	
+	private String province;
+	
+	private String city;
+	
+	private String subject;
+	
+	private Integer year;
+	
 	public int getId() {
 		return id;
 	}
@@ -91,6 +99,38 @@ public class MemberBean {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public String getProvince() {
+		return province;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
+	}
+
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
 	}
 
 }
