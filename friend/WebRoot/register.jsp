@@ -5,7 +5,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-    <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,18 +13,56 @@
 <title>基于Java web的大学生同城交友平台</title>
 <link rel="stylesheet" href="/friend/css/zerogrid.css">
 <link rel="stylesheet" href="/friend/css/style.css">
+
+<script src='${pageContext.request.contextPath }/admin/js/jquery-1.7.2.min.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/jquery-ui-1.8.21.custom.min.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-transition.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-alert.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-modal.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-dropdown.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-scrollspy.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-tab.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-tooltip.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-popover.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-button.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-collapse.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-carousel.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-typeahead.js'></script>
+<script src='${pageContext.request.contextPath }/admin/js/bootstrap-tour.js'></script>
+
 <script type="text/javascript">
 $(function() {
-	$("input[name='province']").on("change", function() {
-	})
-	
-	function submitForm() {
-		var province = $("input[name='province']").val();
-		var city = $("input[name='city']").val();
-		var university
-	}
+	// 加载城市列表
+	$("select[name='province']").on("change", function() {
+		var provinceId = $(this).val();
+		if(provinceId != null && provinceId != "") {
+			$("select[name='city']").empty();
+			$.ajax({
+				url: "${pageContext.request.contextPath}/resource/loadCities.spring",
+				type: "get",
+				data: {provinceId : provinceId},
+				dataType: "json",
+				success: function(data) {
+					var defaultOption = "<option value='' >-请选择-</option>";
+					$("select[name='city']").append(defaultOption);
+					$.each(data, function(i, item) {
+						var option = "<option value='"+item.id+"' >"+item.name+"</option>";
+						$("select[name='city']").append(option);
+					})
+				}
+			});
+		}
+	});
+
 })
+function submitForm() {
+	var province = $("input[name='province']").val();
+	var city = $("input[name='city']").val();
+	var university = $("input[name='university']").val();
+	var subject = $("input[name='subject']").val();
+	var message = "";
 	
+}
 </script>
 </head>
 <body>
@@ -62,9 +100,9 @@ $(function() {
 								<div style="width:400px;float:left">
 									<form:select path="province" cssClass="input-medium focused">
 										<option value="">-请选择-</option>
-										<option value="江苏省">江苏省</option>
-										<option value="山东省">山东省</option>
-										<option value="浙江省">浙江省</option>
+										<option value="1">江苏省</option>
+										<option value="2">山东省</option>
+										<option value="3">浙江省</option>
 									</form:select>
 								</div>
 							</div>

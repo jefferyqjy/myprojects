@@ -1,11 +1,11 @@
 package com.pro.pojo;
 
-public class UniversityBean {
+public class SubjectBean {
 
 	private int id;
 	private String name;
-	private Integer cityId;
-	private com.pro.pojo.CityBean city;
+	private Integer universityId;
+	private UniversityBean university;
 	private String checked;
 
 	public int getId() {
@@ -24,14 +24,6 @@ public class UniversityBean {
 		this.name = name;
 	}
 
-	public com.pro.pojo.CityBean getCity() {
-		return city;
-	}
-
-	public void setCity(com.pro.pojo.CityBean city) {
-		this.city = city;
-	}
-
 	public String getChecked() {
 		return checked;
 	}
@@ -40,12 +32,20 @@ public class UniversityBean {
 		this.checked = checked;
 	}
 	
-	public Integer getCityId() {
-		return cityId;
+	public Integer getUniversityId() {
+		return universityId;
 	}
 
-	public void setCityId(Integer cityId) {
-		this.cityId = cityId;
+	public void setUniversityId(Integer universityId) {
+		this.universityId = universityId;
+	}
+
+	public UniversityBean getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(UniversityBean university) {
+		this.university = university;
 	}
 
 }

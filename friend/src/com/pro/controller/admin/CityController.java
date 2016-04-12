@@ -151,4 +151,10 @@ public class CityController {
 		mav.setViewName(pageUrl);
 		return mav;
 	}
+	
+	@RequestMapping(value = "/loadCities.spring", method = RequestMethod.GET)
+	@ResponseBody
+	public List<CityBean> loadCities(@RequestParam(value = "provinceId", required = false) Integer provinceId) throws Exception {
+		return cityService.findByProvince(provinceId);
+	}
 }

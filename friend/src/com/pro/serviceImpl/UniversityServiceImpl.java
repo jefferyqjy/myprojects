@@ -122,6 +122,23 @@ public class UniversityServiceImpl implements UniversityService {
 		}
 		return null;
 	}
+	
+	public List<UniversityBean> findByCityId(Integer cityId) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_UNIVERSITY WHERE CITY = ", cityId);
+		if (!CommonUtils.isEmptyList(rows)) {
+			List<UniversityBean> beanList = new ArrayList<UniversityBean>();
+			for (Map<String, Object> row : rows) {
+				UniversityBean universityBean = new UniversityBean();
+				universityBean.setId((Integer) row.get("ID"));
+				universityBean.setName((String) row.get("NAME"));
+				universityBean.setCityId((Integer) row.get("CITY"));
+				universityBean.setCity(cityService.get((Integer) row.get("CITY")));
+				beanList.add(universityBean);
+			}
+			return beanList;
+		}
+		return null;
+	}
 
 	public int getTotalRecords() throws ProException {
 		return jdbcTemplate.queryForInt("SELECT COUNT(*) FROM COM_PRO_UNIVERSITY");

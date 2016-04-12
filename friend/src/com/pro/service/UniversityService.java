@@ -19,6 +19,8 @@ public interface UniversityService {
 	public List<UniversityBean> list() throws ProException;
 
 	public List<UniversityBean> list(int start, int limit) throws ProException;
+	
+	public List<UniversityBean> findByCityId(Integer cityId) throws ProException;
 
 	public int getTotalRecords() throws ProException;
 

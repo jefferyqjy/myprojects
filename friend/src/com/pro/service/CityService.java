@@ -19,7 +19,9 @@ public interface CityService {
 	public List<CityBean> list() throws ProException;
 
 	public List<CityBean> list(int start, int limit) throws ProException;
+	
+	public List<CityBean> findByProvince(Integer provinceId) throws ProException;
 
 	public int getTotalRecords() throws ProException;
-
+	
 }

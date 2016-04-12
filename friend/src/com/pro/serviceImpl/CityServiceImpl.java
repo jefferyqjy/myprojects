@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 import com.pro.exception.ProException;
 import com.pro.pojo.CityBean;
 import com.pro.service.CityService;
+import com.pro.service.ProvinceService;
 
 @Service
 public class CityServiceImpl implements CityService {
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private ProvinceService provinceService;
 
 	@Override
 	public boolean add(CityBean cityBean) throws ProException {
@@ -112,6 +116,24 @@ public class CityServiceImpl implements CityService {
 		return null;
 	}
 
+	public List<CityBean> findByProvince(Integer provinceId) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_CITY WHERE PROVINCE = ?", provinceId);
+		if(!CommonUtils.isEmptyList(rows)) {
+			List<CityBean> beanList = new ArrayList<CityBean>();
+			for(Map<String, Object> row : rows) {
+				CityBean cityBean = new CityBean();
+				cityBean.setId((Integer) row.get("ID"));
+				cityBean.setName((String) row.get("NAME"));
+				cityBean.setPinyin((String) row.get("PINYIN"));
+				cityBean.setProvinceId((Integer) row.get("PROVINCE"));
+				cityBean.setProvince(provinceService.get((Integer) row.get("PROVINCE")));
+				beanList.add(cityBean);
+			}
+			return beanList;
+		}
+		return null;
+	}
+	
 	public int getTotalRecords() throws ProException {
 		return jdbcTemplate.queryForInt("SELECT COUNT(*) FROM COM_PRO_CITY");
 	}
