@@ -32,7 +32,7 @@
 
 <script type="text/javascript">
 $(function() {
-	// 加载城市列表
+	// load cities
 	$("select[name='province']").on("change", function() {
 		var provinceId = $(this).val();
 		if(provinceId != null && provinceId != "") {
@@ -54,14 +54,125 @@ $(function() {
 		}
 	});
 
+	// load universities
+	$("select[name='city']").on("change", function() {
+		var cityId = $(this).val();
+		if(cityId != null && cityId != "") {
+			$("select[name='university']").empty();
+			$.ajax({
+				url: "${pageContext.request.contextPath}/resource/loadUniversities.spring",
+				type: "get",
+				data: {cityId : cityId},
+				dataType: "json",
+				success: function(data) {
+					var defaultOption = "<option value='' >-请选择-</option>";
+					$("select[name='university']").append(defaultOption);
+					$.each(data, function(i, item) {
+						var option = "<option value='"+item.id+"' >"+item.name+"</option>";
+						$("select[name='university']").append(option);
+					})
+				}
+			});
+		}
+	});
+	
+	// load subjects
+	$("select[name='university']").on("change", function() {
+		var universityId = $(this).val();
+		if(universityId != null && universityId != "") {
+			$("select[name='subject']").empty();
+			$.ajax({
+				url: "${pageContext.request.contextPath}/resource/loadSubjects.spring",
+				type: "get",
+				data: {universityId : universityId},
+				dataType: "json",
+				success: function(data) {
+					var defaultOption = "<option value='' >-请选择-</option>";
+					$("select[name='subject']").append(defaultOption);
+					$.each(data, function(i, item) {
+						var option = "<option value='"+item.id+"' >"+item.name+"</option>";
+						$("select[name='subject']").append(option);
+					})
+				}
+			});
+		}
+	});
+
+	// enable year of entering university.
+	$("select[name='subject']").on("change", function() {
+		var subjectId = $(this).val();
+		if(subjectId != null && subjectId != '') {
+			$("input[name='year']").removeAttr("readonly");
+		}
+	});
+
 })
 function submitForm() {
-	var province = $("input[name='province']").val();
-	var city = $("input[name='city']").val();
-	var university = $("input[name='university']").val();
-	var subject = $("input[name='subject']").val();
 	var message = "";
 	
+	var userName = $("input[name='userName']").val();
+	if(userName == null || userName == "") {
+		message += "用户名不能为空！\n";
+	}
+	
+	var userPassword = $("input[name='userPassword']").val();
+	if(userPassword == null || userPassword == "") {
+		message += "密码不能为空！\n";
+	}
+	
+	var province = $("input[name='province']").val();
+	if(province == null || province == "") {
+		message += "省份不能为空！\n";
+	}
+	
+	var city = $("input[name='city']").val();
+	if(city == null || city == "") {
+		message += "城市不能为空！\n";
+	}
+	
+	var university = $("input[name='university']").val();
+	if(university == null || university == "") {
+		message += "学校不能为空！\n";
+	}
+	
+	var subject = $("input[name='subject']").val();
+	if(subject == null || subject == "") {
+		message += "专业不能为空！\n";
+	}
+
+	var year = $("input[name='year']").val();
+	if(year == null || year == "") {
+		message += "入学年份不能为空！";
+	}
+
+	var stuNo = $("input[name='stuNo']").val();
+	if(stuNo == null || stuNo = "") {
+		message += "学号不能为空！";
+	}
+
+	if(ajaxValidate(userName, stuNo)) {
+		
+	}
+	
+}
+
+function ajaxValidate(userName, stuNo) {
+	$.ajax({
+		url: "${pageContext.request.contextPath}/resource/ajaxValidate.spring",
+		type: "get",
+		data: {
+			userName : userName,
+			stuNo : stuNo
+		},
+		dataType: "json",
+		success: function(data) {
+			if(data.message != null && data.message != "") {
+				alert(data.message);
+				return false;
+			} 
+			return true;
+		}
+	});
 }
 </script>
 </head>
@@ -132,7 +243,7 @@ function submitForm() {
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">入学年份： </div>
-								<div style="width:400px;float:left"><form:input path="year" cssClass="input-medium" /></div>
+								<div style="width:400px;float:left"><form:input path="year" cssClass="input-medium" readonly="true" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">&nbsp;</div>

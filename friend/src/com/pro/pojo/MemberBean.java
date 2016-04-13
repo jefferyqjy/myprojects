@@ -21,6 +21,8 @@ public class MemberBean {
 	
 	private Integer year;
 	
+	private String stuNo;
+	
 	public int getId() {
 		return id;
 	}
@@ -131,6 +133,14 @@ public class MemberBean {
 
 	public void setYear(Integer year) {
 		this.year = year;
+	}
+
+	public String getStuNo() {
+		return stuNo;
+	}
+
+	public void setStuNo(String stuNo) {
+		this.stuNo = stuNo;
 	}
 
 }

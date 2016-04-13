@@ -30,4 +30,8 @@ public interface MemberService {
 	public List<InterestBean> getInterest(int id) throws ProException;
 	
 	public int login(String userName, String password) throws ProException;
+	
+	public MemberBean findByUserName(String userName) throws ProException;
+	
+	public MemberBean findByStuNo(String stuNo) throws ProException;
 }

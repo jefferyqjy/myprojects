@@ -1,6 +1,7 @@
 package com.pro.controller.resource;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,10 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.common.collect.Maps;
 import com.pro.pojo.CityBean;
+import com.pro.pojo.MemberBean;
 import com.pro.pojo.SubjectBean;
 import com.pro.pojo.UniversityBean;
 import com.pro.service.CityService;
+import com.pro.service.MemberService;
 import com.pro.service.SubjectService;
 import com.pro.service.UniversityService;
 
@@ -28,9 +32,11 @@ public class ResourceController {
 	
 	@Autowired
 	SubjectService subjectService;
+	
+	@Autowired
+	MemberService memberService;
 
 	/**
-	 * 加载城市列表
 	 * @param provinceId
 	 * @return
 	 * @throws Exception
@@ -42,7 +48,6 @@ public class ResourceController {
 	}
 	
 	/**
-	 * 加载大学列表
 	 * @param cityId
 	 * @return
 	 * @throws Exception
@@ -54,7 +59,6 @@ public class ResourceController {
 	}
 	
 	/**
-	 * 加载专业列表
 	 * @param universityId
 	 * @return
 	 * @throws Exception
@@ -63,5 +67,24 @@ public class ResourceController {
 	@ResponseBody
 	public List<SubjectBean> loadSubjects(@RequestParam(value = "universityId", required = false) Integer universityId) throws Exception {
 		return subjectService.findByUniversityId(universityId);
+	}
+	
+	@RequestMapping(value = "/ajaxValidate.spring", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, Object> ajaxValidate(@RequestParam(value = "userName", required = false) String userName,  
+			@RequestParam(value = "stuNo", required = false) String stuNo) throws Exception {
+		Map<String, Object> map = Maps.newHashMap();
+		String message = "";
+		MemberBean member = memberService.findByStuNo(stuNo);
+		if(member != null) {
+			message += "学号已存在！\n";
+		}
+		
+		member = memberService.findByUserName(userName);
+		if(member != null) {
+			message += "用户名已存在！\n";
+		}
+		map.put("message", message);
+		return map;
 	}
 }

@@ -227,4 +227,44 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return null;
 	}
+
+	@Override
+	public MemberBean findByStuNo(String stuNo) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_MEMBER WHERE STUNO = ?", stuNo);
+		if (!CommonUtils.isEmptyList(rows)) {
+			for (Map<String, Object> row : rows) {
+				MemberBean memberBean = new MemberBean();
+				memberBean.setId((Integer) row.get("ID"));
+				memberBean.setUserName((String) row.get("USERNAME"));
+				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
+				memberBean.setGender((String) row.get("GENDER"));
+				memberBean.setAge((Integer) row.get("AGE"));
+				memberBean.setAddress((String) row.get("ADDRESS"));
+				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
+				memberBean.setStatus((Integer) row.get("STATUS"));
+				return memberBean;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public MemberBean findByUserName(String userName) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_MEMBER WHERE USERNAME = ?", userName);
+		if (!CommonUtils.isEmptyList(rows)) {
+			for (Map<String, Object> row : rows) {
+				MemberBean memberBean = new MemberBean();
+				memberBean.setId((Integer) row.get("ID"));
+				memberBean.setUserName((String) row.get("USERNAME"));
+				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
+				memberBean.setGender((String) row.get("GENDER"));
+				memberBean.setAge((Integer) row.get("AGE"));
+				memberBean.setAddress((String) row.get("ADDRESS"));
+				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
+				memberBean.setStatus((Integer) row.get("STATUS"));
+				return memberBean;
+			}
+		}
+		return null;
+	}
 }

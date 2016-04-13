@@ -24,7 +24,7 @@ public class SubjectServiceImpl implements SubjectService {
 	private UniversityService universityService;
 	
 	public List<SubjectBean> findByUniversityId(Integer universityId) throws ProException {
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_SUBJECT WHERE UNIVERSITY = ", universityId);
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_SUBJECT WHERE UNIVERSITY = ?", universityId);
 		if (!CommonUtils.isEmptyList(rows)) {
 			List<SubjectBean> beanList = new ArrayList<SubjectBean>();
 			for (Map<String, Object> row : rows) {
