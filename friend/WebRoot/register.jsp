@@ -58,7 +58,7 @@ $(function() {
 	$("select[name='city']").on("change", function() {
 		var cityId = $(this).val();
 		if(cityId != null && cityId != "") {
-			$("select[name='university']").empty();
+			$("select[name='universityId']").empty();
 			$.ajax({
 				url: "${pageContext.request.contextPath}/resource/loadUniversities.spring",
 				type: "get",
@@ -66,10 +66,10 @@ $(function() {
 				dataType: "json",
 				success: function(data) {
 					var defaultOption = "<option value='' >-请选择-</option>";
-					$("select[name='university']").append(defaultOption);
+					$("select[name='universityId']").append(defaultOption);
 					$.each(data, function(i, item) {
 						var option = "<option value='"+item.id+"' >"+item.name+"</option>";
-						$("select[name='university']").append(option);
+						$("select[name='universityId']").append(option);
 					})
 				}
 			});
@@ -77,7 +77,7 @@ $(function() {
 	});
 	
 	// load subjects
-	$("select[name='university']").on("change", function() {
+	$("select[name='universityId']").on("change", function() {
 		var universityId = $(this).val();
 		if(universityId != null && universityId != "") {
 			$("select[name='subject']").empty();
@@ -106,7 +106,8 @@ $(function() {
 		}
 	});
 
-})
+});
+
 function submitForm() {
 	var message = "";
 	
@@ -120,22 +121,22 @@ function submitForm() {
 		message += "密码不能为空！\n";
 	}
 	
-	var province = $("input[name='province']").val();
+	var province = $("select[name='province']").val();
 	if(province == null || province == "") {
 		message += "省份不能为空！\n";
 	}
 	
-	var city = $("input[name='city']").val();
+	var city = $("select[name='city']").val();
 	if(city == null || city == "") {
 		message += "城市不能为空！\n";
 	}
 	
-	var university = $("input[name='university']").val();
+	var university = $("select[name='universityId']").val();
 	if(university == null || university == "") {
 		message += "学校不能为空！\n";
 	}
 	
-	var subject = $("input[name='subject']").val();
+	var subject = $("select[name='subject']").val();
 	if(subject == null || subject == "") {
 		message += "专业不能为空！\n";
 	}
@@ -146,14 +147,14 @@ function submitForm() {
 	}
 
 	var stuNo = $("input[name='stuNo']").val();
-	if(stuNo == null || stuNo = "") {
+	if(stuNo == null || stuNo == "") {
 		message += "学号不能为空！";
 	}
 
-	if(ajaxValidate(userName, stuNo)) {
-		
+	if(message != null && message != "") {
+		alert(message);
 	}
-	
+	ajaxValidate(userName, stuNo);
 }
 
 function ajaxValidate(userName, stuNo) {
@@ -168,12 +169,13 @@ function ajaxValidate(userName, stuNo) {
 		success: function(data) {
 			if(data.message != null && data.message != "") {
 				alert(data.message);
-				return false;
-			} 
-			return true;
+			} else {
+				$("#submit").click();
+			}
 		}
 	});
 }
+
 </script>
 </head>
 <body>
@@ -197,10 +199,10 @@ function ajaxValidate(userName, stuNo) {
 					</div>
 					<div class="content" style="margin-top:15px; height:450px">
 						<div style="margin-left:200px">
-						<form:form method="Post" action="/friend/member/add.spring" commandName="memberBean" id="memberBean_form" cssClass="form-horizontal">
+						<form:form method="post" action="/friend/member/add.spring" commandName="memberBean" id="memberBean_form" cssClass="form-horizontal">
 							<div style="width:500px; height:25px"> 
 								<div style="width:100px;float:left; text-align:right">用户名： </div>
-								<div style="width:400px;float:left"> <form:input cssClass="input-xlarge focused" id="userName" path="userName" /></div>
+								<div style="width:400px;float:left"><form:input cssClass="input-xlarge focused" id="userName" path="userName" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">密码： </div>
@@ -228,7 +230,7 @@ function ajaxValidate(userName, stuNo) {
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">大学： </div>
 								<div style="width:400px;float:left">
-									<form:select path="university" cssClass="input-medium focused">
+									<form:select path="universityId" cssClass="input-medium focused">
 										<option value="">-请选择-</option>
 									</form:select>
 					  			</div>
@@ -246,8 +248,15 @@ function ajaxValidate(userName, stuNo) {
 								<div style="width:400px;float:left"><form:input path="year" cssClass="input-medium" readonly="true" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">学号： </div>
+								<div style="width:400px;float:left"><form:input path="stuNo" cssClass="input-medium"/></div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">&nbsp;</div>
-								<div style="width:400px;float:left"><input type="button" onclick="submitForm()" value="注册" /></div>
+								<div style="width:400px;float:left">
+									<input type="button" onclick="submitForm()" value="注册" />
+									<input type="submit" id="submit" style="displey:none"/>
+								</div>
 							</div>
 							<B>${MESSAGE}</B>
 							</form:form>

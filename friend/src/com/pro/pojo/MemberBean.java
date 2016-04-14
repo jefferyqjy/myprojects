@@ -13,6 +13,8 @@ public class MemberBean {
 	private String checked;
 	private int status;
 	
+	private String universityId;
+	
 	private String province;
 	
 	private String city;
@@ -141,6 +143,14 @@ public class MemberBean {
 
 	public void setStuNo(String stuNo) {
 		this.stuNo = stuNo;
+	}
+
+	public String getUniversityId() {
+		return universityId;
+	}
+
+	public void setUniversityId(String universityId) {
+		this.universityId = universityId;
 	}
 
 }

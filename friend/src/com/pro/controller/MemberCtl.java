@@ -94,17 +94,9 @@ public class MemberCtl {
 		ModelAndView mav = new ModelAndView();
 		String pageUrl = "register";
 		mav.addObject("memberBean", memberBean);
-		mav.addObject("UniversityBeanList", universityService.list());
-		mav.addObject("InterestBeanList", interestService.list());
+		//mav.addObject("UniversityBeanList", universityService.list());
+		//mav.addObject("InterestBeanList", interestService.list());
 		try {
-			String[] values = request.getParameterValues("interestCheckBox");
-			if (values != null) {
-				for (String idValue : values) {
-					com.pro.pojo.InterestBean bean = new com.pro.pojo.InterestBean();
-					bean.setId(Integer.parseInt(idValue));
-					memberBean.getInterest().add(bean);
-				}
-			}
 			
 			if (memberService.add(memberBean)) {
 				mav.addObject("MESSAGE", "×¢²á³É¹¦");

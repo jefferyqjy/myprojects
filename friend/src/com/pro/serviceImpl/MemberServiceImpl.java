@@ -32,24 +32,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean add(MemberBean memberBean) throws ProException {
 		try {
-			jdbcTemplate
-					.update("INSERT INTO COM_PRO_MEMBER (USERNAME,USERPASSWORD,GENDER,AGE,ADDRESS,UNIVERSITY) VALUES(?,?,?,?,?,?)",
-							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getGender(),
-							memberBean.getAge(), memberBean.getAddress(), memberBean.getUniversity().getId());
-			memberBean
-					.setId(jdbcTemplate
-							.queryForInt(
-									"SELECT ID FROM COM_PRO_MEMBER WHERE USERNAME=? AND USERPASSWORD=? AND GENDER=? AND AGE=? AND ADDRESS=? AND UNIVERSITY=? ORDER BY ID DESC",
-									memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getGender(),
-									memberBean.getAge(), memberBean.getAddress(), memberBean.getUniversity().getId()));
-			if (memberBean.getInterest().size() > 0) {
+			jdbcTemplate.update("INSERT INTO COM_PRO_MEMBER (USERNAME,USERPASSWORD,UNIVERSITY,PROVINCE,CITY,SUBJECT,YEAR,STUNO) VALUES(?,?,?,?,?,?,?,?)",
+							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getUniversityId(),
+							memberBean.getProvince(), memberBean.getCity(), memberBean.getSubject(), memberBean.getYear(), memberBean.getStuNo());
+			/*if (memberBean.getInterest().size() > 0) {
 				List<Object[]> idList = new ArrayList<Object[]>();
 				for (InterestBean bean : memberBean.getInterest()) {
 					idList.add(new Object[] { memberBean.getId(), bean.getId() });
 				}
 				jdbcTemplate.batchUpdate("INSERT INTO COM_PRO_MEMBER_INTEREST (MEMBER_ID,INTEREST_ID) VALUES(?,?)",
 						idList);
-			}
+			}*/
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
