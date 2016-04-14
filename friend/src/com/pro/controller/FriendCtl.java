@@ -1,6 +1,8 @@
 package com.pro.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -16,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pro.exception.ProException;
 import com.pro.pojo.FriendGroup;
 import com.pro.pojo.MemberBean;
 import com.pro.pojo.Message;
+import com.pro.pojo.ReportBean;
 import com.pro.pojo.datatable.DatatableReponse;
 import com.pro.service.InterestService;
 import com.pro.service.MemberService;
+import com.pro.service.ReportService;
 import com.pro.service.UniversityService;
 import com.pro.utils.CommonUtils;
 import com.pro.utils.DateUtils;
@@ -41,6 +46,9 @@ public class FriendCtl {
 
 	@Autowired
 	InterestService interestService;
+	
+	@Autowired
+	ReportService reportService; 
 	
 	@RequestMapping(value = "/preList.spring", method = RequestMethod.GET)
 	public ModelAndView preUpdate(HttpSession session) throws Exception {
@@ -286,6 +294,43 @@ public class FriendCtl {
 		try {
 			jdbcTemplate.update("UPDATE COM_PRO_FRIEND_GROUP_USER SET GROUP_ID =? WHERE USER_ID=? AND FRIEND_ID=?", groupId, id, userId);
 		} catch (Exception e) {
+			e.printStackTrace();
+			flag = "0";
+		}
+		return flag;
+	}
+	
+	/**
+	 * do report
+	 * @param session
+	 * @param userId
+	 * @param reason
+	 * @return
+	 */
+	@RequestMapping(value = "/addReport.spring", method = RequestMethod.POST)
+	@ResponseBody
+	public String addReport(HttpSession session,
+			@RequestParam(value = "userId", required = false) String userId, 
+			@RequestParam(value = "reason", required = false) String reason) {
+		String flag = "1";
+		Integer id = (Integer) session.getAttribute("ONLINE_MEMBER_ID");
+		ReportBean report = new ReportBean();
+		report.setReason(reason);
+		report.setReporter(id.toString());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		report.setReportTime(df.format(new Date()));
+		report.setUserId(userId);
+		try {
+			reportService.add(report);
+			
+			Integer count = reportService.countByUserId(userId);
+			if(count >= 50) {
+				// move member info to black list
+				MemberBean member = memberService.get(Integer.valueOf(userId.trim()));
+				memberService.addBlackMember(member);
+				memberService.delete(member.getId());
+			}
+		} catch (ProException e) {
 			e.printStackTrace();
 			flag = "0";
 		}

@@ -90,9 +90,8 @@ body {
 							</div>
 						</div>
 						<div style="margin: 5px auto 5px auto">
-							<a style="margin-left: 30px" href="#newModal" role="button"
-								class="btn" data-toggle="modal">创建新组</a> <a href="#newModal2"
-								role="button" class="btn" data-toggle="modal">搜索好友</a>
+							<a style="margin-left: 30px" href="#newModal" role="button" class="btn" data-toggle="modal">创建新组</a> 
+							<a href="#newModal2" role="button" class="btn" data-toggle="modal">搜索好友</a>
 						</div>
 					</div>
 					<!--/span-->
@@ -201,6 +200,25 @@ body {
 			<a href="#" class="btn btn-primary" onClick="searchUser()">搜索</a>
 		</div>
 	</div>
+	
+	<!-- report modal div begin -->
+	<div class="modal hide fade" id="newModal13" style="z-index: 9999">
+
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			<h3>举报</h3>
+		</div>
+		<div class="modal-body" style="height: 100px;">
+			<p>
+				举报原因： <input class="input-xlarge focused" id="reason" type="text" />
+			</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" onclick="$('#newModal13').modal('hide');">关闭</a>
+			<a href="#" class="btn btn-primary" onClick="doReport()">举报</a>
+		</div>
+	</div>
+	<!-- report modal div end -->
 	<div id="groupRightClickDiv" style="display:none; z-index:99998; position: absolute;">
 		<table class="table table-hover" style="width: 80px; height:20px; border:1px solid green; text-align:center">
 			<tr height=20px><td align=center>删除</td></tr>
@@ -212,6 +230,7 @@ body {
 			<tr height=20px><td><center><a href="#" onClick="chatM()">聊天</a></center></td></tr>
 			<tr height=20px><td><center><a href="#" onClick="moveM()">移动</a></center></td></tr>
 			<tr height=20px><td><center><a href="#" onClick="deleteM()">删除</a></center></td></tr>
+			<tr height=20px><td><center><a href="#newModal13" role="button" data-toggle="modal">举报</a></center></td></tr>
 			<tr height=20px><td><center><a href="#" onClick="closeM()">关闭</a></center></td></tr>
 		</table>
 	</div>
@@ -514,6 +533,7 @@ body {
 			}		
 		}
 
+		// right click on the friend
 		function memberMouseDown(e) {
 			if(3 == e.which){ 
 				curMemberId = $(this).val();
@@ -589,6 +609,33 @@ body {
 						$("#newModal").modal('hide');
 						$('#groupName').val('');
 						openMsg('消息', '发创建新的组失败', refresh);
+					}
+				},
+				error : function(x, e) {
+					alert(e);
+				}
+			});
+		}
+
+		// method to call report
+		function doReport() {
+			var url = "${pageContext.request.contextPath}/frd/addReport.spring";
+			$.ajax({
+				url : url,
+				type : "POST",
+				data : {
+					userId : curMemberId,
+					reason : $("#reason").val()
+				},
+				success : function(input) {
+					if (input == "1") {
+						$("#newModal13").modal('hide');
+						$('#reason').val('');
+						openMsg('消息', '举报用户成功！', refresh);
+					} else {
+						$("#newModal13").modal('hide');
+						$('#groupName').val('');
+						openMsg('消息', '举报用户失败！', refresh);
 					}
 				},
 				error : function(x, e) {

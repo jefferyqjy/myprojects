@@ -260,4 +260,17 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return null;
 	}
+	
+	@Override
+	public boolean addBlackMember(MemberBean memberBean) throws ProException {
+		try {
+			jdbcTemplate.update("INSERT INTO COM_PRO_BLACK_MEMBER (USERNAME,USERPASSWORD,UNIVERSITY,PROVINCE,CITY,SUBJECT,YEAR,STUNO) VALUES(?,?,?,?,?,?,?,?)",
+							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getUniversityId(),
+							memberBean.getProvince(), memberBean.getCity(), memberBean.getSubject(), memberBean.getYear(), memberBean.getStuNo());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 }

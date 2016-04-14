@@ -34,4 +34,6 @@ public interface MemberService {
 	public MemberBean findByUserName(String userName) throws ProException;
 	
 	public MemberBean findByStuNo(String stuNo) throws ProException;
+	
+	public boolean addBlackMember(MemberBean memberBean) throws ProException; 
 }
