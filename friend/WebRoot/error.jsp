@@ -27,12 +27,8 @@
 	<div class="zerogrid">
 		<div class="row block">
 			<div class="main-content">
-			
 				<font color="red"><b>${ERROR_MESSAGE}</b></font> 
-			
 			</div>
-		
-			
 		</div>
 	</div>
 </section>

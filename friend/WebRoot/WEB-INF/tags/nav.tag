@@ -28,13 +28,11 @@
 		%>
 		
 	</ul>
-	<ul>
-	<li>${MESSAGE}</li>
+	<ul style="margin-bottom:15px;" >
+		<li>${MESSAGE}</li>
 	</ul>
 </nav>
-
 <script>
-
 function checkUser() {
 	var user = '${ONLINE_MEMBER}';
 	if (user == null || user =="") {

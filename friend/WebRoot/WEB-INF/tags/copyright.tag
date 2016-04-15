@@ -5,8 +5,6 @@
 </div>
 
 	<div class="modal hide fade" style="display:none" id="msgModal" style="z-index:99999">
-	
-	
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" onclick="$('#msgModal').hide();">&times;</button>
 			<h3 id='msgTitle'>消息中心</h3>

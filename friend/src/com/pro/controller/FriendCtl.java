@@ -327,7 +327,10 @@ public class FriendCtl {
 			if(count >= 50) {
 				// move member info to black list
 				MemberBean member = memberService.get(Integer.valueOf(userId.trim()));
-				memberService.addBlackMember(member);
+				MemberBean blackMember = memberService.getBlackMember(member.getUserName());
+				if(blackMember == null) {
+					memberService.addBlackMember(member);
+				}
 				memberService.delete(member.getId());
 			}
 		} catch (ProException e) {

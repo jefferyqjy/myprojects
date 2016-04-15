@@ -15,26 +15,30 @@
 
 <!--------------Navigation--------------->
 
-	<tags:nav/>
+<tags:nav/>
 
 <!--------------Content--------------->
-<section id="content">
+<section id="content" style="padding-bottom:20px;">
 	<div class="zerogrid">
 		<div class="row block">
 			<div class="main-content col11" style="width:100%; min-height：600px">
-			
 				<article>
-					<div class="content" style="margin-top:15px; margin-left:400px; height:500px">
+					<div class="content" style="margin-top:35px; margin-left:400px; height:500px">
 						WELCOME TO OUR WEB SITE
 					</div>
 				</article>
-			
 			</div>
-			
-			
 		</div>
 	</div>
 </section>
-	<tags:copyright/>
+<tags:copyright/>
+<script type="text/javascript">
+var message = "${MESSAGE}";
+if(message != null && message != "") {
+	document.getElementById("msgTitle").text("");
+	$("#msgBody").text(message);
+	$('#msgModal').modal();
+}
+</script>
 </body>
 </html>

@@ -273,4 +273,31 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return true;
 	}
+
+	@Override
+	public MemberBean getBlackMember(String userName) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_BLACK_MEMBER WHERE USERNAME = ?", userName);
+		if (!CommonUtils.isEmptyList(rows)) {
+			for (Map<String, Object> row : rows) {
+				MemberBean memberBean = new MemberBean();
+				memberBean.setId((Integer) row.get("ID"));
+				memberBean.setUserName((String) row.get("USERNAME"));
+				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
+				memberBean.setGender((String) row.get("GENDER"));
+				memberBean.setAge((Integer) row.get("AGE"));
+				memberBean.setAddress((String) row.get("ADDRESS"));
+				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
+				memberBean.setStatus((Integer) row.get("STATUS"));
+				memberBean.setCity(((Integer) row.get("CITY")).toString());
+				memberBean.setProvince(((Integer) row.get("PROVINCE")).toString());
+				memberBean.setStuNo((String) row.get("STUNO"));
+				memberBean.setSubject(((Integer) row.get("SUBJECT")).toString());
+				memberBean.setUniversityId(((Integer) row.get("UNIVERSITY")).toString());
+				memberBean.setYear((Integer) row.get("YEAR"));
+				return memberBean;
+			}
+		}
+		return null;
+	}
+	
 }
