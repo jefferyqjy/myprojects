@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>城市列表</title>
+	<title>省份列表</title>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<link id='bs-css' href='../css/bootstrap-cerulean.css' rel='stylesheet'>
 	<style type="text/css">
@@ -67,7 +67,7 @@
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
 				   <ul class="nav nav-tabs nav-stacked main-menu">
-						<li class="nav-header hidden-tablet">省份管理</li>
+				   		<li class="nav-header hidden-tablet">省份管理</li>
 						<li><a class="ajax-link" href="/friend/admin/province/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">省份查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/province/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">省份添加</span></a></li>
 						<li class="nav-header hidden-tablet">城市管理</li>
@@ -92,47 +92,42 @@
 				<div>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">城市</a> <span class="divider">/</span>
+							<a href="#">省份</a> <span class="divider">/</span>
 						</li>
 						<li>
-							<a href="#"> 查看 </a>
+							<a href="#"> 列表 </a>
 						</li>
 					</ul>
 				</div>
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> 表单元素: 城市</h2>
+						<h2><i class="icon-user"></i> 省份</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
 						</div>
 					</div>
 					<div class="box-content">
-						<form:form method="Post" action="/friend/admin/city/add.spring" commandName="cityBean" id="cityBean_form" class="form-horizontal">
-							<fieldset>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">城市</label>
-							  	<div class="controls">
-								  <form:input cssClass="input-xlarge focused" id="name" path="name" />
-							  	</div>
-							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">拼音</label>
-							  	<div class="controls">
-								  <form:input cssClass="input-xlarge focused" id="name" path="name" />
-							  	</div>
-							  </div>
-							  <div class="control-group">
-								<label class="control-label" for="focusedInput">省份</label>
-							  	<div class="controls">
-							  		<form:input cssClass="input-xlarge focused" id="provinceName" path="provinceName" />
-							  	</div>
-							  </div>
-							</fieldset>
-						</form:form>
-						<B>${MESSAGE}</B>
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th>编号</th>
+								  <th>省份</th>
+								  <th>拼音</th>
+								  <th>操作</th>
+							  </tr>
+						  </thead>
+					  </table>
 					</div>
+                 <div class="box-content">
+                     <p class="center">
+                     <button id="toggle-fullscreen" class="btn btn-large btn-primary visible-desktop" data-toggle="button">全屏开关</button>
+		                </p>
+		                <br/>
+		                <ul class="thumbnails gallery" id="imgArea">
+		                </ul>
+	                </div>
 				</div><!--/span-->
 			</div><!--/row-->
 			</div><!--/#content.span10-->
@@ -178,5 +173,9 @@
 	<script src='../js/jquery.uploadify-3.1.min.js'></script>
 	<script src='../js/jquery.history.js'></script>
 	<script src='../js/charisma.js'></script>
+	<script src='../js/province.js'></script>
+	<script>$(document).ready(function() {
+		initializeEvents();
+	});</script>
 </body>
 </html>

@@ -5,6 +5,15 @@ public class ProvinceBean {
 	private int id;
 	private String name;
 	private String pinyin;
+	private String checked;
+
+	public String getChecked() {
+		return checked;
+	}
+
+	public void setChecked(String checked) {
+		this.checked = checked;
+	}
 
 	public int getId() {
 		return id;

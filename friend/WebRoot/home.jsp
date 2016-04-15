@@ -35,9 +35,7 @@
 <script type="text/javascript">
 var message = "${MESSAGE}";
 if(message != null && message != "") {
-	document.getElementById("msgTitle").text("");
-	$("#msgBody").text(message);
-	$('#msgModal').modal();
+	alert(message);	
 }
 </script>
 </body>

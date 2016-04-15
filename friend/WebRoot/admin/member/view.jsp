@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>会员List</title>
+	<title>会员列表</title>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<link id='bs-css' href='../css/bootstrap-cerulean.css' rel='stylesheet'>
 	<style type="text/css">
@@ -53,9 +53,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
+						<li><a href="#">文档</a></li>
 						<li class="divider"></li>
-						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">退出</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,12 +67,18 @@
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
 				   <ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">省份管理</li>
+						<li><a class="ajax-link" href="/friend/admin/province/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">省份查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/province/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">省份添加</span></a></li>
 						<li class="nav-header hidden-tablet">城市管理</li>
 						<li><a class="ajax-link" href="/friend/admin/city/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">城市查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/city/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">城市添加</span></a></li>
 						<li class="nav-header hidden-tablet">大学管理</li>
 						<li><a class="ajax-link" href="/friend/admin/university/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">大学查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/university/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">大学添加</span></a></li>
+						<li class="nav-header hidden-tablet">专业管理</li>
+						<li><a class="ajax-link" href="/friend/admin/subject/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">专业查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/subject/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">专业添加</span></a></li>
 						<li class="nav-header hidden-tablet">会员管理</li>
 						<li><a class="ajax-link" href="/friend/admin/member/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">会员查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/member/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">会员添加</span></a></li>
@@ -89,14 +95,14 @@
 							<a href="#">会员</a> <span class="divider">/</span>
 						</li>
 						<li>
-							<a href="#"> View </a>
+							<a href="#"> 查看 </a>
 						</li>
 					</ul>
 				</div>
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Form Elements: 会员</h2>
+						<h2><i class="icon-edit"></i> 表单元素: 会员</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
@@ -106,43 +112,43 @@
 						<form:form method="Post" action="/friend/admin/member/add.spring" commandName="memberBean" id="memberBean_form" class="form-horizontal">
 							<fieldset>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">USERNAME</label>
+								<label class="control-label" for="focusedInput">用户名</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="userName" path="userName" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">USERPASSWORD</label>
+								<label class="control-label" for="focusedInput">密码</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="userPassword" path="userPassword" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">GENDER</label>
+								<label class="control-label" for="focusedInput">性别</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="gender" path="gender" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">AGE</label>
+								<label class="control-label" for="focusedInput">年龄</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="age" path="age" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">ADDRESS</label>
+								<label class="control-label" for="focusedInput">地址</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="address" path="address" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">UNIVERSITY</label>
+								<label class="control-label" for="focusedInput">大学</label>
 							  	<div class="controls">
 								  <form:input class="input-xlarge focused" id="university" path="university.name" type="text" />
 							  	</div>
 							  </div>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">INTEREST</label>
+								<label class="control-label" for="focusedInput">兴趣</label>
 							  	<div class="controls">
 									<c:forEach var="myItem"  items="${InterestBeanList}" varStatus="status">
 							  	<label class="checkbox inline">

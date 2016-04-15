@@ -95,9 +95,9 @@ public class UniversityController {
 		mav.addObject("CityBeanList", cityService.list());
 		try {
 			if (universityService.add(universityBean)) {
-				mav.addObject("MESSAGE", "Add University Successfully");
+				mav.addObject("MESSAGE", "添加大学成功！");
 			} else {
-				mav.addObject("MESSAGE", "Add University Failed");
+				mav.addObject("MESSAGE", "添加大学失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
@@ -129,9 +129,9 @@ public class UniversityController {
 		String pageUrl = "admin/university/update";
 		try {
 			if (universityService.update(universityBean)) {
-				mav.addObject("MESSAGE", "Update University Successfully");
+				mav.addObject("MESSAGE", "更新大学成功！");
 			} else {
-				mav.addObject("MESSAGE", "Update University Failed");
+				mav.addObject("MESSAGE", "更新大学失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
@@ -148,9 +148,9 @@ public class UniversityController {
 		String pageUrl = "admin/university/list";
 		try {
 			if (universityService.delete(id)) {
-				mav.addObject("MESSAGE", "Delete University Successfully");
+				mav.addObject("MESSAGE", "删除大学成功！");
 			} else {
-				mav.addObject("MESSAGE", "Delete University Failed");
+				mav.addObject("MESSAGE", "删除大学失败！");
 			}
 			List<UniversityBean> list = universityService.list();
 			mav.addObject("UNIVERSITYLIST", list);

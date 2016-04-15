@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>城市List</title>
+	<title>城市列表</title>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<link id='bs-css' href='../css/bootstrap-cerulean.css' rel='stylesheet'>
 	<style type="text/css">
@@ -53,9 +53,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
+						<li><a href="#">文档</a></li>
 						<li class="divider"></li>
-						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">退出</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,12 +67,18 @@
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
 				   <ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">省份管理</li>
+						<li><a class="ajax-link" href="/friend/admin/province/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">省份查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/province/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">省份添加</span></a></li>
 						<li class="nav-header hidden-tablet">城市管理</li>
 						<li><a class="ajax-link" href="/friend/admin/city/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">城市查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/city/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">城市添加</span></a></li>
 						<li class="nav-header hidden-tablet">大学管理</li>
 						<li><a class="ajax-link" href="/friend/admin/university/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">大学查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/university/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">大学添加</span></a></li>
+						<li class="nav-header hidden-tablet">专业管理</li>
+						<li><a class="ajax-link" href="/friend/admin/subject/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">专业查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/subject/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">专业添加</span></a></li>
 						<li class="nav-header hidden-tablet">会员管理</li>
 						<li><a class="ajax-link" href="/friend/admin/member/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">会员查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/member/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">会员添加</span></a></li>
@@ -89,14 +95,14 @@
 							<a href="#">城市</a> <span class="divider">/</span>
 						</li>
 						<li>
-							<a href="#"> Add </a>
+							<a href="#"> 添加 </a>
 						</li>
 					</ul>
 				</div>
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header well" data-original-title>
-						<h2><i class="icon-edit"></i> Form Elements: 城市</h2>
+						<h2><i class="icon-edit"></i> 表单元素: 城市</h2>
 						<div class="box-icon">
 							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
 							<a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>
@@ -106,13 +112,28 @@
 						<form:form method="Post" action="/friend/admin/city/add.spring" commandName="cityBean" id="cityBean_form" class="form-horizontal">
 							<fieldset>
 							  <div class="control-group">
-								<label class="control-label" for="focusedInput">NAME</label>
+								<label class="control-label" for="focusedInput">城市</label>
 							  	<div class="controls">
-								  <form:input class="input-xlarge focused" id="name" path="name" type="text" />
+								  <form:input cssClass="input-xlarge focused" id="name" path="name" />
+							  	</div>
+							  </div>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">拼音</label>
+							  	<div class="controls">
+								  <form:input cssClass="input-xlarge focused" id="pinyin" path="pinyin" />
+							  	</div>
+							  </div>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">省份</label>
+							  	<div class="controls">
+							  		<form:select path="provinceId" id="provinceId" cssClass="input-xlarge focused" >
+							  			<option value="" >请选择</option>
+							  			<form:options items="${provinces}" itemLabel="name"  itemValue="id" />
+							  		</form:select>
 							  	</div>
 							  </div>
 							  <div class="form-actions">
-								<button type="submit" class="btn btn-primary">Save changes</button>
+								<button type="submit" class="btn btn-primary">保存</button>
 							  </div>
 							</fieldset>
 						</form:form>

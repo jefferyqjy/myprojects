@@ -8,6 +8,15 @@ public class CityBean {
 	private Integer provinceId;
 	private ProvinceBean province;
 	private String checked;
+	private String provinceName;
+
+	public String getProvinceName() {
+		return provinceName;
+	}
+
+	public void setProvinceName(String provinceName) {
+		this.provinceName = provinceName;
+	}
 
 	public String getChecked() {
 		return checked;

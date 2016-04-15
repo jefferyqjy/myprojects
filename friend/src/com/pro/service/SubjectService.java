@@ -7,7 +7,7 @@ import com.pro.pojo.SubjectBean;
 
 public interface SubjectService {
 
-	/*public boolean add(SubjectBean subjectBean) throws ProException;
+	public boolean add(SubjectBean subjectBean) throws ProException;
 
 	public boolean update(SubjectBean subjectBean) throws ProException;
 
@@ -19,10 +19,10 @@ public interface SubjectService {
 
 	public List<SubjectBean> list() throws ProException;
 
-	public List<SubjectBean> list(int start, int limit) throws ProException;*/
+	public List<SubjectBean> list(int start, int limit) throws ProException;
 	
 	public List<SubjectBean> findByUniversityId(Integer university) throws ProException;
 
-	//public int getTotalRecords() throws ProException;
+	public int getTotalRecords() throws ProException;
 
 }

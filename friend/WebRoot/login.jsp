@@ -54,7 +54,7 @@
 			<div class="row-fluid">
 				<div class="well span5 center login-box">
 					<div class="alert alert-info">
-						Please login with your Username and Password.
+						请使用您的用户名及密码登录
 					</div>
 					<form class="form-horizontal" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
 						<fieldset>
@@ -69,12 +69,12 @@
 							<div class="clearfix"></div>
 
 							<div class="input-prepend">
-							<a href="home.jsp">home</a>
+							<a href="home.jsp">主页</a>
 							</div>
 							<div class="clearfix"></div>
 
 							<p class="center span5">
-							<button type="submit" class="btn btn-primary">Login</button>
+							<button type="submit" class="btn btn-primary">登录</button>
 							</p>
 						</fieldset>
 					</form>

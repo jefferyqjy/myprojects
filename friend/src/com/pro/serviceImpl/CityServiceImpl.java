@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import com.pro.exception.ProException;
 import com.pro.pojo.CityBean;
+import com.pro.pojo.ProvinceBean;
 import com.pro.service.CityService;
 import com.pro.service.ProvinceService;
 
@@ -24,9 +25,8 @@ public class CityServiceImpl implements CityService {
 	@Override
 	public boolean add(CityBean cityBean) throws ProException {
 		try {
-			jdbcTemplate.update("INSERT INTO COM_PRO_CITY (NAME) VALUES(?)", cityBean.getName());
-			cityBean.setId(jdbcTemplate.queryForInt("SELECT ID FROM COM_PRO_CITY WHERE NAME=? ORDER BY ID DESC",
-					cityBean.getName()));
+			jdbcTemplate.update("INSERT INTO COM_PRO_CITY (NAME, PINYIN, PROVINCE) VALUES(?, ?, ?)", cityBean.getName(), cityBean.getPinyin(), cityBean.getProvinceId());
+			cityBean.setId(jdbcTemplate.queryForInt("SELECT ID FROM COM_PRO_CITY WHERE NAME=? ORDER BY ID DESC", cityBean.getName()));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -37,7 +37,7 @@ public class CityServiceImpl implements CityService {
 	@Override
 	public boolean update(CityBean cityBean) throws ProException {
 		try {
-			jdbcTemplate.update("UPDATE COM_PRO_CITY SET NAME=? WHERE ID =?", cityBean.getName(), cityBean.getId());
+			jdbcTemplate.update("UPDATE COM_PRO_CITY SET NAME=?, PINYIN=?, PROVINCE=? WHERE ID =?", cityBean.getName(), cityBean.getPinyin(), cityBean.getProvinceId(), cityBean.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -65,6 +65,11 @@ public class CityServiceImpl implements CityService {
 			cityBean.setId(id);
 			cityBean.setId((Integer) row.get("ID"));
 			cityBean.setName((String) row.get("NAME"));
+			cityBean.setPinyin((String) row.get("PINYIN"));
+			cityBean.setProvinceId((Integer) row.get("PROVINCE"));
+			ProvinceBean province = provinceService.get((Integer) row.get("PROVINCE")); 
+			cityBean.setProvince(province);
+			cityBean.setProvinceName(province == null ? "" : province.getName());
 			return cityBean;
 		}
 		return null;
@@ -78,6 +83,11 @@ public class CityServiceImpl implements CityService {
 			Map<String, Object> row = rows.get(0);
 			cityBean.setId((Integer) row.get("ID"));
 			cityBean.setName((String) row.get("NAME"));
+			cityBean.setPinyin((String) row.get("PINYIN"));
+			cityBean.setProvinceId((Integer) row.get("PROVINCE"));
+			ProvinceBean province = provinceService.get((Integer) row.get("PROVINCE")); 
+			cityBean.setProvince(province);
+			cityBean.setProvinceName(province == null ? "" : province.getName());
 			return cityBean;
 		}
 		return null;
@@ -92,6 +102,11 @@ public class CityServiceImpl implements CityService {
 				CityBean cityBean = new CityBean();
 				cityBean.setId((Integer) row.get("ID"));
 				cityBean.setName((String) row.get("NAME"));
+				cityBean.setPinyin((String) row.get("PINYIN"));
+				cityBean.setProvinceId((Integer) row.get("PROVINCE"));
+				ProvinceBean province = provinceService.get((Integer) row.get("PROVINCE")); 
+				cityBean.setProvince(province);
+				cityBean.setProvinceName(province == null ? "" : province.getName());
 				beanList.add(cityBean);
 			}
 			return beanList;
@@ -109,6 +124,11 @@ public class CityServiceImpl implements CityService {
 				CityBean cityBean = new CityBean();
 				cityBean.setId((Integer) row.get("ID"));
 				cityBean.setName((String) row.get("NAME"));
+				cityBean.setPinyin((String) row.get("PINYIN"));
+				cityBean.setProvinceId((Integer) row.get("PROVINCE"));
+				ProvinceBean province = provinceService.get((Integer) row.get("PROVINCE")); 
+				cityBean.setProvince(province);
+				cityBean.setProvinceName(province == null ? "" : province.getName());
 				beanList.add(cityBean);
 			}
 			return beanList;
@@ -126,7 +146,9 @@ public class CityServiceImpl implements CityService {
 				cityBean.setName((String) row.get("NAME"));
 				cityBean.setPinyin((String) row.get("PINYIN"));
 				cityBean.setProvinceId((Integer) row.get("PROVINCE"));
-				cityBean.setProvince(provinceService.get((Integer) row.get("PROVINCE")));
+				ProvinceBean province = provinceService.get((Integer) row.get("PROVINCE")); 
+				cityBean.setProvince(province);
+				cityBean.setProvinceName(province == null ? "" : province.getName());
 				beanList.add(cityBean);
 			}
 			return beanList;

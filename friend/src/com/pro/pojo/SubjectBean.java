@@ -6,6 +6,16 @@ public class SubjectBean {
 	private String name;
 	private Integer universityId;
 	private UniversityBean university;
+	private String universityName;
+	
+	public String getUniversityName() {
+		return universityName;
+	}
+
+	public void setUniversityName(String universityName) {
+		this.universityName = universityName;
+	}
+
 	private String checked;
 
 	public int getId() {

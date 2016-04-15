@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import com.pro.exception.ProException;
 import com.pro.pojo.CityBean;
+import com.pro.pojo.ProvinceBean;
 import com.pro.pojo.datatable.CityDatatable;
 import com.pro.service.CityService;
+import com.pro.service.ProvinceService;
 
 @Controller
 @RequestMapping(value = "/admin/city")
@@ -22,6 +24,9 @@ public class CityController {
 	@Autowired
 	CityService cityService;
 
+	@Autowired
+	ProvinceService provinceService;
+	
 	@RequestMapping(value = "/view.spring", method = RequestMethod.GET)
 	public ModelAndView view(@RequestParam(value = "id", required = false) Integer id) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -78,6 +83,9 @@ public class CityController {
 		// add other logic.
 		mav.setViewName(pageUrl);
 		mav.addObject("cityBean", new CityBean());
+		
+		List<ProvinceBean> list = provinceService.list();
+		mav.addObject("provinces", list);
 		return mav;
 	}
 
@@ -88,9 +96,9 @@ public class CityController {
 		mav.addObject("cityBean", cityBean);
 		try {
 			if (cityService.add(cityBean)) {
-				mav.addObject("MESSAGE", "Add City Successfully");
+				mav.addObject("MESSAGE", "添加城市成功！");
 			} else {
-				mav.addObject("MESSAGE", "Add City Failed");
+				mav.addObject("MESSAGE", "添加城市失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
@@ -111,6 +119,9 @@ public class CityController {
 			e.printStackTrace();
 		}
 		mav.setViewName(pageUrl);
+		
+		List<ProvinceBean> list = provinceService.list();
+		mav.addObject("provinces", list);
 		return mav;
 	}
 
@@ -121,14 +132,16 @@ public class CityController {
 		String pageUrl = "admin/city/update";
 		try {
 			if (cityService.update(cityBean)) {
-				mav.addObject("MESSAGE", "Update City Successfully");
+				mav.addObject("MESSAGE", "更新城市成功！");
 			} else {
-				mav.addObject("MESSAGE", "Update City Failed");
+				mav.addObject("MESSAGE", "更新城市失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
 		mav.addObject("cityBean", cityBean);
+		List<ProvinceBean> list = provinceService.list();
+		mav.addObject("provinces", list);
 		mav.setViewName(pageUrl);
 		return mav;
 	}
@@ -139,9 +152,9 @@ public class CityController {
 		String pageUrl = "admin/city/list";
 		try {
 			if (cityService.delete(id)) {
-				mav.addObject("MESSAGE", "Delete City Successfully");
+				mav.addObject("MESSAGE", "删除城市成功！");
 			} else {
-				mav.addObject("MESSAGE", "Delete City Failed");
+				mav.addObject("MESSAGE", "删除城市失败！");
 			}
 			List<CityBean> list = cityService.list();
 			mav.addObject("CITYLIST", list);

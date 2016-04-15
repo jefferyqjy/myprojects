@@ -2,7 +2,7 @@ function initializeEvents() {
 	$('.datatable').dataTable({
 		"sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span12'i><'span12 center'p>>",
 		"bServerSide" : true,
-		"sAjaxSource" : "/friend/admin/city/list.spring",
+		"sAjaxSource" : "/friend/admin/province/list.spring",
 	    "sServerMethod" : "POST" ,
 	    "bProcessing" : false,
 	    "bPaginate": true,
@@ -63,37 +63,30 @@ function makeCollumnDef() {
 	           "aTargets" : [ 1 ]
 	        },
 	        { "fnRender" : function (oObj, sVal) {
-	      	        return oObj.aData.pinyin;
+      	        	return oObj.aData.pinyin;
 	           },
 	           "bVisible" : true ,
 	           "aTargets" : [ 2 ]
 	        },
 	        { "fnRender" : function (oObj, sVal) {
-	      	        return oObj.aData.provinceName;
-	           },
-	           "bVisible" : true ,
-	           "aTargets" : [ 3 ]
-	        },
-	        { "fnRender" : function (oObj, sVal) {
 	      	        return createAction(oObj.aData.id);
 	           },
 	           "bVisible" : true ,
-	           "aTargets" : [ 4 ]
+	           "aTargets" : [ 3 ]
 	        }]; 
 }
 function makeCollomns(){
 	return [{ "mDataProp" : "id", "sHeight":"15px"}, 
         	{ "mDataProp" : "name"},
         	{ "mDataProp" : "pinyin"},
-        	{ "mDataProp" : "provinceName"},
         	{ "mDataProp" : "checked"}];
 }
 function createAction(id) {
-	var inhtml = '<a class="btn btn-success" href="/friend/admin/city/view.spring?id=' + id + '">';
+	var inhtml = '<a class="btn btn-success" href="/friend/admin/province/view.spring?id=' + id + '">';
 	inhtml += '<i class="icon-zoom-in icon-white"></i>View</a> ';
-	inhtml += '<a class="btn btn-info" href="/friend/admin/city/preUpdate.spring?id=' + id + '">';
+	inhtml += '<a class="btn btn-info" href="/friend/admin/province/preUpdate.spring?id=' + id + '">';
 	inhtml += '<i class="icon-edit icon-white"></i>Edit</a> ';
-	inhtml += '<a class="btn btn-danger" href="/friend/admin/city/delete.spring?id=' + id + '">';
+	inhtml += '<a class="btn btn-danger" href="/friend/admin/province/delete.spring?id=' + id + '">';
 	inhtml += '<i class="icon-trash icon-white"></i>Delete</a>';
 	return inhtml;
 }

@@ -1,7 +1,9 @@
 package com.pro.controller.admin;
 
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,26 +12,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.pro.exception.ProException;
-import com.pro.pojo.InterestBean;
-import com.pro.pojo.datatable.InterestDatatable;
-import com.pro.service.InterestService;
+import com.pro.pojo.ProvinceBean;
+import com.pro.pojo.datatable.CityDatatable;
+import com.pro.service.ProvinceService;
 
 @Controller
-@RequestMapping(value = "/admin/interest")
-public class InterestController {
+@RequestMapping(value = "/admin/province")
+public class ProvinceController {
 
 	@Autowired
-	InterestService interestService;
+	ProvinceService provinceService;
 
 	@RequestMapping(value = "/view.spring", method = RequestMethod.GET)
 	public ModelAndView view(@RequestParam(value = "id", required = false) Integer id) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/view";
+		String pageUrl = "admin/province/view";
 		// add other logic.
 		try {
-			InterestBean interestBean = interestService.get(id);
-			mav.addObject("interestBean", interestBean);
+			ProvinceBean provinceBean = provinceService.get(id);
+			mav.addObject("provinceBean", provinceBean);
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
@@ -40,10 +43,10 @@ public class InterestController {
 	@RequestMapping(value = "/listAll.spring", method = RequestMethod.GET)
 	public ModelAndView listAll() throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/list";
+		String pageUrl = "admin/province/list";
 		try {
-			List<InterestBean> list = interestService.list();
-			mav.addObject("INTERESTLIST", list);
+			List<ProvinceBean> list = provinceService.list();
+			mav.addObject("PROVINCELIST", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,18 +56,18 @@ public class InterestController {
 
 	@RequestMapping(value = "/list.spring", method = RequestMethod.POST)
 	public @ResponseBody
-	InterestDatatable list(@RequestParam(value = "iDisplayStart", required = false) Integer start,
+	CityDatatable list(@RequestParam(value = "iDisplayStart", required = false) Integer start,
 			@RequestParam(value = "iDisplayLength", required = false) Integer limit,
 			@RequestParam(value = "sEcho", required = false) Integer sEcho) throws Exception {
-		InterestDatatable data = new InterestDatatable();
+		CityDatatable data = new CityDatatable();
 		try {
 			data.setsEcho(sEcho);
 			data.setiDisplayStart(start);
 			data.setiDisplayLength(limit);
-			int total = interestService.getTotalRecords();
+			int total = provinceService.getTotalRecords();
 			data.setiTotalDisplayRecords(total);
 			data.setiTotalRecords(total);
-			data.setAaData(interestService.list(start, limit));
+			data.setAaData(provinceService.list(start, limit));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -74,24 +77,23 @@ public class InterestController {
 	@RequestMapping(value = "/preAdd.spring", method = RequestMethod.GET)
 	public ModelAndView preAdd() throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/add";
+		String pageUrl = "admin/province/add";
 		// add other logic.
 		mav.setViewName(pageUrl);
-		mav.addObject("interestBean", new InterestBean());
+		mav.addObject("provinceBean", new ProvinceBean());
 		return mav;
 	}
 
 	@RequestMapping(value = "/add.spring", method = RequestMethod.POST)
-	public ModelAndView add(@ModelAttribute("interestBean") InterestBean interestBean, HttpServletRequest request)
-			throws Exception {
+	public ModelAndView add(@ModelAttribute("provinceBean") ProvinceBean provinceBean, HttpServletRequest request) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/add";
-		mav.addObject("interestBean", interestBean);
+		String pageUrl = "admin/province/add";
+		mav.addObject("provinceBean", provinceBean);
 		try {
-			if (interestService.add(interestBean)) {
-				mav.addObject("MESSAGE", "添加兴趣成功！");
+			if (provinceService.add(provinceBean)) {
+				mav.addObject("MESSAGE", "添加省份成功！");
 			} else {
-				mav.addObject("MESSAGE", "添加兴趣失败！");
+				mav.addObject("MESSAGE", "添加省份失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
@@ -103,11 +105,11 @@ public class InterestController {
 	@RequestMapping(value = "/preUpdate.spring", method = RequestMethod.GET)
 	public ModelAndView preUpdate(@RequestParam(value = "id", required = false) Integer id) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/update";
+		String pageUrl = "admin/province/update";
 		// add other logic.
 		try {
-			InterestBean interestBean = interestService.get(id);
-			mav.addObject("interestBean", interestBean);
+			ProvinceBean provinceBean = provinceService.get(id);
+			mav.addObject("provinceBean", provinceBean);
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
@@ -116,20 +118,20 @@ public class InterestController {
 	}
 
 	@RequestMapping(value = "/update.spring", method = RequestMethod.POST)
-	public ModelAndView update(@ModelAttribute("interestBean") InterestBean interestBean, HttpServletRequest request)
+	public ModelAndView update(@ModelAttribute("provinceBean") ProvinceBean provinceBean, HttpServletRequest request)
 			throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/update";
+		String pageUrl = "admin/province/update";
 		try {
-			if (interestService.update(interestBean)) {
-				mav.addObject("MESSAGE", "更新兴趣成功！");
+			if (provinceService.update(provinceBean)) {
+				mav.addObject("MESSAGE", "更新省份成功！");
 			} else {
-				mav.addObject("MESSAGE", "更新兴趣失败！");
+				mav.addObject("MESSAGE", "更新省份失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
-		mav.addObject("interestBean", interestBean);
+		mav.addObject("provinceBean", provinceBean);
 		mav.setViewName(pageUrl);
 		return mav;
 	}
@@ -137,19 +139,20 @@ public class InterestController {
 	@RequestMapping(value = "/delete.spring", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam(value = "id", required = false) Integer id) throws Exception {
 		ModelAndView mav = new ModelAndView();
-		String pageUrl = "admin/interest/list";
+		String pageUrl = "admin/province/list";
 		try {
-			if (interestService.delete(id)) {
-				mav.addObject("MESSAGE", "删除兴趣成功！");
+			if (provinceService.delete(id)) {
+				mav.addObject("MESSAGE", "删除省份成功！");
 			} else {
-				mav.addObject("MESSAGE", "删除兴趣失败！");
+				mav.addObject("MESSAGE", "删除省份失败！");
 			}
-			List<InterestBean> list = interestService.list();
-			mav.addObject("INTERESTLIST", list);
+			List<ProvinceBean> list = provinceService.list();
+			mav.addObject("PROVINCELIST", list);
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
 		mav.setViewName(pageUrl);
 		return mav;
 	}
+	
 }

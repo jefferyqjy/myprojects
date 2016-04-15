@@ -120,6 +120,7 @@ public class MemberCtl {
 		MemberBean member = memberService.getBlackMember(userName);
 		if(member != null) {
 			request.setAttribute("MESSAGE", "帐号已被举报，若举报错误请联系管理员！QQ：775261002");
+			request.setAttribute("userName", userName);
 			return "home";
 		}
 		

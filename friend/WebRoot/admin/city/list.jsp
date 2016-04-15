@@ -7,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>城市List</title>
+	<title>城市列表</title>
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<link id='bs-css' href='../css/bootstrap-cerulean.css' rel='stylesheet'>
 	<style type="text/css">
@@ -53,9 +53,9 @@
 						<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Profile</a></li>
+						<li><a href="#">文档</a></li>
 						<li class="divider"></li>
-						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/j_spring_security_logout">退出</a></li>
 					</ul>
 				</div>
 			</div>
@@ -67,12 +67,18 @@
 			<div class="span2 main-menu-span">
 				<div class="well nav-collapse sidebar-nav">
 				   <ul class="nav nav-tabs nav-stacked main-menu">
+						<li class="nav-header hidden-tablet">省份管理</li>
+						<li><a class="ajax-link" href="/friend/admin/province/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">省份查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/province/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">省份添加</span></a></li>
 						<li class="nav-header hidden-tablet">城市管理</li>
 						<li><a class="ajax-link" href="/friend/admin/city/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">城市查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/city/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">城市添加</span></a></li>
 						<li class="nav-header hidden-tablet">大学管理</li>
 						<li><a class="ajax-link" href="/friend/admin/university/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">大学查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/university/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">大学添加</span></a></li>
+						<li class="nav-header hidden-tablet">专业管理</li>
+						<li><a class="ajax-link" href="/friend/admin/subject/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">专业查询</span></a></li>
+						<li><a class="ajax-link" href="/friend/admin/subject/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">专业添加</span></a></li>
 						<li class="nav-header hidden-tablet">会员管理</li>
 						<li><a class="ajax-link" href="/friend/admin/member/listAll.spring"><i class="icon-eye-open"></i><span class="hidden-tablet">会员查询</span></a></li>
 						<li><a class="ajax-link" href="/friend/admin/member/preAdd.spring"><i class="icon-align-justify"></i><span class="hidden-tablet">会员添加</span></a></li>
@@ -89,7 +95,7 @@
 							<a href="#">城市</a> <span class="divider">/</span>
 						</li>
 						<li>
-							<a href="#"> List </a>
+							<a href="#"> 列表 </a>
 						</li>
 					</ul>
 				</div>
@@ -108,6 +114,8 @@
 							  <tr>
 								  <th>编号</th>
 								  <th>城市</th>
+								  <th>拼音</th>
+								  <th>省份</th>
 								  <th>操作</th>
 							  </tr>
 						  </thead>
@@ -115,7 +123,7 @@
 					</div>
                  <div class="box-content">
                      <p class="center">
-                     <button id="toggle-fullscreen" class="btn btn-large btn-primary visible-desktop" data-toggle="button">Toggle Fullscreen</button>
+                     <button id="toggle-fullscreen" class="btn btn-large btn-primary visible-desktop" data-toggle="button">全屏开关</button>
 		                </p>
 		                <br/>
 		                <ul class="thumbnails gallery" id="imgArea">
