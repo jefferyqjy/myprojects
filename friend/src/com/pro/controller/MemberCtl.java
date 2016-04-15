@@ -94,8 +94,8 @@ public class MemberCtl {
 		ModelAndView mav = new ModelAndView();
 		String pageUrl = "register";
 		mav.addObject("memberBean", memberBean);
-		//mav.addObject("UniversityBeanList", universityService.list());
-		//mav.addObject("InterestBeanList", interestService.list());
+		mav.addObject("UniversityBeanList", universityService.list());
+		mav.addObject("InterestBeanList", interestService.list());
 		try {
 			
 			if (memberService.add(memberBean)) {

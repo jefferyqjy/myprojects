@@ -111,14 +111,29 @@ $(function() {
 function submitForm() {
 	var message = "";
 	
-	var userName = $("input[name='userName']").val();
+	var userName = $("input[id='regUserName']").val();
 	if(userName == null || userName == "") {
 		message += "用户名不能为空！\n";
 	}
 	
-	var userPassword = $("input[name='userPassword']").val();
+	var userPassword = $("input[id='regUserPassword']").val();
 	if(userPassword == null || userPassword == "") {
 		message += "密码不能为空！\n";
+	}
+
+	var gender = $("select[name='gender']").val();
+	if(gender == null || gender == "") {
+		message += "性别不能为空！\n";
+	}
+
+	var age = $("input[name='age']").val();
+	if(age == null || age == "") {
+		message += "年龄不能为空！\n";
+	}
+
+	var address = $("input[name='address']").val();
+	if(address == null || address == "") {
+		message += "地址不能为空！\n";
 	}
 	
 	var province = $("select[name='province']").val();
@@ -197,16 +212,16 @@ function ajaxValidate(userName, stuNo) {
 					<div class="heading">
 						<h2><a href="#" style="margin-left:25px">注册新用户</a></h2>
 					</div>
-					<div class="content" style="margin-top:15px; height:450px">
+					<div class="content" style="margin-top:15px; height:600px">
 						<div style="margin-left:200px">
 						<form:form method="post" action="/friend/member/add.spring" commandName="memberBean" id="memberBean_form" cssClass="form-horizontal">
 							<div style="width:500px; height:25px"> 
 								<div style="width:100px;float:left; text-align:right">用户名： </div>
-								<div style="width:400px;float:left"><form:input cssClass="input-xlarge focused" id="userName" path="userName" /></div>
+								<div style="width:400px;float:left"><form:input cssClass="input-xlarge focused" id="regUserName" path="userName" /></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">密码： </div>
-								<div style="width:400px;float:left"><form:password cssClass="input-xlarge focused" id="userPassword" path="userPassword"/></div>
+								<div style="width:400px;float:left"><form:password cssClass="input-xlarge focused" id="regUserPassword" path="userPassword"/></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">省份： </div>
@@ -252,10 +267,40 @@ function ajaxValidate(userName, stuNo) {
 								<div style="width:400px;float:left"><form:input path="stuNo" cssClass="input-medium"/></div>
 							</div>
 							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">性别： </div>
+								<div style="width:400px;float:left">
+									<form:select path="gender" id="gender" cssClass="input-medium focused" >
+										<option value="" >请选择</option>
+										<option value="男" >男</option>
+										<option value="女" >女</option>
+									</form:select>
+								</div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">年龄： </div>
+								<div style="width:400px;float:left">
+									<form:input path="age" id="age" cssClass="input-medium focused" />
+								</div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">地址： </div>
+								<div style="width:400px;float:left">
+									<form:input path="address" id="address" cssClass="input-xlarge focused" />
+								</div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
+								<div style="width:100px;float:left; text-align:right">兴趣： </div>
+								<div style="width:400px;float:left">
+									<c:forEach var="myItem"  items="${InterestBeanList}" varStatus="status">
+							  			<input type="checkbox" name="interestCheckBox" value="${myItem.id}" ${myItem.checked}/><label>${myItem.name}</label>
+							  		</c:forEach>
+							  	</div>
+							</div>
+							<div style="width:500px; height:25px; margin-top:15px"> 
 								<div style="width:100px;float:left; text-align:right">&nbsp;</div>
 								<div style="width:400px;float:left">
 									<input type="button" onclick="submitForm()" value="注册" />
-									<input type="submit" id="submit" style="displey:none"/>
+									<input type="submit" id="submit" style="display:none"/>
 								</div>
 							</div>
 							<B>${MESSAGE}</B>

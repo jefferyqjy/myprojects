@@ -31,17 +31,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public boolean add(MemberBean memberBean) throws ProException {
 		try {
-			jdbcTemplate.update("INSERT INTO COM_PRO_MEMBER (USERNAME,USERPASSWORD,UNIVERSITY,PROVINCE,CITY,SUBJECT,YEAR,STUNO) VALUES(?,?,?,?,?,?,?,?)",
-							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getUniversityId(),
+			jdbcTemplate.update("INSERT INTO COM_PRO_MEMBER (USERNAME,USERPASSWORD,GENDER,AGE,ADDRESS,UNIVERSITY,PROVINCE,CITY,SUBJECT,YEAR,STUNO) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getGender(), memberBean.getAge(), memberBean.getAddress(), memberBean.getUniversityId(),
 							memberBean.getProvince(), memberBean.getCity(), memberBean.getSubject(), memberBean.getYear(), memberBean.getStuNo());
-			/*if (memberBean.getInterest().size() > 0) {
+			MemberBean m = this.findByUserName(memberBean.getUserName());
+			if (memberBean.getInterest().size() > 0) {
 				List<Object[]> idList = new ArrayList<Object[]>();
 				for (InterestBean bean : memberBean.getInterest()) {
-					idList.add(new Object[] { memberBean.getId(), bean.getId() });
+					idList.add(new Object[] { m.getId(), bean.getId() });
 				}
-				jdbcTemplate.batchUpdate("INSERT INTO COM_PRO_MEMBER_INTEREST (MEMBER_ID,INTEREST_ID) VALUES(?,?)",
-						idList);
-			}*/
+				jdbcTemplate.batchUpdate("INSERT INTO COM_PRO_MEMBER_INTEREST (MEMBER_ID,INTEREST_ID) VALUES(?,?)",idList);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -53,10 +53,9 @@ public class MemberServiceImpl implements MemberService {
 	public boolean update(MemberBean memberBean) throws ProException {
 		try {
 			jdbcTemplate
-					.update("UPDATE COM_PRO_MEMBER SET USERNAME=?,USERPASSWORD=?,GENDER=?,AGE=?,ADDRESS=?,UNIVERSITY=? WHERE ID =?",
-							memberBean.getUserName(), memberBean.getUserPassword(), memberBean.getGender(),
-							memberBean.getAge(), memberBean.getAddress(), memberBean.getUniversity().getId(),
-							memberBean.getId());
+					.update("UPDATE COM_PRO_MEMBER SET GENDER=?,AGE=?,ADDRESS=?,UNIVERSITY=?,PROVINCE=?,CITY=?,SUBJECT=?,YEAR=? WHERE ID =?",
+							memberBean.getGender(), memberBean.getAge(), memberBean.getAddress(), memberBean.getUniversityId(),
+							memberBean.getProvince(), memberBean.getCity(), memberBean.getSubject(), memberBean.getYear(), memberBean.getId());
 			jdbcTemplate.update("DELETE FROM COM_PRO_MEMBER_INTEREST WHERE MEMBER_ID=?", memberBean.getId());
 			if (memberBean.getInterest().size() > 0) {
 				List<Object[]> idList = new ArrayList<Object[]>();
@@ -115,9 +114,7 @@ public class MemberServiceImpl implements MemberService {
 			memberBean.setUserName((String) row.get("USERNAME"));
 			memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 			memberBean.setGender((String) row.get("GENDER"));
-			//String ageStr = (String)row.get("AGE");
-			//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-			//memberBean.setAge(age);
+			memberBean.setAge((Integer) row.get("AGE"));
 			memberBean.setAddress((String) row.get("ADDRESS"));
 			memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 			memberBean.setStatus((Integer) row.get("STATUS"));
@@ -145,9 +142,7 @@ public class MemberServiceImpl implements MemberService {
 			memberBean.setUserName((String) row.get("USERNAME"));
 			memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 			memberBean.setGender((String) row.get("GENDER"));
-			//String ageStr = (String)row.get("AGE");
-			//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-			//memberBean.setAge(age);
+			memberBean.setAge((Integer) row.get("AGE"));
 			memberBean.setAddress((String) row.get("ADDRESS"));
 			memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 			memberBean.setStatus((Integer) row.get("STATUS"));
@@ -167,9 +162,7 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setUserName((String) row.get("USERNAME"));
 				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 				memberBean.setGender((String) row.get("GENDER"));
-				//String ageStr = (String)row.get("AGE");
-				//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-				//memberBean.setAge(age);
+				memberBean.setAge((Integer) row.get("AGE"));
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
@@ -192,9 +185,7 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setUserName((String) row.get("USERNAME"));
 				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 				memberBean.setGender((String) row.get("GENDER"));
-				//String ageStr = (String)row.get("AGE");
-				//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-				//memberBean.setAge(age);
+				memberBean.setAge((Integer) row.get("AGE"));
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
@@ -238,9 +229,7 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setUserName((String) row.get("USERNAME"));
 				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 				memberBean.setGender((String) row.get("GENDER"));
-				//String ageStr = (String)row.get("AGE");
-				//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-				//memberBean.setAge(age);
+				memberBean.setAge((Integer) row.get("AGE"));
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
@@ -260,9 +249,7 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setUserName((String) row.get("USERNAME"));
 				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 				memberBean.setGender((String) row.get("GENDER"));
-				//String ageStr = (String)row.get("AGE");
-				//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-				//memberBean.setAge(age);
+				memberBean.setAge((Integer) row.get("AGE"));
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
@@ -295,9 +282,7 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setUserName((String) row.get("USERNAME"));
 				memberBean.setUserPassword((String) row.get("USERPASSWORD"));
 				memberBean.setGender((String) row.get("GENDER"));
-				//String ageStr = (String)row.get("AGE");
-				//Integer age = StringUtils.isEmpty(ageStr) ? 0 : Integer.valueOf(ageStr); // 暂时在注册时去掉了年龄、性别和地址，下一版本会加上，此处做临时处理
-				//memberBean.setAge(age);
+				memberBean.setAge((Integer) row.get("AGE"));
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));

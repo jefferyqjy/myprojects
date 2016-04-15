@@ -21,9 +21,9 @@
 <section id="content" style="padding-bottom:20px;">
 	<div class="zerogrid">
 		<div class="row block">
-			<div class="main-content col11" style="width:100%; min-height：600px">
+			<div class="main-content col11" style="width:100%; min-height：1000px">
 				<article>
-					<div class="content" style="margin-top:35px; margin-left:400px; height:500px">
+					<div class="content" style="margin-top:35px; margin-left:400px; height:1000px">
 						WELCOME TO OUR WEB SITE
 					</div>
 				</article>
