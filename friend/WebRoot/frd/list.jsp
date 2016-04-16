@@ -167,7 +167,7 @@ body {
 		</div>
 	</div>
 
-	<div class="modal hide fade" id="newModal2" style="z-index: 9999">
+	<div class="modal hide fade" id="newModal2" style="z-index: 9999;width:760px">
 
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal"
@@ -176,12 +176,24 @@ body {
 		</div>
 		<div class="modal-body" style="height: 400px;">
 			<p>
-				编号： <input class="input-xlarge focused" id="userId" type="text"
-					style="width: 100px" /> 姓名： <input class="input-xlarge focused"
-					id="userName" type="text" style="width: 100px" /> 性别： <select
-					id="userGender" data-rel="chosen" style="width: 100px"><option
-						value="男">男</option>
-					<option value="女">女</option></select>
+				姓名：<input class="input-medium focused" id="userName" type="text" style="width:80px" /> 
+				性别：<select id="userGender" data-rel="chosen" class="input-small" >
+						<option value="" >请选择</option>
+						<option value="男">男</option>
+						<option value="女">女</option>
+					  </select>
+				大学：<select id="universityId" data-rel="chosen" class="input-medium">
+						<option value="" >请选择</option>
+						<c:forEach items="${UniversityBeanList}" var="u" >
+							<option value="${u.id }" >${u.name }</option>
+						</c:forEach>
+					  </select>
+				专业：<select id="subject" data-rel="chosen" class="input-medium" >
+						<option value="" >请选择</option>
+						<c:forEach items="${SubjectBeanList}" var="s" >
+							<option value="${s.id }" >${s.name }</option>
+						</c:forEach>
+					  </select>
 			</p>
 			<table id="userTable"
 				class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -471,12 +483,13 @@ body {
 			});
 		}
 		function searchUser() {
-
-			var userId = $('#userId').val();
+			debugger;
 			var userName = $('#userName').val();
-			var userGender = $('#userGender').val();		
-			var url = "/friend/frd/searchUser.spring?userId=" + userId
-					+ "&userName=" + userName + "&userGender=" + userGender;
+			var userGender = $('#userGender').val();
+			var universityId = $('#universityId').val();
+			var subject = $('#subject').val();		
+			var url = "/friend/frd/searchUser.spring?universityId=" + universityId
+					+ "&userName=" + userName + "&userGender=" + userGender + "&subject=" + subject;
 
 			url= encodeURI(encodeURI(url)); 
 			oTable.fnSettings().sAjaxSource = url;
@@ -485,11 +498,12 @@ body {
 			
 		}
 		function initializeEvents() {
-			var userId = "";
 			var userName = "";
 			var userGender = "";
-			var url = "/friend/frd/searchUser.spring?userId=" + userId
-			+ "&userName=" + userName + "&userGender=" + userGender;
+			var subject = "";
+			var universityId = "";			
+			var url = "/friend/frd/searchUser.spring?universityId=" + universityId
+			+ "&userName=" + userName + "&userGender=" + userGender + "&subject=" + subject;
 			url= encodeURI(encodeURI(url)); 
 			oTable = $('#userTable') .dataTable(
 				{

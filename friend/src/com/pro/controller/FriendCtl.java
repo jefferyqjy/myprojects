@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ import com.pro.pojo.datatable.DatatableReponse;
 import com.pro.service.InterestService;
 import com.pro.service.MemberService;
 import com.pro.service.ReportService;
+import com.pro.service.SubjectService;
 import com.pro.service.UniversityService;
 import com.pro.utils.CommonUtils;
 import com.pro.utils.DateUtils;
@@ -50,6 +52,9 @@ public class FriendCtl {
 	@Autowired
 	ReportService reportService; 
 	
+	@Autowired
+	SubjectService subjectService;
+	
 	@RequestMapping(value = "/preList.spring", method = RequestMethod.GET)
 	public ModelAndView preUpdate(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -68,13 +73,15 @@ public class FriendCtl {
 					int groupId = (Integer)row.get("ID");
 					group.setId(groupId);
 					group.setName((String)row.get("NAME"));
-					List<Map<String, Object>> rows2 = jdbcTemplate.queryForList("SELECT B.ID, B.USERNAME FROM COM_PRO_FRIEND_GROUP_USER A, COM_PRO_MEMBER B WHERE A.FRIEND_ID=B.ID AND A.GROUP_ID = ?", groupId);
+					List<Map<String, Object>> rows2 = jdbcTemplate.queryForList("SELECT B.ID, B.USERNAME, B.UNIVERSITY, B.SUBJECT FROM COM_PRO_FRIEND_GROUP_USER A, COM_PRO_MEMBER B WHERE A.FRIEND_ID=B.ID AND A.GROUP_ID = ?", groupId);
 					if (!CommonUtils.isEmptyList(rows2)) {
 						List<MemberBean> mList = new ArrayList<MemberBean>();
 						for (Map<String, Object> row2 : rows2) {
 							MemberBean mb = new MemberBean();
 							mb.setId((Integer)row2.get("ID"));
 							mb.setUserName((String)row2.get("USERNAME"));
+							mb.setSubject(((Integer)row2.get("SUBJECT")).toString());
+							mb.setUniversityId(((Integer) row2.get("UNIVERSITY")).toString());
 							mList.add(mb);
 						}
 						group.setFriends(mList);
@@ -83,6 +90,9 @@ public class FriendCtl {
 				mav.addObject("GROUPLIST", groupList);
 			}
 		}
+		
+		mav.addObject("UniversityBeanList", universityService.list());
+		mav.addObject("SubjectBeanList", subjectService.list());
 		mav.setViewName(pageUrl);
 		
 		return mav;
@@ -189,30 +199,38 @@ public class FriendCtl {
 	DatatableReponse list(@RequestParam(value = "iDisplayStart", required = false) Integer start,
 			@RequestParam(value = "iDisplayLength", required = false) Integer limit,
 			@RequestParam(value = "sEcho", required = false) Integer sEcho,
-			@RequestParam(value = "userId", required = false) String userId,
+			@RequestParam(value = "universityId", required = false) String universityId,
 			@RequestParam(value = "userName", required = false) String userName,
 			@RequestParam(value = "userGender", required = false) String userGender,
+			@RequestParam(value = "subject", required = false) String subject,
 			HttpSession session) throws Exception {
 		DatatableReponse data = new DatatableReponse();
 		try {
-			userId = java.net.URLDecoder.decode(userId, "UTF-8");
+			universityId = java.net.URLDecoder.decode(universityId, "UTF-8");
 			userName = java.net.URLDecoder.decode(userName, "UTF-8");
 			userGender = java.net.URLDecoder.decode(userGender, "UTF-8");
-			int id = 0;
-			try {
-				id = Integer.parseInt(userId);
-			} catch (Exception e) {
-				
-			}
-			
+			subject = java.net.URLDecoder.decode(subject, "UTF-8");
 			data.setsEcho(sEcho);
 			data.setiDisplayStart(start);
 			data.setiDisplayLength(limit);
-			int total = jdbcTemplate.queryForInt("SELECT COUNT(1) FROM COM_PRO_MEMBER WHERE ID = " +id+" OR (USERNAME LIKE '%" + userName+"%' AND GENDER=?)", userGender) ;
+			String sql = "FROM COM_PRO_MEMBER WHERE 1=1";
+			if(StringUtils.isNotEmpty(userName)) {
+				sql += (" AND USERNAME LIKE '%" + userName+ "%'");
+			}
+			if(StringUtils.isNotEmpty(userGender)) {
+				sql += (" AND GENDER = '" + userGender + "'");
+			}
+			if(StringUtils.isNotEmpty(universityId)) {
+				sql += (" AND UNIVERSITY = " + universityId);
+			}
+			if(StringUtils.isNotEmpty(subject)) {
+				sql += (" AND SUBJECT = " + subject);
+			}
+			int total = jdbcTemplate.queryForInt("SELECT COUNT(1)" + sql);
 			data.setiTotalDisplayRecords(total);
 			data.setiTotalRecords(total);
 			List<MemberBean> mList = new ArrayList<MemberBean>();
-			List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_MEMBER WHERE ID = " +id+" OR (USERNAME LIKE '%" + userName+"%' AND GENDER=?)", userGender);
+			List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * " + sql);
 			if (!CommonUtils.isEmptyList(rows)) {
 				
 				for (Map<String, Object> row : rows) {
