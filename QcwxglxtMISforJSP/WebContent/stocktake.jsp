@@ -17,18 +17,18 @@
 		if (document.all.searchValue.value == "") {
 			alert("请输入查询关键字!");
 		} else {
-			window.location.href = "Partinner?currentPage=1&&pagerMethod=1&&operator=0&&queryName="
+			window.location.href = "Stocktake?currentPage=1&&pagerMethod=1&&operator=0&&queryName="
 					+ document.all.searchName.value
 					+ "&&queryValue="
 					+ document.all.searchValue.value;
 		}
 	}
 	function doSearchAll() {
-		window.location.href = "Partinner?operator=1&&currentPage=1&&pagerMethod=1";
+		window.location.href = "Stocktake?operator=1&&currentPage=1&&pagerMethod=1";
 	}
 	
 	function doAdd() {
-		window.location.href = "Partinner?operator=2";
+		window.location.href = "Stocktake?operator=2";
 	}
 </script>
 
@@ -46,7 +46,7 @@
 				<table width="1050" cellspacing="0" cellpadding="0">
 					<tr>
 						<td align="center" valign="top" height="390"><form
-								name="Partss_form" method="post"></form>
+								name="Stocktake_form" method="post"></form>
 							<table width="1050" border="0" align="center" cellpadding="0"
 								cellspacing="0">
 								<tr>
@@ -87,7 +87,7 @@
 													<table>
 														<tr>
 															<td><img src="img/311.gif" width="16" height="16" />
-																<span class="STYLE4">零件内配信息列表</span></td>
+																<span class="STYLE4">零件盘点列表</span></td>
 														</tr>
 													</table>
 													<table width="99%" border="0" align="center"
@@ -95,38 +95,32 @@
 														onmouseover="changeto()" onmouseout="changeback()">
 														<tr>
 															<td width="8%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">销售编号</td>
+																bgcolor="#FFFFFF" align="center">编号</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">购买公司</td>
+																bgcolor="#FFFFFF" align="center">零件类型编号</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">员工编号</td>
+																bgcolor="#FFFFFF" align="center">零件类型名称</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">员工姓名</td>
+																bgcolor="#FFFFFF" align="center">零件类型描述</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">零件名称</td>
+																bgcolor="#FFFFFF" align="center">盘点时间</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">零件数量</td>
+																bgcolor="#FFFFFF" align="center">盘点数量</td>
 															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">零件成本</td>
-															<td width="7%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">零件售价</td>
-															<td width="10%" height="30" background="img/tab_14.gif"
-																bgcolor="#FFFFFF" align="center">销售日期</td>
+																bgcolor="#FFFFFF" align="center">季节性备货值</td>
 														</tr>
 														<tbody align="center" onmouseover="changeto()"
 															onmouseout="changeback()">
-															<c:forEach var="item" items="${partinners}"
-																varStatus="partsss">
+															<c:forEach var="item" items="${stocktakes}"
+																varStatus="stocktakeStatus">
 																<tr align="center" bgcolor="#FFFFFF" height="35">
-																	<td>${item.iId}</td>
-																	<td>${item.company}</td>
-																	<td>${item.empId}</td>
-																	<td>${item.empName}</td>
-																	<td>${item.pName}</td>
-																	<td>${item.pNum}</td>
-																	<td>${item.pCost}</td>
-																	<td>${item.pPrice}</td>
-																	<td>${item.date}</td>
+																	<td>${item.id}</td>
+																	<td>${item.kindID}</td>
+																	<td>${item.kindName}</td>
+																	<td>${item.description}</td>
+																	<td>${item.createTime}</td>
+																	<td>${item.number}</td>
+																	<td>${item.value}</td>
 																</tr>
 															</c:forEach>
 														</tbody>
@@ -149,22 +143,22 @@
 																第${currentPage}页&nbsp; 共${totalPage}页&nbsp; <c:if
 																	test="${operator==0}">
 																	<a
-																		href="Partinner?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=1">首页</a>
+																		href="Stocktake?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=1">首页</a>
 																	<a
-																		href="Partinner?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=2">上一页</a>
+																		href="Stocktake?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=2">上一页</a>
 																	<a
-																		href="Partinner?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=3">下一页</a>
+																		href="Stocktake?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=3">下一页</a>
 																	<a
-																		href="Partinner?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=4">尾页</a>
+																		href="Stocktake?operator=0&&queryName=${queryName}&&queryValue=${queryValue}&&currentPage=${currentPage}&&pagerMethod=4">尾页</a>
 																</c:if> <c:if test="${operator==1}">
 																	<a
-																		href="Partinner?operator=1&&currentPage=${currentPage}&&pagerMethod=1">首页</a>
+																		href="Stocktake?operator=1&&currentPage=${currentPage}&&pagerMethod=1">首页</a>
 																	<a
-																		href="Partinner?operator=1&&currentPage=${currentPage}&&pagerMethod=2">上一页</a>
+																		href="Stocktake?operator=1&&currentPage=${currentPage}&&pagerMethod=2">上一页</a>
 																	<a
-																		href="Partinner?operator=1&&currentPage=${currentPage}&&pagerMethod=3">下一页</a>
+																		href="Stocktake?operator=1&&currentPage=${currentPage}&&pagerMethod=3">下一页</a>
 																	<a
-																		href="Partinner?operator=1&&currentPage=${currentPage}&&pagerMethod=4">尾页</a>
+																		href="Stocktake?operator=1&&currentPage=${currentPage}&&pagerMethod=4">尾页</a>
 																</c:if>
 															</td>
 														</tr>

@@ -7,14 +7,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>维护内配单信息</title>
+<title>维护盘点信息</title>
 <link href="Style/style.css" rel="stylesheet" type="text/css" />
 <link href="Style/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 function doDel(rId) {
-	window.location.href = "Partinner?operatorStr=${operatorStr}&&iId=" + iId;
+	window.location.href = "Stocktake?operatorStr=${operatorStr}&&iId=" + iId;
 }
 </script>
 </head>
@@ -42,9 +42,9 @@ function doDel(rId) {
 													width="15" height="30" /></td>
 												<td width="1101" background="img/tab_05.gif"><img
 													src="img/311.gif" width="16" height="16" /> <span
-													class="STYLE4"> <c:if test="${operatorStr=='add'}"> 增加回访记录</c:if>
-														<c:if test="${operatorStr=='modify'}">修改回访记录</c:if> <c:if
-															test="${operatorStr=='delete'}">删除回访记录</c:if>
+													class="STYLE4"> <c:if test="${operatorStr=='add'}"> 增加盘点记录</c:if>
+														<c:if test="${operatorStr=='modify'}">修改盘点记录</c:if> <c:if
+															test="${operatorStr=='delete'}">删除盘点记录</c:if>
 												</span></td>
 												<td width="14"><img src="img/tab_07.gif" width="14"
 													height="30" /></td>
@@ -63,64 +63,63 @@ function doDel(rId) {
 														<tr bgcolor="#f3ffe3">
 															<td>
 																<c:if test="${operatorStr=='modify' || operatorStr=='add'}">
-																	<form name="edit_Form" action="Partinner?operatorStr=${operatorStr}" method="post">
+																	<form name="edit_Form" action="Stocktake?operatorStr=${operatorStr}" method="post">
 																		<table width="100%">
 																			<c:if test="${operatorStr=='modify'}">
 																				<tr height="30">
-																					<td align="right"><font face="隶书">内配单编号：</font></td>
+																					<td align="right"><font face="隶书">盘点单编号：</font></td>
 																					<td align="left"><input type="text" readonly
-																						style="background: #CCFFFF" name="iId"
-																						value="${partinner.iId}"></td>
+																						style="background: #CCFFFF" name="id"
+																						value="${stocktake.id}"></td>
 																				</tr>
 																				<tr height="30">
-																					<td align="right"><font face="隶书">销售日期：</font></td>
+																					<td align="right"><font face="隶书">零件类型编号：</font></td>
 																					<td align="left"><input type="text" readonly
-																						style="background: #CCFFFF" name="date"
-																						value="${partinner.date}"></td>
+																						style="background: #CCFFFF" name="kindID"
+																						value="${stocktake.kindID}"></td>
+																				</tr>
+																				<tr height="30">
+																					<td align="right"><font face="隶书">零件类型名称：</font></td>
+																					<td align="left"><input type="text" readonly
+																						style="background: #CCFFFF" name="kindName"
+																						value="${stocktake.kindName}"></td>
+																				</tr>
+																				<tr height="30">
+																					<td align="right"><font face="隶书">零件类型描述：</font></td>
+																					<td align="left"><input type="text" readonly
+																						style="background: #CCFFFF" name="description"
+																						value="${stocktake.description}"></td>
+																				</tr>
+																			</c:if>
+																			<c:if test="${operatorStr=='add'}">
+																				<tr height="30">
+																					<td align="right"><font face="隶书">零件类型：</font></td>
+																					<td align="left">
+																						<select name="kindID">
+																							<c:forEach items="${categorys }" var="catg">
+																								<option value="${catg.kindID }" >${catg.kindName }</option>
+																							</c:forEach>
+																						</select>
+																					</td>
 																				</tr>
 																			</c:if>
 																			<tr height="30">
-																				<td align="right"><font face="隶书">员工编号：</font></td>
+																				<td align="right"><font face="隶书">盘点数量：</font></td>
 																				<td align="left">
-																					<input type="text" name="empId" id="empId">
+																					<input type="text" name="number" value="${stocktake.number}" >
 																				</td>
 																			</tr>
 																			<tr height="30">
-																				<td align="right"><font face="隶书">公司名称：</font></td>
+																				<td align="right"><font face="隶书">季节性备货值：</font></td>
 																				<td align="left">
-																					<input type="text" name="company" value="${partinner.company }" >
+																					<input type="text" name="value" value="${stocktake.value}" >
 																				</td>
 																			</tr>
-																			<tr height="30">
-																				<td align="right"><font face="隶书">零件编号：</font></td>
-																				<td align="left">
-																					<input type="text" name="pId" value="${partinner.pId }" >
-																				</td>
-																			</tr>
-																			<tr height="30">
-																				<td align="right"><font face="隶书">零件成本价：</font></td>
-																				<td align="left">
-																					<input type="text" name="pCost" value="${partinner.pCost }" >
-																				</td>
-																			</tr>
-																			<tr height="30">
-																				<td align="right"><font face="隶书">零件售价：</font></td>
-																				<td align="left">
-																					<input type="text" name="pPrice" value="${partinner.pPrice }" >
-																				</td>
-																			</tr>
-																			<tr height="30">
-																				<td align="right"><font face="隶书">出售数量：</font></td>
-																				<td align="left">
-																					<input type="text" name="pNum" value="${partinner.pNum }" >
-																				</td>
-																			</tr>
-																			
 																			<c:if test="${operatorStr=='add'}">
 																				<tr height="30">
-																					<td align="right"><font face="隶书">销售日期：</font></td>
+																					<td align="right"><font face="隶书">盘点日期：</font></td>
 																					<td align="left">
-																						<input type="text" name="date" onFocus="WdatePicker({minDate:'%y-%M-{%d} %H:%m:%s'})">
+																						<input type="text" name="createtime" onFocus="WdatePicker({minDate:'%y-%M-{%d} %H:%m:%s'})">
 																					</td>
 																				</tr>
 																			</c:if>
@@ -136,45 +135,37 @@ function doDel(rId) {
 																<c:if test="${operatorStr=='delete'}">
 																	<table align="center">
 																		<tr height="30">
-																			<td align="right">内配单编号：</td>
-																			<td align="left">${partinner.iId}</td>
-																		</tr>
-																		<tr height="30">
-																			<td align="right">员工编号：</td>
-																			<td align="left">${partinner.empId}</td>
-																		</tr>
-																		<tr height="30">
-																			<td align="right">员工姓名：</td>
-																			<td align="left">${partinner.empName}</td>
+																			<td align="right">盘点单编号：</td>
+																			<td align="left">${stocktake.id}</td>
 																		</tr>
 																		<tr height="30">
 																			<td align="right">零件编号：</td>
-																			<td align="left">${partinner.pId}</td>
+																			<td align="left">${stocktake.kindID}</td>
 																		</tr>
 																		<tr height="30">
 																			<td align="right">零件名称：</td>
-																			<td align="left">${partinner.pName}</td>
+																			<td align="left">${stocktake.kindName}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">零件成本价：</td>
-																			<td align="left">${partinner.pCost}</td>
+																			<td align="right">零件描述：</td>
+																			<td align="left">${stocktake.description}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">零件售价：</td>
-																			<td align="left">${partinner.pPrice}</td>
+																			<td align="right">盘点数量：</td>
+																			<td align="left">${stocktake.number}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">销售数量：</td>
-																			<td align="left">${partinner.pNum}</td>
+																			<td align="right">季节性备货值：</td>
+																			<td align="left">${stocktake.value}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">销售日期：</td>
-																			<td align="left">${partinner.date}</td>
+																			<td align="right">盘点日期：</td>
+																			<td align="left">${stocktake.createtime}</td>
 																		</tr>
 																	</table>
 																	<p align="center">
-																		<input type=button name="delbut" value="请确认删除内配单"
-																			onclick="doDel('${partinner.iId}')"
+																		<input type=button name="delbut" value="请确认删除盘点单"
+																			onclick="doDel('${stocktake.id}')"
 																			style="height: 30px; width: 150px;">
 																	</p>
 																</c:if>

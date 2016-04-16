@@ -1,6 +1,6 @@
 package bean;
 
-public class Check {
+public class Stocktake {
 	private Integer id;
 	public Integer getId() {
 		return id;

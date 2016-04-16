@@ -8,22 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import util.ConnOfDatabase;
-import bean.Check;
+import bean.Stocktake;
 
-public class CheckDAO {
+public class StocktakeDAO {
 	private Connection conn;	
-	public CheckDAO() {
+	public StocktakeDAO() {
 		ConnOfDatabase sqlconn;
 		sqlconn=new ConnOfDatabase();
 		conn=sqlconn.getConn();	
 	}	
 	
-	public List<Check> findAll() throws Exception {
+	public List<Stocktake> findAll() throws Exception {
 		Statement stmt;
-		String queryStr="select * from check";
+		String queryStr="select * from stocktake";
 		ResultSet rs;//遍历结果集
-		List<Check> checks = new ArrayList<Check>();//创建容器，存储对象为Category
-		Check check;
+		List<Stocktake> stocktakes = new ArrayList<Stocktake>();//创建容器，存储对象为Category
+		Stocktake stocktake;
 		stmt =conn.createStatement();	
 		try
 		{
@@ -31,13 +31,13 @@ public class CheckDAO {
 			//int len=rs.getRow();
 			while (rs.next())//遍历结果集，当结果到达结尾，没有多余结果就退出
 			{
-				check=new Check();//初始化结果对象
-				check.setId(rs.getInt("id"));
-				check.setKindID(rs.getInt("kindid"));//这里是将数据库查询的数据集存储到对象中，然后放入结果集
-				check.setCreateTime(rs.getString("createtime"));
-				check.setNumber(rs.getInt("number"));
-				check.setValue(rs.getInt("value"));
-				checks.add(check);
+				stocktake=new Stocktake();//初始化结果对象
+				stocktake.setId(rs.getInt("id"));
+				stocktake.setKindID(rs.getInt("kindid"));//这里是将数据库查询的数据集存储到对象中，然后放入结果集
+				stocktake.setCreateTime(rs.getString("createtime"));
+				stocktake.setNumber(rs.getInt("number"));
+				stocktake.setValue(rs.getInt("value"));
+				stocktakes.add(stocktake);
 			}		
 		}catch (SQLException e)
 		{
@@ -53,28 +53,28 @@ public class CheckDAO {
 			} catch (SQLException e) {
 			}  		
 		}
-		return checks;
+		return stocktakes;
 	}
 	
-	public Check findById(int id) throws Exception {
+	public Stocktake findById(int id) throws Exception {
 		Statement stmt;
 		String queryStr="";
 		ResultSet rs;
 		stmt =conn.createStatement();	
-		Check check = new Check();
+		Stocktake stocktake = new Stocktake();
 		
 		try
 		{
-			queryStr="select * from check where id = " + id;
+			queryStr="select * from stocktake where id = " + id;
 			rs=stmt.executeQuery(queryStr);
 			//int len=rs.getRow();
 			while (rs.next())
 			{
-				check.setId(rs.getInt("id"));
-				check.setKindID(rs.getInt("kindid"));
-				check.setCreateTime(rs.getString("createtime"));
-				check.setNumber(rs.getInt("number"));
-				check.setValue(rs.getInt("value"));
+				stocktake.setId(rs.getInt("id"));
+				stocktake.setKindID(rs.getInt("kindid"));
+				stocktake.setCreateTime(rs.getString("createtime"));
+				stocktake.setNumber(rs.getInt("number"));
+				stocktake.setValue(rs.getInt("value"));
 			}		
 		}catch (SQLException e)
 		{
@@ -90,28 +90,28 @@ public class CheckDAO {
 			} catch (SQLException e) {
 			}  		
 		}
-		return check;
+		return stocktake;
 	}
 	
-	public List<Check> findByKindId(String kindId) throws Exception {
+	public List<Stocktake> findByKindId(String kindId) throws Exception {
 		Statement stmt;
 		String queryStr="select * from chech where kindid='" + kindId + "'";
 		ResultSet rs;
-		List<Check> checks = new ArrayList<Check>();
-		Check check;
+		List<Stocktake> stocktakes = new ArrayList<Stocktake>();
+		Stocktake stocktake;
 		stmt =conn.createStatement();	
 		try
 		{
 			rs=stmt.executeQuery(queryStr);
 			while (rs.next())
 			{
-				check = new Check();
-				check.setId(rs.getInt("id"));
-				check.setKindID(rs.getInt("kindid"));
-				check.setCreateTime(rs.getString("createtime"));
-				check.setNumber(rs.getInt("number"));
-				check.setValue(rs.getInt("value"));
-				checks.add(check);
+				stocktake = new Stocktake();
+				stocktake.setId(rs.getInt("id"));
+				stocktake.setKindID(rs.getInt("kindid"));
+				stocktake.setCreateTime(rs.getString("createtime"));
+				stocktake.setNumber(rs.getInt("number"));
+				stocktake.setValue(rs.getInt("value"));
+				stocktakes.add(stocktake);
 			}		
 		}catch (SQLException e)
 		{
@@ -127,13 +127,13 @@ public class CheckDAO {
 			} catch (SQLException e) {
 			}  		
 		}
-		return checks;
+		return stocktakes;
 	}		
 	
 	
-	public  List<Check> findByPage(String queryStr, Integer currentPage, Integer pageCount) throws Exception
+	public  List<Stocktake> findByPage(String queryStr, Integer currentPage, Integer pageCount) throws Exception
 	{
-		List<Check> checks = new ArrayList<Check>();
+		List<Stocktake> stocktakes = new ArrayList<Stocktake>();
 		Statement stmt;
 		ResultSet rs;
 		stmt =conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -156,13 +156,13 @@ public class CheckDAO {
 				while (rs.next() && i < pageCount) 
 				{
 				i++;
-				Check check = new Check();
-				check.setId(rs.getInt("id"));
-				check.setKindID(rs.getInt("kindid"));
-				check.setCreateTime(rs.getString("createtime"));
-				check.setNumber(rs.getInt("number"));
-				check.setValue(rs.getInt("value"));
-				checks.add(check);
+				Stocktake stocktake = new Stocktake();
+				stocktake.setId(rs.getInt("id"));
+				stocktake.setKindID(rs.getInt("kindid"));
+				stocktake.setCreateTime(rs.getString("createtime"));
+				stocktake.setNumber(rs.getInt("number"));
+				stocktake.setValue(rs.getInt("value"));
+				stocktakes.add(stocktake);
 				}  
 		}	
 		}
@@ -181,13 +181,13 @@ public class CheckDAO {
 			} catch (SQLException e) {
 			}    		
 		}
-		return checks;
+		return stocktakes;
 	}
-	public boolean insert(Check check) throws Exception
+	public boolean insert(Stocktake stocktake) throws Exception
 	{
 		PreparedStatement stmt;
 		boolean insFlag=false;
-		String insertStr="insert into check (kindid, createtime, number, value) values(?,?,?,?)";
+		String insertStr="insert into stocktake (kindid, createtime, number, value) values(?,?,?,?)";
 		stmt =conn.prepareStatement(insertStr);
 		try
 		{
@@ -199,10 +199,10 @@ public class CheckDAO {
 				kindID=1+rs.getInt("mkindID");			
 				category.setKindID(kindID);
 			}*/
-			stmt.setInt(1, check.getKindID());
-			stmt.setString(2, check.getCreateTime());
-			stmt.setInt(3, check.getNumber());
-			stmt.setInt(4, check.getValue());
+			stmt.setInt(1, stocktake.getKindID());
+			stmt.setString(2, stocktake.getCreateTime());
+			stmt.setInt(3, stocktake.getNumber());
+			stmt.setInt(4, stocktake.getValue());
 			stmt.executeUpdate();
 			insFlag=true;
 		}catch (SQLException e)
@@ -221,17 +221,17 @@ public class CheckDAO {
 		}
 		return insFlag;
 	}
-	public  boolean update(Check check) throws Exception
+	public  boolean update(Stocktake stocktake) throws Exception
 	{
 		PreparedStatement stmt;
 		boolean updateFlag=false;
-		String updateStr="update check set number = ?, value = ? where id = ?";
+		String updateStr="update stocktake set number = ?, value = ? where id = ?";
 		stmt =conn.prepareStatement(updateStr);	
 		try
 		{
-			stmt.setInt(1, check.getNumber());
-			stmt.setInt(2, check.getValue());
-			stmt.setInt(3, check.getId());
+			stmt.setInt(1, stocktake.getNumber());
+			stmt.setInt(2, stocktake.getValue());
+			stmt.setInt(3, stocktake.getId());
 			stmt.executeUpdate();
 			updateFlag=true;
 		}catch (SQLException e)
@@ -258,7 +258,7 @@ public class CheckDAO {
 		boolean deleteFlag=false;
 		try
 		{
-	    	String deleteStr="delete from check where id = ?";
+	    	String deleteStr="delete from stocktake where id = ?";
 			stmt =conn.prepareStatement(deleteStr);
 			stmt.setInt(1, id);
 			stmt.executeUpdate();

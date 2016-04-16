@@ -295,9 +295,9 @@
   
   <!-- check servlets begin -->
   <servlet>
-    <display-name>Check</display-name>
-    <servlet-name>Check</servlet-name>
-    <servlet-class>servlets.checkservlets.CheckServlet</servlet-class>
+    <display-name>Stocktake</display-name>
+    <servlet-name>Stocktake</servlet-name>
+    <servlet-class>servlets.stocktakeservlets.StocktakeServlet</servlet-class>
   </servlet>
   <!-- check servlets end -->
 </web-app>

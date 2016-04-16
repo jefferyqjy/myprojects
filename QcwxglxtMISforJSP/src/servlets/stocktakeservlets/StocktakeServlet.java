@@ -1,4 +1,4 @@
-package servlets.checkservlets;
+package servlets.stocktakeservlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,19 +12,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 
+import bean.Category;
+import bean.Stocktake;
+import dao.CategoryDAO;
+import dao.StocktakeDAO;
 import util.ChangeToGBK;
 import util.RowCount;
-import dao.CategoryDAO;
-import dao.CheckDAO;
-import bean.*;
 
 /**
  * Servlet implementation class CategoryServlet
  */
-@WebServlet(name ="/Check" ,urlPatterns = { "/Check"})
-public class CheckServlet extends HttpServlet {
+@WebServlet(name ="/Stocktake" ,urlPatterns = { "/Stocktake"})
+public class StocktakeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 int pageCount=7; 
        
@@ -33,8 +35,8 @@ public class CheckServlet extends HttpServlet {
      */
 	
 	
-	CheckDAO checkdao = new CheckDAO();
-    public CheckServlet() {
+	StocktakeDAO stocktakedao = new StocktakeDAO();
+    public StocktakeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,9 +64,9 @@ public class CheckServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String operator=request.getParameter("operator");
-		List<Check> checks = new ArrayList<Check>();
-		CheckDAO dao = new CheckDAO();
-		Check check = new Check();
+		List<Stocktake> stocktakes = new ArrayList<Stocktake>();
+		StocktakeDAO dao = new StocktakeDAO();
+		Stocktake stocktake = new Stocktake();
 		response.setContentType("text/html;charset=UTF-8"); //通知浏览器服务器发送的数据格式
 		response.setCharacterEncoding("UTF-8");//response的响应的编码方式为utf-8 
 		PrintWriter out = response.getWriter();//通过PrintWrite，以流方式输出html，返回给客户端，显示在IE上。
@@ -86,8 +88,8 @@ public class CheckServlet extends HttpServlet {
 				{
 					if (operator.equals("1")) //查询全部
 					{	
-						queryStr="select id, kindid, createtime, number, value from check";    
-						countStr="select count(1) from check"; 
+						queryStr="select id, kindid, createtime, number, value from stocktake";    
+						countStr="select count(1) from stocktake"; 
 					}else  //查询部分
 					{
 						queryName=request.getParameter("queryName");
@@ -98,8 +100,8 @@ public class CheckServlet extends HttpServlet {
 							queryValue=chGBK.change("queryValue",request);
 						}
 
-						queryStr="select id, kindid, createtime, number, value from check where 1=1 " ;
-						countStr = "select count(1) from check where 1=1 ";
+						queryStr="select id, kindid, createtime, number, value from stocktake where 1=1 " ;
+						countStr = "select count(1) from stocktake where 1=1 ";
 						if(StringUtils.isNotEmpty(queryValue)) {
 							queryStr += ("and " + queryName + " ='" + queryValue + "'");
 							countStr += (" and " + queryName + " ='" + queryValue + "'");
@@ -130,14 +132,23 @@ public class CheckServlet extends HttpServlet {
 					if (currentPage > totalPage) {
 						currentPage = totalPage;
 					}
-					checks = dao.findByPage(queryStr, currentPage, pageCount);  //通过查询字符串、当前页和每页纪录数查找产品纪录；   
+					stocktakes = dao.findByPage(queryStr, currentPage, pageCount);  //通过查询字符串、当前页和每页纪录数查找产品纪录；   
     			
-					if(checks.size()==0){
-						out.print("<script language='javascript'>alert('未检索到符合条件的记录');window.location='category.jsp';</script>");
+					if(stocktakes.size()==0){
+						out.print("<script language='javascript'>alert('未检索到符合条件的记录');window.location='stocktake.jsp';</script>");
 						return;
 					}
 					
-					request.setAttribute("checks", checks);
+					if(!CollectionUtils.isEmpty(stocktakes)) {
+						CategoryDAO ctgdao;
+						for(Stocktake c : stocktakes) {
+							ctgdao = new CategoryDAO();
+							Category category = ctgdao.findById(c.getKindID());
+							c.setDescription(category.getDescription());
+							c.setKindName(category.getKindName());
+						}
+					}
+					request.setAttribute("stocktakes", stocktakes);
 					request.setAttribute("totalRows", totalRows);
 					request.setAttribute("totalPage", totalPage);
 					request.setAttribute("currentPage", currentPage);
@@ -150,20 +161,20 @@ public class CheckServlet extends HttpServlet {
 
 				}catch(Exception e2)
 				{
-					out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='check.jsp';</script>");
+					out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='stocktake.jsp';</script>");
 				}
-				getServletConfig().getServletContext().getRequestDispatcher("/check.jsp").forward(request, response);	
+				getServletConfig().getServletContext().getRequestDispatcher("/stocktake.jsp").forward(request, response);	
 				return;
 			}else if (operator.equals("2") || operator.equals("3")||operator.equals("4")) 
 			{
-				List<Check> checks1 = new ArrayList<Check>();
-				CheckDAO cdao=new CheckDAO();
+				List<Stocktake> stocktakes1 = new ArrayList<Stocktake>();
+				StocktakeDAO cdao=new StocktakeDAO();
 				try
 				{
-					checks1 = cdao.findAll();
+					stocktakes1 = cdao.findAll();
 				}catch(Exception e)
 				{
-					out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='check.jsp';</script>");
+					out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='stocktake.jsp';</script>");
 				}
 			
 				if (operator.equals("3")||operator.equals("4"))
@@ -171,11 +182,11 @@ public class CheckServlet extends HttpServlet {
 					String id = request.getParameter("id");
 					try
 					{
-						check = dao.findById(Integer.valueOf(id.trim()));
+						stocktake = dao.findById(Integer.valueOf(id.trim()));
    			
 					}catch(Exception e2)
 					{
-						out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='check.jsp';</script>");
+						out.print("<script language='javascript'>alert('查找零件盘点信息失败！');window.location='stocktake.jsp';</script>");
 					}
 				}
 			
@@ -184,7 +195,7 @@ public class CheckServlet extends HttpServlet {
 				if (operator.equals("3"))   //找到零件类别后，把该零件类别的零件类别编码放入session，修改该零件类别信息再保存时可以从session中取出零件类别编码。
 				{	
 					session.setAttribute("operatorStr", "modify");
-					session.setAttribute("id", check.getId());
+					session.setAttribute("id", stocktake.getId());
 				}	
 				else if (operator.equals("4"))
 					session.setAttribute("operatorStr", "delete");
@@ -192,11 +203,46 @@ public class CheckServlet extends HttpServlet {
 					session.setAttribute("operatorStr", "add");
 
 			
-
-				session.setAttribute("checks", checks1);//修改或添加零件类别时，若输入信息通不过检测，需要返回维护零件类别页面，必须把类别信息放到session，否则会丢失
-				session.setAttribute("check", check);
+				if(!CollectionUtils.isEmpty(stocktakes)) {
+					CategoryDAO dao1;
+					for(Stocktake c : stocktakes1) {
+						dao1 = new CategoryDAO();
+						Category category;
+						try {
+							category = dao1.findById(c.getKindID());
+							c.setDescription(category.getDescription());
+							c.setKindName(category.getKindName());
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				
+				session.setAttribute("stocktakes", stocktakes1);//修改或添加零件类别时，若输入信息通不过检测，需要返回维护零件类别页面，必须把类别信息放到session，否则会丢失
+				
+				CategoryDAO dao2 = new CategoryDAO();
+				Category category;
+				try {
+					category = dao2.findById(stocktake.getKindID());
+					stocktake.setDescription(category.getDescription());
+					stocktake.setKindName(category.getKindName());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				session.setAttribute("stocktake", stocktake);
+				
+				dao2 = new CategoryDAO();
+				try {
+					List<Category> categorys = dao2.findAll();
+					request.setAttribute("categorys", categorys);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
 				request.setAttribute("operator", operator);
-				getServletConfig().getServletContext().getRequestDispatcher("/checkEdit.jsp").forward(request, response);
+				
+				getServletConfig().getServletContext().getRequestDispatcher("/stocktakeEdit.jsp").forward(request, response);
 				return;
 			}
 		}
@@ -208,45 +254,51 @@ public class CheckServlet extends HttpServlet {
 		{	
 			if (operatorStr.equals("add") ||operatorStr.equals("modify"))
 			{
-				Check check1 = new Check();
-				if (operatorStr.equals("modify"))
-					check1.setId((int)(request.getSession().getAttribute("id")));
-					check1.setNumber((int)(request.getSession().getAttribute("number")));
-					check1.setValue((int)(request.getSession().getAttribute("value")));
-				
-					CheckDAO cdao=new CheckDAO();
+				Stocktake stocktake1 = new Stocktake();
+				if (operatorStr.equals("modify")){
+					stocktake1.setId((int)(request.getSession().getAttribute("id")));
+				}
+				String kindID = request.getParameter("kindID");
+				stocktake1.setKindID(StringUtils.isEmpty(kindID) ? 0 : Integer.valueOf(kindID.trim()));
+				String number = request.getParameter("number");
+				stocktake1.setNumber(StringUtils.isEmpty(number) ? 0 : Integer.valueOf(number.trim()));
+				String value = request.getParameter("value");
+				stocktake1.setValue(StringUtils.isEmpty(value) ? 0 : Integer.valueOf(value.trim()));
+				String dateStr = request.getParameter("createtime");
+				stocktake1.setCreateTime(dateStr);
+				StocktakeDAO cdao=new StocktakeDAO();
 				try
 				{
 					if (operatorStr.equals("add"))
 					{	
-						cdao.insert(check1);
-						out.print("<script language='javascript'>alert('成功添加零件盘点信息！');window.location='check.jsp';</script>");
+						cdao.insert(stocktake1);
+						out.print("<script language='javascript'>alert('成功添加零件盘点信息！');window.location='stocktake.jsp';</script>");
 					}
 					else
 					{
-						cdao.update(check1);
-						out.print("<script language='javascript'>alert('成功修改零件盘点信息！');window.location='check.jsp';</script>");
+						cdao.update(stocktake1);
+						out.print("<script language='javascript'>alert('成功修改零件盘点信息！');window.location='stocktake.jsp';</script>");
 					}
 				}catch(Exception e)	
 				{
 					if (operatorStr.equals("add"))
-						out.print("<script language='javascript'>alert('添加零件盘点零件类别信息！');window.location='check.jsp';</script>");
+						out.print("<script language='javascript'>alert('添加零件盘点零件类别信息！');window.location='stocktake.jsp';</script>");
 					else
-						out.print("<script language='javascript'>alert('修改零件盘点零件类别信息！');window.location='check.jsp';</script>");
+						out.print("<script language='javascript'>alert('修改零件盘点零件类别信息！');window.location='stocktake.jsp';</script>");
 				}
 				
 			}else if (operatorStr.equals("delete"))
 			{
-				CheckDAO cdao=new CheckDAO();
+				StocktakeDAO cdao=new StocktakeDAO();
 				int id = Integer.parseInt(request.getParameter("id"));
 	
 			    	try
 			    	{
 			    		cdao.deleteById(id);
-			    		out.print("<script language='javascript'>alert('成功删除零件盘点信息！');window.location='check.jsp';</script>");
+			    		out.print("<script language='javascript'>alert('成功删除零件盘点信息！');window.location='stocktake.jsp';</script>");
 			    	}catch(Exception e)	
 			    	{
-			    		out.print("<script language='javascript'>alert('删除零件盘点信息失败！');window.location='check.jsp';</script>");
+			    		out.print("<script language='javascript'>alert('删除零件盘点信息失败！');window.location='stocktake.jsp';</script>");
 			    	}
 			    
 			}
