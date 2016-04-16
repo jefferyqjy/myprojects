@@ -62,8 +62,7 @@ public class MemberServiceImpl implements MemberService {
 				for (InterestBean bean : memberBean.getInterest()) {
 					idList.add(new Object[] { memberBean.getId(), bean.getId() });
 				}
-				jdbcTemplate.batchUpdate("INSERT INTO COM_PRO_MEMBER_INTEREST (MEMBER_ID,INTEREST_ID) VALUES(?,?)",
-						idList);
+				jdbcTemplate.batchUpdate("INSERT INTO COM_PRO_MEMBER_INTEREST (MEMBER_ID,INTEREST_ID) VALUES(?,?)", idList);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -118,6 +117,12 @@ public class MemberServiceImpl implements MemberService {
 			memberBean.setAddress((String) row.get("ADDRESS"));
 			memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 			memberBean.setStatus((Integer) row.get("STATUS"));
+			memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+			memberBean.setCity(((Integer)row.get("CITY")).toString());
+			memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+			memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+			memberBean.setYear((Integer) row.get("YEAR"));
+			memberBean.setStuNo((String) row.get("STUNO"));
 			return memberBean;
 		}
 		return null;
@@ -146,6 +151,12 @@ public class MemberServiceImpl implements MemberService {
 			memberBean.setAddress((String) row.get("ADDRESS"));
 			memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 			memberBean.setStatus((Integer) row.get("STATUS"));
+			memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+			memberBean.setCity(((Integer)row.get("CITY")).toString());
+			memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+			memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+			memberBean.setYear((Integer) row.get("YEAR"));
+			memberBean.setStuNo((String) row.get("STUNO"));
 			return memberBean;
 		}
 		return null;
@@ -166,6 +177,12 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
+				memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+				memberBean.setCity(((Integer)row.get("CITY")).toString());
+				memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+				memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+				memberBean.setYear((Integer) row.get("YEAR"));
+				memberBean.setStuNo((String) row.get("STUNO"));
 				beanList.add(memberBean);
 			}
 			return beanList;
@@ -189,6 +206,12 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
+				memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+				memberBean.setCity(((Integer)row.get("CITY")).toString());
+				memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+				memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+				memberBean.setYear((Integer) row.get("YEAR"));
+				memberBean.setStuNo((String) row.get("STUNO"));
 				beanList.add(memberBean);
 			}
 			return beanList;
@@ -233,6 +256,12 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
+				memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+				memberBean.setCity(((Integer)row.get("CITY")).toString());
+				memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+				memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+				memberBean.setYear((Integer) row.get("YEAR"));
+				memberBean.setStuNo((String) row.get("STUNO"));
 				return memberBean;
 			}
 		}
@@ -253,6 +282,12 @@ public class MemberServiceImpl implements MemberService {
 				memberBean.setAddress((String) row.get("ADDRESS"));
 				memberBean.setUniversity(universityService.get((Integer) row.get("UNIVERSITY")));
 				memberBean.setStatus((Integer) row.get("STATUS"));
+				memberBean.setProvince(((Integer)row.get("PROVINCE")).toString());
+				memberBean.setCity(((Integer)row.get("CITY")).toString());
+				memberBean.setUniversityId(((Integer)row.get("UNIVERSITY")).toString());
+				memberBean.setSubject(((Integer)row.get("SUBJECT")).toString());
+				memberBean.setYear((Integer) row.get("YEAR"));
+				memberBean.setStuNo((String) row.get("STUNO"));
 				return memberBean;
 			}
 		}

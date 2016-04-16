@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pro.enums.Gender;
 import com.pro.exception.ProException;
 import com.pro.pojo.MemberBean;
+import com.pro.service.CityService;
 import com.pro.service.InterestService;
 import com.pro.service.MemberService;
+import com.pro.service.ProvinceService;
+import com.pro.service.SubjectService;
 import com.pro.service.UniversityService;
 
 @Controller
@@ -30,6 +34,15 @@ public class MemberCtl {
 	@Autowired
 	InterestService interestService;
 	
+	@Autowired
+	ProvinceService provinceService;
+	
+	@Autowired
+	CityService cityService;
+	
+	@Autowired
+	SubjectService subjectService;
+	
 	@RequestMapping(value = "/preUpdate.spring", method = RequestMethod.GET)
 	public ModelAndView preUpdate(HttpSession session) throws Exception {
 		Integer id = (Integer)session.getAttribute("ONLINE_MEMBER_ID");
@@ -41,6 +54,10 @@ public class MemberCtl {
 			mav.addObject("memberBean", memberBean);
 			mav.addObject("UniversityBeanList", universityService.list());
 			mav.addObject("InterestBeanList", memberService.getInterest(id));
+			mav.addObject("ProvinceBeanList", provinceService.list());
+			mav.addObject("CityBeanList", cityService.list());
+			mav.addObject("SubjectBeanList", subjectService.list());
+			mav.addObject("genders", Gender.values());
 		} catch (ProException e) {
 			e.printStackTrace();
 		}
@@ -62,9 +79,9 @@ public class MemberCtl {
 					memberBean.getInterest().add(bean);
 				}
 			if (memberService.update(memberBean)) {
-				mav.addObject("MESSAGE", "Update Member Successfully");
+				mav.addObject("MESSAGE", "更新会员信息成功！");
 			} else {
-				mav.addObject("MESSAGE", "Update Member Failed");
+				mav.addObject("MESSAGE", "更新会员信息失败！");
 			}
 		} catch (ProException e) {
 			e.printStackTrace();
@@ -85,6 +102,10 @@ public class MemberCtl {
 		mav.addObject("memberBean", new MemberBean());
 		mav.addObject("UniversityBeanList", universityService.list());
 		mav.addObject("InterestBeanList", interestService.list());
+		mav.addObject("ProvinceBeanList", provinceService.list());
+		mav.addObject("CityBeanList", cityService.list());
+		mav.addObject("SubjectBeanList", subjectService.list());
+		mav.addObject("AllInterestBeanList", interestService.list());
 		return mav;
 	}
 	
