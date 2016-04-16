@@ -3,6 +3,7 @@
 	<ul>
 		<li><a href="/friend/home.jsp">首页</a></li>
 		<li><a href="/friend/frd/preList.spring">好友</a></li>
+		<li><a href="/friend/twitter/preList.spring">动态</a></li>
 		<li><a href="/friend/boke/preList.spring" >博客</a></li>
 		<li><a href="/friend/photoBox/preList.spring">相册</a></li>
 		<li><a href="#" onclick="userManager()">个人信息</a></li>

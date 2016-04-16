@@ -163,6 +163,9 @@ a {
 				<dd>
 					<a href="partinner.jsp">零件内配管理</a>
 				</dd>
+				<dd>
+					<a href="check.jsp">零件盘点管理</a>
+				</dd>
 			</dl>
 
 			<dl class="arrange">
