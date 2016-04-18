@@ -1,5 +1,7 @@
 package com.pro.pojo;
 
+import java.util.List;
+
 public class TwitterBean {
 
 	private int id;
@@ -13,6 +15,8 @@ public class TwitterBean {
 	private String userName;
 	
 	private Integer like;
+	
+	private List<TwitterCommentBean> commentList;
 
 	public int getId() {
 		return id;
@@ -60,6 +64,14 @@ public class TwitterBean {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public List<TwitterCommentBean> getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List<TwitterCommentBean> commentList) {
+		this.commentList = commentList;
 	}
 	
 	

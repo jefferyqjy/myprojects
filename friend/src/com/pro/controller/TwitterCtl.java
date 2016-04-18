@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,15 +21,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pro.exception.ProException;
-import com.pro.pojo.FriendGroup;
 import com.pro.pojo.MemberBean;
 import com.pro.pojo.Message;
 import com.pro.pojo.ReportBean;
+import com.pro.pojo.TwitterBean;
+import com.pro.pojo.TwitterCommentBean;
 import com.pro.pojo.datatable.DatatableReponse;
 import com.pro.service.InterestService;
 import com.pro.service.MemberService;
 import com.pro.service.ReportService;
 import com.pro.service.SubjectService;
+import com.pro.service.TwitterCommentService;
+import com.pro.service.TwitterService;
 import com.pro.service.UniversityService;
 import com.pro.utils.CommonUtils;
 import com.pro.utils.DateUtils;
@@ -55,6 +59,12 @@ public class TwitterCtl {
 	@Autowired
 	SubjectService subjectService;
 	
+	@Autowired
+	TwitterService twitterService;
+	
+	@Autowired
+	TwitterCommentService twitterCommentService;
+	
 	@RequestMapping(value = "/preList.spring", method = RequestMethod.GET)
 	public ModelAndView preUpdate(HttpSession session) throws Exception {
 		ModelAndView mav = new ModelAndView();
@@ -64,7 +74,16 @@ public class TwitterCtl {
 			pageUrl = "error";
 			mav.addObject("ERROR_MESSAGE", "ÇëÏÈµÇÂ½");
 		} else {
-			List<FriendGroup> groupList = new ArrayList<FriendGroup>();
+			List<TwitterBean> twitterList = twitterService.findByUserId(id);
+			if(CollectionUtils.isNotEmpty(twitterList)) {
+				for(TwitterBean twitter : twitterList) {
+					Integer twitterId = twitter.getId();
+					List<TwitterCommentBean> list = twitterCommentService.findByTwitterId(twitterId);
+					twitter.setCommentList(list);
+				}
+			}
+			mav.addObject("TwitterList", twitterList);
+			/*List<FriendGroup> groupList = new ArrayList<FriendGroup>();
 			List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_FRIEND_GROUP WHERE USER_ID = ?", id);
 			if (!CommonUtils.isEmptyList(rows)) {
 				for (Map<String, Object> row : rows) {
@@ -88,11 +107,9 @@ public class TwitterCtl {
 					}	
 				}
 				mav.addObject("GROUPLIST", groupList);
-			}
+			}*/
 		}
 		
-		mav.addObject("UniversityBeanList", universityService.list());
-		mav.addObject("SubjectBeanList", subjectService.list());
 		mav.setViewName(pageUrl);
 		
 		return mav;

@@ -83,26 +83,22 @@ body {
 						</div>
 						<div class="box-content" style="height:490px; min-height: 490px; max-height:490px">
 							<div id="twitterDiv" style="padding-left:50px;height:450px; min-height:450px; max-height:450px; OVERFLOW-Y: auto; OVERFLOW-X:hidden;">
-								<div class="twitterContent" style="background-color:lightblue" >
-									<div class="controls controls-row twitter">
-									  <div class="span2">jeffery 说：</div>
-									  <div class="span8">我是来试下这样子行不行的！</div>
-									</div>
+								<div class="twitterContent" >
 									<div class="clearfix"></div>
-									<div class="controls controls-row comment">
-									  <div class="span4">2016年4月16日 13:20:39 jojo 对 jeffery 说：</div>
-									  <div class="span4">哈哈~你是屋子嘛</div>
+									<c:forEach items="${TwitterList}" var="t">
+										<div class="controls controls-row twitter">
+									  		<div class="span2"><font size="bold">${t.userName }</font> 说：</div>
+									  		<div class="span8">${t.content }</div>
+									  	<div class="clearfix"></div>
+									  	<c:forEach items="${t.commentList}" var="c">
+								  			<div class="controls controls-row comment">
+										  		<div class="span4">${c.createTime } ${c.fromUserName } 对 ${c.toUserName } 说：</div>
+											  	<div class="span4">${c.content }</div>
+											</div>
+											<div class="clearfix"></div>
+									  	</c:forEach>
 									</div>
-									<div class="clearfix"></div>
-									<div class="controls controls-row comment">
-									  <div class="span4">2016年4月16日 13:22:39 jeffery 对 jojo 说：</div>
-									  <div class="span4">你才呢</div>
-									</div>
-									<div class="clearfix"></div>
-									<div class="controls controls-row comment">
-									  <div class="span4">2016年4月16日 13:22:39 jeffery 对 jojo 说：</div>
-									  <div class="span4">你才呢</div>
-									</div>
+									</c:forEach>
 								</div>
 							</div>
 						</div>
