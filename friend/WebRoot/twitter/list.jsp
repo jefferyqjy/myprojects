@@ -83,6 +83,12 @@ body {
 						</div>
 						<div class="box-content" style="height:490px; min-height: 490px; max-height:490px">
 							<div id="twitterDiv" style="padding-left:50px;height:450px; min-height:450px; max-height:450px; OVERFLOW-Y: auto; OVERFLOW-X:hidden;">
+								<div class="controls control-row">
+									<div class="span8" >
+										<input type="text" name="twitter" class="input-xlarge"/>
+										<a href="#" class="btn btn-primary" onclick="postTwitter();" style="margin-bottom:10px;margin-left:10px" >发布</a>										
+									</div>
+								</div>
 								<div class="twitterContent" >
 									<div class="clearfix"></div>
 									<c:forEach items="${TwitterList}" var="t">
@@ -94,6 +100,10 @@ body {
 								  			<div class="controls controls-row comment">
 										  		<div class="span4">${c.createTime } ${c.fromUserName } 对 ${c.toUserName } 说：</div>
 											  	<div class="span4">${c.content }</div>
+											  	<div class="span4">	
+											  		<a href="#" class="btn btn-add btn-round"><font size="bold">+</font></a>
+											  		<a href="#" class="btn btn-close btn-round"><font size="bold">&times</font></a>
+												</div>
 											</div>
 											<div class="clearfix"></div>
 									  	</c:forEach>
@@ -156,214 +166,11 @@ body {
 		var oTable;
 		var curMemberId, curGroupId;
 		initializeEvents();
-		getMessage();
-		function accessM() {
-			hiddenForm.userId.value = curMemberId;
-			$("#hiddenForm").attr("target", "_blank");
-			$("#hiddenForm").submit();
-		}
 		
 		function refresh() {
 			window.location.href = '/friend/frd/preList.spring';
 		}
 		
-		function addMsg() {
-			var msg = $("#chatInput").val();
-			if (msg=="" || msg.trim() =="") {
-				return;
-			} else {
-				var url = "/friend/frd/addMsg.spring";
-				var data = {
-						userId : curMemberId,
-						msg:msg
-				};
-				$.ajax({
-					url : url,
-					type : "POST",
-					data : data,
-					success : function(input) {
-						var div = "<div style='float:right; color:green'>我@刚刚</div>";
-						$("#chatMsgDiv").append(div);
-						div = "<div style='clear:both'></div>";
-						$("#chatMsgDiv").append(div);
-						div = "<div style='float:right; color:green'>" + msg +"</div>";
-						$("#chatMsgDiv").append(div);
-						div = "<div style='clear:both'></div>";
-						$("#chatMsgDiv").append(div);
-						$("#chatInput").val('');
-						$("#chatMsgDiv").scrollTop(10000000);
-					},
-					error : function(x, e) {
-						alert(e);
-					}
-				});
-			}
-		}
-		
-		function chatM() {
-			$("#chatMsgDiv").empty();
-			$("#chatInput").show();
-			$("#chatInput").val('');
-			closeM();
-			getUserMsg();
-		}
-		
-		function getUserMsg() {
-			$("#chatMsgDiv").empty();
-			var url = "/friend/frd/getMsg.spring";
-			var data = {
-					userId : curMemberId
-				};
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(input) {
-					var len = input.length;
-					for(var i=0; i < len; i++) {
-						var message = input[i];
-						if (message.order == 1) {
-							var div = "<div style='color:blue'>" + message.fromUserName +"@" + message.date+"<br>" + message.message+"</div>";
-							$("#chatMsgDiv").append(div);
-						} else {
-							var div = "<div style='float:right; color:green'>我@" + message.date+"</div>";
-							$("#chatMsgDiv").append(div);
-							div = "<div style='clear:both'></div>";
-							$("#chatMsgDiv").append(div);
-							div = "<div style='float:right; color:green'>" + message.message+"</div>";
-							$("#chatMsgDiv").append(div);
-							div = "<div style='clear:both'></div>";
-							$("#chatMsgDiv").append(div);
-						}
-					}
-					$("#chatMsgDiv").scrollTop(10000000);
-					setTimeout(getUserMsg, 5000);
-				},
-				error : function(x, e) {
-					alert(e);
-				}
-			});
-		}
-		
-		function moveM() {
-			$('#moveGroup').modal();
-			closeM();
-		}
-		
-		function moveGroup() {
-			closeM();
-			var url = "/friend/frd/moveFriend.spring";
-			var groupId = $('#moveGroupSelect').val();
-			var data = {
-				userId : curMemberId,
-				groupId : groupId
-			};
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(input) {
-					$('#moveGroup').modal('hide');
-					if (input == "1") {
-						openMsg('消息', '移动好友成功', refresh);
-					} else {
-						openMsg('消息', '移动好友失败');
-					}
-				},
-				error : function(x, e) {
-					alert(e);
-				}
-			});
-		}
-
-		function deleteM() {
-			closeM();
-			var url = "/friend/frd/deleteFriend.spring";
-			var data = {
-				userId : curMemberId
-			};
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(input) {
-					if (input == "1") {
-						openMsg('消息', '删除好友成功', refresh);
-					} else {
-						openMsg('消息', '添加好友失败');
-					}
-				},
-				error : function(x, e) {
-					alert(e);
-				}
-			});
-		}
-		
-		function closeM() {
-			$('#memberRightClickDiv').hide();
-		}
-		function getMessage() {
-			var url = "/friend/frd/getMessage.spring";
-			$.ajax({
-				url : url,
-				type : "POST",
-				success : function(input) {
-					
-					if (input != "0") {
-						openMsg('消息', input);
-					}
-					
-					setTimeout(getMessage, 1000);
-				},
-				error : function(x, e) {
-					alert(e);
-				}
-			});
-		}
-		
-		function addUser(userId) {
-			var url = "/friend/frd/addFriend.spring";
-			var data = {
-				userId : userId
-			};
-			$.ajax({
-				url : url,
-				type : "POST",
-				data : data,
-				success : function(input) {
-					$("#newModal2").modal('hide');
-					if (input == "1") {
-						openMsg('消息', '添加好友成功，默认到你的第一个分组中', refresh);
-					} else if (input == "-1") {
-						openMsg('消息', '自己不能添加自己为好友');
-					} else if (input == "-2"){
-						openMsg('消息', '他已经是你的好友，无需再次添加');
-					} else if (input == "-3"){
-						openMsg('消息', '你还没有添加小组，请先创建用户组');
-					} else {
-						openMsg('消息', '添加好友失败');
-					}
-				},
-				error : function(x, e) {
-					alert(e);
-				}
-			});
-		}
-		function searchUser() {
-			debugger;
-			var userName = $('#userName').val();
-			var userGender = $('#userGender').val();
-			var universityId = $('#universityId').val();
-			var subject = $('#subject').val();		
-			var url = "/friend/frd/searchUser.spring?universityId=" + universityId
-					+ "&userName=" + userName + "&userGender=" + userGender + "&subject=" + subject;
-
-			url= encodeURI(encodeURI(url)); 
-			oTable.fnSettings().sAjaxSource = url;
-			oTable.fnClearTable(0);
-			oTable.fnDraw();
-			
-		}
 		function initializeEvents() {
 			var userName = "";
 			var userGender = "";
@@ -466,11 +273,6 @@ body {
 				"mDataProp" : null
 			} ];
 		}
-		function createAction(id) {
-			var inhtml = '<a class="btn btn-success" onClick="addUser(' + id+')" href="#">';
-			inhtml += '<i class="icon-zoom-in icon-white"></i>加为好友</a> ';
-			return inhtml;
-		}
 		function addGroup() {
 			var url = "/friend/frd/addGroup.spring";
 			var name = $('#groupName').val();
@@ -498,32 +300,23 @@ body {
 			});
 		}
 
-		// method to call report
-		function doReport() {
-			var url = "${pageContext.request.contextPath}/frd/addReport.spring";
+		function postTwitter() {
+			var content = $("input[name='twitter']").val();
 			$.ajax({
-				url : url,
+				url : "${pageContext.request.contextPath}/twitter/addTwitter.spring",
 				type : "POST",
-				data : {
-					userId : curMemberId,
-					reason : $("#reason").val()
-				},
+				data : {content : content},
 				success : function(input) {
-					if (input == "1") {
-						$("#newModal13").modal('hide');
-						$('#reason').val('');
-						openMsg('消息', '举报用户成功！', refresh);
-					} else {
-						$("#newModal13").modal('hide');
-						$('#groupName').val('');
-						openMsg('消息', '举报用户失败！', refresh);
-					}
+					window.location.href = "${pageContext.request.contextPath}/twitter/preList.spring";
 				},
 				error : function(x, e) {
 					alert(e);
 				}
 			});
 		}
+
+		
+
 	</script>
 </body>
 </html>

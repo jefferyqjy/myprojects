@@ -7,9 +7,13 @@ import com.pro.pojo.TwitterBean;
 
 public interface TwitterService {
 
-	/*public boolean add(UniversityBean universityBean) throws ProException;
+	public boolean add(TwitterBean twitterBean) throws ProException;
+	
+	public boolean like(Integer twitterId) throws ProException;
+	
+	public TwitterBean get(int id) throws ProException;
 
-	public boolean update(UniversityBean universityBean) throws ProException;
+	/*public boolean update(UniversityBean universityBean) throws ProException;
 
 	public boolean delete(int id) throws ProException;
 

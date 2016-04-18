@@ -30,20 +30,32 @@ public class TwitterServiceImpl implements TwitterService {
 	@Autowired
 	MemberService memberService;
 
-	/*@Override
-	public boolean add(UniversityBean universityBean) throws ProException {
+	@Override
+	public boolean add(TwitterBean twitterBean) throws ProException {
 		try {
-			jdbcTemplate.update("INSERT INTO COM_PRO_UNIVERSITY (NAME,CITY) VALUES(?,?)", universityBean.getName(),
-					universityBean.getCity().getId());
-			universityBean.setId(jdbcTemplate.queryForInt(
-					"SELECT ID FROM COM_PRO_UNIVERSITY WHERE NAME=? AND CITY=? ORDER BY ID DESC",
-					universityBean.getName(), universityBean.getCity().getId()));
+			jdbcTemplate.update("INSERT INTO COM_PRO_TWITTER (CONTENT, CREATETIME, USERID) VALUES(?, ?, ?)", 
+					twitterBean.getContent(),
+					twitterBean.getCreateTime(),
+					twitterBean.getUserId());
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
 		return true;
-	}*/
+	}
+	
+	public boolean like(Integer twitterId) throws ProException {
+		try {
+			TwitterBean t = this.get(twitterId);
+			Integer like = t.getLike();
+			like++;
+			jdbcTemplate.update("UPDATE COM_PRO_TWITTER SET LIKE = ?", like);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 
 	/*@Override
 	public boolean update(UniversityBean universityBean) throws ProException {
@@ -68,20 +80,26 @@ public class TwitterServiceImpl implements TwitterService {
 		return true;
 	}*/
 
-	/*@Override
-	public UniversityBean get(int id) throws ProException {
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_UNIVERSITY WHERE ID = ?", id);
+	@Override
+	public TwitterBean get(int id) throws ProException {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList("SELECT * FROM COM_PRO_TWITTER WHERE ID = ?", id);
 		if (!CommonUtils.isEmptyList(rows)) {
 			Map<String, Object> row = rows.get(0);
-			UniversityBean universityBean = new UniversityBean();
-			universityBean.setId(id);
-			universityBean.setId((Integer) row.get("ID"));
-			universityBean.setName((String) row.get("NAME"));
-			universityBean.setCity(cityService.get((Integer) row.get("CITY")));
-			return universityBean;
+			TwitterBean twitterBean = new TwitterBean();
+			twitterBean.setId((Integer) row.get("ID"));
+			twitterBean.setContent((String) row.get("CONTENT"));
+			Date date = (Date)row.get("CREATETIME");
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			twitterBean.setCreateTime(date == null ? df.format(new Date()) : df.format(date));
+			Integer userId1 = (Integer) row.get("USERID");
+			twitterBean.setUserId(userId1);
+			MemberBean member = memberService.get(userId1);
+			twitterBean.setUserName(member == null ? "" : member.getUserName());
+			twitterBean.setLike((Integer) row.get("LIKE"));
+			return twitterBean;
 		}
 		return null;
-	}*/
+	}
 
 	/*@Override
 	public UniversityBean get(UniversityBean universityBean) throws ProException {
