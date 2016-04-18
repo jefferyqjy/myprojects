@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping><class name="com.pro.entity.Finance" table="t_finance">
+<id name="id" type="java.lang.Integer"><column name="id"/><generator class="native"/></id>
+<property access="field" column="t_financetype" length="200" name="financetype"/>
+<property access="field" column="t_appgenid" length="200" name="appgenid"/>
+<property access="field" column="t_appnameid" length="200" name="appnameid"/>
+<property access="field" column="t_supname" length="200" name="supname"/>
+<property access="field" column="t_custgenid" length="200" name="custgenid"/>
+<property access="field" column="t_custnameid" length="200" name="custnameid"/>
+<property access="field" column="t_custname" length="200" name="custname"/>
+<property access="field" column="t_datefin" length="200" name="datefin"/>
+<property access="field" column="t_totalmoney" length="200" name="totalmoney"/>
+<property access="field" column="t_remark" length="2000" name="remark"/>
+</class></hibernate-mapping>

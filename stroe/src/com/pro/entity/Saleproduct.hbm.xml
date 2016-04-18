@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping><class name="com.pro.entity.Saleproduct" table="t_saleproduct">
+<id name="id" type="java.lang.Integer">
+<column name="id"/><generator class="native"/></id>
+<property access="field" column="t_productid" length="200" name="productid"/>
+<property access="field" column="t_productgenid" length="200" name="productgenid"/>
+<property access="field" column="t_productname" length="200" name="productname"/>
+<property access="field" column="t_orderstatus" length="200" name="orderstatus"/>
+<property access="field" column="t_amount" length="200" name="amount"/>
+<property access="field" column="t_totalmoney" length="200" name="totalmoney"/>
+<property access="field" column="t_datesale" length="200" name="datesale"/>
+<property access="field" column="t_remark" length="2000" name="remark"/>
+</class></hibernate-mapping>

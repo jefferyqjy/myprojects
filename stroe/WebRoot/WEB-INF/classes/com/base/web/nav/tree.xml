@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="管理系统">
+    <manager name="系统管理" type="0">
+        <link href="./sys_jsp/admin/admin_add.jsp" name="添加用户" type="0"/>
+        <link href="admin/admin_query.do?username=" name="管理用户" type="0"/>
+    </manager>
+    <manager name="个人信息管理" type="1">
+        <link href="./sys_jsp/admin/admin_changePassword.jsp" name="修改密码" type="0"/>
+    </manager>
+    <manager name="公告管理" show="false" type="0">
+        <link href="./plugin_jsp/announce/announce_add.jsp" name="添加公告" type="0"/>
+        <link href="./plugin_jsp/announce/announce_query.jsp" name="查询公告" type="0"/>
+    </manager>
+    <manager name="文件管理" show="false" type="0">
+        <link href="./plugin_jsp/jfile/jfile_add.jsp" name="添加文件" type="0"/>
+        <link href="./plugin_jsp/jfile/jfile_query.jsp" name="查询文件" type="0"/>
+    </manager>
+    <manager name="数据库管理" show="false" type="0">
+        <link href="./sys_jsp/database/database_backup.jsp" name="备份数据库" type="0"/>
+        <link href="./sys_jsp/database/database_restore.jsp" name="还原数据库" type="0"/>
+    </manager>
+    <manager name="客户资料管理" type="0">
+        <link href="./pro_jsp/customerinfo/customerinfo_add.jsp" name="添加客户资料" type="0"/>
+        <link href="./pro_jsp/customerinfo/customerinfo_query.jsp" name="查询客户资料" type="0"/>
+    </manager>
+    <manager name="员工信息管理" type="0">
+        <link href="./pro_jsp/employee/employee_add.jsp" name="添加员工信息" type="0"/>
+        <link href="./pro_jsp/employee/employee_query.jsp" name="查询员工信息" type="0"/>
+    </manager>
+    <manager name="财务管理" type="0">
+    	<!-- 
+        <link href="./pro_jsp/finance/finance_add.jsp" name="添加财务" type="0"/>
+         -->
+        <link href="finance/finance_gotoadd.do" name="添加财务" type="0"/>
+        <link href="./pro_jsp/finance/finance_query.jsp" name="查询财务" type="0"/>
+        <link href="finance/finance_shouru.do" name="当天收入" type="0"/>
+        <link href="finance/finance_zhichu.do" name="当天支出" type="0"/>
+        <link href="./pro_jsp/finance/finance_queryshouru.jsp" name="查询收入" type="0"/>
+        <link href="./pro_jsp/finance/finance_queryzhichu.jsp" name="查询支出" type="0"/>
+    </manager>
+    <manager name="进订货管理" type="0">
+    	<!-- 
+        <link href="./pro_jsp/orderproduct/orderproduct_add.jsp" name="添加进订货管理" type="0"/>
+         -->
+         <link href="orderproduct/orderproduct_gotoadd.do" name="添加进订货管理" type="0"/>
+        <link href="./pro_jsp/orderproduct/orderproduct_query.jsp"
+            name="查询进订货管理" type="0"/>
+    </manager>
+    <manager name="商品信息管理" type="0">
+    	<!-- <link href="./pro_jsp/product/product_add.jsp" name="添加商品信息" type="0"/> -->
+        <link href="product/product_gotoadd.do" name="添加商品信息" type="0"/>
+        <link href="./pro_jsp/product/product_query.jsp" name="查询商品信息" type="0"/>
+    </manager>
+    <manager name="销售送货管理" type="0">
+    	<!--  
+        <link href="./pro_jsp/saleproduct/saleproduct_add.jsp" name="添加销售送货" type="0"/>
+        -->
+        <link href="saleproduct/saleproduct_gotoadd.do" name="添加销售送货" type="0"/>
+        <link href="./pro_jsp/saleproduct/saleproduct_query.jsp" name="查询销售送货" type="0"/>
+        <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    </manager>
+    <manager name="供货商资料管理" type="0">
+        <link href="./pro_jsp/supplier/supplier_add.jsp" name="添加供货商资料" type="0"/>
+        <link href="./pro_jsp/supplier/supplier_query.jsp" name="查询供货商资料" type="0"/>
+    </manager>
+    
+     <manager name="统计管理" type="0">
+         <link href="orderproduct/orderproduct_tongjibygonghong.do" name="进货汇总（供货商）" type="0"/>
+         <link href="orderproduct/orderproduct_tongjibyshangpin.do" name="进货汇总（商品）" type="0"/>
+         
+         <link href="saleproduct/saleproduct_xiaoshoubyshangpin.do" name="销售汇总（商品）" type="0"/>
+         
+         	<!-- 
+         <link href="saleproduct/saleproduct_xiaoshoubykehu.do" name="销售汇总（客户）" type="0"/>
+          -->
+        
+    </manager>
+    
+    
+    
+    <manager name="库存预警" type="0">
+         <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
+         <link href="saleproduct/saleproduct_quehuo.do" name="商品缺货提醒" type="0"/>
+         <link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
+    </manager>
+    
+    
+    <manager name="客户资料管理" type="1">
+        <link href="./pro_jsp/customerinfo/customerinfo_add.jsp" name="添加客户资料" type="0"/>
+        <link href="./pro_jsp/customerinfo/customerinfo_query.jsp" name="查询客户资料" type="0"/>
+    </manager>
+    <manager name="员工信息管理" type="1">
+        <link href="./pro_jsp/employee/employee_add.jsp" name="添加员工信息" type="0"/>
+        <link href="./pro_jsp/employee/employee_query.jsp" name="查询员工信息" type="0"/>
+    </manager>
+    <manager name="财务管理" type="1">
+    	<!-- 
+        <link href="./pro_jsp/finance/finance_add.jsp" name="添加财务" type="0"/>
+         -->
+        <link href="finance/finance_gotoadd.do" name="添加财务" type="0"/>
+        <link href="./pro_jsp/finance/finance_query.jsp" name="查询财务" type="0"/>
+        <link href="finance/finance_shouru.do" name="当天收入" type="0"/>
+        <link href="finance/finance_zhichu.do" name="当天支出" type="0"/>
+        <link href="./pro_jsp/finance/finance_queryshouru.jsp" name="查询收入" type="0"/>
+        <link href="./pro_jsp/finance/finance_queryzhichu.jsp" name="查询支出" type="0"/>
+    </manager>
+    <manager name="进订货管理" type="1">
+    	<!-- 
+        <link href="./pro_jsp/orderproduct/orderproduct_add.jsp" name="添加进订货管理" type="0"/>
+         -->
+         <link href="orderproduct/orderproduct_gotoadd.do" name="添加进订货管理" type="0"/>
+        <link href="./pro_jsp/orderproduct/orderproduct_query.jsp"
+            name="查询进订货管理" type="0"/>
+    </manager>
+    <manager name="商品信息管理" type="1">
+    	<!-- <link href="./pro_jsp/product/product_add.jsp" name="添加商品信息" type="0"/> -->
+        <link href="product/product_gotoadd.do" name="添加商品信息" type="0"/>
+        <link href="./pro_jsp/product/product_query.jsp" name="查询商品信息" type="0"/>
+    </manager>
+    <manager name="销售送货管理" type="1">
+    	<!--  
+        <link href="./pro_jsp/saleproduct/saleproduct_add.jsp" name="添加销售送货" type="0"/>
+        -->
+        <link href="saleproduct/saleproduct_gotoadd.do" name="添加销售送货" type="0"/>
+        <link href="./pro_jsp/saleproduct/saleproduct_query.jsp" name="查询销售送货" type="0"/>
+        <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    </manager>
+    <manager name="供货商资料管理" type="1">
+        <link href="./pro_jsp/supplier/supplier_add.jsp" name="添加供货商资料" type="0"/>
+        <link href="./pro_jsp/supplier/supplier_query.jsp" name="查询供货商资料" type="0"/>
+    </manager>
+    
+     <manager name="统计管理" type="1">
+         <link href="orderproduct/orderproduct_tongjibygonghong.do" name="进货汇总（供货商）" type="0"/>
+         <link href="orderproduct/orderproduct_tongjibyshangpin.do" name="进货汇总（商品）" type="0"/>
+         
+         <link href="saleproduct/saleproduct_xiaoshoubyshangpin.do" name="销售汇总（商品）" type="0"/>
+         
+         	<!-- 
+         <link href="saleproduct/saleproduct_xiaoshoubykehu.do" name="销售汇总（客户）" type="0"/>
+          -->
+        
+    </manager>
+    
+    
+    
+    <manager name="库存预警" type="1">
+         <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
+         <link href="saleproduct/saleproduct_quehuo.do" name="商品缺货提醒" type="0"/>
+         <link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
+    </manager>
+</root>

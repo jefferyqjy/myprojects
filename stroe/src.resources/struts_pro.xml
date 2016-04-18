@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+                        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <package extends="struts-default" name="customerinfo" namespace="/customerinfo">
+        <action class="customerinfoAction" method="{1}" name="customerinfo_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/customerinfo/customerinfo_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/customerinfo/customerinfo_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/customerinfo/customerinfo_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="employee" namespace="/employee">
+        <action class="employeeAction" method="{1}" name="employee_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/employee/employee_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/employee/employee_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/employee/employee_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="finance" namespace="/finance">
+        <action class="financeAction" method="{1}" name="finance_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/finance/finance_{1}.jsp</result>
+             <result name="gotoadd">/pro_jsp/finance/finance_add.jsp</result>
+            <result name="queryJSP">/pro_jsp/finance/finance_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/finance/finance_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="orderproduct" namespace="/orderproduct">
+        <action class="orderproductAction" method="{1}" name="orderproduct_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/orderproduct/orderproduct_{1}.jsp</result>
+             <result name="gotoadd">/pro_jsp/orderproduct/orderproduct_add.jsp</result>
+            <result name="queryJSP">/pro_jsp/orderproduct/orderproduct_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/orderproduct/orderproduct_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="product" namespace="/product">
+        <action class="productAction" method="{1}" name="product_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/product/product_{1}.jsp</result>
+            <result name="gotoadd">/pro_jsp/product/product_add.jsp</result>
+            <result name="queryJSP">/pro_jsp/product/product_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/product/product_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="saleproduct" namespace="/saleproduct">
+        <action class="saleproductAction" method="{1}" name="saleproduct_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/saleproduct/saleproduct_{1}.jsp</result>
+            <result name="gotoadd">/pro_jsp/saleproduct/saleproduct_add.jsp</result>
+            <result name="queryJSP">/pro_jsp/saleproduct/saleproduct_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/saleproduct/saleproduct_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="supplier" namespace="/supplier">
+        <action class="supplierAction" method="{1}" name="supplier_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/supplier/supplier_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/supplier/supplier_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/supplier/supplier_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+</struts>

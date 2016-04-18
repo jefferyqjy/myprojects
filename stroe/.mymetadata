@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="stroe"
+  id="myeclipse.1427722335267"
+  context-root="/stroe"
+  j2ee-spec="5.0"
+  archive="stroe.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

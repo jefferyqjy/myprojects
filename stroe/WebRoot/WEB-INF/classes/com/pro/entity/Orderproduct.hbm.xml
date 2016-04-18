@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping><class name="com.pro.entity.Orderproduct" table="t_orderproduct">
+<id name="id" type="java.lang.Integer"><column name="id"/><generator class="native"/></id>
+<property access="field" column="t_orderid" length="200" name="orderid"/>
+<property access="field" column="t_orderstatus" length="200" name="orderstatus"/>
+<property access="field" column="t_dateorder" length="200" name="dateorder"/>
+<property access="field" column="t_datefinished" length="200" name="datefinished"/>
+<property access="field" column="t_productid" length="200" name="productid"/>
+<property access="field" column="t_productgenid" length="200" name="productgenid"/>
+<property access="field" column="t_productname" length="200" name="productname"/>
+<property access="field" column="t_suppliernaem" length="200" name="suppliernaem"/>
+<property access="field" column="t_suppliergenid" length="200" name="suppliergenid"/>
+<property access="field" column="t_supplierid" length="200" name="supplierid"/>
+<property access="field" column="t_amount" length="200" name="amount"/>
+<property access="field" column="t_datebirth" length="200" name="datebirth"/>
+<property access="field" column="t_datequality" length="200" name="datequality"/>
+<property access="field" column="t_remark" length="2000" name="remark"/>
+</class></hibernate-mapping>

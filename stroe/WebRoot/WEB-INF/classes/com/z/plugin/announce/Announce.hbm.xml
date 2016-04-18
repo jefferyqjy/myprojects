@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.z.plugin.announce.Announce" table="t_announce">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property access="field" column="t_title" length="200" name="title" />
+		<property access="field" column="t_content" length="2000"
+			name="content" />
+		<property access="field" column="t_date" length="200" name="date" />
+		<property access="field" column="t_level" length="200" name="level" />
+		<property access="field" column="t_sync" length="200" name="sync" />
+	</class>
+</hibernate-mapping>
