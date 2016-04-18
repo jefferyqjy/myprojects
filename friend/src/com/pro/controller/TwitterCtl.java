@@ -98,15 +98,12 @@ public class TwitterCtl {
 		return flag;
 	}
 
-	@RequestMapping(value = "/deleteFriend.spring", method = RequestMethod.POST)
-	public @ResponseBody
-	String deleteFriend(
-			@RequestParam(value = "userId", required = false) Integer userId,
-			HttpSession session) throws Exception {
+	@RequestMapping(value = "/deleteComment.spring", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteComment(@RequestParam(value = "commentId", required = false) Integer id, HttpSession session) throws Exception {
 		String flag = "1";
-		Integer id = (Integer)session.getAttribute("ONLINE_MEMBER_ID");
 		try {
-			jdbcTemplate.update("DELETE FROM COM_PRO_FRIEND_GROUP_USER WHERE USER_ID=? AND FRIEND_ID=?", id, userId);
+			jdbcTemplate.update("DELETE FROM COM_PRO_TWITTER_COMMENT WHERE ID= ?", id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			flag = "0";

@@ -101,8 +101,8 @@ body {
 										  		<div class="span4">${c.createTime } ${c.fromUserName } 对 ${c.toUserName } 说：</div>
 											  	<div class="span4">${c.content }</div>
 											  	<div class="span4">	
-											  		<a href="#" class="btn btn-add btn-round"><font size="bold">+</font></a>
-											  		<a href="#" class="btn btn-close btn-round"><font size="bold">&times</font></a>
+											  		<a href="#" id="${c.toUserId }" onclick="addComment('${c.toUserId}')" class="btn btn-add btn-round"><font size="bold">+</font></a>
+											  		<a href="#" id="${c.id }" onclick="deleteComment('${c.id}')" class="btn btn-close btn-round"><font size="bold">&times</font></a>
 												</div>
 											</div>
 											<div class="clearfix"></div>
@@ -315,7 +315,19 @@ body {
 			});
 		}
 
-		
+		function deleteComment(id) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/twitter/deleteComment.spring",
+				type : "POST",
+				data : {commentId : id},
+				success : function(input) {
+					window.location.href = "${pageContext.request.contextPath}/twitter/preList.spring";
+				},
+				error : function(x, e) {
+					alert(e);
+				}
+			});
+		}
 
 	</script>
 </body>
