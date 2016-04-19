@@ -3,6 +3,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.xwork.StringUtils;
 import org.apache.struts2.ServletActionContext;
@@ -80,9 +81,13 @@ public class CourseStudentAction {
 	}
 
 	public String query() {
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		String userid = (String) session.getAttribute(Const.ACTION_PUT_SESSION_USRE_NAME);
+		
 		CourseStudent pro = new CourseStudent();
 		pro.setYear(this.year);
 		pro.setType(this.type);
+		pro.setStuno(userid);
 		condition = new DefaultQueryCondition(pro);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		String curPage = request.getParameter("curPage");

@@ -41,6 +41,7 @@ public class CourseStudentDAOImpl extends BaseDAO<CourseStudent, Integer> {
 		CourseStudent pro = (CourseStudent)condition.getCondition();
 		Integer year = pro.getYear();
 		String type = pro.getType();
+		String stuno = pro.getStuno();
 		if(year != null) {
 			sb.append(" and pro.year = :year");
 			qcSQL.setParameter("year", year);
@@ -51,6 +52,11 @@ public class CourseStudentDAOImpl extends BaseDAO<CourseStudent, Integer> {
 			qcSQL.setParameter("type", type);
 			where.append(" and type = '").append(type).append("'");
 			temp = true;
+		}
+		if(CommonUtil.isNotEmpty(stuno)) {
+			sb.append(" and pro.stuno = :stuno");
+			qcSQL.setParameter("stuno", stuno);
+			where.append(" and stuno = '").append(stuno).append("'");
 		}
 	
 		Query query = this.sessionFactory.getCurrentSession().createQuery(qcSQL.getSQL().toString());
