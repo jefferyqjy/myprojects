@@ -57,6 +57,9 @@
         -->
         <link href="saleproduct/saleproduct_gotoadd.do" name="添加销售送货" type="0"/>
         <link href="./pro_jsp/saleproduct/saleproduct_query.jsp" name="查询销售送货" type="0"/>
+        <!--<link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    --></manager>
+    <manager name="库存管理" type="0">
         <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
     </manager>
     <manager name="供货商资料管理" type="0">
@@ -64,19 +67,12 @@
         <link href="./pro_jsp/supplier/supplier_query.jsp" name="查询供货商资料" type="0"/>
     </manager>
     
-     <manager name="统计管理" type="0">
+     <!-- <manager name="统计管理" type="0">
          <link href="orderproduct/orderproduct_tongjibygonghong.do" name="进货汇总（供货商）" type="0"/>
          <link href="orderproduct/orderproduct_tongjibyshangpin.do" name="进货汇总（商品）" type="0"/>
-         
          <link href="saleproduct/saleproduct_xiaoshoubyshangpin.do" name="销售汇总（商品）" type="0"/>
-         
-         	<!-- 
          <link href="saleproduct/saleproduct_xiaoshoubykehu.do" name="销售汇总（客户）" type="0"/>
-          -->
-        
-    </manager>
-    
-    
+    </manager> -->
     
     <manager name="库存预警" type="0">
          <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
@@ -123,6 +119,9 @@
         -->
         <link href="saleproduct/saleproduct_gotoadd.do" name="添加销售送货" type="0"/>
         <link href="./pro_jsp/saleproduct/saleproduct_query.jsp" name="查询销售送货" type="0"/>
+        <!--<link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    --></manager>
+    <manager name="库存管理" type="1">
         <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
     </manager>
     <manager name="供货商资料管理" type="1">
@@ -130,19 +129,12 @@
         <link href="./pro_jsp/supplier/supplier_query.jsp" name="查询供货商资料" type="0"/>
     </manager>
     
-     <manager name="统计管理" type="1">
+     <!-- <manager name="统计管理" type="1">
          <link href="orderproduct/orderproduct_tongjibygonghong.do" name="进货汇总（供货商）" type="0"/>
          <link href="orderproduct/orderproduct_tongjibyshangpin.do" name="进货汇总（商品）" type="0"/>
-         
          <link href="saleproduct/saleproduct_xiaoshoubyshangpin.do" name="销售汇总（商品）" type="0"/>
-         
-         	<!-- 
          <link href="saleproduct/saleproduct_xiaoshoubykehu.do" name="销售汇总（客户）" type="0"/>
-          -->
-        
-    </manager>
-    
-    
+    </manager> -->
     
     <manager name="库存预警" type="1">
          <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
