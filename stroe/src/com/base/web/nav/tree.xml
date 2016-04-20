@@ -60,8 +60,9 @@
         <!--<link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
     --></manager>
     <manager name="库存管理" type="0">
-        <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
-    </manager>
+    	<link href="./pro_jsp/saleproduct/saleproduct_kucun.jsp" name="查询库存" type="0"/>
+        <!--<link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    --></manager>
     <manager name="供货商资料管理" type="0">
         <link href="./pro_jsp/supplier/supplier_add.jsp" name="添加供货商资料" type="0"/>
         <link href="./pro_jsp/supplier/supplier_query.jsp" name="查询供货商资料" type="0"/>
@@ -77,8 +78,9 @@
     <manager name="库存预警" type="0">
          <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
          <link href="saleproduct/saleproduct_quehuo.do" name="商品缺货提醒" type="0"/>
-         <link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
-    </manager>
+         <link href="saleproduct/saleproduct_chaochu.do" name="商品超储提醒" type="0"/>
+         <!--<link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
+    --></manager>
     
     
     <manager name="客户资料管理" type="1">
@@ -122,7 +124,8 @@
         <!--<link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
     --></manager>
     <manager name="库存管理" type="1">
-        <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>
+    	<link href="./pro_jsp/saleproduct/saleproduct_kucun.jsp" name="查询库存" type="0"/>
+        <!-- <link href="saleproduct/saleproduct_kucun.do" name="查询库存" type="0"/>  -->
     </manager>
     <manager name="供货商资料管理" type="1">
         <link href="./pro_jsp/supplier/supplier_add.jsp" name="添加供货商资料" type="0"/>
@@ -139,6 +142,7 @@
     <manager name="库存预警" type="1">
          <link href="orderproduct/orderproduct_guoqi.do" name="商品过期提醒" type="0"/>
          <link href="saleproduct/saleproduct_quehuo.do" name="商品缺货提醒" type="0"/>
-         <link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
-    </manager>
+         <link href="saleproduct/saleproduct_chaochu.do" name="商品超储提醒" type="0"/>
+         <!--<link href="orderproduct/orderproduct_chaochu.do" name="商品超储提醒" type="0"/>
+    --></manager>
 </root>

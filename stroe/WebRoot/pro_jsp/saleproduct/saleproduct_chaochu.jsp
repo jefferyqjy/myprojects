@@ -19,21 +19,22 @@
 			<div id="main-content">
 			<div class="content-box">
 			<div class="content-box-header">
-				<h3>商品库存</h3>
+				<h3>商品缺货提醒</h3>
 				<ul class="content-box-tabs">
-					<li>商品库存</li>
+					<li>商品缺货提醒</li>
 				</ul>
 				<div class="clear"></div>
 			</div>
 			<div class="content-box-content">
 				<div class="tab-content default-tab" id="tab1">
 				<jsp:include page="/sys_jsp/notification.jsp"></jsp:include>
-					<form id="searchForm" name="searchForm" action="saleproduct/saleproduct_kucun.do" method="post">
-						商品编号: <input type="text" name="productId"/>
-						商品名称: <input type="text" name="productName"/>
-						供应商名称: <input type="text" name="supplierName"/>
+					<!-- 
+					<form id="searchForm" name="searchForm" action="saleproduct/saleproduct_query.do" method="post">
+			<public:i18n key="productname" module="saleproduct"></public:i18n>: <input type="text" name="productname"/>
+			<public:i18n key="orderstatus" module="saleproduct"></public:i18n>: <input type="text" name="orderstatus"/>
 						<input name="queryButton" type="submit" class="button" value='<public:i18n key="button.query" module="common"></public:i18n>' />
 					</form>
+					 -->
 					<c:choose>
 						<c:when test="${empty result}">
 							无记录！
@@ -42,20 +43,19 @@
 							<table>
 								<thead>
 									<tr>
-										<th>商品编号</th>
-										<th><public:i18n key="productname" module="saleproduct"></public:i18n></th>
-										<th>库存</th>
-										<th>供应商</th>
+										
+								<th><public:i18n key="productname" module="saleproduct"></public:i18n></th>
+								<th>库存</th>
+								<th>提醒</th>
 									</tr>
 								</thead>
 								
 								<tbody>
 								<c:forEach items="${result}" var="record">
 									<tr>
-										<td>${record.productnameid}</td>
-										<td>${record.productname}</td>
-										<td>${record.amount}</td>
-										<td>${record.suppliername }</td>
+											<td>${record.productname}</td>
+											<td>${record.amount}</td>
+											<td>${record.remark}</td>
 									</tr>
 								</c:forEach>
 								</tbody>

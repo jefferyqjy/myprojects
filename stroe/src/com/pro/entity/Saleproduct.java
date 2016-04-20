@@ -2,12 +2,17 @@ package com.pro.entity;
 
 import java.util.Date;
 
-import com.base.common.util.EntityAnnotation;
 import com.base.sys.entity.BaseEntity;
 
 public class Saleproduct extends BaseEntity {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2061658493454135104L;
+
+
 	private int id;
 	
 	
@@ -33,6 +38,10 @@ public class Saleproduct extends BaseEntity {
 	
 	
 	private String remark;
+	
+	private String suppliername;
+	
+	private String productnameid;
 
 	public int getId() {
 		return id;
@@ -105,6 +114,21 @@ public class Saleproduct extends BaseEntity {
 	public void setDatesale(Date datesale) {
 		this.datesale = datesale;
 	}
-	
-	
+
+	public String getSuppliername() {
+		return suppliername;
+	}
+
+	public void setSuppliername(String suppliername) {
+		this.suppliername = suppliername;
+	}
+
+	public String getProductnameid() {
+		return productnameid;
+	}
+
+	public void setProductnameid(String productnameid) {
+		this.productnameid = productnameid;
+	}
+
 }
