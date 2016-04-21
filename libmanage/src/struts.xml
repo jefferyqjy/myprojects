@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN" "struts-2.1.7.dtd" >
+<struts>
+    <package name="default"  extends="json-default">   
+        <action name="control" class="com.cz.action.ControlAction">
+          <result  name="success">/list.jsp</result> 
+          <result  name="add">/add.jsp</result> 
+          <result  name="modify">/modify.jsp</result> 
+          <result  name="login">/index.jsp</result> 
+          <result  name="index">/admin/index.jsp</result> 
+          <result  name="addjigou">/admin/addjigou.jsp</result> 
+          <result  name="uppass">/admin/updatepwd.jsp</result>
+          <result  name="uploadimg">/js/uploadimg.jsp</result>
+          <result  name="adduser">/admin/addsysusers.jsp</result>
+          <result  name="addkechen">/admin/addkechen.jsp</result>
+          <result  name="pupdateuser">/admin/pupdateuser.jsp</result>
+          <result  name="updatesysusers">/admin/updatesysusers.jsp</result>
+          <result  name="pupdatesysusers">/admin/pupdatesysusers.jsp</result>
+          <result  name="addpros">/admin/addpros.jsp</result>
+          <result  name="addbooks">/admin/addbooks.jsp</result>
+          <result  name="addsreader">/admin/addsreader.jsp</result>
+           <result  name="allcontrol">/admin/allcontrol.jsp</result>
+           <result  name="addbookhj">/admin/addbookhj.jsp</result>
+           <result  name="rupdatesreader">/admin/rupdatesreader.jsp</result>
+            <result  name="puppass">/admin/pupdatepwd.jsp</result>
+        </action>   
+    </package>  
+     
+</struts>
+
+
+
