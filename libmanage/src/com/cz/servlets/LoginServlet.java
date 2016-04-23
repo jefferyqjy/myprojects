@@ -1,19 +1,14 @@
 package com.cz.servlets;
 
-import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts2.ServletActionContext;
+import org.apache.commons.lang.StringUtils;
 
-import com.cz.common.CommonDAO;
-import com.cz.common.Info;
-import com.cz.entity.Sreader;
-import com.cz.entity.Sysuser;
+import com.cz.dao.SysuserDAO;
 
 public class LoginServlet extends HttpServlet {
 
@@ -22,9 +17,27 @@ public class LoginServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -5050412314452189136L;
 	
-	public String service() throws Exception {
-		HttpServletRequest request = ServletActionContext.getRequest();
-		CommonDAO dao = (CommonDAO) Info.getDao(request, "CommonDAO");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+		SysuserDAO dao = new SysuserDAO();
+		String username = request.getParameter("uname");
+		String password = request.getParameter("upass");
+		String utype = request.getParameter("utype");
+		
+		String returnpage = "/index.jsp";
+		if(StringUtils.equals("管理员", utype)) {
+			try {
+				boolean success = dao.CheckPassword(username, password);
+				if(success) {
+					returnpage = "";
+				} else {
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		/*CommonDAO dao = (CommonDAO) Info.getDao(request, "CommonDAO");
 		String username = request.getParameter("uname");
 		String password = request.getParameter("upass");
 		String utype = request.getParameter("utype");
@@ -50,7 +63,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("reader", userlist.get(0));
 				return "index";
 			}
-		}
+		}*/
 	}
-
+	
 }

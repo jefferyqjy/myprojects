@@ -45,7 +45,7 @@ f1.submit();
 <div class="centerDiv">
 <div style="height: 120px"></div>
  <div  ><strong>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="4" style="color:white; font-size: 30px;font-family: 华文行楷"> 图书管理系统 </font> </strong></div>
-  <form action="/libmanage/control!login" method="post" name="f1">
+  <form action="${pageContext.request.contextPath }/login" method="post" name="f1">
 	 
 	 <div id="login-main">
 	   <div style="margin-left:180px; padding-top:12px; width:260px; overflow:hidden">
