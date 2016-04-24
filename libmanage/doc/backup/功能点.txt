@@ -1,0 +1,14 @@
+管理员：
+1. 修改个人信息；√
+2. 退出登录； √
+3. 业务信息；
+3.1 图书还借；
+3.2 还书记录；
+ 
+4. 信息管理；
+5. 统计分析；
+6. 属性配置；
+7. 系统管理；
+8. 个人信息；
+
+background-image: url(/libmanage/admin/commfiles/images/left_nav_bg.jpg);
