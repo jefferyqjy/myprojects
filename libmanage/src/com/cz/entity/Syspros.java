@@ -8,8 +8,11 @@ package com.cz.entity;
 
 public class Syspros implements java.io.Serializable {
 
-	// Fields
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1441798860255494571L;
+	
 	private Integer id;
 	private String proname;
 	private String infoa;

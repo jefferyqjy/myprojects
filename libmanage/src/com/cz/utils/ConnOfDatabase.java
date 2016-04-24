@@ -15,7 +15,7 @@ public class ConnOfDatabase {
 
 		try {
 			// 2. 获取数据库的连接
-			conn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/libmange?useUnicode=true&characterEncoding=utf-8", "root", "root"); // root是用户名，密码为空
+			conn = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/libmanage?useUnicode=true&characterEncoding=utf-8", "root", "root"); // root是用户名，密码为空
 			// 3. 获取表达式
 		} catch (SQLException e) {
 			e.printStackTrace();

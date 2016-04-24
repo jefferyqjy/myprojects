@@ -8,8 +8,11 @@ package com.cz.entity;
 
 public class Sreader implements java.io.Serializable {
 
-	// Fields
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8712750796597052116L;
+	
 	private Integer id;
 	private String uname;
 	private String upass;

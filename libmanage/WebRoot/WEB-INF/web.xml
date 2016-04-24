@@ -3,12 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
-	<!--
-		<context-param> <param-name>DelegatingActionProxy</param-name>
-		<param-value>/WEB-INF/applicationContext.xml</param-value>
-		</context-param>
-	--><!-- character Encoding	-->
+	
 	<filter>
 		<filter-name>characterEncoding</filter-name>
 		<filter-class>com.cz.common.SetChar</filter-class>
@@ -18,12 +13,6 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-
-	<!--
-		<servlet> <servlet-name>context</servlet-name>
-		<servlet-class>org.springframework.web.context.ContextLoaderServlet</servlet-class>
-		<load-on-startup>1</load-on-startup> </servlet>
-	-->
 	<servlet>
 		<description>This is the description of my J2EE component</description>
 		<display-name>This is the display name of my J2EE component</display-name>
@@ -69,4 +58,63 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>SysuserServlet</servlet-name>
+		<servlet-class>com.cz.servlets.SysuserServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SysuserServlet</servlet-name>
+		<url-pattern>/sysuser</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BooksServlet</servlet-name>
+		<servlet-class>com.cz.servlets.BooksServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BooksServlet</servlet-name>
+		<url-pattern>/books</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BookyyServlet</servlet-name>
+		<servlet-class>com.cz.servlets.BookyyServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookyyServlet</servlet-name>
+		<url-pattern>/bookyy</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>BookhjServlet</servlet-name>
+		<servlet-class>com.cz.servlets.BookhjServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookhjServlet</servlet-name>
+		<url-pattern>/bookhj</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SysprosServlet</servlet-name>
+		<servlet-class>com.cz.servlets.SysprosServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SysprosServlet</servlet-name>
+		<url-pattern>/syspros</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SreaderServlet</servlet-name>
+		<servlet-class>com.cz.servlets.SreaderServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SreaderServlet</servlet-name>
+		<url-pattern>/sreader</url-pattern>
+	</servlet-mapping>
 </web-app>

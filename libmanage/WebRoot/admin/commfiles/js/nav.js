@@ -3,7 +3,7 @@ var outlookbar=new outlook();
 var t;
 
 t=outlookbar.addtitle('业务信息','业务信息',1)
-outlookbar.additem('图书还借',t,'bookhj.jsp')
+outlookbar.additem('图书还借',t,'/libmanage/bookhj?operate=list')
 outlookbar.additem('还书记录',t,'bookhjl.jsp')
 
 

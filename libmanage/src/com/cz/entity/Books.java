@@ -8,8 +8,11 @@ package com.cz.entity;
 
 public class Books implements java.io.Serializable {
 
-	// Fields
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8497209950118644293L;
+	
 	private Integer id;
 	private String isbn;
 	private String bookname;

@@ -8,8 +8,11 @@ package com.cz.entity;
 
 public class Sysuser implements java.io.Serializable {
 
-	// Fields
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8750869069246712536L;
+	
 	private Integer id;
 	private String uname;
 	private String upass;

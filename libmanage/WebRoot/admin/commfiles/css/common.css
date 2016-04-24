@@ -116,7 +116,7 @@ li,div{margin:0;padding:0;}
 }
 #left_content #main_nav {
 	width: 199px;
-	background-image: url(/libmanage/admin/commfiles/images/left_nav_bg.jpg);
+	
 	background-repeat: repeat-y;
 }
 #left_main_nav {

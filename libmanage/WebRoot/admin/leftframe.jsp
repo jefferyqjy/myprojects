@@ -11,44 +11,40 @@
 <%
 String admin = "";
 String utype = "";
-if(session.getAttribute("admin")!=null)
-{
-Sysuser map = (Sysuser)request.getSession().getAttribute("admin"); 
- admin = map.getUname();
- utype="管理员";
+if(session.getAttribute("admin")!=null) {
+	Sysuser map = (Sysuser)request.getSession().getAttribute("admin"); 
+ 	admin = map.getUname();
+ 	utype="管理员";
 }
 
-if(session.getAttribute("reader")!=null)
-{
-Sreader map = (Sreader)request.getSession().getAttribute("reader"); 
- admin = map.getUname();
- utype="读者";
+if(session.getAttribute("reader")!=null) {
+	Sreader map = (Sreader)request.getSession().getAttribute("reader"); 
+ 	admin = map.getUname();
+ 	utype="读者";
 }
 %>
+<%
+if(utype.equals("管理员")) {
+%>
+	<script type="text/javascript">
+	document.write("<script src=/libmanage/admin/commfiles/js/nav.js></" + "script>");
+	</script>
+<%} else { %>
+	<script type="text/javascript">
+	document.write("<script src=/libmanage/admin/commfiles/js/navr.js></" + "script>");
+	</script>
+<%} %>
 <title>左侧导航栏</title>
 </head>
-
 <%
 if(utype.equals("管理员")){
- %>
-<script  type="text/javascript">
-document.write("<script src=/libmanage/admin/commfiles/js/nav.js></" + "script>");
-</script>
-<%}else{ %>
-<script  type="text/javascript">
-document.write("<script src=/libmanage/admin/commfiles/js/navr.js></" + "script>");
-</script>
-<%} %>
-
-<%
-if(utype.equals("管理员")){
- %>
+%>
 <body onload="initinav('业务信息')">
 <%} %>
 
 <%
 if(utype.equals("读者")){
- %>
+%>
 <body onload="initinav('还借信息')">
 <%} %>
 

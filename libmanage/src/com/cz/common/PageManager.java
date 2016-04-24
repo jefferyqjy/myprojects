@@ -5,12 +5,15 @@ package com.cz.common;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 
 public class PageManager {
+	
+	@SuppressWarnings("unused")
 	private PageManager() {
-          
+          new PageManager();
 	}
 
 
