@@ -1,6 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.cz.common.Info"%>
-<%@page import="com.cz.common.CommonDAO"%>
+<%@page import="com.cz.dao.BookhjDAO"%>
+<%@page import="com.cz.dao.BooksDAO"%>
+<%@page import="com.cz.dao.SreaderDAO"%>
 <%@page import="com.cz.entity.Syspros"%>
 <%@page import="com.cz.entity.Books"%>
 <%@page import="com.cz.entity.Sreader"%>
@@ -14,21 +16,26 @@
 	<link rel="stylesheet" type="text/css" href="/libmanage/admin/commfiles/css/style.css" /> 
 		<script type="text/javascript" src="/libmanage/js/My97DatePicker/WdatePicker.js"></script>
   </head>
-  <%
-  CommonDAO dao = Info.getDao(request);
-  Bookhj data = (Bookhj)dao.load(request.getParameter("id"),"Bookhj");
-  HashMap m = new HashMap();
-  m.put("bei",data.getBei());
-   m.put("bookname",data.getBookname());
-    m.put("htime",data.getHtime());
-     m.put("jtime",data.getJtime());
-      m.put("readername",data.getReadername());
-       m.put("yjin",data.getYjin());
-  List<Books> lblist = dao.findByHql("from Books  ");
-  List<Sreader> cbslist = dao.findByHql("from Sreader ");
-   %>
-  <body>
-  <form name="f1" method="post" action="control!shbook?id=<%=request.getParameter("id")%>"  >
+	<%
+		String id = request.getParameter("id");
+		BookhjDAO dao = new BookhjDAO();
+		Bookhj bookhj = dao.findById(Integer.valueOf(id.trim()));
+		HashMap m = new HashMap();
+		m.put("bei", bookhj.getBei());
+		m.put("bookname", bookhj.getBookname());
+		m.put("htime", bookhj.getHtime());
+		m.put("jtime", bookhj.getJtime());
+		m.put("readername", bookhj.getReadername());
+		m.put("yjin", bookhj.getYjin());
+		
+		BooksDAO bdao = new BooksDAO();
+		List<Books> lblist = bdao.findAll();
+		
+		SreaderDAO sdao = new SreaderDAO();
+		List<Sreader> cbslist = sdao.findAll();
+	%>
+	<body>
+  <form name="f1" method="post" action="${pageContext.request.contextPath }/bookhj?operate=shbook&id=<%=request.getParameter("id")%>"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center"  style="display: none">
@@ -60,5 +67,5 @@
 </html>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
 
-<%=Info.sucinfo(request,true)%>
+<%=Info.sucinfo(request, true)%>
 <%=Info.tform(m)%>

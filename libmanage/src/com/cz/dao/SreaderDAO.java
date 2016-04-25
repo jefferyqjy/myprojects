@@ -159,6 +159,46 @@ public class SreaderDAO {
 		}
 		return sreader;
 	}
+	
+	/**
+	 * @param uname
+	 * @return
+	 * @throws Exception
+	 */
+	public Sreader findByUName(String uname) throws Exception {
+		Statement stmt;
+		String queryStr = "";
+		ResultSet rs;
+		stmt = conn.createStatement();
+		Sreader sreader = new Sreader();
+		try {
+			queryStr = "select * from sreader where uname = '" + uname + "'";
+			rs = stmt.executeQuery(queryStr);
+			if (rs.next()) {
+				sreader.setId(rs.getInt("id"));
+				sreader.setUname(rs.getString("uname"));
+				sreader.setUpass(rs.getString("upass"));
+				sreader.setTname(rs.getString("tname"));
+				sreader.setXueli(rs.getString("xueli"));
+				sreader.setZiye(rs.getString("ziye"));
+				sreader.setKjnum(rs.getString("kjnum"));
+				sreader.setTel(rs.getString("tel"));
+				sreader.setEmail(rs.getString("email"));
+				sreader.setSc(rs.getString("sc"));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sreader;
+	}
 
 	/**
 	 * @param id

@@ -19,6 +19,48 @@ public class BookhjDAO {
 		sqlconn = new ConnOfDatabase();
 		conn = sqlconn.getConn();
 	}
+	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException 
+	 */
+	public List<Bookhj> findBySql(String sql) throws SQLException {
+		Statement stmt;
+		ResultSet rs;
+		List<Bookhj> bookhjes = new ArrayList<Bookhj>();
+		Bookhj bookhj;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				bookhj = new Bookhj();
+				bookhj.setId(rs.getInt("id"));
+				bookhj.setJtime(rs.getString("jtime"));
+				bookhj.setHtime(rs.getString("htime"));
+				bookhj.setBookname(rs.getString("bookname"));
+				bookhj.setReadername(rs.getString("readername"));
+				bookhj.setYjin(rs.getString("yjin"));
+				bookhj.setBei(rs.getString("bei"));
+				bookhj.setHbtime(rs.getString("hbtime"));
+				bookhj.setHbkou(rs.getString("hbkou"));
+				bookhj.setHbbei(rs.getString("hbbei"));
+				bookhj.setSjtime(rs.getString("sjtime"));
+				bookhj.setSjstatus(rs.getString("sjstatus"));
+				bookhjes.add(bookhj);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookhjes;
+	}
 
 	/**
 	 * @return
@@ -208,14 +250,17 @@ public class BookhjDAO {
 	public boolean update(Bookhj bookhj) throws Exception {
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update bookhj set jtime = ?, htime = ?, sjtime = ?, sjstatus = ? where id = ?";
+		String updateStr = "update bookhj set jtime = ?, htime = ?, hbtime = ?, hbkou = ?, hbbei = ?, sjtime = ?, sjstatus = ? where id = ?";
 		stmt = conn.prepareStatement(updateStr);
 		try {
 			stmt.setString(1, bookhj.getJtime());
 			stmt.setString(2, bookhj.getHtime());
-			stmt.setString(3, bookhj.getSjtime());
-			stmt.setString(4, bookhj.getSjstatus());
-			stmt.setInt(5, bookhj.getId());
+			stmt.setString(3, bookhj.getHbtime());
+			stmt.setString(4, bookhj.getHbkou());
+			stmt.setString(5, bookhj.getHbbei());
+			stmt.setString(6, bookhj.getSjtime());
+			stmt.setString(7, bookhj.getSjstatus());
+			stmt.setInt(8, bookhj.getId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		} catch (SQLException e) {
