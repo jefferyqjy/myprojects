@@ -16,6 +16,7 @@
 		<!-- MySQL数据库配置 -->
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/votedb?useUnicode=true&amp;characterEncoding=utf-8" />
 		<property name="username" value="root" />
+		<!--<property name="password" value="1qaz2wsx" />--> 
 		<property name="password" value="root" />
 		<!-- SQL Server数据库配置 -->
 		 

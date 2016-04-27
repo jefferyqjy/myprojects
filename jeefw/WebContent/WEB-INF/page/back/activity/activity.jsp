@@ -302,7 +302,6 @@
         		
         		$("#lookButton").bind("click", function() {
         			var selectedId = $(grid_selector).jqGrid("getGridParam", "selrow");
-        			//alert(selectedId);
         			if(null == selectedId){
         				$.gritter.add({
     		                title: "系统信息",
@@ -373,7 +372,6 @@
         		
         		$("#editInformationButton").bind("click", function() {
         			var selectedId = $(grid_selector).jqGrid("getGridParam", "selrow");
-        			//alert(selectedId);
         			if(null == selectedId){
         				$.gritter.add({
     		                title: "系统信息",
@@ -385,7 +383,6 @@
         				$("#aid").val(jQuery(grid_selector).jqGrid("getRowData",jQuery(grid_selector).jqGrid("getGridParam", "selrow")).id);
         				$("#title").val(jQuery(grid_selector).jqGrid("getRowData",jQuery(grid_selector).jqGrid("getGridParam", "selrow")).title);
         			
-	       				alert(selectedId);
 	        			jQuery("#list4").jqGrid({ 
 		        			subGrid : false,
 		        			url : "${contextPath}/sys/candidate/loadCandidate?id="+selectedId,
