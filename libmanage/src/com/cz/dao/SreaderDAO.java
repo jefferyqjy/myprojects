@@ -19,7 +19,47 @@ public class SreaderDAO {
 		sqlconn = new ConnOfDatabase();
 		conn = sqlconn.getConn();
 	}
-
+	
+	/**
+	 * find list via sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Sreader> findBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		List<Sreader> sreaders = new ArrayList<Sreader>();
+		Sreader sreader;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				sreader = new Sreader();
+				sreader.setId(rs.getInt("id"));
+				sreader.setUname(rs.getString("uname"));
+				sreader.setUpass(rs.getString("upass"));
+				sreader.setTname(rs.getString("tname"));
+				sreader.setXueli(rs.getString("xueli"));
+				sreader.setZiye(rs.getString("ziye"));
+				sreader.setKjnum(rs.getString("kjnum"));
+				sreader.setTel(rs.getString("tel"));
+				sreader.setEmail(rs.getString("email"));
+				sreader.setSc(rs.getString("sc"));
+				sreaders.add(sreader);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sreaders;
+	}
 	/**
 	 * @return
 	 * @throws Exception

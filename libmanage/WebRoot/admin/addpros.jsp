@@ -34,7 +34,6 @@
       </table>
   </form> 
 </body>
-</html>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
-
 <%=Info.sucinfo(request,true)%>
+</html>

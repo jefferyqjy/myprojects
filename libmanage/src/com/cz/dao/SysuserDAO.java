@@ -21,6 +21,43 @@ public class SysuserDAO {
 	}
 
 	/**
+	 * find list via sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Sysuser> findBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		List<Sysuser> sysusers = new ArrayList<Sysuser>();
+		Sysuser sysuser;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				sysuser = new Sysuser();
+				sysuser.setId(rs.getInt("id"));
+				sysuser.setUname(rs.getString("uname"));
+				sysuser.setUpass(rs.getString("upass"));
+				sysuser.setTname(rs.getString("tname"));
+				sysuser.setTel(rs.getString("tel"));
+				sysuser.setEmail(rs.getString("email"));
+				sysusers.add(sysuser);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sysusers;
+	}
+	
+	/**
 	 * @return
 	 * @throws Exception
 	 */

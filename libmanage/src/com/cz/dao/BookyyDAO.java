@@ -19,7 +19,45 @@ public class BookyyDAO {
 		sqlconn = new ConnOfDatabase();
 		conn = sqlconn.getConn();
 	}
-
+	
+	/**
+	 * find list via sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Bookyy> findBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		List<Bookyy> bookyys = new ArrayList<Bookyy>();
+		Bookyy bookyy;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				bookyy = new Bookyy();
+				bookyy.setId(rs.getInt("id"));
+				bookyy.setYytime(rs.getString("yytime"));
+				bookyy.setHtime(rs.getString("htime"));
+				bookyy.setReadername(rs.getString("readername"));
+				bookyy.setBookname(rs.getString("bookname"));
+				bookyy.setBei(rs.getString("bei"));
+				bookyy.setStatus(rs.getString("status"));
+				bookyys.add(bookyy);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookyys;
+	}
+	
 	/**
 	 * @return
 	 * @throws Exception

@@ -4,8 +4,4 @@
 <%@page import="com.cz.entity.Syspros"%>
 
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
-
-
-
-
 <%=Info.sucinfo(request,true)%>

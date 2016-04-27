@@ -21,6 +21,46 @@ public class SysprosDAO {
 	}
 
 	/**
+	 * find list via sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Syspros> findBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		List<Syspros> sysproses = new ArrayList<Syspros>();
+		Syspros syspros;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				syspros = new Syspros();
+				syspros.setId(rs.getInt("id"));
+				syspros.setProname(rs.getString("proname"));
+				syspros.setInfoa(rs.getString("infoa"));
+				syspros.setInfob(rs.getString("infob"));
+				syspros.setInfoc(rs.getString("infoc"));
+				syspros.setInfod(rs.getString("infod"));
+				syspros.setInfoe(rs.getString("infoe"));
+				syspros.setInfof(rs.getString("infof"));
+				syspros.setInfog(rs.getString("infog"));
+				sysproses.add(syspros);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return sysproses;
+	}
+	
+	/**
 	 * @return
 	 * @throws Exception
 	 */

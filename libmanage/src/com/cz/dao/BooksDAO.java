@@ -21,6 +21,77 @@ public class BooksDAO {
 	}
 
 	/**
+	 * count by sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer countBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		stmt = conn.createStatement();
+		Integer count = 0;
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				count = rs.getInt("num"); 
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return count;
+	}
+	
+	/**
+	 * find list via sql
+	 * @param sql
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Books> findBySql(String sql) throws Exception {
+		Statement stmt;
+		ResultSet rs;
+		List<Books> bookses = new ArrayList<Books>();
+		Books books;
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				books = new Books();
+				books.setId(rs.getInt("id"));
+				books.setIsbn(rs.getString("isbn"));
+				books.setBookname(rs.getString("bookname"));
+				books.setPrice(rs.getString("price"));
+				books.setTslb(rs.getString("tslb"));
+				books.setCbs(rs.getString("cbs"));
+				books.setJianj(rs.getString("jianj"));
+				books.setAuthor(rs.getString("author"));
+				books.setCbrq(rs.getString("cbrq"));
+				books.setKucun(rs.getString("kucun"));
+				books.setFilename(rs.getString("filename"));
+				bookses.add(books);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return bookses;
+	}
+	
+	/**
 	 * @return
 	 * @throws Exception
 	 */

@@ -12,13 +12,13 @@
 <%
 if(request.getAttribute("suc")!=null)
 {
- %>
- <script type="text/javascript">
-<!--
+%>
+<script type="text/javascript">
 alert("添加成功")
-//-->
 </script>
-<%}%>
+<%
+}
+%>
    
   <body>
   <form action="/libmanage/sys.do?action=addapp" method="post" enctype="multipart/form-data" onsubmit="return ck();">
@@ -57,10 +57,8 @@ alert("添加成功")
       </table>
       </form>
 </body>
-</html>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
 <script type="text/javascript">
-<!--
 function ck(){
 	var code = document.getElementById("versionCode").value;
 	var remark = document.getElementById("remark").value;
@@ -88,6 +86,5 @@ alert("版本号已存在,请重新输入");
 return false;
 }
 }
-//-->
 </script>
-
+</html>
