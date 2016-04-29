@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="管理系统">
+    <manager name="系统管理" type="0">
+        <link href="./sys_jsp/admin/admin_add.jsp" name="添加用户" type="0"/>
+        <link href="admin/admin_query.do?username=" name="管理用户" type="0"/>
+    </manager>
+    <manager name="个人信息管理" type="1">
+        <link href="./sys_jsp/admin/admin_changePassword.jsp" name="修改密码" type="0"/>
+    </manager>
+    <manager name="公告管理" show="false" type="0">
+        <link href="./plugin_jsp/announce/announce_add.jsp" name="添加公告" type="0"/>
+        <link href="./plugin_jsp/announce/announce_query.jsp" name="查询公告" type="0"/>
+    </manager>
+    <manager name="文件管理" show="false" type="0">
+        <link href="./plugin_jsp/jfile/jfile_add.jsp" name="添加文件" type="0"/>
+        <link href="./plugin_jsp/jfile/jfile_query.jsp" name="查询文件" type="0"/>
+    </manager>
+    <manager name="数据库管理" show="false" type="0">
+        <link href="./sys_jsp/database/database_backup.jsp" name="备份数据库" type="0"/>
+        <link href="./sys_jsp/database/database_restore.jsp" name="还原数据库" type="0"/>
+    </manager>
+    <!-- 
+    <manager name="考试信息管理" type="0">
+        <link href="./pro_jsp/exam/exam_add.jsp" name="添加考试信息" type="0"/>
+        <link href="./pro_jsp/exam/exam_query.jsp" name="查询考试信息" type="0"/>
+    </manager>
+    <manager name="学生信息管理" type="0">
+        <link href="./pro_jsp/student/student_add.jsp" name="添加学生信息" type="0"/>
+        <link href="./pro_jsp/student/student_query.jsp" name="查询学生信息" type="0"/>
+    </manager> -->
+    <manager name="考试信息管理" type="0">
+        <link href="./pro_jsp/exam/exam_add.jsp" name="添加考试信息" type="0"/>
+        <link href="./pro_jsp/exam/exam_query.jsp" name="查询考试信息" type="0"/>
+    </manager>
+    <manager name="公告管理" type="0">
+        <link href="./plugin_jsp/announce/announce_add.jsp" name="添加公告" type="0"/>
+        <link href="./plugin_jsp/announce/announce_query.jsp" name="查询公告" type="0"/>
+    </manager>
+    <!-- 管理员登录 -->
+    <manager name="学生信息管理" type="1">
+        <link href="./pro_jsp/student/student_query.jsp" name="查询学生信息" type="0"/>
+    </manager>
+    <manager name="公告管理" type="1">
+        <link href="./plugin_jsp/announce/announce_add.jsp" name="添加公告" type="0"/>
+        <link href="./plugin_jsp/announce/announce_query.jsp" name="查询公告" type="0"/>
+    </manager>
+    <!-- 学生登录 -->
+    <manager name="个人信息管理" type="2">
+        <link href="./sys_jsp/admin/admin_changePassword.jsp" name="修改密码" type="0"/>
+    </manager>
+    <manager name="考试信息管理" type="2">
+        <link href="./pro_jsp/exam/exam_query.jsp" name="查询考试信息" type="0"/>
+    </manager>
+    <manager name="学生信息管理" type="2">
+        <link href="./pro_jsp/student/student_query.jsp" name="查询学生信息" type="0"/>
+    </manager>
+    <manager name="考试语言管理" type="2">
+        <link href="./pro_jsp/student/student_queryLanguage.jsp" name="考试语言管理" type="0"/>
+    </manager>
+    <manager name="公告管理" type="2">
+        <link href="./plugin_jsp/announce/announce_query.jsp" name="查询公告" type="0"/>
+    </manager>
+</root>

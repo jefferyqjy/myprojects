@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.base.sys.entity.Shortcut" table="t_shortcut">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property access="field" column="t_name" length="200" name="name" />
+		<property access="field" column="t_url" length="200" name="url" />
+		<property access="field" column="t_username" length="200"
+			name="username" />
+	</class>
+</hibernate-mapping>

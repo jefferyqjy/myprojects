@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <package extends="struts-default" name="exam" namespace="/exam">
+        <action class="examAction" method="{1}" name="exam_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/exam/exam_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/exam/exam_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/exam/exam_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="student" namespace="/student">
+        <action class="studentAction" method="{1}" name="student_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/student/student_{1}.jsp</result>
+            <result name="queryLanguage">/pro_jsp/student/student_queryLanguage.jsp</result>
+            <result name="editLanguage">/pro_jsp/student/student_editLanguage.jsp</result>
+            <result name="queryJSP">/pro_jsp/student/student_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/student/student_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+            <result name="batchSuccess">/pro_jsp/student/student_query.jsp</result>
+        </action>
+    </package>
+</struts>

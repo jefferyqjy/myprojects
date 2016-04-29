@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple" />
+
+	 <constant name="struts.objectFactory" value="spring" />
+	 <constant name="struts.i18n.encoding" value="UTF-8" />  
+	 <constant name="struts.action.extension" value="do"/>
+	 <constant name="struts.devMode" value="true" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<!-- 上传文件最大size的控制属性 -->
+	<include file="struts_plugin.xml"/>
+	<include file="struts_pro.xml"/>
+	<constant name="struts.multipart.maxSize" value="10240000"/>
+	<package name="admin" namespace="/admin" extends="struts-default">
+		<action name="admin_*" class="adminAction" method="{1}">
+			<result name="success">/sys_jsp/success.jsp</result>
+			<result name="query">/sys_jsp/admin/admin_{1}.jsp</result>
+			<result name="queryJSP">/sys_jsp/admin/admin_query.jsp</result>
+			<result name="queryDO" type="redirectAction">/admin/admin_query.do</result>
+			<result name="adminLoginSuccess">/index.jsp</result>
+			<result name="authorLoginPage">/loginByAuthor.jsp</result>
+			<result name="userLoginSuccess">/front/index.jsp</result>
+			<result name="adminLoginPage">/login.jsp</result>
+			<result name="userLoginPage">/front/index.jsp</result>
+			<result name="error">/sys_jsp/error.jsp</result>
+			<result name="error2">/sys_jsp/userexist.jsp</result>
+		</action>
+	</package>
+	<package extends="struts-default" name="shortcut" namespace="/shortcut">
+        <action class="shortcutAction" method="{1}" name="shortcut_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/sys_jsp/shortcut/shortcut_{1}.jsp</result>
+            <result name="queryJSP">/sys_jsp/shortcut/shortcut_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/shortcut/shortcut_query.do</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="database" namespace="/database">
+        <action class="databaseAction" method="{1}" name="database_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/sys_jsp/database/database_{1}.jsp</result>
+            <result name="queryJSP">/sys_jsp/database/database_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/database/database_query.do</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="messages" namespace="/messages">
+        <action class="messagesAction" method="{1}" name="messages_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/messages/messages_{1}.jsp</result>
+            
+            <result name="querytaolun" type="redirectAction">/messages/messages_querytaolun.do</result>
+            
+            <result name="queryJSP">/pro_jsp/messages/messages_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/messages/messages_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+</struts>

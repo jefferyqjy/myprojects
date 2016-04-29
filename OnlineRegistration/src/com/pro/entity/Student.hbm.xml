@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.pro.entity.Student" table="t_student">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property access="field" column="t_number" length="200" name="number" />
+		<property access="field" column="t_name" length="200" name="name" />
+		<property access="field" column="t_age" length="200" name="age" />
+		<property access="field" column="t_sex" length="200" name="sex" />
+		<property access="field" column="t_collage" length="200" name="collage" />
+		<property access="field" column="t_className" length="200" name="className" />
+		<property access="field" column="t_examId" length="200" name="examId" />
+		<property access="field" column="t_examLanguage" length="200" name="language" />
+		<property access="field" column="t_money" length="200" name="money" />
+	</class>
+</hibernate-mapping>
