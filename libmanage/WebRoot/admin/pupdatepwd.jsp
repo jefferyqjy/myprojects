@@ -15,10 +15,10 @@
   <body>
   <%
     Sreader reader = (Sreader)request.getSession().getAttribute("reader"); 
-String pwd = reader.getUpass();
+	String pwd = reader.getUpass();
    %>
    <input type="hidden" id="hpwd" name="hpwd" value="<%=pwd %>"  >
-  <form name="f1" method="post" action="control!puppass?id=<%=reader.getId() %>" onSubmit="return check();">
+  <form name="f1" method="post" action="${pageContext.request.contextPath }/sreader?operate=puppass&id=<%=reader.getId() %>" onSubmit="return check();">
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="">
@@ -55,10 +55,7 @@ String pwd = reader.getUpass();
       </table>
       </form> 
 </body>
-</html>
-
 <script type="text/javascript">
-<!--
 function check()
 {
 
@@ -84,15 +81,14 @@ return false;
 }
 
 }
-//-->
 </script>
 <%
-if(request.getAttribute("suc")!=null)
-{
- %>
- <script type="text/javascript">
-<!--
-alert("修改成功");
-//-->
-</script>
-<%}%>
+if(request.getAttribute("suc")!=null) {
+%>
+	<script type="text/javascript">
+		alert("修改成功");
+	</script>
+<%
+}
+%>
+</html>

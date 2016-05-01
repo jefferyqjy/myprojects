@@ -12,21 +12,6 @@
 	
 	<script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
 	<%
-	boolean success = (Boolean)request.getAttribute("suc");
-	if(success) {
-	%>
-		<script>type="text/javascript">
-		alert("修改成功");
-		</script>
-	<%} else {%>
-		<script>type="text/javascript">
-		alert("修改失败");
-		</script>
-	<%}%>
-  </head>
-  
-<body>
-	<%
 		String id = request.getParameter("id");
   		Sysuser adminmap = (Sysuser) session.getAttribute("admin");
   		if(StringUtils.isEmpty(id)) {
@@ -35,6 +20,8 @@
   		SysuserDAO dao = new SysuserDAO();
   		Sysuser map = dao.findById(Integer.valueOf(id.trim()));
 	%>
+  </head>
+<body>
   <form name="f1" method="post" action="${pageContext.request.contextPath }/sysuser?id=<%=id %>&operate=updatesysuser"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
@@ -84,4 +71,11 @@
       </table>
       </form> 
 </body>
+<%
+if (request.getAttribute("suc") != null) {
+%>
+	<script>type="text/javascript">
+	alert("修改成功");
+	</script>
+<%} %>
 </html>

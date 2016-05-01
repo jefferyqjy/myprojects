@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.cz.common.CommonDAO"%>
+<%@page import="com.cz.dao.SysuserDAO"%>
 <%@page import="com.cz.common.Info"%>
 <%@page import="com.cz.entity.Sysuser"%>
 
@@ -13,13 +14,13 @@
   </head>
   
   <body>
-  <%
-  String id = request.getParameter("id");
-  if(id==null)id = (String)request.getAttribute("id");
-  CommonDAO dao = Info.getDao(request);
-  Sysuser map = (Sysuser)dao.findByHql("from Sysuser where id ="+id).get(0);
-   %>
-  <form name="f1" method="post" action="control!updatesysusers?id=<%=id %>"  >
+		<%
+			String id = request.getParameter("id");
+			if (id == null) id = (String) request.getAttribute("id");
+			SysuserDAO sysuserdao = new SysuserDAO();
+			Sysuser map = sysuserdao.findById(Integer.valueOf(id));
+		%>
+		<form name="f1" method="post" action="${pageContext.request.contextPath }\sysuser?operate=updatesysusers&id=<%=id%>"  >
   	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
   	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
         <tr align="center" style="display:none">
@@ -37,25 +38,25 @@
         <tr align="center">
           <td align="center"> 登录密码</td>
           <td align="left"><span class="style1">
-            <input name="upass" id="upass" value="<%=map.getUpass() %>"  type="text" size="20" maxlength="20"  />
+            <input name="upass" id="upass" value="<%=map.getUpass()%>"  type="text" size="20" maxlength="20"  />
           </span> </td>
         </tr>
         <tr align="center">
           <td align="center"> 姓名</td>
           <td align="left"><span class="style1">
-            <input name="tname" id="tname"  type="text"  value="<%=map.getTname() %>" size="20" maxlength="20"  />
+            <input name="tname" id="tname"  type="text"  value="<%=map.getTname()%>" size="20" maxlength="20"  />
           </span> </td>
         </tr>
          <tr align="center">
           <td align="center"> 联系电话</td>
           <td align="left"><span class="style1">
-            <input name="tel" id="tel"   value="<%=map.getTel() %>" type="text" size="40" />
+            <input name="tel" id="tel"   value="<%=map.getTel()%>" type="text" size="40" />
           </span> </td>
         </tr>
          <tr align="center">
           <td align="center"> email</td>
           <td align="left"><span class="style1">
-            <input name="email" id="email" value="<%=map.getEmail() %>"   type="text" size="40" />
+            <input name="email" id="email" value="<%=map.getEmail()%>"   type="text" size="40" />
           </span> </td>
         </tr>
        
@@ -70,10 +71,8 @@
       </table>
       </form> 
 </body>
-</html>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
 <script type="text/javascript">
-<!--
 function check()
 {
 
@@ -85,16 +84,15 @@ return;
 
 
 }
-//-->
 </script>
 <%
-if(request.getAttribute("suc")!=null)
-{
- %>
+	if (request.getAttribute("suc") != null) {
+%>
  <script type="text/javascript">
-<!--
 alert("修改成功");
 parent.location=parent.location;
-//-->
 </script>
-<%}%>
+<%
+	}
+%>
+</html>

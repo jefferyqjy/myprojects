@@ -26,7 +26,7 @@
 		List<Syspros> cbslist = sysprosdao.findBySql(sql);
 		String bookname = request.getParameter("bookname") == null ? "" : request.getParameter("bookname");
 		String cbs = request.getParameter("cbs") == null ? "" : request.getParameter("cbs");
-		String ibsn = request.getParameter("ibsn") == null ? "" : request.getParameter("ibsn");
+		String isbn = request.getParameter("isbn") == null ? "" : request.getParameter("isbn");
 
 		String sid = request.getParameter("sid") == null ? "" : request.getParameter("sid");
 
@@ -60,15 +60,15 @@
 			sql += " and cbs like '%" + cbs + "%' ";
 		}
 
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn=" + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		HashMap m = new HashMap();
 		m.put("cbs", cbs);
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn=" + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		sql += " order by id desc";
 		System.out.println(sql);
@@ -103,7 +103,7 @@
 	    
 	    </td>
 					<td width="10%" align="center" style="font-size: 12px">ISBN :</td>
-					<td width="" style="font-size: 12px" align="left"><input value="<%=ibsn%>"  name="issn" type="text"></td>
+					<td width="" style="font-size: 12px" align="left"><input value="<%=isbn%>"  name="issn" type="text"></td>
 					<td width="20%" style="font-size: 12px" align="right">
 					<input type="submit" class="btn3_mouseup" value="查询">
 					&nbsp;

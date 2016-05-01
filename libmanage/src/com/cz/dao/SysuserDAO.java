@@ -312,13 +312,14 @@ public class SysuserDAO {
 	public boolean update(Sysuser sysuser) throws Exception {
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update sysuser set tname = ?, tel = ?, email = ? where id = ?";
+		String updateStr = "update sysuser set tname = ?, tel = ?, email = ?, upass = ? where id = ?";
 		stmt = conn.prepareStatement(updateStr);
 		try {
 			stmt.setString(1, sysuser.getTname());
 			stmt.setString(2, sysuser.getTel());
 			stmt.setString(3, sysuser.getEmail());
-			stmt.setInt(4, sysuser.getId());
+			stmt.setString(4, sysuser.getUpass());
+			stmt.setInt(5, sysuser.getId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		} catch (SQLException e) {

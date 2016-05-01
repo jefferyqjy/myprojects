@@ -23,12 +23,10 @@
 	<%
 		String admin = "";
 		String utype = "";
-		String qid = request.getParameter("qid") == null ? "" : request
-				.getParameter("qid");
+		String qid = request.getParameter("qid") == null ? "" : request.getParameter("qid");
 
 		if (!qid.equals("")) {
-			Sreader read = (Sreader) request.getSession().getAttribute(
-					"reader");
+			Sreader read = (Sreader) request.getSession().getAttribute("reader");
 			SreaderDAO sreaderdao = new SreaderDAO();
 			read = sreaderdao.findById(read.getId());
 			read.setSc(read.getSc().replaceAll("-" + qid + "-", ""));
@@ -37,15 +35,13 @@
 		}
 
 		if (session.getAttribute("admin") != null) {
-			Sysuser map = (Sysuser) request.getSession().getAttribute(
-					"admin");
+			Sysuser map = (Sysuser) request.getSession().getAttribute("admin");
 			admin = "pupdatesysusers.jsp";
 			utype = "管理员";
 		}
 
 		if (session.getAttribute("reader") != null) {
-			Sreader map = (Sreader) request.getSession().getAttribute(
-					"reader");
+			Sreader map = (Sreader) request.getSession().getAttribute("reader");
 			SreaderDAO sreaderdao = new SreaderDAO();
 			map = sreaderdao.findById(map.getId());
 			admin = map.getSc() == null ? "" : map.getSc();
@@ -63,14 +59,10 @@
 		SysprosDAO sysprosdao = new SysprosDAO();
 		String sql = "select * from syspros where infoa = '出版社'";
 		List<Syspros> cbslist = sysprosdao.findBySql(sql);
-		String bookname = request.getParameter("bookname") == null ? ""
-				: request.getParameter("bookname");
-		String readername = request.getParameter("readername") == null ? ""
-				: request.getParameter("readername");
-		String ibsn = request.getParameter("ibsn") == null ? "" : request
-				.getParameter("ibsn");
-		String did = request.getParameter("did") == null ? "" : request
-				.getParameter("did");
+		String bookname = request.getParameter("bookname") == null ? "" : request.getParameter("bookname");
+		String readername = request.getParameter("readername") == null ? "" : request.getParameter("readername");
+		String isbn = request.getParameter("isbn") == null ? "" : request.getParameter("isbn");
+		String did = request.getParameter("did") == null ? "" : request.getParameter("did");
 
 		if (!did.equals("")) {
 			BooksDAO booksdao = new BooksDAO();
@@ -88,8 +80,7 @@
 		if (!readername.equals("")) {
 			url += "&readername=" + readername;
 			SreaderDAO sreaderdao = new SreaderDAO();
-			Sreader read = sreaderdao.findById(Integer.valueOf(readername
-					.trim()));
+			Sreader read = sreaderdao.findById(Integer.valueOf(readername.trim()));
 
 			admin = read.getSc() == null ? "" : read.getSc();
 			System.out.println(admin);
@@ -102,15 +93,15 @@
 			sql += " and id in (" + admin + ")";
 		}
 
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn = " + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		HashMap m = new HashMap();
 		m.put("readername", readername);
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn=" + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		sql += " order by id desc";
 		System.out.println(sql);
@@ -156,8 +147,8 @@
 					<td width=10% align="center" style="font-size: 12px">
 						ISBN :
 					</td>
-					<td width=style= "font-size: 12px" align="left">
-						<input value="<%=ibsn%>" name="issn" type="text">
+					<td width="10%" style= "font-size: 12px" align="left">
+						<input value="<%=isbn%>" name="isbn" type="text">
 					</td>
 					<td width=20% style="font-size: 12px" align="right">
 						<input type="submit" class="btn3_mouseup" value="查询">

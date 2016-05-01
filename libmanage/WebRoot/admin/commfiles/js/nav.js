@@ -29,7 +29,7 @@ outlookbar.additem('读者查询',t,'sreaderck.jsp')
 outlookbar.additem('借出查询',t,'bookhjlck.jsp')
 outlookbar.additem('收藏查询',t,'abooksc.jsp')
 outlookbar.additem('图书借阅排行',t,'jyph.jsp')
-outlookbar.additem('记者借阅排行',t,'jyph-reader.jsp')
+outlookbar.additem('读者借阅排行',t,'jyph-reader.jsp')
 outlookbar.additem('图书总数量',t,'bookcount.jsp')
 
 t=outlookbar.addtitle('信息管理','信息管理',1)

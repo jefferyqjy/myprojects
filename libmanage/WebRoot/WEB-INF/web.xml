@@ -117,4 +117,14 @@
 		<servlet-name>SreaderServlet</servlet-name>
 		<url-pattern>/sreader</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CommonServlet</servlet-name>
+		<servlet-class>com.cz.servlets.CommonServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommonServlet</servlet-name>
+		<url-pattern>/common</url-pattern>
+	</servlet-mapping>
 </web-app>

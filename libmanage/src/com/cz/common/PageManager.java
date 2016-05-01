@@ -94,13 +94,6 @@ public class PageManager {
 
 	}
 	
-	
-	
-	
-
-	
-	
-
 	/**
 	 * 
 	 * @param 下一页的分页链接

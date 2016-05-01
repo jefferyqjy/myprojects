@@ -354,12 +354,14 @@ public class ControlAction extends ActionSupport {
 	private File fujian;
 	private String fujianFileName;
 
+	public static void main(String[] args) {
+		System.out.println(System.getProperty("user.dir"));
+	}
+	
 	public String upload() {
 		fujianFileName = "a.jpg";
 		String newFujianName = Info.generalFileName(fujianFileName);
-		String dstPath = ServletActionContext.getServletContext().getRealPath(
-				"upfile")
-				+ "\\" + newFujianName;
+		String dstPath = ServletActionContext.getServletContext().getRealPath("upfile") + "\\" + newFujianName;
 		File dstFile = new File(dstPath);
 		copy(this.getFujian(), dstFile);
 		Map request = (Map) ServletActionContext.getContext().get("request");

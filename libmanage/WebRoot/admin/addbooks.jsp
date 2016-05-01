@@ -7,22 +7,20 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-		<link rel="stylesheet" type="text/css"
-			href="/libmanage/admin/commfiles/css/common.css" />
-		<link rel="stylesheet" type="text/css"
-			href="/libmanage/admin/commfiles/css/style.css" />
-
+		<link rel="stylesheet" type="text/css" href="/libmanage/admin/commfiles/css/common.css" />
+		<link rel="stylesheet" type="text/css" href="/libmanage/admin/commfiles/css/style.css" />
 	</head>
 	<%
 		SysprosDAO sysprosdao = new SysprosDAO();
 		String sql = "select * from syspros where infoa = '图书类别'";
 		List<Syspros> lblist = sysprosdao.findBySql(sql);
 		
+		sysprosdao = new SysprosDAO();
 		sql = "select * from syspros where infoa = '出版社'";
 		List<Syspros> cbslist = sysprosdao.findBySql(sql);
 	%>
 	<body>
-		<form name="f1" method="post" action="control!addbooks">
+		<form name="f1" method="post" action="${pageContext.request.contextPath }/books?operate=addbooks">
 			<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
 			<table width="100%" border="0" align="center" cellpadding="0"
 				cellspacing="0" class="mytab" id="table1">

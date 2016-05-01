@@ -30,7 +30,7 @@ public class BookhjServlet extends HttpServlet {
 		if(StringUtils.equals("list", operate)) {
 			doShowList(request, response);
 			return;
-		}
+		} 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -46,10 +46,7 @@ public class BookhjServlet extends HttpServlet {
 			doSHBook(request, response);
 		} else if(StringUtils.equals("updatebookhj", operate)) {
 			doUpdate(request, response);
-		} else if(StringUtils.equals("delete", operate)) {
-			deDeleteBookhj(request, response);
-		}
-		
+		} 
 	}
 
 	/**
@@ -185,11 +182,30 @@ public class BookhjServlet extends HttpServlet {
 	}
 	
 	private void doUpdate(HttpServletRequest request, HttpServletResponse response) {
+		String id = request.getParameter("id");
+		String jtime = request.getParameter("jtime");
+		String htime = request.getParameter("htime");
+		String yjin = request.getParameter("yjin");
+		String bei = request.getParameter("bei");
 		
-	}
-	
-	private void deDeleteBookhj(HttpServletRequest request, HttpServletResponse response) {
-		
+		try {
+			BookhjDAO bookhjdao = new BookhjDAO();
+			Bookhj bookhj = bookhjdao.findById(Integer.valueOf(id));
+			bookhj.setJtime(jtime);
+			bookhj.setHtime(htime);
+			bookhj.setYjin(yjin);
+			bookhj.setBei(bei);
+			
+			bookhjdao = new BookhjDAO();
+			bookhjdao.update(bookhj);
+			
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/bookhj.jsp?1=1").forward(request, response);
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

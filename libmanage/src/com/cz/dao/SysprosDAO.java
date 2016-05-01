@@ -201,17 +201,11 @@ public class SysprosDAO {
 	public boolean insert(Syspros syspros) throws Exception {
 		PreparedStatement stmt;
 		boolean insFlag = false;
-		String insertStr = "insert into sysuser (proname, infoa, infob, infoc, infod, infoe, infof, infog) values(?,?,?,?,?,?,?,?)";
+		String insertStr = "insert into syspros (proname, infoa) values(?,?)";
 		stmt = conn.prepareStatement(insertStr);
 		try {
 			stmt.setString(1, syspros.getProname());
 			stmt.setString(2, syspros.getInfoa());
-			stmt.setString(3, syspros.getInfob());
-			stmt.setString(4, syspros.getInfoc());
-			stmt.setString(5, syspros.getInfod());
-			stmt.setString(6, syspros.getInfoe());
-			stmt.setString(7, syspros.getInfof());
-			stmt.setString(8, syspros.getInfog());
 			stmt.executeUpdate();
 			insFlag = true;
 		} catch (SQLException e) {
@@ -228,21 +222,20 @@ public class SysprosDAO {
 	}
 
 	/**
-	 * update sysuser
+	 * update syspros
 	 * @param sysuser
 	 * @return
 	 * @throws Exception
 	 */
-	/*public boolean update(Syspros syspros) throws Exception {
+	public boolean update(Syspros syspros) throws Exception {
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update sysuser set tname = ?, tel = ?, email = ? where id = ?";
+		String updateStr = "update syspros set proname = ?, infoa = ? where id = ?";
 		stmt = conn.prepareStatement(updateStr);
 		try {
-			stmt.setString(1, sysuser.getTname());
-			stmt.setString(2, sysuser.getTel());
-			stmt.setString(3, sysuser.getEmail());
-			stmt.setInt(4, sysuser.getId());
+			stmt.setString(1, syspros.getProname());
+			stmt.setString(2, syspros.getInfoa());
+			stmt.setInt(3, syspros.getId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		} catch (SQLException e) {
@@ -256,7 +249,7 @@ public class SysprosDAO {
 			}
 		}
 		return updateFlag;
-	}*/
+	}
 
 	/**
 	 * delete by id

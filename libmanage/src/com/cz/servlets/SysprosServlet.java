@@ -1,16 +1,13 @@
 package com.cz.servlets;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.cz.dao.SysuserDAO;
-import com.cz.entity.Sysuser;
+import com.cz.dao.SysprosDAO;
+import com.cz.entity.Syspros;
 
 public class SysprosServlet extends HttpServlet {
 
@@ -21,42 +18,62 @@ public class SysprosServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		String operate = request.getParameter("operate");
-		if(StringUtils.equals("updatesysuser", operate)) {
+		if(StringUtils.equals("updatepros", operate)) {
 			doUpdate(request, response);
 			return;
+		} else if(StringUtils.equals("addpros", operate)) {
+			doAdd(request, response);
+			return;
+		}
+	}
+	
+	/**
+	 * add syspros
+	 * @param request
+	 * @param response
+	 */
+	private void doAdd(HttpServletRequest request, HttpServletResponse response) {
+		Syspros data = new Syspros();
+		String type = request.getParameter("type");
+		if (type.equals("1"))
+			type = "出版社";
+		if (type.equals("2"))
+			type = "图书类别";
+		if (type.equals("3"))
+			type = "学历";
+		if (type.equals("4"))
+			type = "职业";
+		data.setProname(request.getParameter("proname"));
+		data.setInfoa(type);
+		SysprosDAO sysprosdao = new SysprosDAO();
+		try {
+			sysprosdao.insert(data);
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/addpros.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * update system user info.
+	 * update syspros
 	 * @param request
 	 * @param response
 	 */
 	private void doUpdate(HttpServletRequest request, HttpServletResponse response) {
-		SysuserDAO dao = new SysuserDAO();
+		SysprosDAO dao = new SysprosDAO();
 		String id = request.getParameter("id");
-		Sysuser u;
-		boolean success = false;
+		Syspros u;
 		try {
 			u = dao.findById(Integer.valueOf(id.trim()));
-			u.setEmail(request.getParameter("email"));
-			u.setTel(request.getParameter("tel"));
-			u.setTname(request.getParameter("tname"));
-			u.setUpass(request.getParameter("upass"));
-			dao = new SysuserDAO();
+			u.setProname(request.getParameter("proname"));
+			dao = new SysprosDAO();
 			dao.update(u);
-			success = true;
+			
+			request.setAttribute("id", id);
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/addpros.jsp").forward(request, response);
 		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		request.setAttribute("id", id);
-		request.setAttribute("suc", success);
-		try {
-			getServletConfig().getServletContext().getRequestDispatcher("/admin/pupdatesysusers.jsp").forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}

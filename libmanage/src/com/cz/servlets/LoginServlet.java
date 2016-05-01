@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("upass");
 		String utype = request.getParameter("utype");
 		
-		String returnpage = "/login.jsp";
+		String returnpage = "/";
 		request.setAttribute("error", "");
 		if(StringUtils.equals("管理员", utype)) {
 			try {
@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
 					Sysuser sysuser = dao.findLoginUser(username, password);
 					request.getSession().setAttribute("admin", sysuser);
 					returnpage = "/admin/index.jsp";
-				} 
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

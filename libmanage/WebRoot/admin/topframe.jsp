@@ -26,7 +26,9 @@
 			<div class="logo">
 				<div style="height: 28px"></div>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<strong><font style="font-family: 华文行楷; font-size: 32px" color="#3995FF">图书管理系统</font></strong>
+				<strong><font style="font-family: 华文行楷; font-size: 32px"
+					color="#3995FF">图书管理系统</font>
+				</strong>
 			</div>
 			<div class="right_nav">
 				<div class="text_left">
@@ -44,10 +46,13 @@
 		 					utype="读者";
 						}
 					%>
-					<a href="javascript:parent.manFrame.location.replace('<%=admin %>')" class="link_a">个人信息</a>
+					<a
+						href="javascript:parent.manFrame.location.replace('<%=admin %>')"
+						class="link_a">个人信息</a>
 				</div>
 				<div class="text_right">
-					<a href="javascript:top.location='/libmanage/index.jsp'" class="link_a">退出系统</a>
+					<a href="javascript:top.location='/libmanage/index.jsp'"
+						class="link_a">退出系统</a>
 				</div>
 			</div>
 		</div>

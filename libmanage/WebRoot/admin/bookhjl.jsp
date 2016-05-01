@@ -164,11 +164,10 @@
 								.getHtime()%>
 					</td>
 					<td align="center">
-						<%
-							booksdao = new BooksDAO();
+							<!-- booksdao = new BooksDAO();
 							Books b = booksdao.findById(Integer.valueOf(map.getBookname()));
-						%>
-						<%=b.getBookname()%>
+							 -->
+						<%=map.getBookname()%>
 					</td>
 					<td align="center">
 						<%=map.getReadername().equals("") ? "&nbsp;" : map

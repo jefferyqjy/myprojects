@@ -22,7 +22,7 @@
 		System.out.println(success);
 		if (success) {
 		%>
-			alert("添加成功");
+			alert("还书成功！");
 		<%
 		}
 		%>			

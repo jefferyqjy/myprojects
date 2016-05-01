@@ -57,7 +57,7 @@
 			String tid = request.getParameter("tid") == null ? "" : request.getParameter("tid");
 			if (!tid.equals("")) {
 				BookhjDAO bookhjDAO = new BookhjDAO();
-				Bookhj b = bookhjDAO.findById(Integer.valueOf(jid.trim()));
+				Bookhj b = bookhjDAO.findById(Integer.valueOf(tid.trim()));
 				b.setSjstatus("已通过");
 				bookhjDAO = new BookhjDAO();
 				bookhjDAO.update(b);

@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cz.entity.Bookhj;
 import com.cz.utils.ConnOfDatabase;
@@ -18,6 +20,74 @@ public class BookhjDAO {
 		ConnOfDatabase sqlconn;
 		sqlconn = new ConnOfDatabase();
 		conn = sqlconn.getConn();
+	}
+	
+	/**
+	 * do stat
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Map<String, Object>> statBookhjReaderNameCount() throws SQLException {
+		String sql = "select readername,count(readername) as num from bookhj  group by readername order by num desc";
+		Statement stmt;
+		ResultSet rs;
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				String readername = rs.getString("readername");
+				map.put("readername", readername);
+				String num = rs.getString("num");
+				map.put("num", num);
+				list.add(map);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	
+	/**
+	 * do stat
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Map<String, Object>> statBookhjCount() throws SQLException {
+		String sql = "select bookname,count(bookname) as num from bookhj group by bookname order by num desc";
+		Statement stmt;
+		ResultSet rs;
+		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+		stmt = conn.createStatement();
+		try {
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				String bookname = rs.getString("bookname");
+;				map.put("bookname", bookname);
+				String num = rs.getString("num");
+				map.put("num", num);
+				list.add(map);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
 	}
 	
 	/**

@@ -23,7 +23,7 @@
 		List<Syspros> cbslist = sysprosdao.findBySql(sql);
 		String bookname = request.getParameter("bookname") == null ? "" : request.getParameter("bookname");
 		String cbs = request.getParameter("cbs") == null ? "" : request.getParameter("cbs");
-		String ibsn = request.getParameter("ibsn") == null ? "" : request.getParameter("ibsn");
+		String isbn = request.getParameter("isbn") == null ? "" : request.getParameter("isbn");
 		String did = request.getParameter("did") == null ? "" : request.getParameter("did");
 
 		if (!did.equals("")) {
@@ -44,15 +44,15 @@
 			sql += " and cbs like '%" + cbs + "%' ";
 		}
 
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn=" + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		HashMap m = new HashMap();
 		m.put("cbs", cbs);
-		if (!ibsn.equals("")) {
-			url += "&ibsn=" + ibsn;
-			sql += " and ibsn like '%" + ibsn + "%' ";
+		if (!isbn.equals("")) {
+			url += "&isbn=" + isbn;
+			sql += " and isbn like '%" + isbn + "%' ";
 		}
 		sql += " order by id desc";
 		System.out.println(sql);
@@ -97,11 +97,11 @@
 							%>
 						</select>
 					</td>
-					<td width=10% align="center" style="font-size: 12px">
+					<td width="10%" align="center" style="font-size: 12px">
 						ISBN :
 					</td>
-					<td width=style= "font-size: 12px" align="left">
-						<input value="<%=ibsn%>" name="issn" type="text">
+					<td width="10%" style= "font-size: 12px" align="left">
+						<input value="<%=isbn%>" name="issn" type="text">
 					</td>
 					<td width=20% style="font-size: 12px" align="right">
 						<input type="submit" class="btn3_mouseup" value="查询">
@@ -154,7 +154,14 @@
 				%>
 				<tr align="center">
 					<td align="center">
-						<img src="/libmanage/upfile/<%=map.getFilename()%>" height="80" />
+						<%
+						String filename = map.getFilename(); 
+						if(filename != null && filename != "") {
+						%>
+							<img src="/libmanage/upfile/<%=map.getFilename()%>" height="80" />
+						<%
+						} 
+						%>
 					</td>
 					<td align="center">
 						<%=map.getIsbn().equals("") ? "&nbsp;" : map.getIsbn()%>

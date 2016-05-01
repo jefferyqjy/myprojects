@@ -14,7 +14,7 @@
 
 	</head>
 	<%
-	String sql = "select * from syspros where infoa = '学历'";
+		String sql = "select * from syspros where infoa = '学历'";
 		SysprosDAO sysprosdao = new SysprosDAO();
 		List<Syspros> lblist = sysprosdao.findBySql(sql);
 		
@@ -23,7 +23,7 @@
 		List<Syspros> cbslist = sysprosdao.findBySql(sql);
 	%>
 	<body>
-		<form name="f1" method="post" action="control!addsreader">
+		<form name="f1" method="post" action="${pageContext.request.contextPath }/sreader?operate=addsreader">
 			<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
 			<table width="100%" border="0" align="center" cellpadding="0"
 				cellspacing="0" class="mytab" id="table1">

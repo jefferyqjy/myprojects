@@ -379,7 +379,7 @@ public class SreaderDAO {
 	public boolean update(Sreader sreader) throws Exception {
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update sreader set tname = ?, xueli = ?, ziye = ?, kjnum = ?, tel = ?, email = ?, sc = ? where id = ?";
+		String updateStr = "update sreader set tname = ?, xueli = ?, ziye = ?, kjnum = ?, tel = ?, email = ?, sc = ?, upass = ? where id = ?";
 		stmt = conn.prepareStatement(updateStr);
 		try {
 			stmt.setString(1, sreader.getTname());
@@ -389,7 +389,8 @@ public class SreaderDAO {
 			stmt.setString(5, sreader.getTel());
 			stmt.setString(6, sreader.getEmail());
 			stmt.setString(7, sreader.getSc());
-			stmt.setInt(8, sreader.getId());
+			stmt.setString(8, sreader.getUpass());
+			stmt.setInt(9, sreader.getId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		} catch (SQLException e) {

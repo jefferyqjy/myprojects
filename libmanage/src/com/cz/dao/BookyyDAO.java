@@ -217,6 +217,39 @@ public class BookyyDAO {
 		}
 		return insFlag;
 	}
+	
+	/**
+	 * update
+	 * @param bookyy
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean update(Bookyy bookyy) throws Exception {
+		PreparedStatement stmt;
+		boolean deleteFlag = false;
+		try {
+			String insertStr = "update bookyy set yytime = ?, htime = ?, readername = ?, bookname = ?, bei = ?, status = ? where id = ?";
+			stmt = conn.prepareStatement(insertStr);
+			stmt.setString(1, bookyy.getYytime());
+			stmt.setString(2, bookyy.getHtime());
+			stmt.setString(3, bookyy.getReadername());
+			stmt.setString(4, bookyy.getBookname());
+			stmt.setString(5, bookyy.getBei());
+			stmt.setString(6, bookyy.getStatus());
+			stmt.setInt(7, bookyy.getId());
+			stmt.executeUpdate();
+			deleteFlag = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return deleteFlag;
+	}
 
 	/**
 	 * delete by id

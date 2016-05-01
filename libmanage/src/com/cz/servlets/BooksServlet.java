@@ -1,16 +1,13 @@
 package com.cz.servlets;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.cz.dao.SysuserDAO;
-import com.cz.entity.Sysuser;
+import com.cz.dao.BooksDAO;
+import com.cz.entity.Books;
 
 public class BooksServlet extends HttpServlet {
 
@@ -21,42 +18,68 @@ public class BooksServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) {
 		String operate = request.getParameter("operate");
-		if(StringUtils.equals("updatesysuser", operate)) {
+		if(StringUtils.equals("updatebooks", operate)) {
 			doUpdate(request, response);
+			return;
+		} else if(StringUtils.equals("addbooks", operate)) {
+			doAdd(request, response);
 			return;
 		}
 	}
 
 	/**
-	 * update system user info.
+	 * update books
 	 * @param request
 	 * @param response
 	 */
 	private void doUpdate(HttpServletRequest request, HttpServletResponse response) {
-		SysuserDAO dao = new SysuserDAO();
 		String id = request.getParameter("id");
-		Sysuser u;
-		boolean success = false;
 		try {
-			u = dao.findById(Integer.valueOf(id.trim()));
-			u.setEmail(request.getParameter("email"));
-			u.setTel(request.getParameter("tel"));
-			u.setTname(request.getParameter("tname"));
-			u.setUpass(request.getParameter("upass"));
-			dao = new SysuserDAO();
-			dao.update(u);
-			success = true;
+			BooksDAO booksdao = new BooksDAO();
+			Books data = booksdao.findById(Integer.valueOf(id));
+			data.setAuthor(request.getParameter("author"));
+			data.setBookname(request.getParameter("bookname"));
+			data.setCbrq(request.getParameter("cbrq"));
+			data.setCbs(request.getParameter("cbs"));
+			data.setIsbn(request.getParameter("isbn"));
+			data.setJianj(request.getParameter("jianj"));
+			data.setKucun(request.getParameter("kucun"));
+			data.setPrice(request.getParameter("price"));
+			data.setTslb(request.getParameter("tslb"));
+			data.setFilename(request.getParameter("filename"));
+			booksdao = new BooksDAO();
+			booksdao.udpate(data);
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/addbooks.jsp").forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * add books
+	 * @param request
+	 * @param response
+	 */
+	private void doAdd(HttpServletRequest request, HttpServletResponse response) {
+		Books data = new Books();
+		data.setAuthor(request.getParameter("author"));
+		data.setBookname(request.getParameter("bookname"));
+		data.setCbrq(request.getParameter("cbrq"));
+		data.setCbs(request.getParameter("cbs"));
+		data.setIsbn(request.getParameter("isbn"));
+		data.setJianj(request.getParameter("jianj"));
+		data.setKucun(request.getParameter("kucun"));
+		data.setPrice(request.getParameter("price"));
+		data.setTslb(request.getParameter("tslb"));
+		data.setFilename(request.getParameter("filename"));
 		
-		request.setAttribute("id", id);
-		request.setAttribute("suc", success);
+		BooksDAO booksdao = new BooksDAO();
 		try {
-			getServletConfig().getServletContext().getRequestDispatcher("/admin/pupdatesysusers.jsp").forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+			booksdao.insert(data);
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/addbooks.jsp").forward(request, response);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

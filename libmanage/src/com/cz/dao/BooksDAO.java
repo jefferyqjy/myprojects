@@ -266,6 +266,44 @@ public class BooksDAO {
 		}
 		return insFlag;
 	}
+	
+	/**
+	 * update books
+	 * @param books
+	 * @return
+	 * @throws Exception
+	 */
+	public boolean udpate(Books books) throws Exception {
+		PreparedStatement stmt;
+		boolean insFlag = false;
+		String insertStr = "update books set isbn = ?, bookname = ?, price = ?, tslb = ?, cbs = ?, jianj = ?, author = ?, cbrq = ?, kucun = ?, filename = ? where id = ?";
+		stmt = conn.prepareStatement(insertStr);
+		try {
+			stmt.setString(1, books.getIsbn());
+			stmt.setString(2, books.getBookname());
+			stmt.setString(3, books.getPrice());
+			stmt.setString(4, books.getTslb());
+			stmt.setString(5, books.getCbs());
+			stmt.setString(6, books.getJianj());
+			stmt.setString(7, books.getAuthor());
+			stmt.setString(8, books.getCbrq());
+			stmt.setString(9, books.getKucun());
+			stmt.setString(10, books.getFilename());
+			stmt.setInt(11, books.getId());
+			stmt.executeUpdate();
+			insFlag = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return insFlag;
+	}
 
 	/**
 	 * delete by id

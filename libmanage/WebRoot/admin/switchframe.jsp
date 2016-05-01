@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="/libmanage/admin/commfiles/css/common.css" type="text/css" />
 <title>显示/隐藏左侧导航栏</title>
-</head>
 <script language="JavaScript">
 function Submit_onclick(){
 	if(parent.myFrame.cols == "200,7,*") {
@@ -26,6 +25,7 @@ function MyLoad() {
 	}
 }
 </script>
+</head>
 <body onload="MyLoad()">
 <div id="switchpic"><a href="javascript:Submit_onclick()"><img src="/libmanage/admin/commfiles/images/switch_left.gif" alt="隐藏左侧导航栏" id="ImgArrow" /></a></div>
 </body>
