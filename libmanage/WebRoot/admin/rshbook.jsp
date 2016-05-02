@@ -39,8 +39,7 @@
 		List<Sreader> cbslist = sreaderdao.findAll();
 	%>
 	<body>
-		<form name="f1" method="post"
-			action="control!rshbook?id=<%=request.getParameter("id")%>">
+		<form name="f1" method="post" action="${pageContext.request.contextPath }\bookhj?operate=rshbook&id=<%=request.getParameter("id")%>">
 			<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
 			<table width="100%" border="0" align="center" cellpadding="0"
 				cellspacing="0" class="mytab" id="table1">

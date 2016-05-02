@@ -103,7 +103,7 @@ public class ControlAction extends ActionSupport {
 		Bookhj data = (Bookhj) dao.load(request.getParameter("id"), "Bookhj");
 		data.setSjtime(request.getParameter("htime"));
 		data.setSjstatus("待审批");
-		data.setSjtime(null);
+		data.setHtime(null);
 		dao.update(data);
 		request.setAttribute("suc", "");
 		return "allcontrol";

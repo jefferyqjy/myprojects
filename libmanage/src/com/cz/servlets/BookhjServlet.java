@@ -40,13 +40,40 @@ public class BookhjServlet extends HttpServlet {
 			return;
 		} else if(StringUtils.equals("add", operate)) {
 			doAdd(request, response);
+			return;
 		} else if(StringUtils.equals("hbook", operate)) {
 			doHBook(request, response);
+			return;
 		} else if(StringUtils.equals("shbook", operate)) {
 			doSHBook(request, response);
+			return;
 		} else if(StringUtils.equals("updatebookhj", operate)) {
 			doUpdate(request, response);
-		} 
+			return;
+		} else if(StringUtils.equals("rshbook", operate)) {
+			doRenew(request, response);
+			return;
+		}
+	}
+	
+	/**
+	 * @param request
+	 * @param response
+	 */
+	private void doRenew(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String id = request.getParameter("id");
+			BookhjDAO bookhjdao = new BookhjDAO();
+			Bookhj data = bookhjdao.findById(Integer.valueOf(id));
+			data.setSjtime(request.getParameter("htime"));
+			data.setSjstatus("待审批");
+			bookhjdao = new BookhjDAO();
+			bookhjdao.update(data);
+			request.setAttribute("suc", "");
+			getServletConfig().getServletContext().getRequestDispatcher("/admin/allcontrol.jsp").forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
