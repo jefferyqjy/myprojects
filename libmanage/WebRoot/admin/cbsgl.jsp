@@ -1,10 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@page import="com.cz.common.CommonDAO"%>
 <%@page import="com.cz.dao.SysprosDAO"%>
+<%@page import="com.cz.dao.BooksDAO"%>
 <%@page import="com.cz.common.Info"%>
 <%@page import="com.cz.entity.Sysuser"%>
 <%@page import="com.cz.common.PageManager"%>
 <%@page import="com.cz.entity.Syspros"%>
+<%@page import="com.cz.entity.Books"%>
  
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -22,7 +24,21 @@
 
 		if (!did.equals("")) {
 			SysprosDAO sysprosdao = new SysprosDAO();
-			sysprosdao.deleteById(Integer.valueOf(did));
+			Syspros syspros = sysprosdao.findById(Integer.valueOf(did));
+			if(syspros != null && "出版社".equals(syspros.getInfoa())) {
+				BooksDAO booksdao = new BooksDAO();
+				String sql = "select * from books where cbs = '" + syspros.getProname() + "'";
+				List<Books> bookslist = booksdao.findBySql(sql);
+				if(bookslist != null && bookslist.size() > 0) {
+					request.setAttribute("error", "");
+				} else {
+					sysprosdao = new SysprosDAO();
+					sysprosdao.deleteById(Integer.valueOf(did));
+				}
+			} else {
+				sysprosdao = new SysprosDAO();
+				sysprosdao.deleteById(Integer.valueOf(did));				
+			}
 		}
 
 		String url = "cbsgl.jsp?1=1";
@@ -119,4 +135,13 @@
 		pop('/libmanage/admin/addpros.jsp?type=1','添加出版社',300,84);
 	}
 	</script>
+	<%
+	if (request.getAttribute("error") != null) {
+	%>
+	<script type="text/javascript">
+	alert("该出版社下已有图书信息，请先删除该出版社下的图书！");
+	</script>
+	<%
+		}
+	%>
 </html>

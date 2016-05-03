@@ -22,6 +22,9 @@
 		<%if(request.getAttribute("htime")!=null) {%>
 			alert("该用户有逾期未还图书");
 		<%}%>
+		<%if(request.getAttribute("suc")!=null) {%>
+			alert("添加成功");
+		<%}%>
 		</script>
 	</head>
 	<%

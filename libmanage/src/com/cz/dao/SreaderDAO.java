@@ -5,8 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.cz.entity.Sreader;
 import com.cz.utils.ConnOfDatabase;
@@ -18,6 +23,71 @@ public class SreaderDAO {
 		ConnOfDatabase sqlconn;
 		sqlconn = new ConnOfDatabase();
 		conn = sqlconn.getConn();
+	}
+	
+	public static void main(String[] args) throws ParseException {
+		String day = "2012-05-01";
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		Date start = df.parse(day);
+		Date end = new Date();
+		System.out.println(dateDiff(start, end));
+	}
+	
+	/**
+	 * get days between dates.
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	private static Integer dateDiff(Date start, Date end) {
+		long nd = 1000*24*60*60;//一天的毫秒数
+		//long nh = 1000*60*60;//一小时的毫秒数
+		//long nm = 1000*60;//一分钟的毫秒数
+		//long ns = 1000;//一秒钟的毫秒数
+		//获得两个时间的毫秒时间差异
+		Long diff = end.getTime() - start.getTime();
+		Long day = diff/nd;//计算差多少天
+		//Long hour = diff%nd/nh;//计算差多少小时
+		//Long min = diff%nd%nh/nm;//计算差多少分钟
+		//Long sec = diff%nd%nh%nm/ns;//计算差多少秒//输出结果
+		//System.out.println("时间相差："+day+"天"+hour+"小时"+min+"分钟"+sec+"秒。");
+		return day.intValue();
+	}
+	
+	public List<Map<String,Object>> statBlacklist() {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		String sql = "select hj.readername as readername, s.tel as tel, hj.bookname as bookname, hj.htime as htime from bookhj hj, sreader s where 1=1 and s.uname = hj.readername";
+		sql += " and (hj.hbtime is null or hj.hbtime = '')";
+		sql += " and hj.htime < now()";
+		sql += " and (hj.sjstatus <> '已通过' or hj.sjstatus is null";
+		sql += " or (hj.sjstatus = '已通过' and hj.sjstatus < now())";
+		sql += " )";
+		
+		List<Map<String, Object>> nlist = new ArrayList<Map<String, Object>>();
+		Statement stmt;
+		ResultSet rs;
+		try {
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("readername", rs.getString("readername"));
+				map.put("tel", rs.getString("tel"));
+				map.put("bookname", rs.getString("bookname"));
+				map.put("htime", rs.getString("htime"));
+				String htime = rs.getString("htime");
+				Date start = df.parse(htime);
+				Date end = new Date();
+				int diff = dateDiff(start, end);
+				map.put("fine", 10*diff);
+				nlist.add(map);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return nlist;
 	}
 	
 	/**

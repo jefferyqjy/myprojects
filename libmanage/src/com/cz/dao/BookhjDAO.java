@@ -296,7 +296,7 @@ public class BookhjDAO {
 			stmt.setString(8, bookhj.getHbkou());
 			stmt.setString(9, bookhj.getHbbei());
 			stmt.setString(10, bookhj.getSjtime());
-			stmt.setString(10, bookhj.getSjstatus());
+			stmt.setString(11, bookhj.getSjstatus());
 			stmt.executeUpdate();
 			insFlag = true;
 		} catch (SQLException e) {

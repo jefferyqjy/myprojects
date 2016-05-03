@@ -31,11 +31,8 @@ outlookbar.additem('收藏查询',t,'abooksc.jsp')
 outlookbar.additem('图书借阅排行',t,'jyph.jsp')
 outlookbar.additem('读者借阅排行',t,'jyph-reader.jsp')
 outlookbar.additem('图书总数量',t,'bookcount.jsp')
+outlookbar.additem('黑名单',t,'blacklist.jsp')
 
 t=outlookbar.addtitle('信息管理','信息管理',1)
 outlookbar.additem('图书信息管理',t,'books.jsp')
 outlookbar.additem('读者信息管理',t,'sreader.jsp')
-
-
-
-

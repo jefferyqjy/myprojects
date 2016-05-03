@@ -118,6 +118,7 @@ public class BookhjServlet extends HttpServlet {
 			} else {
 				sql = "select * from bookhj where 1=1 and htime <= '" + Info.getDateStr().substring(0, 10) + "'";
 				sql += " and (hbtime is null or hbtime = '')";
+				sql += (" and readername = '" + readername + "'");
 				bdao = new BookhjDAO();
 				list = bdao.findBySql(sql);
 				if(list != null && list.size() > 0) {
@@ -129,15 +130,17 @@ public class BookhjServlet extends HttpServlet {
 			
 			String jtime = request.getParameter("jtime");
 			String htime = request.getParameter("htime");
-			String bookname = request.getParameter("bookname");
+			String bookname = request.getParameter("bookname"); // here we got the book's id.
+			BooksDAO booksdao = new BooksDAO();
+			Books books = booksdao.findById(Integer.valueOf(bookname));
 			
 			String yjin = request.getParameter("yjin");
 			String bei = request.getParameter("bei");
 			Bookhj bookhj = new Bookhj();
+			bookhj.setBookname(books.getBookname());
 			bookhj.setJtime(jtime);
 			bookhj.setHtime(htime);
 			bookhj.setReadername(readername);
-			bookhj.setBookname(bookname);
 			bookhj.setYjin(yjin);
 			bookhj.setBei(bei);
 			bdao = new BookhjDAO();
