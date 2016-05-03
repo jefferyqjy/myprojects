@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -134,7 +133,7 @@ function  clickto(){
           <input type="checkbox" name="checkbox2" id="checkbox2" />
         </div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE6"><div align="center"><span class="STYLE19"><input type="text" name="teacher_user_name" value="<%=request.getParameter("TUN") %>" readonly/></span></div></td>
-        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_name" value="<%=URLEncoder.encode(request.getParameter("TN"), "utf-8") %>"/></div></td>
+        <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_name" value="<%=request.getParameter("TN") %>"/></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="text" name="teacher_age"  value="<%=request.getParameter("TA") %>"/></div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"><input type="radio" name="teacher_sex" value="男"/> 男 <input type="radio" name="teacher_sex" value="女" /> 女</div></td>
         <td height="20" bgcolor="#FFFFFF" class="STYLE19"><div align="center"> <select name="teacher_subject">
