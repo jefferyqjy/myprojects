@@ -146,6 +146,14 @@ public class BookhjServlet extends HttpServlet {
 			bdao = new BookhjDAO();
 			bdao.insert(bookhj);
 			
+			// decrease storage of books
+			String str = books.getKucun();
+			Integer kucun = Integer.valueOf(str);
+			kucun--;
+			books.setKucun(kucun.toString());
+			booksdao = new BooksDAO();
+			booksdao.udpate(books);
+			
 			request.setAttribute("suc", "");
 			getServletConfig().getServletContext().getRequestDispatcher("/admin/addbookhj.jsp").forward(request, response);
 			
@@ -176,6 +184,20 @@ public class BookhjServlet extends HttpServlet {
 			bookhj.setHbkou(request.getParameter("hbkou"));
 			dao = new BookhjDAO();
 			dao.update(bookhj);
+			
+			// update books storage
+			BooksDAO booksdao = new BooksDAO();
+			String sql = "select * from books where bookname = '" + bookhj.getBookname() + "'";
+			List<Books> bookslist = booksdao.findBySql(sql);
+			if(bookslist != null && bookslist.size() > 0) {
+				Books books = bookslist.get(0);
+				String str = books.getKucun();
+				Integer kucun = Integer.valueOf(str);
+				kucun++;
+				books.setKucun(kucun.toString());
+				booksdao = new BooksDAO();
+				booksdao.udpate(books);
+			}
 			request.setAttribute("suc", "");
 			getServletConfig().getServletContext().getRequestDispatcher("/admin/hbook.jsp").forward(request, response);
 		} catch (NumberFormatException e) {
@@ -197,7 +219,7 @@ public class BookhjServlet extends HttpServlet {
 		Bookhj bookhj;
 		try {
 			bookhj = dao.findById(Integer.valueOf(id.trim()));
-			bookhj.setSjtime(request.getParameter("sjtime"));
+			bookhj.setSjtime(request.getParameter("htime"));
 			bookhj.setSjstatus("已通过");
 			dao = new BookhjDAO();
 			dao.update(bookhj);
