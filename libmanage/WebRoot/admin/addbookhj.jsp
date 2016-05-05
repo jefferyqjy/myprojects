@@ -25,6 +25,9 @@
 		<%if(request.getAttribute("suc")!=null) {%>
 			alert("添加成功");
 		<%}%>
+		<%if(request.getAttribute("lackofkucun")!=null) {%>
+			alert("该图书库存不足，无法借出");
+		<%}%>
 		</script>
 	</head>
 	<%

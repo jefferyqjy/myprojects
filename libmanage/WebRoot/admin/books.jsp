@@ -101,7 +101,7 @@
 						ISBN :
 					</td>
 					<td width="10%" style= "font-size: 12px" align="left">
-						<input value="<%=isbn%>" name="issn" type="text">
+						<input value="<%=isbn%>" name="isbn" type="text">
 					</td>
 					<td width=20% style="font-size: 12px" align="right">
 						<input type="submit" class="btn3_mouseup" value="查询">

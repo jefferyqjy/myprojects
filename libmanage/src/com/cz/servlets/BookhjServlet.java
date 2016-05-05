@@ -133,6 +133,13 @@ public class BookhjServlet extends HttpServlet {
 			String bookname = request.getParameter("bookname"); // here we got the book's id.
 			BooksDAO booksdao = new BooksDAO();
 			Books books = booksdao.findById(Integer.valueOf(bookname));
+			String tempStr = books.getKucun();
+			Integer tempKucun = Integer.valueOf(tempStr);
+			if(tempKucun <= 0) {
+				request.setAttribute("lackofkucun", "");
+				getServletConfig().getServletContext().getRequestDispatcher("/admin/addbookhj.jsp").forward(request, response);
+				return;
+			}
 			
 			String yjin = request.getParameter("yjin");
 			String bei = request.getParameter("bei");
