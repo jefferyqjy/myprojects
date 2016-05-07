@@ -1,5 +1,8 @@
 package com.cz.servlets;
 
+import java.io.PrintWriter;
+import java.util.List;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,6 +27,38 @@ public class SysprosServlet extends HttpServlet {
 		} else if(StringUtils.equals("addpros", operate)) {
 			doAdd(request, response);
 			return;
+		} else if(StringUtils.equals("loadinfo", operate)) {
+			doLoadInfo(request, response);
+			return;
+		}
+	}
+	
+	/**
+	 * load info
+	 * @param request
+	 * @param response
+	 */
+	private void doLoadInfo(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String infob = "";
+			String type = request.getParameter("type");
+			String zhiye = request.getParameter("zhiye");
+			zhiye = new String(zhiye.getBytes("ISO8859-1"), "UTF-8");
+			SysprosDAO sysprosdao = new SysprosDAO();
+			if(StringUtils.equals("infob", type)) {
+				String sql = "select * from syspros where infoa = '职业' and proname = '" + zhiye + "'";
+				List<Syspros> list = sysprosdao.findBySql(sql);
+				if(list != null && list.size() > 0) {
+					Syspros syspros = list.get(0);
+					infob = syspros.getInfob();
+				}
+				PrintWriter out = response.getWriter();
+				out.write(infob);
+			} else if(StringUtils.equals("infoc", type)) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

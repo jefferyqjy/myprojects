@@ -92,7 +92,7 @@ public class SreaderServlet extends HttpServlet {
 			data.setUname(uname);
 			SreaderDAO sreaderdao = new SreaderDAO();
 			Sreader sreader = sreaderdao.findByUName(uname);
-			if(sreader != null) {
+			if(sreader != null && sreader.getId() != null) {
 				request.setAttribute("duplicate", "");
 				getServletConfig().getServletContext().getRequestDispatcher("/admin/addsreader.jsp").forward(request, response);
 				return;

@@ -104,8 +104,6 @@
 					<td width=20% style="font-size: 12px" align="right">
 						<input type="submit" class="btn3_mouseup" value="查询">
 						&nbsp;
-
-
 					</td>
 				</tr>
 			</table>

@@ -101,7 +101,7 @@
 					</td>
 					<td colspan="2" align="left">
 						<span class="style1"> 
-							<input name="kjnum" id="kjnum" type="text" size="20" /> 
+							<input name="kjnum" id="kjnum" type="text" size="20" readonly style="background-color:lightgrey;" /> 
 						</span>
 					</td>
 				</tr>
@@ -140,6 +140,19 @@
 		</form>
 	</body>
 	<script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
+	<script type="text/javascript">
+		document.getElementById("ziye").onchange = function(e) {
+			var zhiye = document.getElementById("ziye").value;
+			
+			var ajax = new AJAX();
+			ajax.post("${pageContext.request.contextPath}/syspros?operate=loadinfo&type=infob&zhiye="+zhiye);
+			var msg = ajax.getValue(); // 获取可借数量
+			console.log(msg);
+
+			document.getElementById("kjnum").value = msg;
+		}
+		
+	</script>
 	<%
 	if (request.getAttribute("duplicate") != null) {
 	%>
@@ -147,7 +160,7 @@
 			alert("此用户名已存在，请重新输入读者信息")
 		</script>
 	<%
-		}
+	}
 	%>
 	<%=Info.sucinfo(request, true)%>
 </html>

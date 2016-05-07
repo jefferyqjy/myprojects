@@ -101,7 +101,7 @@ public class SysuserServlet extends HttpServlet {
 			SysuserDAO dao = new SysuserDAO();
 			String sql = "select * from sysuser where uname = '" + uname + "'";
 			List<Sysuser> list = dao.findBySql(sql);
-			if(list != null && list.size() > 0) {
+			if(list != null && list.size() > 0 && list.get(0).getId() != null) {
 				request.setAttribute("duplicate", "");
 				getServletConfig().getServletContext().getRequestDispatcher("/admin/addsysusers.jsp").forward(request, response);
 				return;
