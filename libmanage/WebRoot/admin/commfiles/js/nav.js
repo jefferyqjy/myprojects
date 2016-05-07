@@ -17,6 +17,7 @@ outlookbar.additem('出版社管理',t,'cbsgl.jsp')
 outlookbar.additem('图书类别管理',t,'tslbgl.jsp')
 outlookbar.additem('学历管理',t,'xlgl.jsp')
 outlookbar.additem('职业管理',t,'zygl.jsp')
+outlookbar.additem('超期金额配置',t,'cqjegl.jsp')
 
 
 t=outlookbar.addtitle('个人信息','个人信息',1)

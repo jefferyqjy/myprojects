@@ -84,6 +84,8 @@ public class SysprosServlet extends HttpServlet {
 			data.setInfob(infob);
 			data.setInfoc(infoc);
 		}
+		if (type.equals("5"))
+			type = "超期金额";
 			
 		data.setProname(request.getParameter("proname"));
 		data.setInfoa(type);

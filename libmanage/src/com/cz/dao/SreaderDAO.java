@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.cz.entity.Sreader;
+import com.cz.entity.Syspros;
 import com.cz.utils.ConnOfDatabase;
 
 public class SreaderDAO {
@@ -54,9 +55,20 @@ public class SreaderDAO {
 		return day.intValue();
 	}
 	
-	public List<Map<String,Object>> statBlacklist() {
+	public List<Map<String,Object>> statBlacklist() throws Exception {
+		SysprosDAO sysprosdao = new SysprosDAO();
+		String sql = "select * from syspros where infoa = '超期金额'";
+		List<Syspros> list = sysprosdao.findBySql(sql);
+		Integer fineMoney = 0;
+		if(list != null && list.size() > 0) {
+			Syspros syspros = list.get(0);
+			if(syspros != null) {
+				String proname = syspros.getProname();
+				fineMoney = Integer.valueOf(proname.trim());
+			}
+		}
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		String sql = "select hj.readername as readername, s.tel as tel, hj.bookname as bookname, hj.htime as htime from bookhj hj, sreader s where 1=1 and s.uname = hj.readername";
+		sql = "select hj.readername as readername, s.tel as tel, hj.bookname as bookname, hj.htime as htime from bookhj hj, sreader s where 1=1 and s.uname = hj.readername";
 		sql += " and (hj.hbtime is null or hj.hbtime = '')";
 		sql += " and hj.htime < now()";
 		sql += " and (hj.sjstatus <> '已通过' or hj.sjstatus is null";
@@ -79,7 +91,7 @@ public class SreaderDAO {
 				Date start = df.parse(htime);
 				Date end = new Date();
 				int diff = dateDiff(start, end);
-				map.put("fine", 10*diff);
+				map.put("fine", fineMoney*diff);
 				nlist.add(map);
 			}
 		} catch (SQLException e) {

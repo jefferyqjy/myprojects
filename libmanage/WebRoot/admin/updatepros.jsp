@@ -28,7 +28,17 @@
 				<tr align="center">
 					<td height="25" align="center">
 						<span class=""> 
-							<strong>请输入名称</strong> : <br /> 
+							<%
+							if("超期金额".equals(data.getInfoa())) {
+							%>
+								<strong>请输入金额（单位：元/天）</strong> : <br /> 
+							<%	
+							} else {
+							%>
+								<strong>请输入名称</strong> : <br />								
+							<%
+							}
+							%>
 							<input name="proname" id="proname" value="<%=data.getProname()%>" type="text" size="40" /> 
 						</span>
 					</td>

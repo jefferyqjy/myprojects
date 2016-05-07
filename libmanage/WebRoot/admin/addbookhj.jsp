@@ -5,6 +5,7 @@
 <%@page import="com.cz.entity.Syspros"%>
 <%@page import="com.cz.entity.Books"%>
 <%@page import="com.cz.entity.Sreader"%>
+<%@page import="java.text.SimpleDateFormat"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -37,6 +38,10 @@
 	
 	SreaderDAO sdao = new SreaderDAO();
   	List<Sreader> cbslist = sdao.findAll();
+  	
+  	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+  	Date date = new Date();
+  	String jtime = df.format(date);
 	%>
 	<body>
 		<form name="f1" method="post" action="${pageContext.request.contextPath }/bookhj?operate=add">
@@ -49,7 +54,7 @@
 					<td width="25%" height="25" align="center">借出时间</td>
 					<td width="75%" height="25" align="left">
 						<span class="style1"> 
-							<input name="jtime" id="jtime" type="text" size="12" onclick="WdatePicker();" /> &nbsp;
+							<input name="jtime" id="jtime" type="text" size="12" value="<%=jtime%>" onclick="WdatePicker();" /> &nbsp;
 						</span>
 					</td>
 				</tr>
@@ -111,4 +116,17 @@
 			</table>
 		</form>
 	</body>
+	<script type="text/javascript">
+		document.getElementById("readername").onchange = function(e) {
+			var readername = document.getElementById("readername").value;
+			
+			var ajax = new AJAX();
+			ajax.post("${pageContext.request.contextPath}/bookhj?operate=loadinfo&readername="+readername);
+			var msg = ajax.getValue(); // 获取可借数量
+			console.log(msg);
+
+			document.getElementById("htime").value = msg;
+		}
+		
+	</script>
 </html>

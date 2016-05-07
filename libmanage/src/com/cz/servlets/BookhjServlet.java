@@ -1,6 +1,10 @@
 package com.cz.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,9 +18,11 @@ import com.cz.common.Info;
 import com.cz.dao.BookhjDAO;
 import com.cz.dao.BooksDAO;
 import com.cz.dao.SreaderDAO;
+import com.cz.dao.SysprosDAO;
 import com.cz.entity.Bookhj;
 import com.cz.entity.Books;
 import com.cz.entity.Sreader;
+import com.cz.entity.Syspros;
 
 public class BookhjServlet extends HttpServlet {
 
@@ -53,6 +59,48 @@ public class BookhjServlet extends HttpServlet {
 		} else if(StringUtils.equals("rshbook", operate)) {
 			doRenew(request, response);
 			return;
+		} else if(StringUtils.equals("loadinfo", operate)) {
+			doLoadInfo(request, response);
+			return;
+		}
+	}
+	
+	/**
+	 * load info
+	 * @param request
+	 * @param response
+	 */
+	private void doLoadInfo(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String infoc = "";
+			String readername = request.getParameter("readername");
+			SreaderDAO sreaderdao = new SreaderDAO();
+			String sql = "select * from sreader where uname = '" + readername + "'";
+			List<Sreader> list = sreaderdao.findBySql(sql);
+			if(list != null && list.size() > 0) {
+				Sreader sreader = list.get(0);
+				if(sreader != null) {
+					String zhiye = sreader.getZiye();
+					SysprosDAO sysprosdao = new SysprosDAO();
+					sql = "select * from syspros where infoa = '职业' and proname = '" + zhiye +"'" ;
+					List<Syspros> proslist = sysprosdao.findBySql(sql);
+					if(proslist != null && proslist.size() > 0) {
+						Syspros syspros = proslist.get(0);
+						if(syspros != null) {
+							infoc = syspros.getInfoc();
+						}
+					}
+				}
+			}
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			cal.add(Calendar.DAY_OF_MONTH, StringUtils.isEmpty(infoc) ? 0 : Integer.valueOf(infoc.trim()));
+			Date date = cal.getTime();
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+			PrintWriter out = response.getWriter();
+			out.write(df.format(date));
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
