@@ -100,8 +100,9 @@
 						可借数量
 					</td>
 					<td colspan="2" align="left">
-						<span class="style1"> <input name="kjnum" id="kjnum"
-								type="text" size="20" /> </span>
+						<span class="style1"> 
+							<input name="kjnum" id="kjnum" type="text" size="20" /> 
+						</span>
 					</td>
 				</tr>
 
@@ -139,5 +140,14 @@
 		</form>
 	</body>
 	<script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
+	<%
+	if (request.getAttribute("duplicate") != null) {
+	%>
+		<script type="text/javascript">
+			alert("此用户名已存在，请重新输入读者信息")
+		</script>
+	<%
+		}
+	%>
 	<%=Info.sucinfo(request, true)%>
 </html>

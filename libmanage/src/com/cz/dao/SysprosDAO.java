@@ -201,11 +201,13 @@ public class SysprosDAO {
 	public boolean insert(Syspros syspros) throws Exception {
 		PreparedStatement stmt;
 		boolean insFlag = false;
-		String insertStr = "insert into syspros (proname, infoa) values(?,?)";
+		String insertStr = "insert into syspros (proname, infoa, infob, infoc) values(?,?,?,?)";
 		stmt = conn.prepareStatement(insertStr);
 		try {
 			stmt.setString(1, syspros.getProname());
 			stmt.setString(2, syspros.getInfoa());
+			stmt.setString(3, syspros.getInfob());
+			stmt.setString(4, syspros.getInfoc());
 			stmt.executeUpdate();
 			insFlag = true;
 		} catch (SQLException e) {
@@ -230,12 +232,14 @@ public class SysprosDAO {
 	public boolean update(Syspros syspros) throws Exception {
 		PreparedStatement stmt;
 		boolean updateFlag = false;
-		String updateStr = "update syspros set proname = ?, infoa = ? where id = ?";
+		String updateStr = "update syspros set proname = ?, infoa = ?, infob = ?, infoc = ? where id = ?";
 		stmt = conn.prepareStatement(updateStr);
 		try {
 			stmt.setString(1, syspros.getProname());
 			stmt.setString(2, syspros.getInfoa());
-			stmt.setInt(3, syspros.getId());
+			stmt.setString(3, syspros.getInfob());
+			stmt.setString(4, syspros.getInfoc());
+			stmt.setInt(5, syspros.getId());
 			stmt.executeUpdate();
 			updateFlag = true;
 		} catch (SQLException e) {

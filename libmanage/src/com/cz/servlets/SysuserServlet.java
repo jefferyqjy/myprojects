@@ -1,6 +1,7 @@
 package com.cz.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -94,14 +95,23 @@ public class SysuserServlet extends HttpServlet {
 	 * @param response
 	 */
 	private void doAdd(HttpServletRequest request, HttpServletResponse response) {
-		Sysuser u = new Sysuser();
-		u.setEmail(request.getParameter("email"));
-		u.setTel(request.getParameter("tel"));
-		u.setTname(request.getParameter("tname"));
-		u.setUname(request.getParameter("uname"));
-		u.setUpass(request.getParameter("upass"));
-		SysuserDAO dao = new SysuserDAO();
 		try {
+			Sysuser u = new Sysuser();
+			String uname = request.getParameter("uname");
+			SysuserDAO dao = new SysuserDAO();
+			String sql = "select * from sysuser where uname = '" + uname + "'";
+			List<Sysuser> list = dao.findBySql(sql);
+			if(list != null && list.size() > 0) {
+				request.setAttribute("duplicate", "");
+				getServletConfig().getServletContext().getRequestDispatcher("/admin/addsysusers.jsp").forward(request, response);
+				return;
+			}
+			u.setUname(uname);
+			u.setEmail(request.getParameter("email"));
+			u.setTel(request.getParameter("tel"));
+			u.setTname(request.getParameter("tname"));
+			u.setUpass(request.getParameter("upass"));
+			dao = new SysuserDAO();
 			dao.insert(u);
 			request.setAttribute("suc", "");
 			getServletConfig().getServletContext().getRequestDispatcher("/admin/addsysusers.jsp").forward(request, response);

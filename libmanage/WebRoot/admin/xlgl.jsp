@@ -69,33 +69,28 @@
 					</td>
 				</tr>
 				<tr align="center">
-					<td class="itemtitle" width="37%">
+					<td class="itemtitle" width="19%">
 						学历名称
 						<br>
 					</td>
 					<td class="itemtitle" width="13%">
 						操作
 					</td>
-					<td class="itemtitle" width="37%">
+					<td class="itemtitle" width="19%">
 						学历名称
 					</td>
 					<td class="itemtitle" width="13%">
 						操作
 					</td>
-
 				</tr>
-
-
 				<tr align="center">
-
 					<%
-						int i = 0;
-						for (Syspros data : nlist) {
-							i++;
+					int i = 0;
+					for (Syspros data : nlist) {
+						i++;
 					%>
 					<td align="center">
-						<%=data.getProname().equals("") ? "&nbsp;" : data
-						.getProname()%>
+						<%=data.getProname().equals("") ? "&nbsp;" : data.getProname()%>
 					</td>
 					<td align="center">
 						<a href="javascript:update('<%=data.getId()%>')">修改</a>
@@ -104,30 +99,24 @@
 					</td>
 
 					<%
-						if (i % 2 == 0)
-								out.print("</tr><tr align='center'>");
+						if (i % 2 == 0) out.print("</tr><tr align='center'>");
 					%>
-
 					<%
-						}
+					}
 					%>
-
 				</tr>
-
-
-				
 			</table>
 		</form>
 	</body>
 	<script type="text/javascript">
-          function update(no)
-          {
-          pop('/libmanage/admin/updatepros.jsp?id='+no,'修改学历',300,84);
-          }
-          
-          function add()
-          {
-          pop('/libmanage/admin/addpros.jsp?type=3','添加学历',300,84);
-          }
-          </script>
+    function update(no)
+    {
+    pop('/libmanage/admin/updatepros.jsp?id='+no,'修改学历',300,85);
+    }
+    
+    function add()
+    {
+    pop('/libmanage/admin/addpros.jsp?type=3','添加学历',300,84);
+    }
+    </script>
 </html>

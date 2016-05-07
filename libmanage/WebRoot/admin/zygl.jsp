@@ -62,32 +62,45 @@
 			<table width="100%" border="0" align="center" cellpadding="0"
 				cellspacing="0" class="mytab" id="table1">
 				<tr align="center">
-					<td colspan="7"
+					<td colspan="8"
 						background="/libmanage/admin/commfiles/images/bg.gif"
 						bgcolor="#FFFFFF" class="STYLE3">
 						信息列表
 					</td>
 				</tr>
 				<tr align="center">
-					<td class="itemtitle" width="37%">
+					<td class="itemtitle" width="14%">
 						职业名称
+						<br>
+					</td>
+					<td class="itemtitle" width="13%">
+						可借数量
+						<br>
+					</td>
+					<td class="itemtitle" width="13%">
+						可借天数
 						<br>
 					</td>
 					<td class="itemtitle" width="13%">
 						操作
 					</td>
-					<td class="itemtitle" width="37%">
+					<td class="itemtitle" width="14%">
 						职业名称
+						<br>
+					</td>
+					<td class="itemtitle" width="13%">
+						可借数量
+						<br>
+					</td>
+					<td class="itemtitle" width="13%">
+						可借天数
+						<br>
 					</td>
 					<td class="itemtitle" width="13%">
 						操作
 					</td>
-
 				</tr>
-
-
 				<tr align="center">
-
 					<%
 						int i = 0;
 						for (Syspros data : nlist) {
@@ -97,20 +110,22 @@
 						<%=data.getProname().equals("") ? "&nbsp;" : data.getProname()%>
 					</td>
 					<td align="center">
+						<%=("".equals(data.getInfob()) || data.getInfob() == null) ? "&nbsp;" : data.getInfob()%>
+					</td>
+					<td align="center">
+						<%=("".equals(data.getInfoc()) || data.getInfoc() == null) ? "&nbsp;" : data.getInfoc()%>
+					</td>
+					<td align="center">
 						<a href="javascript:update('<%=data.getId()%>')">修改</a>
 						&nbsp;|&nbsp;
 						<a href="/libmanage/admin/zygl.jsp?did=<%=data.getId()%>">删除</a>
 					</td>
-
 					<%
-						if (i % 2 == 0)
-								out.print("</tr><tr align='center'>");
+						if (i % 2 == 0) out.print("</tr><tr align='center'>");
 					%>
-
 					<%
-						}
+					}
 					%>
-
 				</tr>
 			</table>
 		</form>
@@ -118,12 +133,12 @@
 	<script type="text/javascript">
           function update(no)
           {
-          pop('/libmanage/admin/updatepros.jsp?id='+no,'修改职业',300,84);
+          pop('/libmanage/admin/updatepros.jsp?id='+no,'修改职业',300,200);
           }
           
           function add()
           {
-          pop('/libmanage/admin/addpros.jsp?type=4','添加职业',300,84);
+          pop('/libmanage/admin/addpros.jsp?type=4','添加职业',300,200);
           }
           </script>
 </html>

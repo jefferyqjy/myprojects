@@ -10,30 +10,53 @@
 </head>
   
   <body>
-  <form name="f1" method="post" action="${pageContext.request.contextPath }/syspros?operate=addpros&type=<%=request.getParameter("type")%>"  >
-  	<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
-  	<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="mytab" id="table1">
-        
-         <tr align="center"  style="display:none">
-        </tr>
-        
-         <tr align="center">
-          <td height="25" align="center"><span class="">
-          <strong>请输入名称</strong> : <br />
-            <input name="proname" id="proname"  type="text" size="40" />
-          </span> </td>
-        </tr>
-       
-        <tr align="center">
-          <td height="30" align="center">
-            <label>
-              <input type="submit" name="button" id="button" value="提交信息">
-            </label> &nbsp;&nbsp;
-            <input  type="reset" name="button2" id="button2" value="重新填写">                   </td>
-        </tr>
-      </table>
-  </form> 
-</body>
+		<form name="f1" method="post" action="${pageContext.request.contextPath }/syspros?operate=addpros&type=<%=request.getParameter("type")%>">
+			<!-- cellspacing 是单元格之间的距离、cesspadding 是单元格中内容与边框的距离 -->
+			<table width="100%" border="0" align="center" cellpadding="0"
+				cellspacing="0" class="mytab" id="table1">
+				<tr align="center" style="display: none"></tr>
+				<tr align="center">
+					<td height="25" align="center">
+						<span class=""> 
+							<strong>请输入名称</strong> : <br /> 
+							<input name="proname" id="proname" type="text"  /> 
+						</span>
+					</td>
+				</tr>
+				<%
+				if("4".equals(request.getParameter("type"))) {
+				%>
+					<tr align="center">
+						<td height="20" align="center">
+							<span class=""> 
+								<strong>请输入可借数量</strong> : <br /> 
+								<input name="infob" id="infob" type="text" size="40" /> 
+							</span>
+						</td>
+					</tr>
+					<tr align="center">
+						<td height="20" align="center">
+							<span class=""> 
+								<strong>请输入可借天数</strong> : <br /> 
+								<input name="infoc" id="infoc" type="text" size="40" /> 
+							</span>
+						</td>
+					</tr>
+				<% 
+				}
+				%>
+				<tr align="center">
+					<td height="30" align="center">
+						<label>
+							<input type="submit" name="button" id="button" value="提交信息">
+						</label>
+						&nbsp;&nbsp;
+						<input type="reset" name="button2" id="button2" value="重新填写">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
 <%=Info.sucinfo(request,true)%>
 </html>

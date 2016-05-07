@@ -60,5 +60,14 @@
       </form> 
 </body>
 <script type="text/javascript" src="/libmanage/admin/commfiles/js/ajax.js"></script>
+<%
+if (request.getAttribute("duplicate") != null) {
+%>
+	<script type="text/javascript">
+		alert("此用户名已存在，请重新输入管理员信息")
+	</script>
+<%
+}
+%>
 <%=Info.sucinfo(request,false)%>
 </html>

@@ -199,14 +199,14 @@
 			</table>
 		</form>
 	</body>
-	<%
-	if (request.getAttribute("suc") != null) {
-%>
- <script type="text/javascript">
-alert("添加成功")
-</script>
 <%
-	}
+if (request.getAttribute("suc") != null) {
+%>
+	<script type="text/javascript">
+	alert("添加成功")
+	</script>
+<%
+}
 %>
 </html>
 <%=Info.tform(m)%>

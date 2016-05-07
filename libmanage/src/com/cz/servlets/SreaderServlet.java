@@ -85,17 +85,28 @@ public class SreaderServlet extends HttpServlet {
 	 * @param response
 	 */
 	private void doAdd(HttpServletRequest request, HttpServletResponse response) {
-		Sreader data = new Sreader();
-		data.setEmail(request.getParameter("email"));
-		data.setKjnum(request.getParameter("kjnum"));
-		data.setTel(request.getParameter("tel"));
-		data.setTname(request.getParameter("tname"));
-		data.setUname(request.getParameter("uname"));
-		data.setUpass(request.getParameter("upass"));
-		data.setXueli(request.getParameter("xueli"));
-		data.setZiye(request.getParameter("ziye"));
-		SreaderDAO sreaderdao = new SreaderDAO();
 		try {
+			
+			Sreader data = new Sreader();
+			String uname = request.getParameter("uname"); 
+			data.setUname(uname);
+			SreaderDAO sreaderdao = new SreaderDAO();
+			Sreader sreader = sreaderdao.findByUName(uname);
+			if(sreader != null) {
+				request.setAttribute("duplicate", "");
+				getServletConfig().getServletContext().getRequestDispatcher("/admin/addsreader.jsp").forward(request, response);
+				return;
+			}
+			
+			data.setEmail(request.getParameter("email"));
+			data.setKjnum(request.getParameter("kjnum"));
+			data.setTel(request.getParameter("tel"));
+			data.setTname(request.getParameter("tname"));
+			data.setUpass(request.getParameter("upass"));
+			data.setXueli(request.getParameter("xueli"));
+			data.setZiye(request.getParameter("ziye"));
+			sreaderdao = new SreaderDAO();
+		
 			sreaderdao.insert(data);
 			request.setAttribute("suc", "");
 			getServletConfig().getServletContext().getRequestDispatcher("/admin/addsreader.jsp").forward(request, response);
