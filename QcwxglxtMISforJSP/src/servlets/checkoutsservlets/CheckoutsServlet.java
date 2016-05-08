@@ -71,8 +71,8 @@ public class CheckoutsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();//通过PrintWrite，以流方式输出html，返回给客户端，显示在IE上。
 
 		if (operator != null) {
-			if (operator.equals("1") || operator.equals("0")) // 查询全部或查询部分
-			{
+			if (operator.equals("1") || operator.equals("0")) {
+				// 查询全部或查询部分
 				String queryStr = "";
 				String countStr = "";
 				String queryName = "";
@@ -84,16 +84,16 @@ public class CheckoutsServlet extends HttpServlet {
 				int pagerMethod = Integer.parseInt(request
 						.getParameter("pagerMethod"));
 				try {
-					if (operator.equals("1")) // 查询全部
-					{
+					if (operator.equals("1")) {
+						 // 查询全部
 						queryStr = "select cID,checkouts.aID,repaircost,partID,partname,checknum,partprice,partcost,xiaofei,checkoutsdate,beizhu from arrange,checkouts where arrange.aID=checkouts.aID";
 						countStr = "select count(cID) from  checkouts where checkouts.cID";
-					} else // 查询部分
-					{
+					} else {
+						 // 查询部分
 						queryName = request.getParameter("queryName");
 						queryValue = request.getParameter("queryValue");
-						if (!queryName.equals("cID")) // 纠正中文乱码
-						{
+						if (!queryName.equals("cID")) {
+							// 纠正中文乱码
 							ChangeToGBK chGBK = new ChangeToGBK();
 							queryValue = chGBK.change("queryValue", request);
 						}
@@ -143,12 +143,12 @@ public class CheckoutsServlet extends HttpServlet {
 
 				} catch (Exception e2) {
 					out.print("<script language='javascript'>alert('查找客户结账信息失败！');window.location='checkouts.jsp';</script>");
-					}
+				}
 				getServletConfig().getServletContext().getRequestDispatcher("/checkouts.jsp").forward(request, response);
 				return;
 				
-			} else if (operator.equals("2") || operator.equals("3")|| operator.equals("4")) // find by checkouts id.
-			{
+			} else if (operator.equals("2") || operator.equals("3")|| operator.equals("4")) {
+				 // find by checkouts id.
 				List<Checkouts> checkouts1 = new ArrayList<Checkouts>();
 				CheckoutsDAO cdao = new CheckoutsDAO();
 				try {
@@ -161,22 +161,18 @@ public class CheckoutsServlet extends HttpServlet {
 					String cID = request.getParameter("cID");
 					try {
 						checkouts = dao.findById(Integer.parseInt(cID));
-
 					} catch (Exception e2) {
 						out.print("<script language='javascript'>alert('查找客户结账信息失败！');window.location='checkouts.jsp';</script>");
 					}
 				}
-
 				HttpSession session = request.getSession();
 
-				if (operator.equals("3")) // 找到商品后，把该商品的商品编码放入session，修改该商品信息再保存时可以从session中取出商品编码。
-				{
+				if (operator.equals("3")) {
+					 // 找到商品后，把该商品的商品编码放入session，修改该商品信息再保存时可以从session中取出商品编码。
 					session.setAttribute("operatorStr", "modify");
 					session.setAttribute("cID", checkouts.getcID());
-				} else if (operator.equals("4"))
-					session.setAttribute("operatorStr", "delete");
-				else
-					session.setAttribute("operatorStr", "add");
+				} else if (operator.equals("4")) session.setAttribute("operatorStr", "delete");
+				  else session.setAttribute("operatorStr", "add");
 
 				session.setAttribute("checkoutss", checkouts1);// 修改或添加商品时，若输入信息通不过检测，需要返回维护商品页面，必须把类别信息放到session，否则会丢失
 				session.setAttribute("checkouts", checkouts);
@@ -188,8 +184,8 @@ public class CheckoutsServlet extends HttpServlet {
 
 		String operatorStr = request.getParameter("operatorStr");
 
-		if (operatorStr != null) // operatorStr!=null，说明请求从checkoutsEdit.jsp来，准备进行数据的插入、删除和修改
-		{
+		if (operatorStr != null) {
+			// operatorStr!=null，说明请求从checkoutsEdit.jsp来，准备进行数据的插入、删除和修改
 			if (operatorStr.equals("add") || operatorStr.equals("modify")) {
 				Checkouts checkouts1 = new Checkouts();
 				if (operatorStr.equals("modify"))
@@ -199,7 +195,7 @@ public class CheckoutsServlet extends HttpServlet {
 					checkouts1.setPartname(request.getParameter("partname"));
 					checkouts1.setChecknum(Double.parseDouble(request.getParameter("checknum")));
 					checkouts1.setPartprice(Double.parseDouble(request.getParameter("partprice")));
-					checkouts1.setPartprice(Double.parseDouble(request.getParameter("partcost")));
+					checkouts1.setPartcost(Double.parseDouble(request.getParameter("partcost")));
 					checkouts1.setRepaircost(Double.parseDouble(request.getParameter("repaircost")));
 					checkouts1.setXiaofei(Double.parseDouble(request.getParameter("xiaofei")));
 					checkouts1.setCheckoutsdate(request.getParameter("checkoutsdate"));

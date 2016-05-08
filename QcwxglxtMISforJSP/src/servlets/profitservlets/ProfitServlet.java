@@ -157,7 +157,7 @@ public class ProfitServlet extends HttpServlet {
 					Checkouts co = cdao.findById(Integer.valueOf(cId));
 					Profit p = new Profit();
 					p.setcId(Integer.valueOf(cId));
-					BigDecimal cost = new BigDecimal(co.getPartcost());
+					BigDecimal cost = new BigDecimal(co.getPartprice());
 					cost.setScale(2);
 					p.setCost(cost);
 					
@@ -179,10 +179,7 @@ public class ProfitServlet extends HttpServlet {
 					e.printStackTrace();
 					return;
 				}
-				
 			}
 		} 
-		
 	}
-	
 }

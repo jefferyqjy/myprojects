@@ -111,34 +111,31 @@
 <body>
 	<table width="1200" border="0" align="center"
 		style="border-left: 1px solid #7BD676; border-right: 1px solid #7BD676; border-top: 1px solid #7bd676; border-bottom: 1px solid #7BD676;">
+		<tr><td colspan="2"><jsp:include flush="true" page="/top.jsp" /></td></tr>
 		<tr>
-			<td colspan="2"><jsp:include flush="true" page="/top.jsp" /></td>
-		</tr>
-		<tr>
-			<td width="150" valign="top"><jsp:include flush="true"
-					page="/left.jsp" /></td>
+			<td width="150" valign="top"><jsp:include flush="true" page="/left.jsp" /></td>
 			<td width="1050" align="center" valign="top">
 				<table width="1050" cellspacing="0" cellpadding="0">
 					<tr>
 						<td align="center" valign="top">
-							<table width="1050" border="0" align="center" cellpadding="0"
-								cellspacing="0">
+							<table width="1050" border="0" align="center" cellpadding="0" cellspacing="0">
 								<tr>
-									<td height="30"><table width="100%" border="0"
-											cellspacing="0" cellpadding="0">
+									<td height="30">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr align="left">
-												<td width="15" height="30"><img src="img/tab_03.gif"
-													width="15" height="30" /></td>
-												<td width="1101" background="img/tab_05.gif"><img
-													src="img/311.gif" width="16" height="16" /> <span
-													class="STYLE4"> <c:if test="${operatorStr=='add'}"> 增加结账单</c:if>
-														<c:if test="${operatorStr=='modify'}">修改结账单</c:if> <c:if
-															test="${operatorStr=='delete'}">删除结账单</c:if>
-												</span></td>
-												<td width="14"><img src="img/tab_07.gif" width="14"
-													height="30" /></td>
+												<td width="15" height="30"><img src="img/tab_03.gif" width="15" height="30" /></td>
+												<td width="1101" background="img/tab_05.gif">
+													<img src="img/311.gif" width="16" height="16" />
+													<span class="STYLE4"> 
+														<c:if test="${operatorStr=='add'}"> 增加结账单 </c:if>
+														<c:if test="${operatorStr=='modify'}">修改结账单</c:if> 
+														<c:if test="${operatorStr=='delete'}">删除结账单</c:if>
+													</span>
+												</td>
+												<td width="14"><img src="img/tab_07.gif" width="14" height="30" /></td>
 											</tr>
-										</table></td>
+										</table>
+									</td>
 								</tr>
 								<tr>
 									<td>
@@ -148,110 +145,111 @@
 												<td bgcolor="#f3ffe3" height="390" valign="top">
 													<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#6699CC"  >
 														<tr bgcolor="#f3ffe3">
-															<td><c:if test="${operatorStr=='modify' || operatorStr=='add'}">
+															<td>
+																<c:if test="${operatorStr=='modify' || operatorStr=='add'}">
 																	<form name="edit_Form" action="CheckCheckouts?operatorStr=${operatorStr}" method="post">
 																		<table width="100%">
 																			<tr height="30">
-																				<td align="right"><font face="隶书">维修单编号：</font>
+																				<td align="right"><font face="隶书">维修单编号：</font></td>
+																				<td align="left" width="50">
+																					<c:if test="${operatorStr=='add'}">
+																						<input type="text" name="aID" value="${checkouts.aID}" onkeyup="this.value=this.value.replace(/\D/g,'')" onblur="onchange1(this.value)" />
+																					</c:if> 
+																					<c:if test="${operatorStr=='modify'}">
+																						<input type="text" readonly style="background: #CCFFFF" name="aID" value="${checkouts.aID}">
+																					</c:if>
 																				</td>
-																				<td align="left" width="50"><c:if
-																						test="${operatorStr=='add'}">
-																						<input type="text" name="aID"
-																							value="${checkouts.aID}"
-																							onkeyup="this.value=this.value.replace(/\D/g,'')"
-																							onblur="onchange1(this.value)" />
-																					</c:if> <c:if test="${operatorStr=='modify'}">
-																						<input type="text" readonly
-																							style="background: #CCFFFF" name="aID"
-																							value="${checkouts.aID}">
-																					</c:if></td>
 																			</tr>
 																			<tr height="30">
-																				<td align="right"><font face="隶书">客户信息：</font>
+																				<td align="right"><font face="隶书">客户信息：</font></td>
+																				<td align="left">
+																					<span id="cus"></span>|<span id="vip"></span>|<span id="disc"></span>
 																				</td>
-																				<td align="left"><span id="cus"></span>|<span
-																					id="vip"></span>|<span id="disc"></span></td>
 																				<td align="left"><font color="red">客户姓名|是否会员|折扣</font></td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">零件编号：</font></td>
-																				<td align="left"><input id="partID" type="text"
-																					name="partID" readOnly="readonly"
-																					style="background: #CCFFFF"
-																					value="${checkouts.partID}"></td>
+																				<td align="left">
+																					<input id="partID" type="text" name="partID" readOnly="readonly" style="background: #CCFFFF" 
+																						value="${checkouts.partID}">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">零件名称：</font></td>
-																				<td align="left"><input id="partname"
-																					type="text" name="partname" readOnly="readonly"
-																					style="background: #CCFFFF"
-																					value="${checkouts.partname}"></td>
+																				<td align="left">
+																					<input id="partname" type="text" name="partname" readOnly="readonly" style="background: #CCFFFF" 
+																						value="${checkouts.partname}">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">零件数量：</font></td>
-																				<td align="left"><input id="checknum"
-																					type="text" name="checknum" readOnly="readonly"
-																					style="background: #CCFFFF"
-																					value="${checkouts.checknum}"></td>
+																				<td align="left">
+																					<input id="checknum" type="text" name="checknum" readOnly="readonly" style="background: #CCFFFF" 
+																						value="${checkouts.checknum}">
+																				</td>
 																			</tr>
 																			<c:if test="${operatorStr=='add'}">
 																			<tr height="30">
-																				<td align="right"><font face="隶书">零件费：</font></td>
-																				<td align="left"><input type="text"
-																					onkeyup="this.value=this.value.replace(/\D/g,'')"
-																					name="partprice" value="${checkouts.partprice}"
-																					id="partprice"></td>
+																				<td align="right"><font face="隶书">零件采购费：</font></td>
+																				<td align="left">
+																					<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" name="partprice" 
+																						value="${checkouts.partprice}" id="partprice">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">维修费：</font></td>
-																				<td align="left"><input type="text"
-																					onkeyup="this.value=this.value.replace(/\D/g,'')"
-																					name="repaircost" value="${checkouts.repaircost}"
-																					id="repaircost"></td>
+																				<td align="left">
+																					<input type="text" onkeyup="this.value=this.value.replace(/\D/g,'')" name="repaircost" 
+																						value="${checkouts.repaircost}" id="repaircost">
+																				</td>
 																			</tr>
 																			<tr height="30">
-																				<td align="right"><font face="隶书">零件采购费：</font></td>
-																				<td align="left"><input type="text" style="background: #CCFFFF"
-																					name="partcost" value="${checkouts.partcost}"
-																					id="partcost"></td>
+																				<td align="right"><font face="隶书">零件费：</font></td>
+																				<td align="left">
+																					<input type="text" style="background: #CCFFFF" name="partcost" 
+																						value="${checkouts.partcost}" id="partcost">
+																				</td>
 																			</tr>
 																			</c:if>
 																			<c:if test="${operatorStr=='modify'}">
 																			<tr height="30">
-																				<td align="right"><font face="隶书">零件费：</font></td>
-																				<td align="left"><input type="text"
-																					readOnly="readonly" style="background: #CCFFFF"
-																					name="partprice" value="${checkouts.partprice}"
-																					id="partprice"></td>
+																				<td align="right"><font face="隶书">零件采购费：</font></td>
+																				<td align="left">
+																					<input type="text" readOnly="readonly" style="background: #CCFFFF" name="partprice" 
+																						value="${checkouts.partprice}" id="partprice">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">维修费：</font></td>
-																				<td align="left"><input type="text"
-																					readOnly="readonly" style="background: #CCFFFF"
-																					name="repaircost" value="${checkouts.repaircost}"
-																					id="repaircost"></td>
+																				<td align="left">
+																					<input type="text" readOnly="readonly" style="background: #CCFFFF"
+																						name="repaircost" value="${checkouts.repaircost}" id="repaircost">
+																				</td>
 																			</tr>
 																			<tr height="30">
-																				<td align="right"><font face="隶书">零件采购费：</font></td>
-																				<td align="left"><input type="text" style="background: #CCFFFF"
-																					readOnly="readonly"  name="partcost" value="${checkouts.partcost}"
-																					id="partcost"></td>
+																				<td align="right"><font face="隶书">零件费：</font></td>
+																				<td align="left">
+																					<input type="text" style="background: #CCFFFF" readOnly="readonly"  name="partcost" 
+																						value="${checkouts.partcost}" id="partcost">
+																				</td>
 																			</tr>
 																			</c:if>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">消费：</font></td>
 																				<td align="left"><input type="text"
 																					name="xiaofei" value="${checkouts.xiaofei}" id="c"
-																					readOnly="readonly" style="background: #CCFFFF"></td>
+																					readOnly="readonly" style="background: #CCFFFF">
+																				</td>
 																				<td align="left"><input type="button"
-																					onclick="account()" value="计算"></td>
+																					onclick="account()" value="计算">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">结账日期：</font></td>
-																				<td align="left"><input type="text"
-																					name="checkoutsdate"
-																					value="${checkouts.checkoutsdate}"
-																					onFocus="WdatePicker({minDate:'%y-%M-{%d}'})"></td>
+																				<td align="left">
+																					<input type="text" name="checkoutsdate" value="${checkouts.checkoutsdate}"
+																						onFocus="WdatePicker({minDate:'%y-%M-{%d}'})">
+																				</td>
 																			</tr>
 																			<tr height="30">
 																				<td align="right"><font face="隶书">是否缴费：</font></td>
@@ -267,8 +265,8 @@
 																			</tr>
 																		</table>
 																	</form>
-
-																</c:if> <c:if test="${operatorStr=='delete'}">
+																</c:if> 
+																<c:if test="${operatorStr=='delete'}">
 																	<table align="center">
 																		<tr height="30">
 																			<td align="right">结账单编号：</td>
@@ -291,11 +289,11 @@
 																			<td align="left">${checkouts.checknum}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">零件费用：</td>
+																			<td align="right">零件采购费：</td>
 																			<td align="left">${checkouts.partprice}</td>
 																		</tr>
 																		<tr height="30">
-																			<td align="right">零件成本：</td>
+																			<td align="right">零件费用：</td>
 																			<td align="left">${checkouts.partcost}</td>
 																		</tr>
 																		<tr height="30">
@@ -327,25 +325,26 @@
 																</c:if>
 																<p align="left">
 																	<font color="red"><b>${message}</b></font>
-																</p></td>
+																</p>
+															</td>
 														</tr>
-													</table></td>
+													</table>
+												</td>
 												<td width="9" background="img/tab_16.gif">&nbsp;</td>
 											</tr>
 										</table>
 									</td>
 								</tr>
 								<tr>
-									<td height="30"><table width="100%" border="0"
-											cellspacing="0" cellpadding="0">
+									<td height="30">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
-												<td width="15" height="30"><img src="img/tab_20.gif"
-													width="15" height="30" /></td>
+												<td width="15" height="30"><img src="img/tab_20.gif" width="15" height="30" /></td>
 												<td width="1101" background="img/tab_21.gif"></td>
-												<td width="14"><img src="img/tab_22.gif" width="14"
-													height="30" /></td>
+												<td width="14"><img src="img/tab_22.gif" width="14" height="30" /></td>
 											</tr>
-										</table></td>
+										</table>
+									</td>
 								</tr>
 							</table>
 						</td>
