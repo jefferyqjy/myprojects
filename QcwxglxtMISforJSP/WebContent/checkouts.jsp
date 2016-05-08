@@ -91,9 +91,7 @@
 																<span class="STYLE4">结账信息列表</span></td>
 														</tr>
 													</table>
-													<table width="99%" border="0" align="center"
-														cellpadding="0" cellspacing="1" bgcolor="#6699CC"
-														onmouseover="changeto()" onmouseout="changeback()">
+													<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#6699CC" >
 														<tr>
 															<td width="10%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">结账单编号</td>
@@ -122,8 +120,7 @@
 															<td width="auto" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">删除</td>
 														</tr>
-														<tbody align="center" onmouseover="changeto()"
-															onmouseout="changeback()">
+														<tbody align="center"  >
 															<c:forEach var="item" items="${checkoutss}"
 																varStatus="checkouts">
 																<tr align="center" bgcolor="#FFFFFF" height="25">

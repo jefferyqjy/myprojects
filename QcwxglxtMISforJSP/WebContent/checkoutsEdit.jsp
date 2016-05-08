@@ -75,6 +75,7 @@
 				alert(arguments[1]);
 			}
 		});
+		
 		$.ajax({
 			url : "CheckoutsInfoaID",
 			data : {
@@ -97,6 +98,7 @@
 			}
 		});
 	}
+	
 	function account() {
 		var a = document.all.repaircost.value;
 		var b = document.all.partprice.value;
@@ -104,10 +106,8 @@
 		var disc = Number($("#disc").text());
 		document.all.c.value = c * disc;
 	}
-	
 </script>
 </head>
-
 <body>
 	<table width="1200" border="0" align="center"
 		style="border-left: 1px solid #7BD676; border-right: 1px solid #7BD676; border-top: 1px solid #7bd676; border-bottom: 1px solid #7BD676;">
@@ -145,15 +145,11 @@
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
 												<td width="9" background="img/tab_12.gif">&nbsp;</td>
-												<td bgcolor="#f3ffe3" height="390" valign="top"><table
-														width="99%" border="0" align="center" cellpadding="0"
-														cellspacing="1" bgcolor="#6699CC" onmouseover="changeto()"
-														onmouseout="changeback()">
+												<td bgcolor="#f3ffe3" height="390" valign="top">
+													<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#6699CC"  >
 														<tr bgcolor="#f3ffe3">
 															<td><c:if test="${operatorStr=='modify' || operatorStr=='add'}">
-																	<form name="edit_Form"
-																		action="CheckCheckouts?operatorStr=${operatorStr}"
-																		method="post">
+																	<form name="edit_Form" action="CheckCheckouts?operatorStr=${operatorStr}" method="post">
 																		<table width="100%">
 																			<tr height="30">
 																				<td align="right"><font face="隶书">维修单编号：</font>
@@ -325,8 +321,7 @@
 																		</tr>
 																	</table>
 																	<p align="center">
-																		<input type=button name="delbut" value="请确认删除结账单"
-																			onclick="window.location.href('Checkouts?operatorStr=${operatorStr}&&cID=${checkouts.cID}')"
+																		<input type="button" name="delbut" value="请确认删除结账单" onclick="doDelete('${operatorStr }', '${checkouts.cID }');"
 																			style="height: 30px; width: 150px;">
 																	</p>
 																</c:if>
@@ -362,6 +357,10 @@
 			<td colspan="2"><jsp:include flush="true" page="/down.jsp" /></td>
 		</tr>
 	</table>
-
 </body>
+<script type="text/javascript">
+function doDelete(operatorStr, cID) {
+	window.location.href = "Checkouts?operatorStr="+operatorStr+"&cID="+cID;	
+}
+</script>
 </html>

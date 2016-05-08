@@ -90,9 +90,7 @@
 																<span class="STYLE4">系統用戶信息列表</span></td>
 														</tr>
 													</table>
-													<table width="99%" border="0" align="center"
-														cellpadding="0" cellspacing="1" bgcolor="#6699CC"
-														onmouseover="changeto()" onmouseout="changeback()">
+													<table width="99%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#6699CC" onmouseover="changeto()" onmouseout="changeback()">
 														<tr>
 															<td width="13%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">系统用户编号</td>
@@ -109,8 +107,7 @@
 															<td width="6%" height="30" background="img/tab_14.gif"
 																bgcolor="#FFFFFF" align="center">删除</td>
 														</tr>
-														<tbody align="center" onmouseover="changeto()"
-															onmouseout="changeback()">
+														<tbody align="center" onmouseover="changeto()" onmouseout="changeback()">
 															<c:forEach var="item" items="${admins}" varStatus="admin">
 																<tr align="center" bgcolor="#FFFFFF" height="25">
 																	<td>${item.admID}</td>
