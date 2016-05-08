@@ -249,19 +249,16 @@ public class PartinnerServlet extends HttpServlet {
 				String date = request.getParameter("date");
 				pi.setDate(date);
 				PartinnerDAO rdao = new PartinnerDAO();
+				Double num = kc.getPartkcnum();
 				try {
 					if(operatorStr.equals("add")) {	
 						rdao.insert(pi);
+						kcdao = new PartkcDAO();
+						Integer newNum = num.intValue() - pi.getpNum();
+						kc.setPartkcnum(Double.valueOf(newNum));
+						kcdao.update(kc);
 						out.print("<script language='javascript'>alert('成功添加内配单信息！');window.location='partinner.jsp';</script>");
-					} else {
-						rdao.update(pi);
-						out.print("<script language='javascript'>alert('成功修改内配单信息！');window.location='partinner.jsp';</script>");
-					}
-					Double num = kc.getPartkcnum();
-					Integer newNum = num.intValue() - pi.getpNum();
-					kc.setPartkcnum(Double.valueOf(newNum));
-					kcdao = new PartkcDAO();
-					kcdao.update(kc);
+					} 
 				} catch(Exception e) {
 					if(operatorStr.equals("add"))
 						out.print("<script language='javascript'>alert('添加内配单信息失败！');window.location='partinner.jsp';</script>");

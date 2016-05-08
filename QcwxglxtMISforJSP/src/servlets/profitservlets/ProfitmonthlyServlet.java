@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,11 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import bean.Partinner;
 import bean.Profit;
 import bean.ProfitMonthly;
+import bean.Wage;
 import dao.PartinnerDAO;
 import dao.ProfitDAO;
+import dao.WageDAO;
 
 /**
  * Servlet implementation class YuyueQueryServlet
@@ -100,10 +105,33 @@ public class ProfitmonthlyServlet extends HttpServlet {
 				}
 			}
 			
+			/*计算退货损失*/
+			BigDecimal returnCost = new BigDecimal(0);
+			
+			/*计算工资支出*/
+			Date date = new Date();
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
+			String month = df.format(date);
+			WageDAO wagedao = new WageDAO();
+			String sql = "select * from wage where month = '" + month + "'";
+			List<Wage> wagelist = wagedao.findByPage(sql, 1, 100);
+			BigDecimal salaryCost = new BigDecimal(0.00);
+			if(CollectionUtils.isNotEmpty(wagelist)) {
+				for(Wage w : wagelist) {
+					Float s = w.getSalary();
+					salaryCost = salaryCost.add(new BigDecimal(s));
+				}
+			}
+			
+			/*计算总利润*/
+			BigDecimal totalProfit = checkoutProfit.add(innerProfit).subtract(returnCost) .subtract(salaryCost);
 			
 			ProfitMonthly pm = new ProfitMonthly();
 			pm.setCheckoutProfit(checkoutProfit);
 			pm.setInnerProfit(innerProfit);
+			pm.setReturnCost(returnCost);
+			pm.setSalaryCost(salaryCost);
+			pm.setTotalProfit(totalProfit);;
 			
 			request.setAttribute("profitmonthly", pm);
 			request.setAttribute("totalRows", 1);

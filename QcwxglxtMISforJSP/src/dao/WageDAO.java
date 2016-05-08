@@ -121,7 +121,7 @@ public class WageDAO extends DAO<Wage>{
 				Wage wage=new Wage();
 				wage.setwID(rs.getInt("wID"));
 	        	wage.setEmpID(rs.getInt("wage.empID"));
-	        	wage.setEmpName(rs.getString("empName"));
+	        	//wage.setEmpName(rs.getString("empName"));
 				wage.setMonth(rs.getString("month"));
 				wage.setBasepay(rs.getFloat("basepay"));
 				wage.setCommission(rs.getFloat("commission"));
