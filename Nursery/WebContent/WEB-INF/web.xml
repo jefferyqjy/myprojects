@@ -302,6 +302,16 @@
      	<url-pattern>/addannounce</url-pattern>
      </servlet-mapping>
      <!-- announce manager end -->
+     
+	<servlet>
+		<servlet-name>StudentInterestManagerServlet</servlet-name>
+     		<servlet-class>com.pro.web.servlet.StudentInterestManagerServlet</servlet-class>
+     		<load-on-startup>0</load-on-startup>
+     	</servlet>
+     	<servlet-mapping>
+     		<servlet-name>StudentInterestManagerServlet</servlet-name>
+     		<url-pattern>/interestmanager</url-pattern>
+     	</servlet-mapping>
 
      <resource-ref>
 		<description></description>

@@ -347,6 +347,79 @@ String userRole = (String)request.getSession().getAttribute("PRO_USER_ROLE");
 	}
 	%>
 	
+	<tr>
+    		<td height="23" background="images/main_34_1.gif">
+    		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+      			<tr>
+        			<td width="9%">&nbsp;</td>
+        			<td width="83%" onClick="document.getElementById('insTr').style.display = document.getElementById('insTr').style.display == 'none'? '' : 'none'">
+        				<div align="center" class="STYLE4"><a style="cursor:pointer">学生兴趣班管理</a></div>
+       				</td>
+        			<td width="8%">&nbsp;</td>
+      			</tr>
+    		</table>
+   		</td>
+  	</tr>
+  	<tr id=insTr style="display:none">
+	    	<td valign="top">
+	    		<div align="center">
+	      			<table width="82%" border="0" align="center" cellpadding="0" cellspacing="0">
+	      				<%
+					if ("teacher".equals(userRole) || "admin".equals(userRole) || "family".equals(userRole)) {
+					%>
+		        			<tr>
+		          				<td height="38">
+		          					<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		            					<tr>
+		              						<td width="33" height="28"><img src="images/main_40.gif" width="28" height="28"></td>
+		              						<td width="99">
+		              							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+		                  							<tr>
+		                   								<td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
+		                   									<a href="/Nursery/console/inqstudentinterest.jsp" target="rightFrame">兴趣班查询</a>
+		               									</td>
+		                  							</tr>
+		              							</table>
+		           							</td>
+		            					</tr>
+		          					</table>
+		       					</td>
+		       				</tr>
+	       				<%
+					}
+					%>
+					<%
+					if ("family".equals(userRole)) {
+					%>
+					        <tr>
+					          	<td height="30">
+					          		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					            		<tr>
+					              			<td width="33" height="28"><img src="images/main_46.gif" width="28" height="28"></td>
+					              			<td width="99">
+					              				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					                  				<tr>
+					                    				<td height="23" class="STYLE4" style="cursor:hand" onMouseOver="this.style.backgroundImage='url(images/tab_bg.gif)';this.style.borderStyle='solid';this.style.borderWidth='1';borderColor='#adb9c2'; "onmouseout="this.style.backgroundImage='url()';this.style.borderStyle='none'">
+					                    					<a href="/Nursery/console/addstudentinterest.jsp" target="rightFrame">添加兴趣班</a>
+			                    						</td>
+					                  				</tr>
+					              				</table>
+				              				</td>
+					            		</tr>
+					          		</table>
+			          			</td>
+					        </tr>
+					        <tr>
+					          	<td height="5">&nbsp;</td>
+					        </tr>
+					<%
+					}
+					%>
+	      			</table>
+	 			</div>
+			</td>
+	  	</tr>
+	
 	<%
 	if ("admin".equals(userRole) || "family".equals(userRole)){
 	%>
