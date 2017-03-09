@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.TopicEntity" table="topic">
+		<id name="topicid" type="java.lang.String">
+			<column name="topicid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="usersid" type="java.lang.String">
+			<column name="usersid" />
+		</property>
+		<property name="carsid" type="java.lang.String">
+			<column name="carsid" />
+		</property>
+		<property name="num" type="java.lang.String">
+			<column name="num" />
+		</property>
+		<property name="contents" type="java.lang.String">
+			<column name="contents" />
+		</property>
+		<property name="addtime" type="java.lang.String">
+			<column name="addtime" />
+		</property>
+		<many-to-one name="cars" column="carsid" class="com.entity.CarsEntity" fetch="join" insert="false" update="false" lazy="false" />
+		<many-to-one name="users" column="usersid" class="com.entity.UsersEntity" fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>

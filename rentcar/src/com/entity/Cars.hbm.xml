@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.CarsEntity" table="cars">
+		<id name="carsid" type="java.lang.String">
+			<column name="carsid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="carno" type="java.lang.String">
+			<column name="carno" />
+		</property>
+		<property name="image" type="java.lang.String">
+			<column name="image" />
+		</property>
+		<property name="cateid" type="java.lang.String">
+			<column name="cateid" />
+		</property>
+		<property name="brandid" type="java.lang.String">
+			<column name="brandid" />
+		</property>
+		<property name="price" type="java.lang.String">
+			<column name="price" />
+		</property>
+		<property name="colour" type="java.lang.String">
+			<column name="colour" />
+		</property>
+		<property name="degree" type="java.lang.String">
+			<column name="degree" />
+		</property>
+		<property name="displacement" type="java.lang.String">
+			<column name="displacement" />
+		</property>
+		<property name="special" type="java.lang.String">
+			<column name="special" />
+		</property>
+		<property name="recommend" type="java.lang.String">
+			<column name="recommend" />
+		</property>
+		<property name="contents" type="java.lang.String">
+			<column name="contents" />
+		</property>
+		<many-to-one name="cate" column="cateid" class="com.entity.CateEntity" fetch="join" insert="false" update="false" lazy="false" />
+		<many-to-one name="brand" column="brandid" class="com.entity.BrandEntity" fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>

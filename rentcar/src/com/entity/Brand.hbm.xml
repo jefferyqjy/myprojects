@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.BrandEntity" table="brand">
+		<id name="brandid" type="java.lang.String">
+			<column name="brandid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="brandname" type="java.lang.String">
+			<column name="brandname" />
+		</property>
+		<property name="image" type="java.lang.String">
+			<column name="image" />
+		</property>
+	</class>
+</hibernate-mapping>

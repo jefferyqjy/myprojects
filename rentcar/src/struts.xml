@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.custom.i18n.resources" value="messageresources"></constant>
+	<constant name="struts.multipart.maxSize" value="52428800"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<package name="default" namespace="/" extends="struts-default">
+		<global-results>
+			<result name="loginerror">/login.jsp</result>
+			<result name="adminerror">/admin_index.jsp</result>
+			<result name="db error">/index.jsp</result>
+		</global-results>
+	</package>
+
+	<include file="com/conf/admin.xml"></include>
+	<include file="com/conf/users.xml"></include>
+	<include file="com/conf/article.xml"></include>
+	<include file="com/conf/cate.xml"></include>
+	<include file="com/conf/brand.xml"></include>
+	<include file="com/conf/cars.xml"></include>
+	<include file="com/conf/orders.xml"></include>
+	<include file="com/conf/topic.xml"></include>
+	<include file="com/conf/upload.xml"></include>
+	<include file="com/conf/index.xml"></include>
+</struts>

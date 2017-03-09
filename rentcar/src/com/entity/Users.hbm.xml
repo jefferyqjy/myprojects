@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.UsersEntity" table="users">
+		<id name="usersid" type="java.lang.String">
+			<column name="usersid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="username" type="java.lang.String">
+			<column name="username" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<property name="realname" type="java.lang.String">
+			<column name="realname" />
+		</property>
+		<property name="sex" type="java.lang.String">
+			<column name="sex" />
+		</property>
+		<property name="birthday" type="java.lang.String">
+			<column name="birthday" />
+		</property>
+		<property name="idcard" type="java.lang.String">
+			<column name="idcard" />
+		</property>
+		<property name="contact" type="java.lang.String">
+			<column name="contact" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="address" />
+		</property>
+	</class>
+</hibernate-mapping>

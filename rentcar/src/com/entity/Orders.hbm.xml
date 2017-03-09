@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.OrdersEntity" table="orders">
+		<id name="ordersid" type="java.lang.String">
+			<column name="ordersid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="ordercode" type="java.lang.String">
+			<column name="ordercode" />
+		</property>
+		<property name="usersid" type="java.lang.String">
+			<column name="usersid" />
+		</property>
+		<property name="carsid" type="java.lang.String">
+			<column name="carsid" />
+		</property>
+		<property name="thestart" type="java.lang.String">
+			<column name="thestart" />
+		</property>
+		<property name="theend" type="java.lang.String">
+			<column name="theend" />
+		</property>
+		<property name="place" type="java.lang.String">
+			<column name="place" />
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="address" />
+		</property>
+		<property name="addtime" type="java.lang.String">
+			<column name="addtime" />
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="status" />
+		</property>
+		<property name="money" type="java.lang.String">
+			<column name="money" />
+		</property>
+		<many-to-one name="cars" column="carsid" class="com.entity.CarsEntity" fetch="join" insert="false" update="false" lazy="false" />
+		<many-to-one name="users" column="usersid" class="com.entity.UsersEntity" fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>

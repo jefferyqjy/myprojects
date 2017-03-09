@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.AdminEntity" table="admin">
+		<id name="adminid" type="java.lang.String">
+			<column name="adminid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="username" type="java.lang.String">
+			<column name="username" />
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<property name="realname" type="java.lang.String">
+			<column name="realname" />
+		</property>
+		<property name="contact" type="java.lang.String">
+			<column name="contact" />
+		</property>
+	</class>
+</hibernate-mapping>
