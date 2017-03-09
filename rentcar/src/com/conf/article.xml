@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="article" namespace="/article" extends="default">
+		<action name="createArticle" class="articleAction" method="createArticle">
+			<result name="success">/admin/addarticle.jsp</result>
+		</action>
+		<action name="addArticle" class="articleAction" method="addArticle">
+			<result name="success" type="chain">createArticle</result>
+		</action>
+		<action name="updateArticle" class="articleAction" method="updateArticle">
+			<result name="success" type="chain">getAllArticle</result>
+		</action>
+		<action name="deleteArticle" class="articleAction" method="deleteArticle">
+			<result name="success" type="chain">getAllArticle</result>
+			<result name="fail" type="chain">getAllArticle</result>
+		</action>
+		<action name="getAllArticle" class="articleAction" method="getAllArticle">
+			<result name="success">/admin/listarticle.jsp</result>
+		</action>
+		<action name="getArticleById" class="articleAction" method="getArticleById">
+			<result name="success">/admin/editarticle.jsp</result>
+		</action>
+		<action name="queryArticleByCond" class="articleAction" method="queryArticleByCond">
+			<result name="success">/admin/queryarticle.jsp</result>
+		</action>
+	</package>
+</struts>

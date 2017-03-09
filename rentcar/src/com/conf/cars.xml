@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="cars" namespace="/cars" extends="default">
+		<action name="createCars" class="carsAction" method="createCars">
+			<result name="success">/admin/addcars.jsp</result>
+		</action>
+		<action name="addCars" class="carsAction" method="addCars">
+			<result name="success" type="chain">createCars</result>
+		</action>
+		<action name="updateCars" class="carsAction" method="updateCars">
+			<result name="success" type="chain">getAllCars</result>
+		</action>
+		<action name="deleteCars" class="carsAction" method="deleteCars">
+			<result name="success" type="chain">getAllCars</result>
+			<result name="fail" type="chain">getAllCars</result>
+		</action>
+		<action name="getAllCars" class="carsAction" method="getAllCars">
+			<result name="success">/admin/listcars.jsp</result>
+		</action>
+		<action name="getCarsById" class="carsAction" method="getCarsById">
+			<result name="success">/admin/editcars.jsp</result>
+		</action>
+		<action name="queryCarsByCond" class="carsAction" method="queryCarsByCond">
+			<result name="success">/admin/querycars.jsp</result>
+		</action>
+	</package>
+</struts>

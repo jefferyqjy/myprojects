@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="index" namespace="/index" extends="default">
+		<action name="index" class="indexAction" method="index">
+			<result>/default.jsp</result>
+		</action>
+		<action name="exit" class="indexAction" method="exit">
+			<result type="chain">index</result>
+		</action>
+		<action name="addtopic" class="indexAction" method="addtopic">
+			<result type="redirect">/index/detail.action?id=${topic.carsid}
+			</result>
+		</action>
+		<action name="showTopic" class="indexAction" method="showTopic">
+			<result name="success">/topic.jsp</result>
+		</action>
+		<action name="adminLogin" class="indexAction" method="adminLogin">
+			<result name="success">/admin/main.jsp</result>
+			<result name="fail">/admin/index.jsp</result>
+		</action>
+
+		<action name="personal" class="indexAction" method="personal">
+			<result>/usercenter.jsp</result>
+		</action>
+
+
+
+		<action name="preLogin" class="indexAction" method="preLogin">
+			<result>/login.jsp</result>
+		</action>
+		<action name="prePwd" class="indexAction" method="prePwd">
+			<result name="fail" type="chain">preLogin</result>
+			<result>/editpwd.jsp</result>
+		</action>
+		<action name="preReg" class="indexAction" method="preReg">
+			<result>/reg.jsp</result>
+		</action>
+		<action name="login" class="indexAction" method="login">
+			<result name="fail" type="chain">preLogin</result>
+			<result name="success" type="chain">index</result>
+		</action>
+		<action name="reg" class="indexAction" method="reg">
+			<result type="chain">preLogin</result>
+		</action>
+		<action name="editPwd" class="indexAction" method="editPwd">
+			<result type="chain">prePwd</result>
+			<result name="fail" type="chain">preLogin</result>
+		</action>
+		<action name="personal" class="indexAction" method="personal">
+			<result type="chain">users</result>
+		</action>
+
+		<action name="users" class="indexAction" method="users">
+			<result>/usercenter.jsp</result>
+		</action>
+
+
+		<action name="article" class="indexAction" method="article">
+			<result>/article.jsp</result>
+		</action>
+		<action name="read" class="indexAction" method="read">
+			<result>/read.jsp</result>
+		</action>
+
+		<!-- 商品  -->
+		<action name="special" class="indexAction" method="special">
+			<result>/list.jsp</result>
+		</action>
+		<action name="recommend" class="indexAction" method="recommend">
+			<result>/list.jsp</result>
+		</action>
+		<action name="cate" class="indexAction" method="cate">
+			<result>/list.jsp</result>
+		</action>
+		<action name="styles" class="indexAction" method="styles">
+			<result>/list.jsp</result>
+		</action>
+		<action name="brand" class="indexAction" method="brand">
+			<result>/list.jsp</result>
+		</action>
+		<action name="brandShow" class="indexAction" method="brandShow">
+			<result>/brand.jsp</result>
+		</action>
+		<action name="query" class="indexAction" method="query">
+			<result>/list.jsp</result>
+		</action>
+		<action name="all" class="indexAction" method="all">
+			<result>/list.jsp</result>
+		</action>
+		<action name="detail" class="indexAction" method="detail">
+			<result>/detail.jsp</result>
+		</action>
+
+		<!-- 订单 -->
+		<action name="preOrder" class="indexAction" method="preOrder">
+			<result>/checkout.jsp</result>
+		</action>
+		<action name="checkOut" class="indexAction" method="checkOut">
+			<result name="success" type="chain">showOrders</result>
+			<result name="fail" type="chain">preLogin</result>
+		</action>
+		<action name="showOrders" class="indexAction" method="showOrders">
+			<result name="success">/orderlist.jsp</result>
+			<result name="fail" type="chain">preLogin</result>
+		</action>
+		
+		<!--还车-->
+		<action name="applyReturn" class="indexAction" method="applyReturn">
+			<result name="success">/orderlist.jsp</result>
+			<result name="fail" type="chain">preLogin</result>
+		</action>
+	</package>
+</struts> 

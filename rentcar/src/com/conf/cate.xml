@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="cate" namespace="/cate" extends="default">
+		<action name="createCate" class="cateAction" method="createCate">
+			<result name="success">/admin/addcate.jsp</result>
+		</action>
+		<action name="addCate" class="cateAction" method="addCate">
+			<result name="success" type="chain">createCate</result>
+		</action>
+		<action name="updateCate" class="cateAction" method="updateCate">
+			<result name="success" type="chain">getAllCate</result>
+		</action>
+		<action name="deleteCate" class="cateAction" method="deleteCate">
+			<result name="success" type="chain">getAllCate</result>
+			<result name="fail" type="chain">getAllCate</result>
+		</action>
+		<action name="getAllCate" class="cateAction" method="getAllCate">
+			<result name="success">/admin/listcate.jsp</result>
+		</action>
+		<action name="getCateById" class="cateAction" method="getCateById">
+			<result name="success">/admin/editcate.jsp</result>
+		</action>
+		<action name="queryCateByCond" class="cateAction" method="queryCateByCond">
+			<result name="success">/admin/querycate.jsp</result>
+		</action>
+	</package>
+</struts>
