@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="orders" namespace="/orders" extends="default">
+		<action name="createOrders" class="ordersAction" method="createOrders">
+			<result name="success">/admin/addorders.jsp</result>
+		</action>
+		<action name="addOrders" class="ordersAction" method="addOrders">
+			<result name="success" type="chain">createOrders</result>
+		</action>
+		<action name="updateOrders" class="ordersAction" method="updateOrders">
+			<result name="success" type="chain">getAllOrders</result>
+		</action>
+		<action name="deleteOrders" class="ordersAction" method="deleteOrders">
+			<result name="success" type="chain">getAllOrders</result>
+			<result name="fail" type="chain">getAllOrders</result>
+		</action>
+		<action name="getAllOrders" class="ordersAction" method="getAllOrders">
+			<result name="success">/admin/listorders.jsp</result>
+		</action>
+		<action name="getOrdersById" class="ordersAction" method="getOrdersById">
+			<result name="success">/admin/editorders.jsp</result>
+		</action>
+		<action name="queryOrdersByCond" class="ordersAction" method="queryOrdersByCond">
+			<result name="success">/admin/queryorders.jsp</result>
+		</action>
+		
+		<!-- 管理员确认还车 -->
+		<action name="confirmReturn" class="ordersAction" method="confirmReturn">
+			<result name="success">/admin/listorders.jsp</result>
+		</action>
+		<!-- 管理员确认还车 -->
+	</package>
+</struts>

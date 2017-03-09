@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="users" namespace="/users" extends="default">
+		<action name="createUsers" class="usersAction" method="createUsers">
+			<result name="success">/admin/addusers.jsp</result>
+		</action>
+		<action name="addUsers" class="usersAction" method="addUsers">
+			<result name="success" type="chain">createUsers</result>
+		</action>
+		<action name="updateUsers" class="usersAction" method="updateUsers">
+			<result name="success" type="chain">getAllUsers</result>
+		</action>
+		<action name="deleteUsers" class="usersAction" method="deleteUsers">
+			<result name="success" type="chain">getAllUsers</result>
+			<result name="fail" type="chain">getAllUsers</result>
+		</action>
+		<action name="getAllUsers" class="usersAction" method="getAllUsers">
+			<result name="success">/admin/listusers.jsp</result>
+		</action>
+		<action name="getUsersById" class="usersAction" method="getUsersById">
+			<result name="success">/admin/editusers.jsp</result>
+		</action>
+		<action name="queryUsersByCond" class="usersAction" method="queryUsersByCond">
+			<result name="success">/admin/queryusers.jsp</result>
+		</action>
+	</package>
+</struts>

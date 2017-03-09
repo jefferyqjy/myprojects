@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="topic" namespace="/topic" extends="default">
+		<action name="createTopic" class="topicAction" method="createTopic">
+			<result name="success">/admin/addtopic.jsp</result>
+		</action>
+		<action name="addTopic" class="topicAction" method="addTopic">
+			<result name="success" type="chain">createTopic</result>
+		</action>
+		<action name="updateTopic" class="topicAction" method="updateTopic">
+			<result name="success" type="chain">getAllTopic</result>
+		</action>
+		<action name="deleteTopic" class="topicAction" method="deleteTopic">
+			<result name="success" type="chain">getAllTopic</result>
+			<result name="fail" type="chain">getAllTopic</result>
+		</action>
+		<action name="getAllTopic" class="topicAction" method="getAllTopic">
+			<result name="success">/admin/listtopic.jsp</result>
+		</action>
+		<action name="getTopicById" class="topicAction" method="getTopicById">
+			<result name="success">/admin/edittopic.jsp</result>
+		</action>
+		<action name="queryTopicByCond" class="topicAction" method="queryTopicByCond">
+			<result name="success">/admin/querytopic.jsp</result>
+		</action>
+	</package>
+</struts>

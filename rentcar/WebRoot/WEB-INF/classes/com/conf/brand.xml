@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="brand" namespace="/brand" extends="default">
+		<action name="createBrand" class="brandAction" method="createBrand">
+			<result name="success">/admin/addbrand.jsp</result>
+		</action>
+		<action name="addBrand" class="brandAction" method="addBrand">
+			<result name="success" type="chain">createBrand</result>
+		</action>
+		<action name="updateBrand" class="brandAction" method="updateBrand">
+			<result name="success" type="chain">getAllBrand</result>
+		</action>
+		<action name="deleteBrand" class="brandAction" method="deleteBrand">
+			<result name="success" type="chain">getAllBrand</result>
+			<result name="fail" type="chain">getAllBrand</result>
+		</action>
+		<action name="getAllBrand" class="brandAction" method="getAllBrand">
+			<result name="success">/admin/listbrand.jsp</result>
+		</action>
+		<action name="getBrandById" class="brandAction" method="getBrandById">
+			<result name="success">/admin/editbrand.jsp</result>
+		</action>
+		<action name="queryBrandByCond" class="brandAction" method="queryBrandByCond">
+			<result name="success">/admin/querybrand.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="admin" namespace="/admin" extends="default">
+		<action name="login" class="adminAction" method="login">
+			<result name="success">/admin_main.jsp</result>
+			<result name="fail">/admin_index.jsp</result>
+		</action>
+		<action name="editpwd" class="adminAction" method="editpwd">
+			<result name="success" type="chain">prePwd</result>
+		</action>
+		<action name="prePwd" class="adminAction" method="prePwd">
+			<result name="success">/admin/editpwd.jsp</result>
+		</action>
+		<action name="createAdmin" class="adminAction" method="createAdmin">
+			<result name="success">/admin/addadmin.jsp</result>
+		</action>
+		<action name="addAdmin" class="adminAction" method="addAdmin">
+			<result name="success" type="chain">createAdmin</result>
+		</action>
+		<action name="updateAdmin" class="adminAction" method="updateAdmin">
+			<result name="success" type="chain">getAllAdmin</result>
+		</action>
+		<action name="deleteAdmin" class="adminAction" method="deleteAdmin">
+			<result name="success" type="chain">getAllAdmin</result>
+			<result name="fail" type="chain">getAllAdmin</result>
+		</action>
+		<action name="getAllAdmin" class="adminAction" method="getAllAdmin">
+			<result name="success">/admin/listadmin.jsp</result>
+		</action>
+		<action name="getAdminById" class="adminAction" method="getAdminById">
+			<result name="success">/admin/editadmin.jsp</result>
+		</action>
+		<action name="queryAdminByCond" class="adminAction" method="queryAdminByCond">
+			<result name="success">/admin/queryadmin.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://localhost:3306/rentcar"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/entity/Admin.hbm.xml</value>
+				<value>com/entity/Users.hbm.xml</value>
+				<value>com/entity/Article.hbm.xml</value>
+				<value>com/entity/Cate.hbm.xml</value>
+				<value>com/entity/Brand.hbm.xml</value>
+				<value>com/entity/Cars.hbm.xml</value>
+				<value>com/entity/Orders.hbm.xml</value>
+				<value>com/entity/Topic.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="indexAction" name="indexAction" class="com.action.IndexAction">
+		<property name="articleBusiness" ref="articleBusiness"></property>
+		<property name="cateBusiness" ref="cateBusiness"></property>
+		<property name="ordersBusiness" ref="ordersBusiness"></property>
+		<property name="topicBusiness" ref="topicBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+		<property name="brandBusiness" ref="brandBusiness"></property>
+		<property name="carsBusiness" ref="carsBusiness"></property>
+	</bean>
+	
+	<bean id="uploadAction" name="uploadAction" class="com.action.UploadAction">
+	</bean>
+	
+	<bean id="adminDAO" name="adminDAO" class="com.dao.AdminDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="adminBusiness" name="adminBusiness" class="com.business.AdminBusiness">
+		<property name="adminDAO" ref="adminDAO"></property>
+	</bean>
+	<bean id="adminAction" name="adminAction" class="com.action.AdminAction">
+		<property name="adminBusiness" ref="adminBusiness"></property>
+	</bean>
+
+	<bean id="usersDAO" name="usersDAO" class="com.dao.UsersDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="usersBusiness" name="usersBusiness" class="com.business.UsersBusiness">
+		<property name="usersDAO" ref="usersDAO"></property>
+	</bean>
+	<bean id="usersAction" name="usersAction" class="com.action.UsersAction">
+		<property name="usersBusiness" ref="usersBusiness"></property>
+	</bean>
+
+	<bean id="articleDAO" name="articleDAO" class="com.dao.ArticleDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="articleBusiness" name="articleBusiness" class="com.business.ArticleBusiness">
+		<property name="articleDAO" ref="articleDAO"></property>
+	</bean>
+	<bean id="articleAction" name="articleAction" class="com.action.ArticleAction">
+		<property name="articleBusiness" ref="articleBusiness"></property>
+	</bean>
+
+	<bean id="cateDAO" name="cateDAO" class="com.dao.CateDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="cateBusiness" name="cateBusiness" class="com.business.CateBusiness">
+		<property name="cateDAO" ref="cateDAO"></property>
+	</bean>
+	<bean id="cateAction" name="cateAction" class="com.action.CateAction">
+		<property name="cateBusiness" ref="cateBusiness"></property>
+	</bean>
+
+	<bean id="brandDAO" name="brandDAO" class="com.dao.BrandDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="brandBusiness" name="brandBusiness" class="com.business.BrandBusiness">
+		<property name="brandDAO" ref="brandDAO"></property>
+	</bean>
+	<bean id="brandAction" name="brandAction" class="com.action.BrandAction">
+		<property name="brandBusiness" ref="brandBusiness"></property>
+	</bean>
+
+	<bean id="carsDAO" name="carsDAO" class="com.dao.CarsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="carsBusiness" name="carsBusiness" class="com.business.CarsBusiness">
+		<property name="carsDAO" ref="carsDAO"></property>
+	</bean>
+	<bean id="carsAction" name="carsAction" class="com.action.CarsAction">
+		<property name="carsBusiness" ref="carsBusiness"></property>
+		<property name="cateBusiness" ref="cateBusiness"></property>
+		<property name="brandBusiness" ref="brandBusiness"></property>
+	</bean>
+
+	<bean id="ordersDAO" name="ordersDAO" class="com.dao.OrdersDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="ordersBusiness" name="ordersBusiness" class="com.business.OrdersBusiness">
+		<property name="ordersDAO" ref="ordersDAO"></property>
+	</bean>
+	<bean id="ordersAction" name="ordersAction" class="com.action.OrdersAction">
+		<property name="ordersBusiness" ref="ordersBusiness"></property>
+	</bean>
+
+	<bean id="topicDAO" name="topicDAO" class="com.dao.TopicDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="topicBusiness" name="topicBusiness" class="com.business.TopicBusiness">
+		<property name="topicDAO" ref="topicDAO"></property>
+	</bean>
+	<bean id="topicAction" name="topicAction" class="com.action.TopicAction">
+		<property name="topicBusiness" ref="topicBusiness"></property>
+	</bean>
+
+</beans>
