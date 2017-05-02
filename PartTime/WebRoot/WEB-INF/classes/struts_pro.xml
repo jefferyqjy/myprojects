@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+                        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <!-- 默认的视图主题 -->
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.configuration.xml.reload" value="true"/>
+    <package extends="struts-default" name="applyInfo" namespace="/applyInfo">
+        <action class="applyInfoAction" method="{1}" name="applyInfo_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/applyInfo/applyInfo_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/applyInfo/applyInfo_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/applyInfo/applyInfo_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+            
+            
+        </action>
+    </package>
+    <package extends="struts-default" name="liuYanBan" namespace="/liuYanBan">
+        <action class="liuYanBanAction" method="{1}" name="liuYanBan_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/liuYanBan/liuYanBan_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/liuYanBan/liuYanBan_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/liuYanBan/liuYanBan_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="news" namespace="/news">
+        <action class="newsAction" method="{1}" name="news_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/news/news_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/news/news_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/news/news_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+    <package extends="struts-default" name="partTimeInfo" namespace="/partTimeInfo">
+        <action class="partTimeInfoAction" method="{1}" name="partTimeInfo_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/partTimeInfo/partTimeInfo_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/partTimeInfo/partTimeInfo_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/partTimeInfo/partTimeInfo_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+            
+            <result name="gotoPartTimeDetails">/pro_jsp/partTimeInfo/partTimeInfo_detail4front.jsp</result>
+            
+        </action>
+    </package>
+    <package extends="struts-default" name="takeOffice" namespace="/takeOffice">
+        <action class="takeOfficeAction" method="{1}" name="takeOffice_*">
+            <result name="success">/sys_jsp/success.jsp</result>
+            <result name="error">/sys_jsp/error.jsp</result>
+            <result name="query">/pro_jsp/takeOffice/takeOffice_{1}.jsp</result>
+            <result name="queryJSP">/pro_jsp/takeOffice/takeOffice_query.jsp</result>
+            <result name="queryDO" type="redirectAction">/takeOffice/takeOffice_query.do</result>
+            <result name="successClose">/sys_jsp/success4Close.jsp</result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class table="t_sysadmin" name="com.base.sys.entity.Admin">
+    <id access="field" name="username">
+      <generator class="assigned"/>
+    </id>
+    <property name="password" access="field" not-null="true"/>
+    <property name="isLocked" access="field"/>
+    <property name="isLogon" access="field"/>
+    <property name="lastLoginTime" access="field" type="timestamp"/>
+    <property name="usertype" />
+    <property name="accountCreateTime" access="field" type="timestamp"/>
+    <property name="passErrorTimes" access="field" type="integer"/>
+    <property name="name" access="field"/>
+    <property name="gender" access="field"/>
+    <property name="telephone" access="field"/>
+    <property name="address" access="field"/>
+    <property name="email" access="field"/>
+    <property name="qq" access="field"/>
+    <property name="age" access="field" type="integer"/>
+    <property name="flag" access="field"/>
+    
+    <property name="college" access="field"/>
+    <property name="remark" access="field"/>
+    
+  </class>
+</hibernate-mapping>

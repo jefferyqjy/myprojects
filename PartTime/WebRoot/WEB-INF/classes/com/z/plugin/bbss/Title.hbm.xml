@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping><class name="com.z.plugin.bbss.Title" table="t_title">
+<id name="id" type="java.lang.Integer"><column name="id"/>
+<generator class="native"/></id>
+<property access="field" column="t_title" length="200" name="title"/>
+<property access="field" column="t_content" length="2000" name="content"/>
+<property access="field" column="t_userid" length="200" name="userid"/>
+<property access="field" column="t_username" length="200" name="username"/>
+<property access="field" column="t_datetime" length="200" name="datetime"/>
+</class>
+</hibernate-mapping>

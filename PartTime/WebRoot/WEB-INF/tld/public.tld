@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+	<tlibversion>1.2</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>public</shortname>
+	<uri>MyTagLib</uri>
+	<tag>
+		<name>showNote</name>
+		<tagclass>com.base.web.tag.BTAGShowNote</tagclass>
+	</tag>
+	
+	<tag>
+		<name>i18n</name>
+		<tagclass>com.base.web.tag.BTAGI18N</tagclass>
+		<attribute>
+			<name>module</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>key</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>shortcut</name>
+		<tagclass>com.base.web.tag.BTAGGetShortcut</tagclass>
+	</tag>
+	<tag>
+		<name>showSelect</name>
+		<tagclass>com.base.web.tag.BTAGShowSelect</tagclass>
+		<attribute>
+			<name>hql</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>event</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>empty</name>
+			<required>false</required>
+		</attribute>
+	</tag>
+</taglib>

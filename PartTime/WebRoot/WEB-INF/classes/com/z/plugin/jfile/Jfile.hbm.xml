@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.z.plugin.jfile.Jfile" table="t_jfile">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="native" />
+		</id>
+		<property access="field" column="t_uuid" length="200" name="uuid" />
+		<property access="field" column="t_oriname" length="200"
+			name="oriname" />
+		<property access="field" column="t_curname" length="200"
+			name="curname" />
+		<property access="field" column="t_type" length="200" name="type" />
+		<property access="field" column="t_size" length="200" name="size" />
+		<property access="field" column="t_date" length="200" name="date" />
+		<property access="field" column="t_authorid" length="200"
+			name="authorid" />
+		<property access="field" column="t_authorname" length="200"
+			name="authorname" />
+		<property access="field" column="t_remark" length="2000"
+			name="remark" />
+		<property access="field" column="t_path" length="200" name="path" />
+		<property access="field" column="t_md5" length="200" name="md5" />
+		<property access="field" column="t_content" length="2000"
+			name="content" />
+		<property access="field" column="t_area" length="200" name="area" />
+	</class>
+</hibernate-mapping>
