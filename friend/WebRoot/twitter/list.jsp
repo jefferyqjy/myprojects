@@ -121,6 +121,25 @@ body {
 			<!--/fluid-row-->
 		</div>
 		<!--/.fluid-container-->
+		
+		<!-- comment modal div begin -->
+		<div class="modal hide fade" id="newModal13" style="z-index: 9999">
+	
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>评论</h3>
+			</div>
+			<div class="modal-body" style="height: 100px;">
+				<p>
+					 <input class="input-xlarge focused" id="commentContent" type="text" />
+				</p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" onclick="$('#newModal13').modal('hide');">关闭</a>
+				<a href="#" class="btn btn-primary" onClick="doReport()">举报</a>
+			</div>
+		</div>
+		<!-- comment modal div end -->
 	</div>
 	
 	<form id="hiddenForm" name="hiddenForm" action="/friend/frd/home.spring">
