@@ -21,7 +21,7 @@
 		<jsp.version>2.2</jsp.version>
 		<jstl.version>1.2</jstl.version>
 		<standard.version>1.1.2</standard.version>
-		<spring.version>4.1.2.RELEASE</spring.version>
+		<spring.version>4.3.21.RELEASE</spring.version>
 		
 		<hibernate.core.version>4.3.0.Final</hibernate.core.version>
 		<hibernate.ehcache.version>4.3.0.Final</hibernate.ehcache.version>
